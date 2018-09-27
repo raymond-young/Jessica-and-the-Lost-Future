@@ -1,5 +1,4 @@
 # Created by https://www.gitignore.io/api/git,unity,csharp,visualstudio
-*.meta
 *.json
 ### Csharp ###
 ## Ignore Visual Studio temporary files, build results, and
@@ -65,7 +64,6 @@ StyleCopReport.xml
 *_p.c
 *_h.h
 *.ilk
-*.meta
 *.obj
 *.iobj
 *.pch
@@ -365,8 +363,6 @@ ExportedObj/
 *.opendb
 
 # Unity3D generated meta files
-*.pidb.meta
-*.pdb.meta
 
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
