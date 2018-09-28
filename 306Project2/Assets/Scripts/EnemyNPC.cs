@@ -2,32 +2,86 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyNPC : MonoBehaviour {
+public class EnemyNPC : MonoBehaviour
+{
 
     private Rigidbody2D enemyBody;
-    public float xBound = 0;
-    public int maxXBound = 2;
-    
-   
-	// Use this for initialization
-	void Start () {
+    public float xPos = 0;
+    public float yPos = 4;
+    private bool movingTowards = true;
+    private bool wait = false;
+
+    private Vector2 origonalPos;
+
+    private float speed = 1f;
+
+
+    // Use this for initialization
+    void Start () {
         enemyBody = gameObject.GetComponent<Rigidbody2D>();
-        enemyBody.velocity = new Vector2(1, 0);
+        origonalPos = gameObject.transform.position;
     }
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        xBound = gameObject.transform.position.x;
 
-        //x-direction
-        if (xBound >= maxXBound)
+        if (!wait)
         {
-            enemyBody.velocity = new Vector2(-1, 0);
+            Vector2 newPos;
+            if (movingTowards)
+            {
+                newPos = new Vector2(xPos, yPos);
+            }
+            else
+            {
+                Debug.Log("Have Waited");
+                newPos = origonalPos;
+            }
+            Debug.Log(origonalPos + " " + newPos);
+            MoveToPos(origonalPos, newPos);
         }
-        else if (xBound <= (maxXBound * - 1))
+  
+    }
+
+    private void MoveToPos(Vector2 currentPos, Vector2 newPos)
+    {
+
+        StartCoroutine(DoMove(newPos));
+        
+        wait = true;
+    }
+
+    private IEnumerator DoMove(Vector3 end)
+    {
+        //Calculate the remaining distance to move. 
+        float RemainingDistance = Vector3.Distance(transform.position, end);
+
+        //While that distance is greater than a very small amount
+        while (RemainingDistance > 0.05)
         {
-            enemyBody.velocity = new Vector2(1, 0);
+            Debug.Log(RemainingDistance);
+            
+            Vector2 calculatedPos = Vector2.MoveTowards(transform.position, end, speed * Time.deltaTime);
+
+            enemyBody.MovePosition(calculatedPos);
+
+            //Recalculate the remaining distance after moving.
+            RemainingDistance = Vector3.Distance(transform.position, end);
+
+            //Return and loop until sqrRemainingDistance is close enough to zero to end the function
+            yield return null;
         }
 
+        wait = false;
+
+        if (movingTowards)
+        {
+            movingTowards = false;
+        }
+        else
+        {
+            movingTowards = true;
+        }
+        
     }
 }
