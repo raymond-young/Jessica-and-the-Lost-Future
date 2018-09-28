@@ -6,6 +6,8 @@ TagManager:
   tags:
   - player
   - StoreLives
+  - Item
+  - ItemSlots
   layers:
   - Default
   - TransparentFX
