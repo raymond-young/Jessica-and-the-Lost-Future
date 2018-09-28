@@ -9,9 +9,27 @@ public class PlayerController : MonoBehaviour {
     private int speed = 10;
     public Slider healthBar;
 
+    private GameObject storeLives;
+
+    private List<GameObject> power = new List<GameObject>();
+
 	// Use this for initialization
 	void Start () {
+ 
         playerBody = gameObject.GetComponent<Rigidbody2D>();
+
+        storeLives = GameObject.FindGameObjectWithTag("StoreLives");
+
+        
+        for (int i = storeLives.transform.childCount - 1; i >= 0; i--)
+        {
+            if (storeLives.transform.GetChild(i).gameObject.name.Equals("Life"))
+            {
+                power.Add(storeLives.transform.GetChild(i).gameObject);
+            }
+            
+        }
+
     }
 
     // Update is called once per frame
@@ -30,8 +48,7 @@ public class PlayerController : MonoBehaviour {
         if (playerBody.rotation != 0)
         {
             playerBody.rotation = 0;
-            OnDamage(10.0);
-  
+
         }
 
 
@@ -48,17 +65,45 @@ public class PlayerController : MonoBehaviour {
         //Prevents rotation of character on corners
         playerBody.angularVelocity = 0;
     }
-
-    private void OnDamage(double damagePercent)
+    
+    //Damage is a percentage between 0-100
+    public void OnDamage(double damagePercent)
     {
-        Debug.Log(healthBar.value);
-        healthBar.value = healthBar.value - (float)(damagePercent / 100.0);
-        //RectTransform rt = healthBar.GetComponent<RectTransform>();
+        healthBar.value = healthBar.value + (float)(damagePercent / 100.0);
+    }
 
-        // double change = rt.rect.width * (damagePercent / 100.0);
+    public void LooseOnePower()
+    {
+        bool gameOver = true;
 
-        // rt.sizeDelta = new Vector2(rt.rect.width - (float) change, rt.rect.height);
-        //  rt.position = new Vector2(rt.position.x - (float)change, rt.position.y);
+        //Loop to remove a life if one is still avaliable
+        foreach (GameObject power in power)
+        {
+            if (power.GetComponent<Image>().enabled == true)
+            {
+                power.GetComponent<Image>().enabled = false;
+                gameOver = false;
+                break;
+            }
+           
+        }
 
+        if (gameOver)
+        {
+            //Game over here code----------------------------------------
+        }
+    }
+
+    public void GainOnePower()
+    {
+        foreach (GameObject power in power)
+        {
+            if (power.GetComponent<Image>().enabled == false)
+            {
+                power.GetComponent<Image>().enabled = true;
+                break;
+            }
+
+        }
     }
 }

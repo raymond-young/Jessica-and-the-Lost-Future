@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemyNPC : Movement
 {
 
-    private Rigidbody2D enemyBody;
     public float xPos;
     public float yPos;
 
@@ -16,7 +15,6 @@ public class EnemyNPC : Movement
 
     // Use this for initialization
     protected override void Start () {
-        enemyBody = gameObject.GetComponent<Rigidbody2D>();
         origonalPos = gameObject.transform.position;
         base.Start();
     }

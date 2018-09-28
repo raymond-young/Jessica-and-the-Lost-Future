@@ -28,7 +28,6 @@ public abstract class Movement : MonoBehaviour {
         while (RemainingDistance > 0.05)
         {
             npcBody.velocity = new Vector2(1, 0);
-            Debug.Log(RemainingDistance);
 
             Vector2 calculatedPos = Vector2.MoveTowards(transform.position, end, speed * Time.deltaTime);
             npcBody.MovePosition(calculatedPos);
