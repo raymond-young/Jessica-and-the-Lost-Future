@@ -8,8 +8,6 @@ public class EnemyNPC : Movement
     private Rigidbody2D enemyBody;
     public float xPos;
     public float yPos;
-    private bool movingTowards = true;
-    private bool wait = false;
 
     private Vector2 origonalPos;
 
@@ -17,13 +15,14 @@ public class EnemyNPC : Movement
 
 
     // Use this for initialization
-    void Start () {
+    protected override void Start () {
         enemyBody = gameObject.GetComponent<Rigidbody2D>();
         origonalPos = gameObject.transform.position;
+        base.Start();
     }
-	
-	// Update is called once per frame
-	void FixedUpdate () {
+
+    // Update is called once per frame
+    protected override void FixedUpdate() {
 
         if (!wait)
         {
@@ -34,19 +33,17 @@ public class EnemyNPC : Movement
             }
             else
             {
-                Debug.Log("Have Waited");
                 newPos = origonalPos;
             }
-            Debug.Log(origonalPos + " " + newPos);
             MoveToPos(origonalPos, newPos);
         }
   
     }
 
-    public void MoveToPos(Vector2 currentPos, Vector2 newPos)
+    private void MoveToPos(Vector2 currentPos, Vector2 newPos)
     {
 
-        StartCoroutine(DoMove(newPos));
+        StartCoroutine(DoMove(newPos, speed));
         
         wait = true;
     }

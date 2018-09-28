@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour {
         if (playerBody.rotation != 0)
         {
             playerBody.rotation = 0;
-            onDamage(10.0);
+            OnDamage(10.0);
   
         }
 
@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour {
         playerBody.angularVelocity = 0;
     }
 
-    private void onDamage(double damagePercent)
+    private void OnDamage(double damagePercent)
     {
         Debug.Log(healthBar.value);
         healthBar.value = healthBar.value - (float)(damagePercent / 100.0);
