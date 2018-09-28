@@ -5,15 +5,12 @@ using UnityEngine.UI;
 
 public class ItemController : MonoBehaviour {
 
-    private GameObject item;
-
     private List<GameObject> items = new List<GameObject>();
 
     private List<Sprite> itemSprites = new List<Sprite>();
 
 	// Use this for initialization
 	void Start () {
-        item = GameObject.FindGameObjectWithTag("Item");
 
         GameObject itemSlots = GameObject.FindGameObjectWithTag("ItemSlots");
 
@@ -40,21 +37,24 @@ public class ItemController : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag.Equals(item.tag)) { 
+
+        if (collision.gameObject.tag.Equals("Item"))
+        {
             //Loop through item slots to find one that is free
             foreach (GameObject item in items)
             {
                 if (item.GetComponent<Image>().sprite.name.Equals("Background"))
                 {
-                    foreach (Sprite sprite in itemSprites) {
+                    foreach (Sprite sprite in itemSprites)
+                    {
 
                         if (collision.gameObject.GetComponent<SpriteRenderer>().sprite.Equals(sprite))
                         {
-                          item.GetComponent<Image>().sprite = sprite;
-                          break;
+                            item.GetComponent<Image>().sprite = sprite;
+                            break;
                         }
                     }
-                    
+
                     break;
                 }
             }
@@ -62,5 +62,7 @@ public class ItemController : MonoBehaviour {
             items.Remove(collision.gameObject);
             Destroy(collision.gameObject);
         }
+        
+       
     }
 }
