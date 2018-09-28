@@ -18,36 +18,6 @@ public abstract class Movement : MonoBehaviour {
 		
 	}
 
-    protected bool checkMovement(float x, float y)
-    {
-        Vector2 start = transform.position;
-
-        Vector2 end = start + new Vector2(x, y);
-
-        //Disable the boxCollider so that linecast doesn't hit this object's own collider.
-        npc.GetComponent<CircleCollider2D>().enabled = false;
-
-        //RayCast to check for collisions
-        RaycastHit2D hit = Physics2D.Raycast(start, end);
-
-        //Check if anything was hit
-        if (hit.transform == null)
-        {
-            //If nothing was hit, move
-            StartCoroutine(DoMove(end));
-
-            //Return true to say that Move was successful
-            return true;
-        }
-        else
-        {
-            //Move failed
-            return false;
-
-        }
-
-    }
-
     protected IEnumerator DoMove(Vector3 end)
     {
         //Calculate the remaining distance to move based on the square magnitude of the difference between current position and end parameter. 

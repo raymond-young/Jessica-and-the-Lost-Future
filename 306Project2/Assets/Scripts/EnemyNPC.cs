@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyNPC : MonoBehaviour
+public class EnemyNPC : Movement
 {
 
     private Rigidbody2D enemyBody;
-    public float xPos = 0;
-    public float yPos = 4;
+    public float xPos;
+    public float yPos;
     private bool movingTowards = true;
     private bool wait = false;
 
     private Vector2 origonalPos;
 
-    private float speed = 1f;
+    public float speed = 1f;
 
 
     // Use this for initialization
@@ -43,7 +43,7 @@ public class EnemyNPC : MonoBehaviour
   
     }
 
-    private void MoveToPos(Vector2 currentPos, Vector2 newPos)
+    public void MoveToPos(Vector2 currentPos, Vector2 newPos)
     {
 
         StartCoroutine(DoMove(newPos));
@@ -51,37 +51,5 @@ public class EnemyNPC : MonoBehaviour
         wait = true;
     }
 
-    private IEnumerator DoMove(Vector3 end)
-    {
-        //Calculate the remaining distance to move. 
-        float RemainingDistance = Vector3.Distance(transform.position, end);
-
-        //While that distance is greater than a very small amount
-        while (RemainingDistance > 0.05)
-        {
-            Debug.Log(RemainingDistance);
-            
-            Vector2 calculatedPos = Vector2.MoveTowards(transform.position, end, speed * Time.deltaTime);
-
-            enemyBody.MovePosition(calculatedPos);
-
-            //Recalculate the remaining distance after moving.
-            RemainingDistance = Vector3.Distance(transform.position, end);
-
-            //Return and loop until sqrRemainingDistance is close enough to zero to end the function
-            yield return null;
-        }
-
-        wait = false;
-
-        if (movingTowards)
-        {
-            movingTowards = false;
-        }
-        else
-        {
-            movingTowards = true;
-        }
-        
-    }
+    
 }
