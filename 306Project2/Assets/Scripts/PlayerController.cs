@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
+    private Animator anim;
+
 	// Use this for initialization
 	void Start () {
-        
+        anim = GetComponent<Animator>();
     }
 	
 	// Update is called once per frame
@@ -16,5 +18,8 @@ public class PlayerController : MonoBehaviour {
 
         transform.Translate(x, 0, 0);
         transform.Translate(0, y, 0);
+
+        anim.SetFloat("MoveX", x);
+        anim.SetFloat("MoveY", y);
     }
 }
