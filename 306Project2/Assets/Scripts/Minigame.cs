@@ -30,13 +30,13 @@ public class Minigame : MonoBehaviour {
     //Trying to generate the minigame bar according to the screen size and number of arrows
 
     GameObject holder;
-
+    
     //Coefficient
     //Number of arrows changes according to hardness
     private int maxArrowNum = 10;
 
     private float holderSizeVsScreenWidth = 0.8f;
-    private float holderYOffset = 0.1f;
+    private float holderYOffsetVsScreenHeight = 0.1f;
 
     private float holderX;
     private float holderY;
@@ -48,17 +48,24 @@ public class Minigame : MonoBehaviour {
     {
         int screenWidth = Screen.width;
         int screenHeight = Screen.height;
-
         holderX = 0f;
-        holderY = screenHeight * holderYOffset;
+        holderY = screenHeight * holderYOffsetVsScreenHeight;
 
         arrowSize = (screenWidth * holderSizeVsScreenWidth) / maxArrowNum;
 
         holderHeight = arrowSize;
         holderWidth = arrowSize * keyNum;
+  
+
         
-        holder = Instantiate(HolderPrefab, transform.position, transform.rotation);
-        
+        holder = Instantiate(HolderPrefab);
+        holder.transform.position = holder.transform.position + new Vector3(0, -2, 0);
+        Vector3 pos = new Vector3(holderX, holderY, 0);
+
+        Debug.Log("scale = " + pos);
+        //holder = Instantiate(HolderPrefab, holder.transform.position + pos, transform.rotation);
+        holder.GetComponent<SpriteRenderer>().color = Color.red;
+
     }
  /* Don't worry about anything between this */
 
@@ -71,7 +78,7 @@ public class Minigame : MonoBehaviour {
         //Generate holder
         //holder = Instantiate(HolderPrefab, transform.position, transform.rotation);
         //holder.transform.localScale = new Vector2(1, 1);
-        //CalcMeasurements();
+        CalcMeasurements();
 
 
         //Generate game keys
@@ -97,6 +104,7 @@ public class Minigame : MonoBehaviour {
                     break;
             }
             gameKeys.Add(key);
+            key.transform.parent = holder.transform;
         }
         currentIndex = 0;
 	}

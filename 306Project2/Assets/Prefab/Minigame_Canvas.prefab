@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 114661574381984608}
   - component: {fileID: 114326924278791328}
   m_Layer: 0
-  m_Name: Canvas
+  m_Name: Minigame_Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
