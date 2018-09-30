@@ -86,24 +86,9 @@ public class EnemyNPC : Movement
 
             if (!wait)
             {
-                if (segmentNum == segmentNumber.one && segmentCount <= segInt)
-                {
-                    newPos = new Vector2(xPos, yPos);
-
-                    StartCoroutine(DoCircularMove(newPos, speed, clockwise));
-                    wait = true;
-
-                    ToogleCurve();
-                    segmentCount++;
-                }
-                else if (segmentNum == segmentNumber.one && segmentCount >= 2)
-                {
-                    StartCoroutine(DoCircularMove(origonalPos, speed, clockwise));
-                    wait = true;
-
-                    ToogleCurve();
-                    segmentCount--;
-                }
+                
+                StartCoroutine(DoCircularMove(origonalPos, newPos, speed, clockwise, segInt));
+                wait = true;
                 
             }
         }
@@ -111,7 +96,6 @@ public class EnemyNPC : Movement
         {
             if (!wait)
             {
-                
                 newPos = new Vector2(xPos, yPos);
                 StartCoroutine(DoRectangleMove(origonalPos, newPos, speed, clockwise, segInt));
                 wait = true;
