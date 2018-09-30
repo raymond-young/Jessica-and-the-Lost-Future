@@ -80,7 +80,7 @@ public abstract class Movement : MonoBehaviour {
 
     protected IEnumerator DoCircularMove(Vector2 origionalPos, Vector2 endPos, float speed, bool clockwise, int segmentNum)
     {
-        ISegment seg = SegmentFactory.MakePoints(segmentNum, PathMovement.square);
+        ISegment seg = SegmentFactory.MakePoints(segmentNum, PathMovement.curve);
         List<Vector2> rectanglePoints = seg.CalculatePoints(origionalPos, endPos, clockwise);
 
         Vector2 centerPos;
