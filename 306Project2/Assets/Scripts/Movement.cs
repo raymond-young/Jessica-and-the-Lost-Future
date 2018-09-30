@@ -100,7 +100,7 @@ public abstract class Movement : MonoBehaviour {
             {
                 float segment = i / roundness;
 
-                Vector2 intermidiatePos = BezierPoints(segment, transform.position, centerPos, rectanglePoints[i]);
+                Vector2 intermidiatePos = BezierPoints(segment, transform.position, centerPos, rectanglePoints[recNum]);
 
                 //Calculate the remaining distance to move. 
                 float RemainingDistance = Vector2.Distance(transform.position, intermidiatePos);
