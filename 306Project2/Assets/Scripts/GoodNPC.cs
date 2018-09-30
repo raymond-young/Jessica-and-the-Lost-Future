@@ -37,7 +37,7 @@ public class GoodNPC : Movement
     private void MoveToPos(Vector2 currentPos, Vector2 newPos)
     {
 
-        StartCoroutine(DoMove(newPos, speed));
+        StartCoroutine(DoLinearMove(newPos, speed));
 
         wait = true;
     }

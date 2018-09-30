@@ -9,6 +9,8 @@ public abstract class Movement : MonoBehaviour {
     protected bool wait = false;
     protected bool movingTowards = true;
 
+    private float roundness = 10;
+
     // Use this for initialization
     protected virtual void Start () {
         npcBody = gameObject.GetComponent<Rigidbody2D>();
@@ -20,7 +22,7 @@ public abstract class Movement : MonoBehaviour {
 		
 	}
 
-    protected IEnumerator DoMove(Vector3 end, float speed)
+    protected IEnumerator DoLinearMove(Vector3 end, float speed)
     {
         //Calculate the remaining distance to move. 
         float RemainingDistance = Vector3.Distance(transform.position, end);
@@ -47,4 +49,110 @@ public abstract class Movement : MonoBehaviour {
             movingTowards = true;
         }
     }
+
+    protected IEnumerator DoRectangleMove(Vector2 origonalPos, Vector2 thirdPos, float speed, bool clockwise)
+    {
+        List<Vector2> rectanglePoints = new List<Vector2>();
+
+        Vector2 secondPos;
+        Vector2 fourthPos;
+        if (clockwise)
+        {
+            secondPos = new Vector2(transform.position.x, thirdPos.y);
+            fourthPos = new Vector2(thirdPos.x, transform.position.y);
+            
+        }
+        else
+        {
+            secondPos = new Vector2(thirdPos.x, transform.position.y);
+            fourthPos = new Vector2(transform.position.x, thirdPos.y);
+        }
+
+        //Important ordering of adding to rectangle
+        rectanglePoints.Add(secondPos);
+        rectanglePoints.Add(thirdPos);
+        rectanglePoints.Add(fourthPos);
+        rectanglePoints.Add(origonalPos);
+
+        for (int i = 0; i < rectanglePoints.Count; i++)
+        {
+
+            //Calculate the remaining distance to move. 
+            float RemainingDistance = Vector2.Distance(transform.position, rectanglePoints[i]);
+            //While that distance is greater than a very small amount
+            while (RemainingDistance > 0.05)
+            {
+                npcBody.velocity = new Vector2(1, 0);
+
+                Vector2 calculatedPos = Vector2.MoveTowards(transform.position, rectanglePoints[i], speed * Time.deltaTime);
+                npcBody.MovePosition(calculatedPos);
+                //Recalculate the remaining distance after moving.
+                RemainingDistance = Vector2.Distance(transform.position, rectanglePoints[i]);
+                //Return and loop until sqrRemainingDistance is close enough to zero to end the function
+                yield return null;
+            }
+        }
+        wait = false;
+    }
+
+    protected IEnumerator DoCircularMove(Vector2 end, float speed, bool clockwise)
+    {
+        Vector2 centerPos;
+
+        if (clockwise)
+        {
+            centerPos = new Vector2(end.x, transform.position.y);
+        }
+        else
+        {
+            centerPos = new Vector2(transform.position.x, end.y);
+
+        }
+
+        for (int i = 0; i < roundness; i++)
+        {
+            float segment = i / roundness;
+
+            Vector2 intermidiatePos = BezierPoints(segment, transform.position, centerPos, end);
+
+            //Calculate the remaining distance to move. 
+            float RemainingDistance = Vector2.Distance(transform.position, intermidiatePos);
+            //While that distance is greater than a very small amount
+            while (RemainingDistance > 0.05)
+            {
+                npcBody.velocity = new Vector2(1, 0);
+
+                Vector2 calculatedPos = Vector2.MoveTowards(transform.position, intermidiatePos, speed * Time.deltaTime);
+                npcBody.MovePosition(calculatedPos);
+                //Recalculate the remaining distance after moving.
+                RemainingDistance = Vector2.Distance(transform.position, intermidiatePos);
+
+                //Return and loop until sqrRemainingDistance is close enough to zero to end the function
+                yield return null;
+            }
+           
+
+        }
+
+        wait = false;
+    }
+
+    private Vector2 BezierPoints(float segment, Vector2 p0, Vector2 p1, Vector2 p2)
+    {
+        //B(t) = (1-t)2P0 + 2(1-t)tP1 + t2P2 , 0 < t < 1 equation
+
+        float u = 1 - segment;
+        float tt = segment * segment;
+        float uu = u * u;
+
+        Vector2 firstPart = uu * p0;
+        Vector2 secondPart = 2 * u * segment * p1;
+        Vector2 thirdPart = tt * p2;
+
+        Vector2 point = firstPart + secondPart + thirdPart;
+
+        return point;
+    }
+
+ 
 }
