@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SegmentFactory  {
 
-    public static ISegment MakePoints(int segmentNum, myEnum shape)
+    public static ISegment MakePoints(int segmentNum, PathMovement shape)
     {
-        if (shape == myEnum.square) {
+        if (shape == PathMovement.square) {
             if (segmentNum == 2)
                 {
                     return new TwoSegments();
@@ -19,7 +19,7 @@ public class SegmentFactory  {
                 {
                     return new FourSegments();
                 }
-        } else if (shape == myEnum.curve) {
+        } else if (shape == PathMovement.curve) {
             if (segmentNum == 1) {
                 return new OneSegmentCircle();
             }
@@ -35,6 +35,10 @@ public class SegmentFactory  {
                 {
                     return new FourSegmentsCircle();
                 }
+        }
+        else
+        {
+            return null;
         }
        
     }

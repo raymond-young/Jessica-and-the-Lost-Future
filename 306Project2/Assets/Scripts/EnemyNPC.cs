@@ -29,13 +29,8 @@ public class EnemyNPC : Movement
     public segmentNumber segmentNum = segmentNumber.one;
     private int segInt;
 
-    public enum myEnum // your custom enumeration
-    {
-        linear,
-        curve,
-        square
-    };
-    public myEnum dropDown = myEnum.linear;  // this public var should appear as a drop down
+
+    public PathMovement dropDown = PathMovement.linear;  // this public var should appear as a drop down
 
     // Use this for initialization
     protected override void Start () {
@@ -64,7 +59,7 @@ public class EnemyNPC : Movement
 
     // Update is called once per frame
     protected override void FixedUpdate() {
-        if (dropDown.Equals(myEnum.linear))
+        if (dropDown.Equals(PathMovement.linear))
         {
             if (!wait)
             {
@@ -81,7 +76,7 @@ public class EnemyNPC : Movement
                 wait = true;
             }
         }
-        else if (dropDown.Equals(myEnum.curve))
+        else if (dropDown.Equals(PathMovement.curve))
         {
 
             if (!wait)
@@ -92,7 +87,7 @@ public class EnemyNPC : Movement
                 
             }
         }
-        else if (dropDown.Equals(myEnum.square))
+        else if (dropDown.Equals(PathMovement.square))
         {
             if (!wait)
             {
