@@ -48,9 +48,15 @@ TagManager:
   - name: Ground
     uniqueID: 4026749525
     locked: 0
-  - name: Player
-    uniqueID: 1180499643
+  - name: Ground - 2
+    uniqueID: 2612868191
     locked: 0
   - name: Objects
     uniqueID: 4158663381
+    locked: 0
+  - name: Decoration
+    uniqueID: 1158041253
+    locked: 0
+  - name: Player
+    uniqueID: 1180499643
     locked: 0
