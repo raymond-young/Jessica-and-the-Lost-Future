@@ -4,6 +4,14 @@
   <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Team%20Logo%20small.png"/>
 </p>
 
+## To download the project for prototype:
+### Requirements:
+Unity version 2018.1.2f1
+### Steps:
+1) clone https://github.com/rayyoung122/306-Project-2 onto a local directory
+2) pull from the repository (prototype branch)
+3) run WelcomeScene to start game.
+
 ## Team Details ##
 
 |Name|upi   |email   |github username   |
