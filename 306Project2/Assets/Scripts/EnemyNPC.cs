@@ -82,7 +82,7 @@ public class EnemyNPC : Movement
             if (!wait)
             {
                 newPos = new Vector2(xPos, yPos);
-                StartCoroutine(DoCircularMove(origonalPos, newPos, speed, clockwise, segInt));
+                StartCoroutine(DoCircularMove(origonalPos, newPos, speed, segInt));
                 wait = true;
                 
             }
@@ -100,17 +100,6 @@ public class EnemyNPC : Movement
   
     }
 
-    private void ToogleCurve()
-    {
-        if (clockwise)
-        {
-            clockwise = false;
-        }
-        else
-        {
-            clockwise = true;
-        }
-    }
 
 
     
