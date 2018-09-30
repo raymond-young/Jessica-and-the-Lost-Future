@@ -4,6 +4,14 @@
   <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Team%20Logo%20small.png"/>
 </p>
 
+## To download the project for prototype:
+### Requirements:
+Unity version 2018.1.2f1
+### Steps:
+1) clone https://github.com/rayyoung122/306-Project-2 onto a local directory
+2) pull from the repository (prototype branch)
+3) run WelcomeScene to start game.
+
 ## Team Details ##
 
 |Name|upi   |email   |github username   |
@@ -15,4 +23,4 @@
 |Raymond Young|ryou681|ryou681@aucklanduni.ac.nz|rayyoung122|
 |Suying Shen|sshe899|sshe899@aucklanduni.ac.nz   |sueyin   |
 |Yianni Bares|ybar417|ybar417@aucklanduni.ac.nz|yianni1|
-
+|Ellen Li|dli294|dli294@aucklanduni.ac.nz|lirenn|
