@@ -9,17 +9,13 @@ public class TwoSegments : ISegment
         List<Vector2> rectanglePoints = new List<Vector2>();
 
         Vector2 secondPos;
-        Vector2 fourthPos;
         if (clockwise)
         {
             secondPos = new Vector2(origonalPos.x, endPos.y);
-            fourthPos = new Vector2(endPos.x, origonalPos.y);
-
         }
         else
         {
             secondPos = new Vector2(endPos.x, origonalPos.y);
-            fourthPos = new Vector2(origonalPos.x, endPos.y);
         }
 
         //Important ordering of adding to rectangle

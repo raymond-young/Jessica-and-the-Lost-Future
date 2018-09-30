@@ -87,15 +87,15 @@ public abstract class Movement : MonoBehaviour {
         int cos = 1;
 
         // Top left of circle
-        if  ( (origionalPos.x < endPos.x) && (origionalPos.y < endPos.y) )
+        if ((origionalPos.x < endPos.x) && (origionalPos.y < endPos.y))
         {
-            centerPos = new Vector2(endPos.x, origionalPos.y);
+
             sin = 1;
             cos = 1;
             angle = 3.14f;
         }
         // Bottom left of circle
-        else if ( (origionalPos.x < endPos.x) && (origionalPos.y > endPos.y) )
+        else if ((origionalPos.x < endPos.x) && (origionalPos.y > endPos.y))
         {
             centerPos = new Vector2(endPos.x, origionalPos.y);
 
