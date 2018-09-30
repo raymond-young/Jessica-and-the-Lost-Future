@@ -78,42 +78,46 @@ public abstract class Movement : MonoBehaviour {
         wait = false;
     }
 
-    protected IEnumerator DoCircularMove(Vector2 end, float speed, bool clockwise)
+    protected IEnumerator DoCircularMove(Vector2 origionalPos, Vector2 endPos, float speed, bool clockwise, int segmentNum)
     {
-        Vector2 centerPos;
+        ISegment seg = SegmentFactory.MakePoints(segmentNum);
+        List<Vector2> rectanglePoints = seg.CalculatePoints(origionalPos, endPos, clockwise);
 
+        Vector2 centerPos;
         if (clockwise)
         {
-            centerPos = new Vector2(end.x, transform.position.y);
+            centerPos = new Vector2(endPos.x, transform.position.y);
         }
         else
         {
-            centerPos = new Vector2(transform.position.x, end.y);
+            centerPos = new Vector2(transform.position.x, endPos.y);
 
         }
 
-        for (int i = 0; i < roundness; i++)
+        for (int recNum = 0; recNum < rectanglePoints.Count; recNum++)
         {
-            float segment = i / roundness;
-
-            Vector2 intermidiatePos = BezierPoints(segment, transform.position, centerPos, end);
-
-            //Calculate the remaining distance to move. 
-            float RemainingDistance = Vector2.Distance(transform.position, intermidiatePos);
-            //While that distance is greater than a very small amount
-            while (RemainingDistance > 0.05)
+            for (int i = 0; i < roundness; i++)
             {
-                npcBody.velocity = new Vector2(1, 0);
+                float segment = i / roundness;
 
-                Vector2 calculatedPos = Vector2.MoveTowards(transform.position, intermidiatePos, speed * Time.deltaTime);
-                npcBody.MovePosition(calculatedPos);
-                //Recalculate the remaining distance after moving.
-                RemainingDistance = Vector2.Distance(transform.position, intermidiatePos);
+                Vector2 intermidiatePos = BezierPoints(segment, transform.position, centerPos, rectanglePoints[i]);
 
-                //Return and loop until sqrRemainingDistance is close enough to zero to end the function
-                yield return null;
+                //Calculate the remaining distance to move. 
+                float RemainingDistance = Vector2.Distance(transform.position, intermidiatePos);
+                //While that distance is greater than a very small amount
+                while (RemainingDistance > 0.05)
+                {
+                    npcBody.velocity = new Vector2(1, 0);
+
+                    Vector2 calculatedPos = Vector2.MoveTowards(transform.position, intermidiatePos, speed * Time.deltaTime);
+                    npcBody.MovePosition(calculatedPos);
+                    //Recalculate the remaining distance after moving.
+                    RemainingDistance = Vector2.Distance(transform.position, intermidiatePos);
+
+                    //Return and loop until sqrRemainingDistance is close enough to zero to end the function
+                    yield return null;
+                }
             }
-           
 
         }
 
