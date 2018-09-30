@@ -86,12 +86,13 @@ public abstract class Movement : MonoBehaviour {
         Vector2 centerPos;
         if (clockwise)
         {
-            centerPos = new Vector2(endPos.x, transform.position.y);
+            //centerPos = new Vector2(endPos.x, transform.position.y);
+            centerPos = new Vector2(transform.position.x, endPos.y);
         }
         else
         {
-            centerPos = new Vector2(transform.position.x, endPos.y);
-
+            //centerPos = new Vector2(transform.position.x, endPos.y);
+            centerPos = new Vector2(endPos.x, transform.position.y);
         }
 
         for (int recNum = 0; recNum < rectanglePoints.Count; recNum++)
