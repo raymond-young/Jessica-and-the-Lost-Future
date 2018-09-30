@@ -42,14 +42,20 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Collidable
+    uniqueID: 991744915
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
   - name: Ground
     uniqueID: 4026749525
     locked: 0
-  - name: Ground - 2
+  - name: FieldGround
     uniqueID: 2612868191
+    locked: 0
+  - name: Furniture
+    uniqueID: 906779823
     locked: 0
   - name: Objects
     uniqueID: 4158663381
