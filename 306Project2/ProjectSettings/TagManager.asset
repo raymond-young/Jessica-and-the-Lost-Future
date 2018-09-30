@@ -51,6 +51,9 @@ TagManager:
   - name: Ground - 2
     uniqueID: 2612868191
     locked: 0
+  - name: Furniture
+    uniqueID: 906779823
+    locked: 0
   - name: Objects
     uniqueID: 4158663381
     locked: 0
