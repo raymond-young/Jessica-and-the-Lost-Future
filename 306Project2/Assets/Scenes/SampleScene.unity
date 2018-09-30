@@ -2165,5 +2165,5 @@ MonoBehaviour:
   yPos: 5
   speed: 2
   clockwise: 1
-  segmentNum: 0
+  segmentNum: 3
   dropDown: 2

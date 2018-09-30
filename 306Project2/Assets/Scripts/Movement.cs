@@ -50,30 +50,13 @@ public abstract class Movement : MonoBehaviour {
         }
     }
 
-    protected IEnumerator DoRectangleMove(Vector2 origonalPos, Vector2 thirdPos, float speed, bool clockwise)
+    protected IEnumerator DoRectangleMove(Vector2 origonalPos, Vector2 thirdPos, float speed, bool clockwise, int segmentNum)
     {
-        List<Vector2> rectanglePoints = new List<Vector2>();
 
-        Vector2 secondPos;
-        Vector2 fourthPos;
-        if (clockwise)
-        {
-            secondPos = new Vector2(transform.position.x, thirdPos.y);
-            fourthPos = new Vector2(thirdPos.x, transform.position.y);
-            
-        }
-        else
-        {
-            secondPos = new Vector2(thirdPos.x, transform.position.y);
-            fourthPos = new Vector2(transform.position.x, thirdPos.y);
-        }
+        ISegment segment = SegmentFactory.MakePoints(segmentNum);
+        List<Vector2> rectanglePoints = segment.CalculatePoints(origonalPos, thirdPos, clockwise);
 
-        //Important ordering of adding to rectangle
-        rectanglePoints.Add(secondPos);
-        rectanglePoints.Add(thirdPos);
-        rectanglePoints.Add(fourthPos);
-        rectanglePoints.Add(origonalPos);
-
+       
         for (int i = 0; i < rectanglePoints.Count; i++)
         {
 

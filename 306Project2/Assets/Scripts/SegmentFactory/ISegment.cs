@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface ISegment {
 
-    List<Vector2> CalculatePoints(Vector2 orignalPos, Vector2 endPos);
+    List<Vector2> CalculatePoints(Vector2 orignalPos, Vector2 endPos, bool clockwise);
 }

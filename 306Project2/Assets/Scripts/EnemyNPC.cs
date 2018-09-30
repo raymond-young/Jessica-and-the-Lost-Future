@@ -113,7 +113,7 @@ public class EnemyNPC : Movement
             {
                 
                 newPos = new Vector2(xPos, yPos);
-                StartCoroutine(DoRectangleMove(origonalPos, newPos, speed, clockwise));
+                StartCoroutine(DoRectangleMove(origonalPos, newPos, speed, clockwise, segInt));
                 wait = true;
             }
         }
