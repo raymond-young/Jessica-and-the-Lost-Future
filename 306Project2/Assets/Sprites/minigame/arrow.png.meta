@@ -90,10 +90,15 @@ TextureImporter:
       name: arrow_0
       rect:
         serializedVersion: 2
-        x: 31
+        x: 38
         y: 35
+<<<<<<< HEAD
         width: 59
         height: 70
+=======
+        width: 51
+        height: 71
+>>>>>>> 9cd252008116d5f594cdaba53116e5078ca601b0
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
