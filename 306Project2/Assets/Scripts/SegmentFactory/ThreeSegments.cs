@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ThreeSegments : ISegment
 {
-    public List<Vector2> CalculatePoints(Vector2 origonalPos, Vector2 endPos, bool clockwise)
+    public List<Vector2> CalculatePoints(Vector2 origonalPos, Vector2 thirdPos, bool clockwise)
     {
         List<Vector2> rectanglePoints = new List<Vector2>();
 
@@ -12,20 +12,22 @@ public class ThreeSegments : ISegment
         Vector2 fourthPos;
         if (clockwise)
         {
-            secondPos = new Vector2(origonalPos.x, endPos.y);
-            fourthPos = new Vector2(endPos.x, origonalPos.y);
+            secondPos = new Vector2(origonalPos.x, thirdPos.y);
+            fourthPos = new Vector2(thirdPos.x, origonalPos.y);
 
         }
         else
         {
-            secondPos = new Vector2(endPos.x, origonalPos.y);
-            fourthPos = new Vector2(origonalPos.x, endPos.y);
+            secondPos = new Vector2(thirdPos.x, origonalPos.y);
+            fourthPos = new Vector2(origonalPos.x, thirdPos.y);
         }
 
         //Important ordering of adding to rectangle
         rectanglePoints.Add(secondPos);
-        rectanglePoints.Add(endPos);
+        rectanglePoints.Add(thirdPos);
         rectanglePoints.Add(fourthPos);
+        rectanglePoints.Add(thirdPos);
+        rectanglePoints.Add(secondPos);
         rectanglePoints.Add(origonalPos);
 
         return rectanglePoints;
