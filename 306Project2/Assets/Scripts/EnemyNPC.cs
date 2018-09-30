@@ -81,7 +81,7 @@ public class EnemyNPC : Movement
 
             if (!wait)
             {
-                
+                newPos = new Vector2(xPos, yPos);
                 StartCoroutine(DoCircularMove(origonalPos, newPos, speed, clockwise, segInt));
                 wait = true;
                 
