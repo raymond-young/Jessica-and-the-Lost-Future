@@ -16,11 +16,14 @@ public class PlayerController : MonoBehaviour
     public int numLives = 0;
     public Text scoreText;
 
+    private Animator anim;
+
     private List<GameObject> power = new List<GameObject>();
 
     // Use this for initialization
     void Start()
     {
+        anim = GetComponent<Animator>();
 
         playerBody = gameObject.GetComponent<Rigidbody2D>();
 
@@ -60,6 +63,8 @@ public class PlayerController : MonoBehaviour
 
         }
 
+        anim.SetFloat("MoveX",Input.GetAxisRaw("Horizontal"));
+        anim.SetFloat("MoveY",Input.GetAxisRaw("Vertical"));
 
     }
 
