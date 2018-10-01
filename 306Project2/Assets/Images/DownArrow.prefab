@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 222719086158086656}
   - component: {fileID: 114493062271362658}
   m_Layer: 5
-  m_Name: down
+  m_Name: DownArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
