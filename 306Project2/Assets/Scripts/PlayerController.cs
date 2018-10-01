@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
 
     private Rigidbody2D playerBody;
     private int speed = 10;
@@ -13,27 +14,29 @@ public class PlayerController : MonoBehaviour {
 
     private List<GameObject> power = new List<GameObject>();
 
-	// Use this for initialization
-	void Start () {
- 
+    // Use this for initialization
+    void Start()
+    {
+
         playerBody = gameObject.GetComponent<Rigidbody2D>();
 
         storeLives = GameObject.FindGameObjectWithTag("StoreLives");
 
-        
+
         for (int i = storeLives.transform.childCount - 1; i >= 0; i--)
         {
             if (storeLives.transform.GetChild(i).gameObject.name.Equals("Life"))
             {
                 power.Add(storeLives.transform.GetChild(i).gameObject);
             }
-            
+
         }
 
     }
 
     // Update is called once per frame
-    void FixedUpdate() {
+    void FixedUpdate()
+    {
 
 
         var x = Input.GetAxis("Horizontal");
@@ -65,7 +68,7 @@ public class PlayerController : MonoBehaviour {
         //Prevents rotation of character on corners
         playerBody.angularVelocity = 0;
     }
-    
+
     //Damage is a percentage between 0-100
     public void OnDamage(double damagePercent)
     {
@@ -85,7 +88,7 @@ public class PlayerController : MonoBehaviour {
                 gameOver = false;
                 break;
             }
-           
+
         }
 
         if (gameOver)
@@ -105,5 +108,11 @@ public class PlayerController : MonoBehaviour {
             }
 
         }
+    }
+
+    public void SetMotionToZero()
+    {
+        playerBody.velocity = new Vector2(0,0);
+        playerBody.rotation = 0;
     }
 }

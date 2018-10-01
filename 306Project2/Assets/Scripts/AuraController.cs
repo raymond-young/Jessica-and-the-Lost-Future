@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class AuraController : MonoBehaviour {
 
-    private PlayerController player;
+    private MiniGameReset miniGameReset;
 
 	// Use this for initialization
 	void Start () {
-        player = GameObject.FindGameObjectWithTag("player").GetComponent<PlayerController>();
-
+        miniGameReset = GameObject.FindGameObjectWithTag("MiniGameReset").GetComponent<MiniGameReset>();
     }
 	
 	// Update is called once per frame
@@ -19,8 +18,6 @@ public class AuraController : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        player.OnDamage(100);
-        player.LooseOnePower();
-        Debug.Log("Start minigame here");
+        miniGameReset.SetStartGame(true);
     }
 }
