@@ -8,6 +8,7 @@ TagManager:
   - StoreLives
   - Item
   - ItemSlots
+  - Room
   layers:
   - Default
   - TransparentFX
