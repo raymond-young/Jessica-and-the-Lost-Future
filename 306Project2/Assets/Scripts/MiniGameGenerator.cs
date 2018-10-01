@@ -26,24 +26,21 @@ public class MiniGameGenerator : MonoBehaviour {
 
     void Start () {
         //Set up config using default values
-		noOfArrows = 4;
+		noOfArrows = 6;
         timeLimit = 10f;
 
 		RectTransform parentRectTransform = gameObject.GetComponent<RectTransform>();
+
+        //Get measurements
+        float arrowSpace = up.GetComponent<RectTransform>().rect.width * 1.5f;
 
         //Generate bar
         //TODO adjust size of the bar
         bar = Instantiate(slider);
         RectTransform barRectTransform = bar.GetComponent<RectTransform>();
-        barRectTransform.localScale = new Vector2(noOfArrows, 1);
+        barRectTransform.sizeDelta = new Vector2(arrowSpace * noOfArrows, arrowSpace * 1.6f);
         barRectTransform.SetParent(parentRectTransform);
         barRectTransform.localPosition = new Vector2(0, 0);
-
-        //Get measurements
-        float canvasWidth = barRectTransform.rect.width;
-        float canvasHeight = barRectTransform.rect.height;
-        float arrowHeight = 0;
-		float arrowWidth;
         
         //Generate arrows
         for (int i = 0; i < noOfArrows; i++){
@@ -74,15 +71,10 @@ public class MiniGameGenerator : MonoBehaviour {
 
             arrow.GetComponent<Image>().color = Color.gray;
             RectTransform arrowRectTransform = arrow.GetComponent<RectTransform>();
-			arrowHeight = arrowRectTransform.rect.height;
-			arrowWidth = arrowRectTransform.rect.width;
-			arrowRectTransform.SetParent(barRectTransform);
-			arrowRectTransform.localPosition = new Vector2((-canvasWidth/2) + (i + 1) * (canvasWidth - noOfArrows*arrowWidth)/(noOfArrows + 1) + (i + 0.5f) * arrowWidth, 0);
-		}
-        // test.GetComponent<RectTransform>().localPosition = new Vector2(canvasWidth,canvasHeight);
-
+			arrowRectTransform.SetParent(parentRectTransform);
+            arrowRectTransform.localPosition = new Vector2(i * arrowSpace + arrowSpace * 0.5f - arrowSpace * noOfArrows / 2, 0);
+        }
         
-
         //Get ready for the game
         currentIndex = 0;
         currentTime = 0f;
