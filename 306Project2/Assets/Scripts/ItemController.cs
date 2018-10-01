@@ -9,6 +9,14 @@ public class ItemController : MonoBehaviour {
 
     private List<Sprite> itemSprites = new List<Sprite>();
 
+    private Collider2D currentItemZone;
+
+    private GameObject freeItemSlot;
+
+    private GameObject glow;
+
+    private bool inItemZone = false;
+
 	// Use this for initialization
 	void Start () {
 
@@ -34,13 +42,25 @@ public class ItemController : MonoBehaviour {
         foreach (GameObject item in withHalo) {
             //item.GetComponent<ParticleSystemRenderer>().sortingLayerName = "Objects";
         }
-        
+
+        glow = GameObject.Find("Glow");
+        glow.SetActive(false);
 
     }
 	
 	// Update is called once per frame
 	void Update () {
-		
+
+        if (inItemZone)
+        {
+            if (Input.GetKeyDown(KeyCode.Space) && !currentItemZone.Equals(null))
+            {
+                freeItemSlot.GetComponent<Image>().sprite = currentItemZone.GetComponent<SpriteRenderer>().sprite;
+                items.Remove(currentItemZone.gameObject);
+                Destroy(currentItemZone.gameObject);
+            }
+        }
+
 	}
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -48,29 +68,32 @@ public class ItemController : MonoBehaviour {
 
         if (collision.gameObject.tag.Equals("Item"))
         {
+            Vector2 temp = collision.gameObject.transform.position;
+            glow.transform.position = temp;
+            glow.SetActive(true);
+            currentItemZone = collision;
+            inItemZone = true;
+
             //Loop through item slots to find one that is free
             foreach (GameObject item in items)
             {
                 if (item.GetComponent<Image>().sprite.name.Equals("Background"))
                 {
-                    foreach (Sprite sprite in itemSprites)
-                    {
-
-                        if (collision.gameObject.GetComponent<SpriteRenderer>().sprite.Equals(sprite))
-                        {
-                            item.GetComponent<Image>().sprite = sprite;
-                            break;
-                        }
-                    }
-
-                    break;
+                    freeItemSlot = item;
                 }
             }
-
-            items.Remove(collision.gameObject);
-            Destroy(collision.gameObject);
         }
-        
-       
+
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag.Equals("Item"))
+        {
+            glow.SetActive(false);
+            currentItemZone = null;
+            freeItemSlot = null;
+            inItemZone = false;
+        }
     }
 }
