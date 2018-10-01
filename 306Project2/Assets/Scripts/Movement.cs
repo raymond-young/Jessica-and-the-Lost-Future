@@ -78,44 +78,51 @@ public abstract class Movement : MonoBehaviour {
         wait = false;
     }
 
-    protected IEnumerator DoCircularMove(Vector2 origionalPos, Vector2 endPos, float speed, int segmentNum)
+    protected IEnumerator DoCircularMove(Vector2 origionalPos, Vector2 centerPos, float speed, int segmentNum)
     {
-        Vector2 centerPos = new Vector2();
         float angle = 0;
 
         int sin = 1;
         int cos = 1;
 
-        // Top left of circle
-        if ((origionalPos.x < endPos.x) && (origionalPos.y < endPos.y))
+        // Centre is top right
+        if ((origionalPos.x < centerPos.x) && (origionalPos.y < centerPos.y))
         {
 
             sin = 1;
             cos = 1;
-            angle = 3.14f;
+            // angle = 3.14f;
+            Debug.Log("TOP RIGHT");
+
+
+            float oa =  (centerPos.y - origionalPos.y)/ (centerPos.x - origionalPos.x);
+            angle = 3.14f + Mathf.Atan(oa);
+
         }
-        // Bottom left of circle
-        else if ((origionalPos.x < endPos.x) && (origionalPos.y > endPos.y))
+        // Centre is bottom right
+        else if ((origionalPos.x < centerPos.x) && (origionalPos.y > centerPos.y))
         {
-            centerPos = new Vector2(endPos.x, origionalPos.y);
 
             sin = -1;
             cos = 1;
-            angle = -3.14f;
+            // angle = -3.14f;
+            Debug.Log("HERE");
+            // O/A
+            float oa =  (centerPos.x - origionalPos.x) / (origionalPos.y - centerPos.y);
+            angle = 3.14f - Mathf.Atan(oa);
+            
         }
-        // Top right of circle
-        else if ((origionalPos.x > endPos.x) && (origionalPos.y < endPos.y))
+        // Centre is top left
+        else if ((origionalPos.x > centerPos.x) && (origionalPos.y < centerPos.y))
         {
-            centerPos = new Vector2(endPos.x, origionalPos.y);
 
             sin = -1;
             cos = 1;
             angle = 0;
         }
-        // bottom right of circle
-        else if ((origionalPos.x > endPos.x) && (origionalPos.y > endPos.y))
+        // Centre is bottom left
+        else if ((origionalPos.x > centerPos.x) && (origionalPos.y > centerPos.y))
         {
-            centerPos = new Vector2(endPos.x, origionalPos.y);
 
             sin = 1;
             cos = 1;
@@ -155,7 +162,7 @@ public abstract class Movement : MonoBehaviour {
 
             //Rotation angles
             totalRotation = totalRotation - step;
-            angle = angle - step;
+            angle = angle + step;
 
             //Trig calculation
             Vector2 offset = new Vector2(cos * Mathf.Cos(angle), sin * Mathf.Sin(angle)) * radius;
@@ -172,7 +179,7 @@ public abstract class Movement : MonoBehaviour {
             float step = -speed * Time.deltaTime;
 
             totalRotation = totalRotation - step;
-            angle = angle - step;
+            angle = angle + step;
 
             Vector2 offset = new Vector2(cos * Mathf.Cos(angle), sin * Mathf.Sin(angle)) * radius;
 

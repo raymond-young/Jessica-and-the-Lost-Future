@@ -2161,9 +2161,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af7fad87f175f1b44a8b6960c5140ae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xPos: 6
-  yPos: -2
+  xPos: 2
+  yPos: 7
   speed: 1.5
   clockwise: 1
-  segmentNum: 3
+  segmentNum: 0
   dropDown: 1
