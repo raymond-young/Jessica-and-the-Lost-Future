@@ -30,22 +30,16 @@ public class MiniGameGenerator : MonoBehaviour {
 		noOfArrows = 6;
         timeLimit = 10f;
 
-       RectTransform parentRectTransform = gameObject.GetComponent<RectTransform>();
-        
+	  float arrowSpace = up.GetComponent<RectTransform>().rect.width * 1.5f;
+
         //Generate bar
         //TODO adjust size of the bar
         bar = Instantiate(slider);
         RectTransform barRectTransform = bar.GetComponent<RectTransform>();
+        barRectTransform.sizeDelta = new Vector2(arrowSpace * noOfArrows, arrowSpace * 1.6f);
         barRectTransform.SetParent(parentRectTransform);
         barRectTransform.localPosition = new Vector2(0, 0);
-
- 		//Get measurements
-        float sliderWidth = barRectTransform.rect.width;
-		Debug.Log(sliderWidth);
-		float sliderHeight = barRectTransform.rect.height;
-		float arrowHeight;// = up.GetComponent<RectTransform>().rect.height;
-		float arrowWidth;// = up.GetComponent<RectTransform>().rect.width;
-		
+        
         //Generate arrows
         for (int i = 0; i < noOfArrows; i++){
 			GameObject arrow = null;
@@ -70,21 +64,15 @@ public class MiniGameGenerator : MonoBehaviour {
                     arrows.Add(arrow);
                     // arrowRef.Add(Arrow.Right);
                     break;
-
+                    
 			}
 
             arrow.GetComponent<Image>().color = Color.gray;
             RectTransform arrowRectTransform = arrow.GetComponent<RectTransform>();
-			arrowHeight = arrowRectTransform.rect.height;
-			arrowWidth = arrowRectTransform.rect.width;
-			Debug.Log(arrowHeight);
-			Debug.Log(arrowWidth);
-			float arrowGap = arrowHeight/2;
-			arrowRectTransform.SetParent(barRectTransform);
-			arrowRectTransform.localPosition = new Vector2((-sliderWidth/2) + (i + 0.5f) * arrowWidth + (i + 0.5f) * arrowGap, 0);
-		}
-        // test.GetComponent<RectTransform>().localPosition = new Vector2(canvasWidth,canvasHeight);
-
+			arrowRectTransform.SetParent(parentRectTransform);
+            arrowRectTransform.localPosition = new Vector2(i * arrowSpace + arrowSpace * 0.5f - arrowSpace * noOfArrows / 2, 0);
+        }
+        
         //Get ready for the game
 		//the left most arrow is the last index of the array it appears
         currentIndex = 0;
