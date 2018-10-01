@@ -37,9 +37,7 @@ public class AuraController : MonoBehaviour {
 
     private IEnumerator WaitFewSeconds()
     {
-        Debug.Log("here");
         yield return new WaitForSeconds(2);
-        Debug.Log("After");
         playingMiniGame = false;
     }
 
