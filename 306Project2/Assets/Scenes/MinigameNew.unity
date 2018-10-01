@@ -428,3 +428,4 @@ MonoBehaviour:
   right: {fileID: 1877120150335318, guid: 42b01f48653f24233bd88e760a900a8f, type: 2}
   up: {fileID: 1656335382170750, guid: 3ae5c93acaa3d46768b60c200a505fa8, type: 2}
   down: {fileID: 1521827095190696, guid: e98af8947afde4647a2fe873a13b098a, type: 2}
+  slider: {fileID: 114548360347879180, guid: 92bc99f43d3b395479d95e922774b23c, type: 2}
