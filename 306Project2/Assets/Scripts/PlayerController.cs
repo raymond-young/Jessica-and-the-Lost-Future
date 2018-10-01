@@ -125,7 +125,7 @@ public class PlayerController : MonoBehaviour {
         // If the player enters a collision area that is a new room, set the new camera position to the center of the new room.
         if (collider.tag == "Room" && !isTransitioning && currentRoom != collider) {
             isTransitioning = true;
-            newCameraPosition = new Vector2(collider.transform.position.x, collider.transform.position.y);
+            newCameraPosition = new Vector3(collider.transform.position.x, collider.transform.position.y, cam.transform.position.z);
             // Set the new room.
             currentRoom = collider;
         }

@@ -2094,7 +2094,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e51979d1736e2bc40aec9cebe0f486d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 1866223548}
+  cam: {fileID: 1196126220}
 --- !u!212 &446958712
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2924,7 +2925,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0
   far clip plane: 1000
   field of view: 60
   orthographic: 1
@@ -5329,7 +5330,7 @@ Tilemap:
   - first: {x: -2, y: -4, z: 0}
     second:
       m_TileIndex: 6
-      m_TileSpriteIndex: 14
+      m_TileSpriteIndex: 17
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -10910,14 +10911,14 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300840, guid: 9c967f1f725764bfbb12ffb14a524f2e, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 2
     m_Data: {fileID: 21301574, guid: 568a59776cb36134da262e666c8fd42c, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 21301464, guid: 568a59776cb36134da262e666c8fd42c, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300840, guid: 9c967f1f725764bfbb12ffb14a524f2e, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 832
     m_Data:
