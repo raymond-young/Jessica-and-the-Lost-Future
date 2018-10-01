@@ -5,6 +5,8 @@ using UnityEngine;
 public class Door : MonoBehaviour {
 
 	public Collider2D linksToRoom;
+	public float playerX;
+	public float playerY;
 
 	// Use this for initialization
 	void Start () {
