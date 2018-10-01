@@ -28,6 +28,14 @@ public class ItemController : MonoBehaviour {
             itemSprites.Add(sprite);
         }
 
+
+        // Make sure halo is visible.
+        GameObject[] withHalo = GameObject.FindGameObjectsWithTag("Item");
+        foreach (GameObject item in withHalo) {
+            //item.GetComponent<ParticleSystemRenderer>().sortingLayerName = "Objects";
+        }
+        
+
     }
 	
 	// Update is called once per frame
