@@ -128,6 +128,13 @@ public class PlayerController : MonoBehaviour {
             newCameraPosition = new Vector3(collider.transform.position.x, collider.transform.position.y, cam.transform.position.z);
             // Set the new room.
             currentRoom = collider;
+        } else if (collider.tag == "Door" && !isTransitioning) {
+            // A door, which teleports the player.
+            Collider2D newRoom = collider.GetComponent<Door>().linksToRoom;
+            currentRoom = newRoom;
+            newCameraPosition = new Vector3(newRoom.transform.position.x, newRoom.transform.position.y, cam.transform.position.z);
+            playerBody.transform.position = newCameraPosition;
+            isTransitioning = true;
         }
     }
 
