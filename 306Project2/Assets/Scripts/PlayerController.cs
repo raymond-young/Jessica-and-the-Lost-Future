@@ -15,9 +15,12 @@ public class PlayerController : MonoBehaviour {
 
     // Variables for camera movement.
     private bool isTransitioning = false;
+    private bool isTeleporting = false;
     public Camera cam;
     private Vector2 newCameraPosition;
     private Collider2D currentRoom;
+    private float teleportX;
+    private float teleportY;
 
 	// Use this for initialization
 	void Start () {
@@ -131,10 +134,16 @@ public class PlayerController : MonoBehaviour {
         } else if (collider.tag == "Door" && !isTransitioning) {
             // A door, which teleports the player.
             Collider2D newRoom = collider.GetComponent<Door>().linksToRoom;
+            Debug.Log(newRoom);
+            // Teleport the player and also set the new room.
+            isTransitioning = true;
+            isTeleporting = true;
             currentRoom = newRoom;
             newCameraPosition = new Vector3(newRoom.transform.position.x, newRoom.transform.position.y, cam.transform.position.z);
-            playerBody.transform.position = newCameraPosition;
-            isTransitioning = true;
+
+            // Set the position of the player to be teleported.
+            teleportX = collider.GetComponent<Door>().playerX;
+            teleportY = collider.GetComponent<Door>().playerY;
         }
     }
 
@@ -142,5 +151,9 @@ public class PlayerController : MonoBehaviour {
     void TransitionCamera() {
          cam.transform.position = newCameraPosition;
          isTransitioning = false;
+         if (isTeleporting) {
+            playerBody.transform.position = new Vector3(teleportX, teleportY, playerBody.transform.position.z);
+            isTeleporting = false;
+        }
     }
 }
