@@ -19,8 +19,8 @@ public class AuraController : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        player.OnDamage(100);
-        player.LooseOnePower();
+        // player.ChangeConfidence(20);
+        player.LoseOnePower();
         Debug.Log("Start minigame here");
     }
 }

@@ -8,6 +8,7 @@ TagManager:
   - StoreLives
   - Item
   - ItemSlots
+  - Score
   layers:
   - Default
   - TransparentFX

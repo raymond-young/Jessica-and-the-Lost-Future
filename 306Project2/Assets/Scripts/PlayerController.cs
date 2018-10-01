@@ -7,9 +7,13 @@ public class PlayerController : MonoBehaviour {
 
     private Rigidbody2D playerBody;
     private int speed = 10;
-    public Slider healthBar;
+    public Slider confidenceBar;
 
     private GameObject storeLives;
+
+    public float score = 0;
+    public int numLives = 0;
+    public Text scoreText;
 
     private List<GameObject> power = new List<GameObject>();
 
@@ -19,16 +23,18 @@ public class PlayerController : MonoBehaviour {
         playerBody = gameObject.GetComponent<Rigidbody2D>();
 
         storeLives = GameObject.FindGameObjectWithTag("StoreLives");
-
         
         for (int i = storeLives.transform.childCount - 1; i >= 0; i--)
         {
             if (storeLives.transform.GetChild(i).gameObject.name.Equals("Life"))
             {
                 power.Add(storeLives.transform.GetChild(i).gameObject);
+                numLives++;
             }
             
         }
+        
+        UpdateScoreText();
 
     }
 
@@ -66,13 +72,14 @@ public class PlayerController : MonoBehaviour {
         playerBody.angularVelocity = 0;
     }
     
-    //Damage is a percentage between 0-100
-    public void OnDamage(double damagePercent)
+    // Confidence is a percentage between 0-100
+    public void ChangeConfidence(double damagePercent)
     {
-        healthBar.value = healthBar.value + (float)(damagePercent / 100.0);
+        confidenceBar.value = confidenceBar.value + (float)(damagePercent / 100.0);
+        UpdateScoreText();
     }
 
-    public void LooseOnePower()
+    public void LoseOnePower()
     {
         bool gameOver = true;
 
@@ -83,6 +90,8 @@ public class PlayerController : MonoBehaviour {
             {
                 power.GetComponent<Image>().enabled = false;
                 gameOver = false;
+                numLives--;
+                UpdateScoreText();
                 break;
             }
            
@@ -101,9 +110,24 @@ public class PlayerController : MonoBehaviour {
             if (power.GetComponent<Image>().enabled == false)
             {
                 power.GetComponent<Image>().enabled = true;
+                numLives++;
+                UpdateScoreText();
                 break;
             }
 
         }
+    }
+
+    public float CalculateScore() 
+    {
+        // Score calulated from confidence + the number of lives left.
+        // Arbitrary values: 20 points for each life left + the value of the confidence bar.
+        score = (confidenceBar.value * 100) + ((float)numLives * 20);
+        return score;
+    }
+
+    public void UpdateScoreText()
+    {
+        scoreText.text = "Score: " + CalculateScore().ToString();
     }
 }
