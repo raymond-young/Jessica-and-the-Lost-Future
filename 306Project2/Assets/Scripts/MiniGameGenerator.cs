@@ -12,11 +12,13 @@ public class MiniGameGenerator : MonoBehaviour {
 	public GameObject right;
 	public GameObject up;
 	public GameObject down;
+	public GameObject box;
     public Slider slider;
 
     List<GameObject> arrows = new List<GameObject>();
-    // List<Arrow> arrowRef = new List<Arrow>();
+    List<Arrow> arrowRef = new List<Arrow>();
     Slider bar;
+	GameObject holder;
 
 	static System.Random random = new System.Random();
 
@@ -25,20 +27,31 @@ public class MiniGameGenerator : MonoBehaviour {
     int currentIndex;
     float currentTime;
 
+	float timePenalty;
+
     void Start () {
         //Set up config using default values
 		noOfArrows = 6;
         timeLimit = 10f;
+		timePenalty = timeLimit / noOfArrows * 2;
 
-	  float arrowSpace = up.GetComponent<RectTransform>().rect.width * 1.5f;
-
+		RectTransform parentRectTransform = gameObject.GetComponent<RectTransform>();
+	  	float arrowSpace = up.GetComponent<RectTransform>().rect.width * 1.5f;
+		
         //Generate bar
         //TODO adjust size of the bar
+		holder = Instantiate(box);
+        RectTransform holderRectTransform = holder.GetComponent<RectTransform>();
+        holderRectTransform.sizeDelta = new Vector2(arrowSpace * noOfArrows, arrowSpace * 1.6f);
+        holderRectTransform.SetParent(parentRectTransform);
+        holderRectTransform.localPosition = new Vector2(0, 0);
+
         bar = Instantiate(slider);
         RectTransform barRectTransform = bar.GetComponent<RectTransform>();
-        barRectTransform.sizeDelta = new Vector2(arrowSpace * noOfArrows, arrowSpace * 1.6f);
+        barRectTransform.sizeDelta = new Vector2((gameObject.GetComponentInParent<Canvas>().pixelRect.width - arrowSpace/2), arrowSpace * 0.25f);
+		float sliderYPosition = gameObject.GetComponentInParent<Canvas>().pixelRect.height/2 - barRectTransform.rect.height;
         barRectTransform.SetParent(parentRectTransform);
-        barRectTransform.localPosition = new Vector2(0, 0);
+        barRectTransform.localPosition = new Vector2(0, -sliderYPosition);
         
         //Generate arrows
         for (int i = 0; i < noOfArrows; i++){
@@ -47,29 +60,29 @@ public class MiniGameGenerator : MonoBehaviour {
 				case 0:
 					arrow = Instantiate(up);
                     arrows.Add(arrow);
-                    // arrowRef.Add(Arrow.Up);
+                    arrowRef.Add(Arrow.UpArrow);
 					break;
 				case 1:
 					arrow = Instantiate(down);
                     arrows.Add(arrow);
-                    // arrowRef.Add(Arrow.Down);
+                    arrowRef.Add(Arrow.DownArrow);
                     break;
 				case 2:
 					arrow = Instantiate(left);
                     arrows.Add(arrow);
-                    // arrowRef.Add(Arrow.Left);
+                    arrowRef.Add(Arrow.LeftArrow);
                     break;
 				case 3:
 					arrow = Instantiate(right);
                     arrows.Add(arrow);
-                    // arrowRef.Add(Arrow.Right);
+                    arrowRef.Add(Arrow.RightArrow);
                     break;
                     
 			}
 
-            arrow.GetComponent<Image>().color = Color.gray;
+            // arrow.GetComponent<Image>().color = Color.grey;
             RectTransform arrowRectTransform = arrow.GetComponent<RectTransform>();
-			arrowRectTransform.SetParent(parentRectTransform);
+			arrowRectTransform.SetParent(holderRectTransform);
             arrowRectTransform.localPosition = new Vector2(i * arrowSpace + arrowSpace * 0.5f - arrowSpace * noOfArrows / 2, 0);
         }
         
@@ -80,113 +93,24 @@ public class MiniGameGenerator : MonoBehaviour {
     }
 
 	void OnGUI(){
-		if(currentIndex < 0){
-			//game is over
+		if(currentIndex > noOfArrows - 1){
+			Finish();
 		}
 		Event e = Event.current;
         if (e.type == EventType.KeyDown)
         {
-            if(e.keyCode.ToString() == arrows[currentIndex].name && e.keyCode != KeyCode.None){
+            if(e.keyCode.ToString().Equals(arrowRef[currentIndex].ToString()) && e.keyCode != KeyCode.None){
 				arrows[currentIndex].GetComponent<Image>().color = Color.green;
-				currentIndex--;
 			}else{
-				Debug.Log(e.keyCode.ToString());
-				Debug.Log(arrows[currentIndex].name);
-				Fail();
+				arrows[currentIndex].GetComponent<Image>().color = Color.red;
+				currentTime += timePenalty;
 			}
+			currentIndex++;
         }
 	}
-    
-
-    bool correct = false;
-    bool pressed = false;
 
     void Update()
     {
-        // correct = false;
-        // pressed = false;
-        // switch (arrowRef[currentIndex])
-        // {
-        //     case Arrow.Up:
-        //         Debug.Log("Need to press Up \n");
-        //         if (Input.GetKeyDown(KeyCode.UpArrow))
-        //         {
-        //             correct = true;
-        //             pressed = true;
-        //         }
-        //         else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.DownArrow))
-        //         {
-        //             correct = false;
-        //             pressed = true;
-        //         }
-        //         break;
-        //     case Arrow.Down:
-        //         Debug.Log("Need to press Down \n");
-        //         if (Input.GetKeyDown(KeyCode.DownArrow))
-        //         {
-        //             correct = true;
-        //             pressed = true;
-        //         }
-        //         else if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
-        //         {
-        //             correct = false;
-        //             pressed = true;
-        //         }
-        //         break;
-        //     case Arrow.Left:
-        //         Debug.Log("Need to press Left \n");
-        //         if (Input.GetKeyDown(KeyCode.LeftArrow))
-        //         {
-        //             correct = true;
-        //             pressed = true;
-        //         }
-        //         else if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.DownArrow))
-        //         {
-        //             correct = false;
-        //             pressed = true;
-        //         }
-        //         break;
-        //     case Arrow.Right:
-        //         Debug.Log("Need to press Right \n");
-        //         if (Input.GetKeyDown(KeyCode.RightArrow))
-        //         {
-        //             correct = true;
-        //             pressed = true;
-        //         }
-        //         else if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.DownArrow))
-        //         {
-        //             correct = false;
-        //             pressed = true;
-        //         }
-        //         break;
-        // }
-
-        // if (pressed)
-        // {
-        //     if (correct)
-        //     {
-        //         //Change color of the correctly pressed key
-        //         arrows[currentIndex].GetComponent<Image>().color = Color.green;
-        //         //Still more keys to press
-        //         if (currentIndex < noOfArrows)
-        //         {
-        //             currentIndex++;
-        //         }
-        //         //Finish game
-        //         else
-        //         {
-        //             Finish();
-        //         }
-        //     }
-        //     else //Press wrong key, need to restart the game
-        //     {
-        //         for (int i = 0; i < currentIndex; i++)
-        //         {
-        //             arrows[i].GetComponent<Image>().color = Color.gray;
-        //         }
-        //         currentIndex = 0;
-        //     }
-        // }
         //Update bar
         bar.value = Mathf.Lerp(0f, 1f, currentTime / timeLimit);
         currentTime += Time.deltaTime;
