@@ -26,23 +26,25 @@ public class MiniGameGenerator : MonoBehaviour {
 
     void Start () {
         //Set up config using default values
-		noOfArrows = 6;
+		noOfArrows = 4;
         timeLimit = 10f;
 
-        //Get measurements
-        float canvasWidth = gameObject.GetComponentInParent<Canvas>().pixelRect.width;
-		float canvasHeight = gameObject.GetComponentInParent<Canvas>().pixelRect.height;
-		float arrowHeight;
-		float arrowWidth;
 		RectTransform parentRectTransform = gameObject.GetComponent<RectTransform>();
-        
+
         //Generate bar
         //TODO adjust size of the bar
         bar = Instantiate(slider);
         RectTransform barRectTransform = bar.GetComponent<RectTransform>();
+        barRectTransform.localScale = new Vector2(noOfArrows, 1);
         barRectTransform.SetParent(parentRectTransform);
         barRectTransform.localPosition = new Vector2(0, 0);
 
+        //Get measurements
+        float canvasWidth = barRectTransform.rect.width;
+        float canvasHeight = barRectTransform.rect.height;
+        float arrowHeight = 0;
+		float arrowWidth;
+        
         //Generate arrows
         for (int i = 0; i < noOfArrows; i++){
 			GameObject arrow = null;
@@ -74,10 +76,12 @@ public class MiniGameGenerator : MonoBehaviour {
             RectTransform arrowRectTransform = arrow.GetComponent<RectTransform>();
 			arrowHeight = arrowRectTransform.rect.height;
 			arrowWidth = arrowRectTransform.rect.width;
-			arrowRectTransform.SetParent(parentRectTransform);
+			arrowRectTransform.SetParent(barRectTransform);
 			arrowRectTransform.localPosition = new Vector2((-canvasWidth/2) + (i + 1) * (canvasWidth - noOfArrows*arrowWidth)/(noOfArrows + 1) + (i + 0.5f) * arrowWidth, 0);
 		}
         // test.GetComponent<RectTransform>().localPosition = new Vector2(canvasWidth,canvasHeight);
+
+        
 
         //Get ready for the game
         currentIndex = 0;
@@ -174,6 +178,7 @@ public class MiniGameGenerator : MonoBehaviour {
                 currentIndex = 0;
             }
         }
+
         //Update bar
         bar.value = Mathf.Lerp(0f, 1f, currentTime / timeLimit);
         currentTime += Time.deltaTime;
