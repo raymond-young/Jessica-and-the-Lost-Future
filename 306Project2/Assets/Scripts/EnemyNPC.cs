@@ -15,6 +15,7 @@ public class EnemyNPC : Movement
 
     public bool clockwise;
 
+    private Animator anim;
     
 
     private int segmentCount;
@@ -35,6 +36,8 @@ public class EnemyNPC : Movement
     // Use this for initialization
     protected override void Start () {
         origonalPos = gameObject.transform.position;
+
+        anim = GetComponent<Animator>();
 
         if (segmentNum == segmentNumber.one)
         {
@@ -74,6 +77,9 @@ public class EnemyNPC : Movement
                 }
                 StartCoroutine(DoLinearMove(newPos, speed));
                 wait = true;
+
+                //update character animation 
+                SetAnimationFacingDirection(newPos);
             }
         }
         else if (dropDown.Equals(PathMovement.curve))
@@ -97,10 +103,39 @@ public class EnemyNPC : Movement
             }
         }
         
-  
+
     }
 
 
+    /**
+     * Method that checks which direction the NPC should be facing depending on its destination
+     * coordinates
+     */
+    private void SetAnimationFacingDirection(Vector2 position) {
+        //character moving up
+        //Debug.Log("X: " + position.x + " ,Y: " + position.y);
+        //Debug.Log("currentX: " + transform.position.x + " ,currentY: " + transform.position.y);
+        if ((Mathf.Abs(position.x - transform.position.x) < 0.5) && (position.y-transform.position.y > 0)) {
+            Debug.Log("UP");
+            anim.SetFloat("MoveX", 0);
+            anim.SetFloat("MoveY", 1);
+        }
+        //character moving down
+        else if ((Mathf.Abs(position.x- transform.position.x) < 0.5) && (position.y- transform.position.y <= 0)) {
+            anim.SetFloat("MoveX", 0);
+            anim.SetFloat("MoveY", -1);
+        }
+        //character moving left 
+        else if (position.x < transform.position.x) {
+            anim.SetFloat("MoveX", -1);
+            anim.SetFloat("MoveY", 0);
+        }
+        //chraracter moving right
+        else {
+            anim.SetFloat("MoveX", 1);
+            anim.SetFloat("MoveY", 0);
+        }
+    }
 
     
 }

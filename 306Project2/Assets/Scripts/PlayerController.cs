@@ -63,6 +63,7 @@ public class PlayerController : MonoBehaviour
 
         }
 
+        //update character Animation to face the right direction
         anim.SetFloat("MoveX",Input.GetAxisRaw("Horizontal"));
         anim.SetFloat("MoveY",Input.GetAxisRaw("Vertical"));
 
