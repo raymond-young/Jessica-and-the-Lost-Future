@@ -90,7 +90,7 @@ public class MiniGameManager : MonoBehaviour {
         if (!success)
         {
             //Failed minigame so loose power
-            player.LooseOnePower();
+            player.LoseOnePower();
         }
         else
         { 
