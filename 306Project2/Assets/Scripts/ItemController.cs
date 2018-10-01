@@ -9,10 +9,16 @@ public class ItemController : MonoBehaviour {
 
     private List<Sprite> itemSprites = new List<Sprite>();
 
+    private PlayerController player;
+
+
 	// Use this for initialization
 	void Start () {
 
         GameObject itemSlots = GameObject.FindGameObjectWithTag("ItemSlots");
+
+        player = GameObject.FindGameObjectWithTag("player").GetComponent<PlayerController>();
+
 
         //Loads item slots
         for (int i = 0; i < itemSlots.transform.childCount; i++)
@@ -51,6 +57,7 @@ public class ItemController : MonoBehaviour {
                         if (collision.gameObject.GetComponent<SpriteRenderer>().sprite.Equals(sprite))
                         {
                             item.GetComponent<Image>().sprite = sprite;
+                            player.ChangeConfidence(20);
                             break;
                         }
                     }

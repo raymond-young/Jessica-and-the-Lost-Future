@@ -11,8 +11,8 @@ public class PlayerController : MonoBehaviour {
 
     private GameObject storeLives;
 
-    public float score = 0;
-    public int numLives = 0;
+    private float score = 0;
+    private int numLives = 0;
     public Text scoreText;
 
     private List<GameObject> power = new List<GameObject>();
@@ -121,7 +121,6 @@ public class PlayerController : MonoBehaviour {
     public float CalculateScore() 
     {
         // Score calulated from confidence + the number of lives left.
-        // Arbitrary values: 20 points for each life left + the value of the confidence bar.
         score = (confidenceBar.value * 100) + ((float)numLives * 20);
         return score;
     }
