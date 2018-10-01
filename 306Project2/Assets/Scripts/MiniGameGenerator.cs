@@ -80,7 +80,7 @@ public class MiniGameGenerator : MonoBehaviour {
                     
 			}
 
-            // arrow.GetComponent<Image>().color = Color.grey;
+            arrow.GetComponent<Image>().color = Color.grey;
             RectTransform arrowRectTransform = arrow.GetComponent<RectTransform>();
 			arrowRectTransform.SetParent(holderRectTransform);
             arrowRectTransform.localPosition = new Vector2(i * arrowSpace + arrowSpace * 0.5f - arrowSpace * noOfArrows / 2, 0);
@@ -123,11 +123,11 @@ public class MiniGameGenerator : MonoBehaviour {
 
     public void Finish()
     {
-        Debug.Log("Game Finished. You won");
+        GameObject.FindGameObjectWithTag("MiniGameReset").GetComponent<MiniGameReset>().finishGame(true);
     }
 
     public void Fail()
     {
-        Debug.Log("Game Finished. You lost");
+        GameObject.FindGameObjectWithTag("MiniGameReset").GetComponent<MiniGameReset>().finishGame(false);
     }
 }
