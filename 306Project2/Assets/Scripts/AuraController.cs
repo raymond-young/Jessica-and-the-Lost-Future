@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class AuraController : MonoBehaviour {
 
-    private MiniGameReset miniGameReset;
+    private MiniGameManager miniGameReset;
+
+    private bool playingMiniGame = false;
 
 	// Use this for initialization
 	void Start () {
-        miniGameReset = GameObject.FindGameObjectWithTag("MiniGameReset").GetComponent<MiniGameReset>();
+        miniGameReset = GameObject.FindGameObjectWithTag("MiniGameManager").GetComponent<MiniGameManager>();
     }
 	
 	// Update is called once per frame
@@ -18,6 +20,27 @@ public class AuraController : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        miniGameReset.SetStartGame(true);
+        if (!playingMiniGame)
+        {
+            GameObject npc = gameObject.transform.parent.gameObject;
+
+            miniGameReset.SetStartGame(true, npc);
+            playingMiniGame = true;
+        }
+
     }
+
+    public void FinishedMiniGame()
+    {
+        StartCoroutine(WaitFewSeconds());
+    }
+
+    private IEnumerator WaitFewSeconds()
+    {
+        Debug.Log("here");
+        yield return new WaitForSeconds(2);
+        Debug.Log("After");
+        playingMiniGame = false;
+    }
+
 }

@@ -114,5 +114,6 @@ public class PlayerController : MonoBehaviour
     {
         playerBody.velocity = new Vector2(0,0);
         playerBody.rotation = 0;
+        playerBody.angularVelocity = 0;
     }
 }

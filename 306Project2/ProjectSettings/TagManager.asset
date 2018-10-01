@@ -8,6 +8,9 @@ TagManager:
   - StoreLives
   - Item
   - ItemSlots
+  - MiniGameManager
+  - MImage
+  - NPCs
   layers:
   - Default
   - TransparentFX

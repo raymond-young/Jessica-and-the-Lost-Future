@@ -121,13 +121,13 @@ public class MiniGameGenerator : MonoBehaviour {
     }
 
 
-    public void Finish()
+    private void Finish()
     {
-        GameObject.FindGameObjectWithTag("MiniGameReset").GetComponent<MiniGameReset>().finishGame(true);
+        GameObject.FindGameObjectWithTag("MiniGameManager").GetComponent<MiniGameManager>().FinishGame(true);
     }
 
-    public void Fail()
+    private void Fail()
     {
-        GameObject.FindGameObjectWithTag("MiniGameReset").GetComponent<MiniGameReset>().finishGame(false);
+        GameObject.FindGameObjectWithTag("MiniGameManager").GetComponent<MiniGameManager>().FinishGame(false);
     }
 }
