@@ -66,7 +66,7 @@ public class MiniGameGenerator : MonoBehaviour {
                     arrows.Add(arrow);
                     arrowRef.Add(Arrow.Right);
                     break;
-
+                    
 			}
 
             arrow.GetComponent<Image>().color = Color.gray;
