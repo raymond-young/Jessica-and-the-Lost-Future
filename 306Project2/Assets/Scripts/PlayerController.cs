@@ -13,6 +13,12 @@ public class PlayerController : MonoBehaviour {
 
     private List<GameObject> power = new List<GameObject>();
 
+    // Variables for camera movement.
+    private bool isTransitioning = false;
+    public Camera cam;
+    private Vector2 newCameraPosition;
+    private Collider2D currentRoom;
+
 	// Use this for initialization
 	void Start () {
  
@@ -34,23 +40,26 @@ public class PlayerController : MonoBehaviour {
 
     // Update is called once per frame
     void FixedUpdate() {
+        // Not transitioning between rooms.
+        if (!isTransitioning) {
+            var x = Input.GetAxis("Horizontal");
+            var y = Input.GetAxis("Vertical");
 
+            Vector2 movement = new Vector2(x, y);
 
-        var x = Input.GetAxis("Horizontal");
-        var y = Input.GetAxis("Vertical");
+            //Movement of character * speed
+            playerBody.velocity = (movement * speed);
 
-        Vector2 movement = new Vector2(x, y);
+            //Prevents rotation on collision
+            if (playerBody.rotation != 0)
+            {
+                playerBody.rotation = 0;
 
-        //Movement of character * speed
-        playerBody.velocity = (movement * speed);
-
-        //Prevents rotation on collision
-        if (playerBody.rotation != 0)
-        {
-            playerBody.rotation = 0;
-
+            }
+        } else {
+            // Is moving between rooms.
+            TransitionCamera();
         }
-
 
     }
 
@@ -105,5 +114,26 @@ public class PlayerController : MonoBehaviour {
             }
 
         }
+    }
+
+    // Triggers camera transition when the player enters a room.
+    void OnTriggerEnter2D(Collider2D collider) {
+        // If there is no current room, set it.
+        if (currentRoom == null) {
+            currentRoom = collider;
+        }
+        // If the player enters a collision area that is a new room, set the new camera position to the center of the new room.
+        if (collider.tag == "Room" && !isTransitioning && currentRoom != collider) {
+            isTransitioning = true;
+            newCameraPosition = new Vector2(collider.transform.position.x, collider.transform.position.y);
+            // Set the new room.
+            currentRoom = collider;
+        }
+    }
+
+    // Move the camera to the center of the new room.
+    void TransitionCamera() {
+         cam.transform.position = newCameraPosition;
+         isTransitioning = false;
     }
 }
