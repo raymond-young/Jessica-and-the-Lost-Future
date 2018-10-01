@@ -19,22 +19,6 @@ public class SegmentFactory  {
                 {
                     return new FourSegments();
                 }
-        } else if (shape == PathMovement.curve) {
-            if (segmentNum == 1) {
-                return new OneSegmentCircle();
-            }
-            else if (segmentNum == 2)
-                {
-                    return new TwoSegmentsCircle();
-                }
-            else if (segmentNum == 3)
-                {
-                    return new ThreeSegmentsCircle();
-                }
-            else
-                {
-                    return new FourSegmentsCircle();
-                }
         }
         else
         {
