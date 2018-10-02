@@ -232,6 +232,7 @@ public class PlayerController : MonoBehaviour
 			currentNPCZone = collider;
 		}  else if (collider.tag == "EventZone" && !isTransitioning)
         {
+        	SetMotionToZero();
             FindObjectOfType<DialogueRunner>().StartDialogue(collider.GetComponent<GoodNPC>().talkToNode);
         }
 	}
