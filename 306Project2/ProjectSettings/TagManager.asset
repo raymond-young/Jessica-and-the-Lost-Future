@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - player
+  - StoreLives
+  - Item
+  - ItemSlots
+  - Room
+  - Door
+  - MiniGameManager
+  - MImage
+  - NPCs
   layers:
   - Default
   - TransparentFX
@@ -38,6 +47,33 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Collidable
+    uniqueID: 991744915
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ground
+    uniqueID: 4026749525
+    locked: 0
+  - name: FieldGround
+    uniqueID: 2612868191
+    locked: 0
+  - name: Furniture
+    uniqueID: 906779823
+    locked: 0
+  - name: Objects
+    uniqueID: 4158663381
+    locked: 0
+  - name: Decoration
+    uniqueID: 1158041253
+    locked: 0
+  - name: Boundary
+    uniqueID: 48925609
+    locked: 0
+  - name: Player
+    uniqueID: 1180499643
+    locked: 0
+  - name: onTop
+    uniqueID: 652238083
     locked: 0
