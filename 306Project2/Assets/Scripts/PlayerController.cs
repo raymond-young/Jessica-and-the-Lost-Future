@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Yarn.Unity;
 
@@ -15,6 +16,7 @@ public class PlayerController : MonoBehaviour
 
 	private List<GameObject> power = new List<GameObject>();
 
+    public GameObject scoreTransfer;
 	// Variables for camera movement.
 	private bool isTransitioning = false;
 	private bool isTeleporting = false;
@@ -170,6 +172,11 @@ public class PlayerController : MonoBehaviour
         if (gameOver)
         {
             //Game over here code----------------------------------------
+            Vector3 pos = new Vector3(0,0,0);
+            GameObject scoreTransferObject = Instantiate(scoreTransfer, pos, Quaternion.identity);
+            DontDestroyOnLoad(scoreTransferObject);
+            scoreTransferObject.GetComponent<ScoreTransferScript>().setScore(score);
+            SceneManager.LoadScene("EndOfLevelScene");
         }
     }
 

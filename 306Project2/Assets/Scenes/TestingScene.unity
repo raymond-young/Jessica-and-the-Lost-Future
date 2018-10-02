@@ -1805,6 +1805,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   confidenceBar: {fileID: 1763252852}
+  scoreTransfer: {fileID: 1817993939506956, guid: 72999df32af93174d8c354d6ecfdf88d,
+    type: 2}
   cam: {fileID: 0}
   scoreText: {fileID: 2058942704}
   interactionRadius: 2
