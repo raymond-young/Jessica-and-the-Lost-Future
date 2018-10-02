@@ -1,0 +1,137 @@
+title: GenericGreeting
+---
+We've talked already.
+===
+title: Jenny
+---
+<<if $talkedToJenny is false>>
+	<<set $talkedToJenny to true>>
+	Jenny: Hey Jessica! Have you thought about what elective you want to do?
+	Jessica: I’m taking the electronics technology and programming classes!
+	Jenny: I wish I could do that, but I don’t think I’m good enough. So I’m taking the cooking class....
+	-> You are good enough
+		Jessica: I believe you’re good enough!
+		Jenny: Really? That sounds hard.
+		Jessica: Yes! Anyone can learn. And you can do it with me so you won’t be alone.
+		Jenny: I’m excited to do it together!
+		<<change_confidence Player 15>>
+	-> Jessica: Agree
+		Jessica: My parents said that I should do cooking too.
+		Jessica: At least it’ll be easy.
+		<<change_confidence Player -15>>
+<<else>>
+	[[GenericGreeting]]
+<<endif>>
+===
+title: FriendGrace
+---
+<<if $talkedToGrace is false>>
+	<<set $talkedToGrace to true>>
+	Grace: Making us pick electives this early feels rushed.
+	Jessica: I’ve already picked my options though! Electronics technology and programming.
+	Grace: You could be an engineer and invent things with those choices!
+	Jessica: Do you really think so?
+	Grace: You can do it!
+	<<change_confidence Player 15>>
+<<else>>
+	[[GenericGreeting]]
+<<endif>>
+===
+title: Coach
+---
+<<if $talkedToBarry is false>>
+	<<set $talkedToBarry to true>>
+	Barry: What do you need the key for?
+	-> Professor Waston told me that she dropped it here somewhere.
+		Barry: Sure thing.
+	-> I want to go into the workshop.
+		Barry: That's great, we need more young women like you in engineering.
+		<<change_confidence Player 5>>
+<<else>>
+	[[GenericGreeting]]
+<<endif>>
+===
+title: LibraryHolly
+---
+<<if $talkedToHolly is false>>
+	<<set $talkedToHolly to true>>
+	Holly: Were you thinking of computer class too?
+	-> No
+		Holly: Oh, that's a shame.
+	-> Yes
+		Holly: Isn't it cool? We should totally do it together!
+		<<change_confidence Player 5>>
+<<else>>
+	[[GenericGreeting]]
+<<endif>>
+===
+title: DigitalJames
+---
+<<if $talkedToJames is false>>
+	<<set $talkedToJames to true>>
+	James: I think it’s great that more girls are doing this class. It gets boring when there’s only guys.
+	<<change_confidence Player 10>>
+<<else>>
+	[[GenericGreeting]]
+<<endif>>
+===
+title: BadOwen
+---
+<<if $talkedToOwen is false>>
+	<<set $talkedToOwen to true>>
+	Owen: You don’t look like an engineer. Are you sure you’re in the right class?
+	-> Anyone can be an engineer
+		Jessica: Anyone can be an engineer, you know. It’s rude to judge based on appearances.
+		Owen: Girls are just hardworking, but boys are clever. So if you’ll excuse me, I have actual students to teach.
+		Jessica: That’s a stereotype. Anyone can learn equally well.
+		Owen: You should pick a more feminine subject. Engineering is just something that boys do.
+		Jessica: Engineering isn’t just for boys. The first computer was created by a girl, Grace Hopper! And another girl, Hedy Lamarr, invented Wi-Fi.
+		Owen: I guess that’s true...You’ve given me something to think about.
+		<<change_confidence Player 15>>
+	-> I’m in the right class
+		Jessica: Yes, I’m in the right class.
+		Owen: Girls are just hardworking, but boys are clever. So if you’ll excuse me, I have actual students to teach.
+		<<change_confidence Player -5>>
+	-> Um…
+		Jessica: Um…
+		Owen: Well, speak up, young lady.
+		Jessica: I have to go, sorry.
+		Owen: I think you’d make a great nurse or teacher. Those are better options for a girl than engineering.
+		<<change_confidence Player -20>>
+<<else>>
+	[[GenericGreeting]]
+<<endif>>
+===
+title: Mentor
+---
+<<if $talkedToWaston is false>>
+	<<set $talkedToWaston to true>>
+	Jessica: Sorry to bother you, Mrs…
+	Professor Waston: Call me Cathy. I’m an inventor and also your electronics technology teacher.
+	Jessica: I want to be an engineer, but so many people - my parents, teachers, friends - all say that girls shouldn’t be engineers.
+	Professor Waston: Don’t listen to them! Anyone can be an engineer.
+	Professor Waston: Being an engineer is more than calculations or computers. It’s about doing practical things to make the world a better place. You help people by inventing things.
+	Jessica: What should I do to become an engineer?
+	Professor Waston: Take all the science and maths classes you can! Physics, chemistry, digital and electronics technologies and programming. 
+	-> Thank you
+		Jessica: Thank you.
+		Professor Waston: I believe in you, Jessica.
+	-> Jenny wants to do electronics technology too, but...
+		Jessica: There’s a girl in my class who wants to do electronics technology too but doesn’t think she’s good enough.
+		Professor Waston: Do you have any ideas for systemic change?
+		-> Make mandatory courses
+			Jessica: We could make electronics technology and programming mandatory.
+			Professor Waston: That’s a great idea. If it’s mandatory, girls will do it find they’re actually good at it instead of never trying because other people tell them they can't do it.
+			<<change_confidence Player 50>>
+		-> Talk to her
+			Jessica: Could you invite her personally? I think she would believe more in herself if you told her she could do it.
+			Professor Waston: That’s a good idea. We’ll change beliefs one at a time.
+			<<change_confidence Player 15>>
+		-> Girls-only class
+			Jessica: We could organize a girls-only programming class.
+			Professor Waston: That’s not a good idea long-term because it doesn't change society's biases but still a way to encourage more girls to try it out! Good idea.
+			<<change_confidence Player 10>>
+<<else>>
+	[[GenericGreeting]]
+<<endif>>
+===

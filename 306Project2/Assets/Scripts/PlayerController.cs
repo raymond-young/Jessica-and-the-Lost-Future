@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Yarn.Unity;
 using UnityEngine.SceneManagement;
+using System;
 
 public class PlayerController : MonoBehaviour
 {
@@ -150,6 +151,13 @@ public class PlayerController : MonoBehaviour
     {
         confidenceBar.value = confidenceBar.value + (float)(damagePercent / 100.0);
         UpdateScoreText();
+    }
+
+    // This is used by yarn to change confidence after dialogue interactions.
+    [YarnCommand("change_confidence")]
+    public void YarnChangeConfidence(string percent) {
+    	double doublePercent = Double.Parse(percent);
+    	ChangeConfidence(doublePercent);
     }
 
     public void LoseOnePower()
