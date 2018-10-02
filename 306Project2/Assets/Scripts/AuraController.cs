@@ -18,9 +18,10 @@ public class AuraController : MonoBehaviour {
 		
 	}
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    //Triggers minigame
+    private void TriggerMiniGame(Collider2D collision)
     {
-        if (!playingMiniGame)
+        if (!playingMiniGame && collision.gameObject.tag.Equals("player"))
         {
             GameObject npc = gameObject.transform.parent.gameObject;
 
@@ -30,9 +31,23 @@ public class AuraController : MonoBehaviour {
 
     }
 
+    //Triggers minigame on start of collision
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        TriggerMiniGame(collision);
+    }
+
+    //Triggers minigame during collision in case start not detected
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        TriggerMiniGame(collision);
+    }
+
+    //Reset the minigame
     public void FinishedMiniGame()
     {
-        StartCoroutine(WaitFewSeconds());
+        playingMiniGame = false;
+        //StartCoroutine(WaitFewSeconds());
     }
 
     private IEnumerator WaitFewSeconds()

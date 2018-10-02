@@ -67,6 +67,34 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("MoveX",Input.GetAxisRaw("Horizontal"));
         anim.SetFloat("MoveY",Input.GetAxisRaw("Vertical"));
 
+        //Calculates the players last position every second
+        if (calcNextPos)
+        {
+            StartCoroutine(CalcLastPos());
+        }
+
+    }
+
+    private bool calcNextPos = true;
+    private Vector2 previousPos;
+
+    //Gets last player pos to get their last direction before minigame starts
+    private IEnumerator CalcLastPos()
+    {
+        calcNextPos = false;
+
+        previousPos = gameObject.transform.position;
+
+        yield return new WaitForSeconds(1);
+
+        calcNextPos = true;
+
+    }
+
+    //Gets the players prevoius position
+    public Vector3 GetPreviousPos()
+    {
+        return previousPos;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -127,7 +155,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
+    //Used to stop the player moving when the minigame starts
     public void SetMotionToZero()
     {
         playerBody.velocity = new Vector2(0,0);

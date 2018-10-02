@@ -33,7 +33,7 @@ public class MiniGameGenerator : MonoBehaviour {
         //Set up config using default values
 		noOfArrows = 6;
         timeLimit = 10f;
-		timePenalty = timeLimit / noOfArrows * 2;
+		timePenalty = timeLimit / noOfArrows;
 
 		RectTransform parentRectTransform = gameObject.GetComponent<RectTransform>();
 	  	float arrowSpace = up.GetComponent<RectTransform>().rect.width * 1.5f;
@@ -101,11 +101,15 @@ public class MiniGameGenerator : MonoBehaviour {
         {
             if(e.keyCode.ToString().Equals(arrowRef[currentIndex].ToString()) && e.keyCode != KeyCode.None){
 				arrows[currentIndex].GetComponent<Image>().color = Color.green;
+			    currentIndex++;
 			}else{
-				arrows[currentIndex].GetComponent<Image>().color = Color.red;
 				currentTime += timePenalty;
+                for (int i = 0; i <= currentIndex; i++)
+                {
+                    arrows[i].GetComponent<Image>().color = Color.grey;
+                }
+                currentIndex = 0;
 			}
-			currentIndex++;
         }
 	}
 
