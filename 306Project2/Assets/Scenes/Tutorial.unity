@@ -2706,7 +2706,7 @@ GameObject:
   - component: {fileID: 446958708}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2785,10 +2785,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e51979d1736e2bc40aec9cebe0f486d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  confidenceBar: {fileID: 0}
+  confidenceBar: {fileID: 1866223548}
   cam: {fileID: 1196126220}
-  score: 0
-  numLives: 0
   scoreText: {fileID: 0}
   interactionRadius: 2
 --- !u!212 &446958712
