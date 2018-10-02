@@ -2,7 +2,6 @@ title: Tutorial
 ---
 <<if $hasStarted is false>>
 	<<set $hasStarted to true>>
-	
 	nozamA Exec 1: Did you hear about that time machine that female engineer Jessica invented?
 	nozamA Exec 2: !?  Time Machine!? That must be very valuable.
 	nozamA Exec 1: We could make a lot of profit if we had the patent!
@@ -10,7 +9,5 @@ title: Tutorial
 	nozamA Exec 1: If we stop her from becoming an engineer we can get the credit for inventing it.
 	Jessica: I need to save myself!
 	Use the arrow keys to move around.
-	Use the space bar near items to pick them up, and near objects or characters to interact with them.
 <<endif>>
-<<move_down Exec1 test>>
 ===

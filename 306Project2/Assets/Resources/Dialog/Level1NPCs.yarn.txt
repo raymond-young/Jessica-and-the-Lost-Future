@@ -118,11 +118,11 @@ title: Mentor
 		Professor Waston: I believe in you, Jessica.
 	-> Jenny wants to do electronics technology too, but...
 		Jessica: There’s a girl in my class who wants to do electronics technology too but doesn’t think she’s good enough.
-		Professor Waston: Do you have any ideas for systemic change?
+		Professor Waston: Do you have any ideas to change people's attitudes permanently (systemic change)?
 		-> Make mandatory courses
 			Jessica: We could make electronics technology and programming mandatory.
 			Professor Waston: That’s a great idea. If it’s mandatory, girls will do it find they’re actually good at it instead of never trying because other people tell them they can't do it.
-			<<change_confidence Player 50>>
+			<<change_confidence Player 20>>
 		-> Talk to her
 			Jessica: Could you invite her personally? I think she would believe more in herself if you told her she could do it.
 			Professor Waston: That’s a good idea. We’ll change beliefs one at a time.
