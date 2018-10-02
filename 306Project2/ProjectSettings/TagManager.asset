@@ -13,6 +13,7 @@ TagManager:
   - MiniGameManager
   - MImage
   - NPCs
+  - TestNPC
   layers:
   - Default
   - TransparentFX
