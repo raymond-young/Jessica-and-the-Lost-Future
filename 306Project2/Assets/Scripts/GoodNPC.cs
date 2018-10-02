@@ -33,7 +33,7 @@ public class GoodNPC : Movement
     }
 
     // Update is called once per frame
-    protected override void FixedUpdate () {
+    protected override void customFixedUpdate () {
        if (!wait)
         {
             Vector2 newPos;
