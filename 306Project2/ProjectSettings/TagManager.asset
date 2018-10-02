@@ -65,6 +65,9 @@ TagManager:
   - name: Decoration
     uniqueID: 1158041253
     locked: 0
+  - name: Boundary
+    uniqueID: 48925609
+    locked: 0
   - name: Player
     uniqueID: 1180499643
     locked: 0
