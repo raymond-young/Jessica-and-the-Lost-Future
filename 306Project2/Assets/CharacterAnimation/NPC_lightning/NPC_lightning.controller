@@ -5,7 +5,7 @@ AnimatorController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: NPC_yellow
+  m_Name: NPC_lightning
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: MoveY
@@ -73,7 +73,7 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 728bafa27868a4f04bcb1f68675d188d, type: 2}
+    m_Motion: {fileID: 7400000, guid: 709ade8464dfe4474af6917293bb1fe0, type: 2}
     m_Threshold: 0
     m_Position: {x: 0, y: -1}
     m_TimeScale: 1
@@ -81,7 +81,7 @@ BlendTree:
     m_DirectBlendParameter: MoveY
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: e674e00312e2940ba95cc684ebf02776, type: 2}
+    m_Motion: {fileID: 7400000, guid: 9924c09831533482c9017232a3073c64, type: 2}
     m_Threshold: 0.33333334
     m_Position: {x: -1, y: 0}
     m_TimeScale: 1
@@ -89,7 +89,7 @@ BlendTree:
     m_DirectBlendParameter: MoveY
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 03cff8f85e7094e4f9c4bc17d9344e0f, type: 2}
+    m_Motion: {fileID: 7400000, guid: d679d5e9259884e53a5546aca39d66b7, type: 2}
     m_Threshold: 0.6666667
     m_Position: {x: 1, y: 0}
     m_TimeScale: 1
@@ -97,7 +97,7 @@ BlendTree:
     m_DirectBlendParameter: MoveY
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 841b7852dab6746e7885efeeedc19747, type: 2}
+    m_Motion: {fileID: 7400000, guid: ac8135f42d7e74677be4336538957a3d, type: 2}
     m_Threshold: 1
     m_Position: {x: 0, y: 1}
     m_TimeScale: 1
@@ -117,7 +117,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: NPC_yellow_movement
+  m_Name: NPC_lightning_movement
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -146,7 +146,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1102634051038529192}
-    m_Position: {x: 492, y: 108, z: 0}
+    m_Position: {x: 456, y: -36, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
