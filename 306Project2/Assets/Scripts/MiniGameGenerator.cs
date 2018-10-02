@@ -129,7 +129,7 @@ public class MiniGameGenerator : MonoBehaviour {
         {
 			Finish();
 		}
-
+        if(gameStart){
         //Listen to key press event
 		Event e = Event.current;
         if (e.type == EventType.KeyDown)
@@ -147,6 +147,7 @@ public class MiniGameGenerator : MonoBehaviour {
                 }
                 currentIndex = 0;
 			}
+        }
         }
 	}
 
