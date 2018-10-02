@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
 	
 	// YarnSpinner
     public float interactionRadius = 2.0f;
+    private bool inNPCZone = false;
+    private Collider2D currentNPCZone;
 
     // Use this for initialization
     void Start()
@@ -186,7 +188,14 @@ public class PlayerController : MonoBehaviour
             }
 
         }
-    } 
+    }
+
+    void OnTriggerExit2D(Collider2D collider) {
+    	if (collider.gameObject.tag.Equals("Item") || collider.gameObject.tag.Equals("NPC")) {
+    		currentNPCZone = null;
+    		inNPCZone = false;
+    	}
+    }
 
 	// Triggers camera transition when the player enters a room.
 	void OnTriggerEnter2D(Collider2D collider)
@@ -218,6 +227,12 @@ public class PlayerController : MonoBehaviour
 			// Set the position of the player to be teleported.
 			teleportX = collider.GetComponent<Door>().playerX;
 			teleportY = collider.GetComponent<Door>().playerY;
+		} else if (collider.tag == "NPCs" || collider.tag == "Item" && !isTransitioning) {
+			Debug.Log("found npc collision");
+			inNPCZone = true;
+			currentNPCZone = collider;
+		} else {
+			Debug.Log(collider);
 		}
 	}
 
@@ -261,16 +276,19 @@ public class PlayerController : MonoBehaviour
 	 */
 	public void CheckForNearbyNPC()
 	{
-		var allParticipants = new List<GoodNPC>(FindObjectsOfType<GoodNPC>());
-		var target = allParticipants.Find(delegate (GoodNPC p) {
-			return string.IsNullOrEmpty(p.talkToNode) == false && // has a conversation node?
-			(p.transform.position - this.transform.position)// is in range?
-			.magnitude <= interactionRadius;
-		});
-		if (target != null)
-		{
+		Debug.Log("checking npc zone");
+		// var allParticipants = new List<GoodNPC>(FindObjectsOfType<GoodNPC>());
+		// var target = allParticipants.Find(delegate (GoodNPC p) {
+		// 	return string.IsNullOrEmpty(p.talkToNode) == false && // has a conversation node?
+		// 	(p.transform.position - this.transform.position)// is in range?
+		// 	.magnitude <= interactionRadius;
+		// });
+
+		 if (inNPCZone) {
+		 	Debug.Log("in npc zone");
+			SetMotionToZero();
 			// Kick off the dialogue at this node.
-			FindObjectOfType<DialogueRunner>().StartDialogue(target.talkToNode);
+			FindObjectOfType<DialogueRunner>().StartDialogue(currentNPCZone.GetComponent<GoodNPC>().talkToNode);
 		}
 	}
 }

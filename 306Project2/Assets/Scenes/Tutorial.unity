@@ -2785,8 +2785,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e51979d1736e2bc40aec9cebe0f486d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 1866223548}
+  confidenceBar: {fileID: 0}
   cam: {fileID: 1196126220}
+  score: 0
+  numLives: 0
+  scoreText: {fileID: 0}
   interactionRadius: 2
 --- !u!212 &446958712
 SpriteRenderer:
@@ -2970,8 +2973,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4209d262e56b2a740a893459d0554199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xPos: 0
-  yPos: 0
+  xPos: 24.47
+  yPos: -1.04
   speed: 0
   characterName: TimeMachine
   talkToNode: TimeMachine

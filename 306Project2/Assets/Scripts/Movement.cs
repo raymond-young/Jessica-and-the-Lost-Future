@@ -14,16 +14,13 @@ public abstract class Movement : MonoBehaviour {
     // Use this for initialization
     protected virtual void Start () {
         npcBody = gameObject.GetComponent<Rigidbody2D>();
-      
     }
 
     // Update is called once per frame
     protected virtual void FixedUpdate () {
-		
 	}
 
-    protected IEnumerator DoLinearMove(Vector3 end, float speed)
-    {
+    protected IEnumerator DoLinearMove(Vector3 end, float speed) {
         //Calculate the remaining distance to move. 
         float RemainingDistance = Vector3.Distance(transform.position, end);
         //While that distance is greater than a very small amount
@@ -50,8 +47,7 @@ public abstract class Movement : MonoBehaviour {
         }
     }
 
-    protected IEnumerator DoRectangleMove(Vector2 origonalPos, Vector2 thirdPos, float speed, bool clockwise, int segmentNum)
-    {
+    protected IEnumerator DoRectangleMove(Vector2 origonalPos, Vector2 thirdPos, float speed, bool clockwise, int segmentNum) {
 
         ISegment segment = SegmentFactory.MakePoints(segmentNum, PathMovement.square);
         List<Vector2> rectanglePoints = segment.CalculatePoints(origonalPos, thirdPos, clockwise);
@@ -78,8 +74,7 @@ public abstract class Movement : MonoBehaviour {
         wait = false;
     }
 
-    protected IEnumerator DoCircularMove(Vector2 origionalPos, Vector2 centerPos, float speed, int segmentNum)
-    {
+    protected IEnumerator DoCircularMove(Vector2 origionalPos, Vector2 centerPos, float speed, int segmentNum) {
         float angle = 0;
 
         int sin = 1;

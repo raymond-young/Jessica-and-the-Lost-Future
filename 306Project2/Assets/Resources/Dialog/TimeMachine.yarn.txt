@@ -7,3 +7,11 @@ title: TimeMachine
     Jessica: You need a wrench to fix the time machine.
 <<endif>>
 ===
+
+title: Wrench
+---
+<<if $hasWrench is false>>
+	<<set $hasWrench to true>>
+	You picked up the Wrench.
+<<endif>>
+===
