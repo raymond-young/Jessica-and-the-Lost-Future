@@ -10,6 +10,9 @@ TagManager:
   - ItemSlots
   - Room
   - Door
+  - MiniGameManager
+  - MImage
+  - NPCs
   layers:
   - Default
   - TransparentFX
