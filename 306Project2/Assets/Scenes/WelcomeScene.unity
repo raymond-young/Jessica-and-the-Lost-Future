@@ -338,7 +338,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   list:
   - {fileID: 1721453237}
-  - {fileID: 0}
   - {fileID: 1949666365}
 --- !u!1 &742225479
 GameObject:
@@ -621,7 +620,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   list:
   - {fileID: 1721453237}
-  - {fileID: 0}
   - {fileID: 1949666365}
 --- !u!1 &1335009161
 GameObject:
