@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Yarn.Unity;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -217,7 +218,6 @@ public class PlayerController : MonoBehaviour
 		{
 			// A door, which teleports the player.
 			Collider2D newRoom = collider.GetComponent<Door>().linksToRoom;
-			Debug.Log(newRoom);
 			// Teleport the player and also set the new room.
 			isTransitioning = true;
 			isTeleporting = true;
@@ -228,12 +228,9 @@ public class PlayerController : MonoBehaviour
 			teleportX = collider.GetComponent<Door>().playerX;
 			teleportY = collider.GetComponent<Door>().playerY;
 		} else if (collider.tag == "NPCs" || collider.tag == "Item" && !isTransitioning) {
-			Debug.Log("found npc collision");
 			inNPCZone = true;
 			currentNPCZone = collider;
-		} else {
-			Debug.Log(collider);
-		}
+		} 
 	}
 
     //Used to stop the player moving when the minigame starts
@@ -276,7 +273,6 @@ public class PlayerController : MonoBehaviour
 	 */
 	public void CheckForNearbyNPC()
 	{
-		Debug.Log("checking npc zone");
 		// var allParticipants = new List<GoodNPC>(FindObjectsOfType<GoodNPC>());
 		// var target = allParticipants.Find(delegate (GoodNPC p) {
 		// 	return string.IsNullOrEmpty(p.talkToNode) == false && // has a conversation node?
@@ -285,11 +281,17 @@ public class PlayerController : MonoBehaviour
 		// });
 
 		 if (inNPCZone) {
-		 	Debug.Log("in npc zone");
 			SetMotionToZero();
 			// Kick off the dialogue at this node.
 			FindObjectOfType<DialogueRunner>().StartDialogue(currentNPCZone.GetComponent<GoodNPC>().talkToNode);
 		}
+	}
+
+	// Changes the scene to a different level.
+	[YarnCommand("transition")]
+	public void ChangeLevel(string destination) {
+		Debug.Log(destination);
+		SceneManager.LoadScene(destination);
 	}
 }
 
