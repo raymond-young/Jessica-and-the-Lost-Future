@@ -17,10 +17,16 @@ public class ItemController : MonoBehaviour {
 
     private bool inItemZone = false;
 
+    private PlayerController player;
+
+
 	// Use this for initialization
 	void Start () {
 
         GameObject itemSlots = GameObject.FindGameObjectWithTag("ItemSlots");
+
+        player = GameObject.FindGameObjectWithTag("player").GetComponent<PlayerController>();
+
 
         //Loads item slots
         for (int i = 0; i < itemSlots.transform.childCount; i++)
@@ -79,7 +85,22 @@ public class ItemController : MonoBehaviour {
             {
                 if (item.GetComponent<Image>().sprite.name.Equals("Background"))
                 {
+
                     freeItemSlot = item;
+
+                    foreach (Sprite sprite in itemSprites)
+                    {
+
+                        if (collision.gameObject.GetComponent<SpriteRenderer>().sprite.Equals(sprite))
+                        {
+                            item.GetComponent<Image>().sprite = sprite;
+                            player.ChangeConfidence(20);
+                            break;
+                        }
+                    }
+
+                    break;
+
                 }
             }
         }
