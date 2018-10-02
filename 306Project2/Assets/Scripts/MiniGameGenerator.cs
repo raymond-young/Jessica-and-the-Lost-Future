@@ -33,8 +33,8 @@ public class MiniGameGenerator : MonoBehaviour {
     
     float timeLimit;
     float currentTime;
-    float readyTime = 2f;
-    float goTime = 1f;
+    float readyTime = 0.9f;
+    float goTime = 0.5f;
 
     int currentIndex;
     bool gameStart;
@@ -165,15 +165,32 @@ public class MiniGameGenerator : MonoBehaviour {
                 gameStart = true;
                 currentTime = 0;
             }
-            else if (currentTime > -goTime) //Show Go!
+            else if (Mathf.Abs(currentTime) < goTime) //Show "Go!"
             {
-                go.SetActive(true);
-                ready.SetActive(false);
+                if (go.activeSelf)
+                {
+                    float time = Mathf.Sin(Mathf.Lerp(0f, 1f, Mathf.Abs(currentTime) / goTime));
+                    go.GetComponent<Text>().color = new Color(time, time, 0);
+                }
+                else
+                {
+                    go.SetActive(true);
+                    ready.SetActive(false);
+                }
             }
-            else //Show Read?
+            else //Show "Read?"
             {
-                go.SetActive(false);
-                ready.SetActive(true);
+                if (ready.activeSelf)
+                {
+                    float percentage = Mathf.Abs(currentTime) - goTime;
+                    float time = Mathf.Sin(Mathf.Lerp(0f, 1f, percentage / readyTime));
+                    ready.GetComponent<Text>().color = new Color(0, time, 0);
+                }
+                else
+                {
+                    go.SetActive(false);
+                    ready.SetActive(true);
+                }
             }
         }
         else
