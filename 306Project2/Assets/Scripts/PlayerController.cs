@@ -230,7 +230,10 @@ public class PlayerController : MonoBehaviour
 		} else if (collider.tag == "NPCs" || collider.tag == "Item" && !isTransitioning) {
 			inNPCZone = true;
 			currentNPCZone = collider;
-		} 
+		}  else if (collider.tag == "EventZone" && !isTransitioning)
+        {
+            FindObjectOfType<DialogueRunner>().StartDialogue(collider.GetComponent<GoodNPC>().talkToNode);
+        }
 	}
 
     //Used to stop the player moving when the minigame starts
@@ -292,5 +295,6 @@ public class PlayerController : MonoBehaviour
 		Debug.Log(destination);
 		SceneManager.LoadScene(destination);
 	}
+
 }
 

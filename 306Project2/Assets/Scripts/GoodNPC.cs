@@ -55,4 +55,14 @@ public class GoodNPC : Movement {
             wait = true;
         }
     }
+
+    // Changes the scene to a different level.
+    [YarnCommand("move_down")]
+    public void TutorialScene1(string destination)
+    {
+        Debug.Log("routine called");
+        Vector2 newPos = new Vector2(-10, 0);
+        MoveToPos(originalPos, newPos);
+        
+    }
 }

@@ -1,0 +1,7 @@
+title: Wrench
+---
+<<if $hasWrench is false>>
+	<<set $hasWrench to true>>
+	You picked up the Wrench.
+<<endif>>
+===

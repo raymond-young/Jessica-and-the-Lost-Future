@@ -1,0 +1,19 @@
+title: Tutorial
+tags: 
+colorID: 0
+position: 387,487
+---
+<<if $hasStarted is false>>
+	<<set $hasStarted to true>>
+	
+	Company Exec 1: Did you hear about that time machine that female engineer Jessica invented?
+	Company Exec 2: !?  Time Machine!? That must be very valuable.
+	Company Exec 1: We could make a lot of profit if we had the patent!
+	Company Exec 2: What if we stole it? We can go back in time and stop it before it happens!
+	Company Exec 1: If we stop her from becoming an engineer we can get the credit for inventing it.
+	Jessica: I need to save myself!
+	Use the arrow keys to move around.
+	Jessica: The time machine is broken! I must find something to repair it.
+<<endif>>
+<<move_down Exec1 test>>
+===
