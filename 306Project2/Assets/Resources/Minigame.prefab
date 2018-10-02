@@ -62,6 +62,9 @@ MonoBehaviour:
   down: {fileID: 1521827095190696, guid: e98af8947afde4647a2fe873a13b098a, type: 2}
   box: {fileID: 1039537574656080, guid: da682ed93e21b4a3c96365410a7fb8a4, type: 2}
   slider: {fileID: 114420902774227680, guid: 92bc99f43d3b395479d95e922774b23c, type: 2}
+  readyPrefab: {fileID: 1317794115039652, guid: c8b000f1a7ad2864fa24ee8c9abf9d8f,
+    type: 2}
+  goPrefab: {fileID: 1278749601602204, guid: 6b3cea029b7fb3a42b4a10f961c7d559, type: 2}
 --- !u!114 &114649335410930202
 MonoBehaviour:
   m_ObjectHideFlags: 1

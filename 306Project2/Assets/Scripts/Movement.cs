@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Movement : MonoBehaviour {
 
     private Rigidbody2D npcBody;
+    private Transform mainCharacter;
 
     protected bool wait = false;
     protected bool movingTowards = true;
@@ -14,12 +15,17 @@ public abstract class Movement : MonoBehaviour {
     // Use this for initialization
     protected virtual void Start () {
         npcBody = gameObject.GetComponent<Rigidbody2D>();
-      
+        mainCharacter = GameObject.FindGameObjectWithTag("player").transform;
     }
 
     // Update is called once per frame
     protected virtual void FixedUpdate () {
-		
+        if(gameObject.transform.position.y > mainCharacter.position.y){
+            gameObject.GetComponent<SpriteRenderer>().sortingOrder = 0;
+        }else{
+            gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
+        }
+		customFixedUpdate();
 	}
 
     protected IEnumerator DoLinearMove(Vector3 end, float speed)
@@ -191,4 +197,5 @@ public abstract class Movement : MonoBehaviour {
         wait = false;
     }
 
+    protected abstract void customFixedUpdate();
 }
