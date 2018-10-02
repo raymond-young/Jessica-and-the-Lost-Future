@@ -22,12 +22,7 @@ public class EndLevelUI : MonoBehaviour {
 
     public void restartButtonClicked()
     {
-        SceneManager.LoadScene("SampleScene");
-    }
-
-    public void nextLevelButtonClicked()
-    {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Level-1");
     }
 
     public void mainMenuButtonClicked()
