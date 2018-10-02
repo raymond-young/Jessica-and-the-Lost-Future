@@ -292,9 +292,17 @@ public class PlayerController : MonoBehaviour
 	// Changes the scene to a different level.
 	[YarnCommand("transition")]
 	public void ChangeLevel(string destination) {
-		Debug.Log(destination);
 		SceneManager.LoadScene(destination);
 	}
+
+    // Shows player
+    [YarnCommand("show")]
+    public void Show(string destination)
+    {
+        Vector2 start = new Vector2(0, 0);
+        gameObject.transform.position = start;
+    }
+
 
 }
 

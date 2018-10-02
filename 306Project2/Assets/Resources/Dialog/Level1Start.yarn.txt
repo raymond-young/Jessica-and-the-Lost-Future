@@ -1,0 +1,13 @@
+title: Start
+---
+<<if $hasBegun is false>>
+	<<set $hasBegun to true>>
+	Jessica: I get to pick a class today, I'm so excited! I want to do the programming class.
+	Mum: We don't think you should choose the computer class Jessica, it's not feminine!
+	Dad: Why don't you choose something like cooking instead? Then you'll be able to find a husband more easily.
+	Mum: Girls aren't good at technical things.
+	Jessica: But I don't like cooking...
+	Dad: We're here! Now don't be late to class!
+	<<show Player test>>
+<<endif>>
+===
