@@ -1,0 +1,172 @@
+title: Overhearing
+tags: 
+colorID: 0
+position: 592,181
+---
+Company Exec 1: Did you hear about that time machine that female engineer Jessica invented?
+Company Exec 2: !?  Time Machine!? That must be very valuable.
+Company Exec 1: We could make a lot of profit if we had the patent!
+Company Exec 2: What if we stole it? We can go back in time and stop it before it happens!
+Company Exec 1: If we stop her from becoming an engineer we can get the credit for inventing it.
+Jessica: I need to save myself!
+===
+
+title: Tutorial
+tags: 
+colorID: 0
+position: 387,487
+---
+Use the arrow keys or WASD to move around.
+Jessica: The time machine is broken! I must find something to repair it.
+Pick up the wrench by clicking on it.
+Go to the time machine.
+Use the wrench by pressing the space bar
+Great! You fixed the time machine.
+Use the time machine by clicking on it.
+===
+
+
+title: Jenny (girl who wants to do cooking)
+tags: 
+colorID: 0
+position: 387,487
+---
+Jenny: Hey Jessica! Have you thought about what elective you want to do?
+Jessica: I’m taking the electronics technology and programming classes!
+Jenny: I wish I could do that, but I don’t think I’m good enough. So I’m taking the cooking class....
+-> You are good enough
+	Jessica: I believe you’re good enough! 
+	Jenny: Really? That sounds hard.
+	Jessica: Yes! Anyone can learn. And you can do it with me so you won’t be alone.
+	Jenny: I’m excited to do it together!
+
+-> Jessica: Agree
+	Jessica: My parents said that I should do cooking too. 
+	Jessica: At least it’ll be easy.
+===
+
+
+title: Good Friends
+tags: 
+colorID: 0
+position: 387,487
+---
+Grace: Making us pick electives this early feels rushed.
+Jessica: I’ve already picked my options though! Electronics technology and programming.
+Grace: You could be an engineer and invent things with those choices!
+Jessica: Do you really think so?
+Grace: You can do it!
+===
+
+
+title: Coach
+tags: 
+colorID: 0
+position: 387,487
+---
+Barry: What do you need the key for?
+-> Professor Waston told me
+	Jessica: Professor Waston told me that she dropped it here somewhere.
+	Barry: We need more young women like you in engineering.
+-> I want to go into the workshop
+	Jessica: I want to go into the workshop.
+	Barry: Sure thing.
+===
+
+
+title: Library person
+tags: 
+colorID: 0
+position: 387,487
+---
+Holly: Were you thinking of computer class too?
+-> No
+	Jessica: No
+	Holly: Oh, that's a shame.
+-> Yes
+	Jessica: Yeah I was
+	Holly: Isn't it cool? We should totally do it together!
+===
+
+
+title: Digital tech room bad person
+tags: 
+colorID: 0
+position: 387,487
+---
+Anderson: Hahaha. A girl thinking they can program.
+Jessica: Excuse me?
+Anderson: Look at you, you’re the only girl in the room!
+-> So what?
+	Jessica: So what? If I want to learn programming, I’m going to learn programming.
+	Anderson: Do you really think so?
+	Jessica: Yes.
+	Anderson: I guess if you’re really that set on it...
+-> Maybe
+	Jessica: Maybe I’m a bit out of place.
+	Anderson: Why don’t you go do art instead. Or be a nurse or teacher. Those are better for girls.
+===
+
+
+title: Digital tech room good person
+tags: 
+colorID: 0
+position: 387,487
+---
+James: I think it’s great that more girls are doing this class. It gets boring when there’s only guys.
+===
+
+
+
+title: Bad male teacher
+tags: 
+colorID: 0
+position: 387,487
+---
+Owen: You don’t look like an engineer. Are you sure you’re in the right class?
+-> Anyone can be an engineer
+	Jessica: Anyone can be an engineer, you know. It’s rude to judge based on appearances.
+	Owen: Girls are just hardworking, but boys are clever. So if you’ll excuse me, I have actual students to teach.
+	Jessica: That’s a stereotype. Anyone can learn equally well.
+	Owen: You should pick a more feminine subject. Engineering is just something that boys do.
+	Jessica: Engineering isn’t just for boys. The first computer was created by a girl, Grace Hopper! And another girl, Hedy Lamarr, invented Wi-Fi.
+	Owen: I guess that’s true...You’ve given me something to think about.
+-> I’m in the right class
+	Jessica: Yes, I’m in the right class.
+	Owen: Girls are just hardworking, but boys are clever. So if you’ll excuse me, I have actual students to teach.
+-> Um…
+	Jessica: Um…
+	Owen: Well, speak up, young lady.
+	Jessica: I have to go, sorry.
+	Owen: I think you’d make a great nurse or teacher. Those are better options for a girl than engineering.
+===
+
+
+title: Mentor
+tags: 
+colorID: 0
+position: 387,487
+---
+Jessica: Sorry to bother you, Mrs…
+Professor Waston: Call me Cathy. I’m an inventor and also your electronics technology teacher.
+Jessica: I want to be an engineer, but so many people - my parents, teachers, friends - all say that girls shouldn’t be engineers.
+Professor Waston: Don’t listen to them! Anyone can be an engineer.
+Professor Waston: Being an engineer is more than calculations or computers. It’s about doing practical things to make the world a better place. You help people by inventing things.
+Jessica: What should I do to become an engineer?
+Professor Waston: Take all the science and maths classes you can! Physics, chemistry, digital and electronics technologies and programming. 
+-> Thank you
+	Jessica: Thank you.
+	Professor Waston: I believe in you, Jessica.
+-> Jenny
+	Jessica: There’s a girl in my class who wants to do electronics technology too but doesn’t think she’s good enough.
+	Professor Waston: Do you have any ideas for systemic change?
+	-> Make mandatory courses
+		Jessica: We could make electronics technology and programming mandatory.
+		Professor Waston: That’s a great idea. If it’s mandatory, girls will find they’re actually good at it instead of never trying because other people tell them.
+	-> Talk to her
+		Jessica: Could you invite her personally? I think she would believe more in herself if you told her she could do it.
+		Professor Waston: That’s a good idea. We’ll change beliefs one at a time.
+	-> Girls-only class
+		Jessica: We could organize a girls-only programming class.
+		Professor Waston: That’s not a good idea long-term because it’s a form of segregation but still a way to encourage more girls to try it out! Good idea.
+===
