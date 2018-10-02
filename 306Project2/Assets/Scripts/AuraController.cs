@@ -34,12 +34,7 @@ public class AuraController : MonoBehaviour {
     //Triggers minigame on start of collision
     private void OnTriggerEnter2D(Collider2D collision)
     {
-<<<<<<< HEAD
         TriggerMiniGame(collision);
-=======
-        player.LoseOnePower();
-        Debug.Log("Start minigame here");
->>>>>>> scoring
     }
 
     //Triggers minigame during collision in case start not detected
