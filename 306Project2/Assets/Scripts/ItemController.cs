@@ -17,10 +17,16 @@ public class ItemController : MonoBehaviour {
 
     private bool inItemZone = false;
 
+    private PlayerController player;
+
+
 	// Use this for initialization
 	void Start () {
 
         GameObject itemSlots = GameObject.FindGameObjectWithTag("ItemSlots");
+
+        player = GameObject.FindGameObjectWithTag("player").GetComponent<PlayerController>();
+
 
         //Loads item slots
         for (int i = 0; i < itemSlots.transform.childCount; i++)
@@ -58,6 +64,7 @@ public class ItemController : MonoBehaviour {
                 freeItemSlot.GetComponent<Image>().sprite = currentItemZone.GetComponent<SpriteRenderer>().sprite;
                 items.Remove(currentItemZone.gameObject);
                 Destroy(currentItemZone.gameObject);
+                player.ChangeConfidence(20);
             }
         }
 
