@@ -114,7 +114,6 @@ public class MiniGameGenerator : MonoBehaviour {
         goRectTransform.SetParent(parentRectTransform);
         goRectTransform.localPosition = new Vector2(0, 0);
         go.SetActive(false);
-        Debug.Log("created ready/go");
 
         //Get ready for the game
         //the left most arrow is the last index of the array it appears
