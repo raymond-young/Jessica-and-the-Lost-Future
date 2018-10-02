@@ -64,6 +64,7 @@ public class ItemController : MonoBehaviour {
                 freeItemSlot.GetComponent<Image>().sprite = currentItemZone.GetComponent<SpriteRenderer>().sprite;
                 items.Remove(currentItemZone.gameObject);
                 Destroy(currentItemZone.gameObject);
+                player.ChangeConfidence(20);
             }
         }
 
@@ -85,22 +86,7 @@ public class ItemController : MonoBehaviour {
             {
                 if (item.GetComponent<Image>().sprite.name.Equals("Background"))
                 {
-
                     freeItemSlot = item;
-
-                    foreach (Sprite sprite in itemSprites)
-                    {
-
-                        if (collision.gameObject.GetComponent<SpriteRenderer>().sprite.Equals(sprite))
-                        {
-                            item.GetComponent<Image>().sprite = sprite;
-                            player.ChangeConfidence(20);
-                            break;
-                        }
-                    }
-
-                    break;
-
                 }
             }
         }
