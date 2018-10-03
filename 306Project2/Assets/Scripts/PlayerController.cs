@@ -171,8 +171,12 @@ public class PlayerController : MonoBehaviour
             if (power.GetComponent<Image>().enabled == true)
             {
                 power.GetComponent<Image>().enabled = false;
-                gameOver = false;
                 numLives--;
+                if (numLives > 0)
+                {
+                    gameOver = false;
+       
+                }
                 UpdateScoreText();
                 break;
             }
