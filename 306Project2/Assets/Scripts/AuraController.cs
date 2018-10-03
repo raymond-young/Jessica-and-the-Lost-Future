@@ -21,6 +21,7 @@ public class AuraController : MonoBehaviour {
     //Triggers minigame
     private void TriggerMiniGame(Collider2D collision)
     {
+        //Triggers minigame if tag is player
         if (!playingMiniGame && collision.gameObject.tag.Equals("player"))
         {
             GameObject npc = gameObject.transform.parent.gameObject;

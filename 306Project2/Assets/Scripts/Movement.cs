@@ -47,7 +47,10 @@ public abstract class Movement : MonoBehaviour {
             yield return null;
         }
 
+        //Set wait to false to inidcate the movement is completed
         wait = false;
+
+        //Toggle direction
         if (movingTowards)
         {
             movingTowards = false;
@@ -83,6 +86,7 @@ public abstract class Movement : MonoBehaviour {
                 yield return null;
             }
         }
+        //Set wait to false to inidcate the movement is completed
         wait = false;
     }
 
