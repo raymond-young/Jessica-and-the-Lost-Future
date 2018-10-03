@@ -7,12 +7,12 @@
 ## To download the project for prototype:
 ### Requirements:
 Unity version 2018.1.2f1
-### Steps:
-Download contents of Prototype folder and:
+### Execution instructions:
+#### Download contents of Prototype folder and:
 
 1) Run Prototype.exe
 
-OR build from unity:
+#### OR build from unity:
 
 1) clone https://github.com/rayyoung122/306-Project-2 onto a local directory
 2) pull from the repository (prototype branch)
@@ -20,6 +20,12 @@ OR build from unity:
 4) go to Assets/Scenes
 5) double-click to open WelcomeScene
 6) run WelcomeScene to play game
+
+#### OR run pre-release from
+
+1) go to https://github.com/rayyoung122/306-Project-2/releases/tag/v0.0-alpha
+2) download and unzip the Prototype-exe.zip
+3) run Prototype.exe
 
 ## Team Details ##
 
@@ -35,5 +41,5 @@ OR build from unity:
 |Yianni Bares|ybar417|ybar417@aucklanduni.ac.nz|yianni1|
 
 ## Documentation
-Link to wiki: https://github.com/rayyoung122/306-Project-2/wiki
-Link to drive(please use auckland university email): https://docs.google.com/presentation/d/1C08-Vh8kKUJytQSK6Q-UHY517M6R-vqNzhssSz1kQKk/edit?usp=sharing
+* Link to wiki: https://github.com/rayyoung122/306-Project-2/wiki
+* Link to drive(please use auckland university email): https://docs.google.com/presentation/d/1C08-Vh8kKUJytQSK6Q-UHY517M6R-vqNzhssSz1kQKk/edit?usp=sharing
