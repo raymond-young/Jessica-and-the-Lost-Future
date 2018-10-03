@@ -5,6 +5,7 @@ using UnityEngine;
 public class MiniGameManager : MonoBehaviour {
 
     //Reference list of enemy NPCs
+    private GameObject canvas;
     private List<GameObject> npcs = new List<GameObject>();
     private PlayerController player;
 
@@ -17,6 +18,8 @@ public class MiniGameManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        canvas = GameObject.Find("Canvas");
+
 
         //Initialises reference to other NPC objects
         GameObject[] npcGameObject = GameObject.FindGameObjectsWithTag("BadNPC");
@@ -51,7 +54,15 @@ public class MiniGameManager : MonoBehaviour {
             player.enabled = false;
 
             //Start minigame
-            miniGame = Instantiate(Resources.Load("Minigame", typeof(GameObject))) as GameObject;
+            miniGame = Instantiate(Resources.Load("MGame", typeof(GameObject))) as GameObject;
+
+            miniGame.transform.SetParent(canvas.transform);
+
+            miniGame.GetComponent<RectTransform>().position = Vector2.zero;
+            miniGame.GetComponent<RectTransform>().localPosition = Vector2.zero;
+            miniGame.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+
+            
             hasStarted = true;
         }
 
