@@ -14,20 +14,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WelcomeScene.unity
     guid: 14b75b25490e88e489fc981b530c5b22
-  - enabled: 1
-    path: Assets/Scenes/TestingScene.unity
+  - enabled: 0
+    path: Assets/Scenes/TestingScene-Suying.unity
     guid: c75952bacfb817b459f3c43e6f89353b
   - enabled: 1
     path: Assets/Scenes/EndOfLevelScene.unity
     guid: 48ba46e0aee880442b5fa71123908aff
-  - enabled: 1
+  - enabled: 0
     path: Assets/Resources/Scenes for unit tests/TestItemScene.unity
     guid: df13f0a09b6826c45b8c35bfc23ee816
-  - enabled: 1
+  - enabled: 0
     path: Assets/Resources/Scenes for unit tests/TestMovementScene.unity
     guid: 808854a7edcd5b944966b8354cfaec28
-    path: Assets/Scenes/SettingsScene.unity
-    guid: 4ea35dd92e1765846b71902ad4085bd4
   - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: e7e9bda9236464c0f8b335a2214f3379
