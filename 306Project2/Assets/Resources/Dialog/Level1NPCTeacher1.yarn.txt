@@ -6,18 +6,26 @@ title: MrsBeryl
 	Don't forget to go to the library and do some research.
 	You need to read at least three books before you choose!
 <<else>>
-	Mrs Beryl: Have you decided yet?
-	-> Yes
-		Mrs Beryl: Great! What did you choose?
-		-> Electronics Technology
-			Mrs. Beryl: That’s wonderful Jessica, don’t forget to pop in to the workshop for your next class!
-		-> Programming
-			Mrs. Beryl: That’s wonderful Jessica, don’t forget to pop in to the workshop for your next class!
-		-> Cooking
-			Something tells you you shouldn't pick that...
-		-> Textiles
-			Something tells you you shouldn't pick that...
-	-> No
-		Mrs. Beryl: Come back when you've decided!
+	<<if $hasDecided is false>>
+		<<if $readBook1 is true and $readBook2 is true and $readBook3 is true>>
+			Mrs Beryl: Have you decided yet?
+			-> Yes
+				Mrs Beryl: Great! What did you choose?
+				-> Electronics Technology
+					Mrs. Beryl: That’s wonderful Jessica, don’t forget to pop in to the workshop for your next class!
+				-> Programming
+					Mrs. Beryl: That’s wonderful Jessica, don’t forget to pop in to the workshop for your next class!
+				-> Cooking
+					Something tells you you shouldn't pick that...
+				-> Textiles
+					Something tells you you shouldn't pick that...
+			-> No
+				Mrs. Beryl: Come back when you've decided!
+		<<else>>
+			You need to read more books before you decide.
+		<<endif>>
+	<<else>>
+		I hope you have a great day!
+	<<endif>>
 <<endif>>
 ===
