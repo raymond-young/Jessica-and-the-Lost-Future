@@ -9778,19 +9778,19 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1794853140}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4719971373321880, guid: 3c3397e7856804eb58b4eb3d70a95823, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -11.41
+      value: -24.295383
       objectReference: {fileID: 0}
     - target: {fileID: 4719971373321880, guid: 3c3397e7856804eb58b4eb3d70a95823, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -12.688167
+      value: 3.5512953
       objectReference: {fileID: 0}
     - target: {fileID: 4719971373321880, guid: 3c3397e7856804eb58b4eb3d70a95823, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 8.042969
       objectReference: {fileID: 0}
     - target: {fileID: 4719971373321880, guid: 3c3397e7856804eb58b4eb3d70a95823, type: 2}
       propertyPath: m_LocalRotation.x
@@ -9810,7 +9810,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4719971373321880, guid: 3c3397e7856804eb58b4eb3d70a95823, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 212097075525607336, guid: 3c3397e7856804eb58b4eb3d70a95823,
         type: 2}
@@ -9834,26 +9834,25 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1312561123427874, guid: 3c3397e7856804eb58b4eb3d70a95823, type: 2}
       propertyPath: m_TagString
-      value: Untagged
+      value: BadNPC
       objectReference: {fileID: 0}
     - target: {fileID: 114439472472566028, guid: 3c3397e7856804eb58b4eb3d70a95823,
         type: 2}
       propertyPath: xPos
-      value: -1
+      value: -21.29538
       objectReference: {fileID: 0}
     - target: {fileID: 114439472472566028, guid: 3c3397e7856804eb58b4eb3d70a95823,
         type: 2}
       propertyPath: yPos
-      value: -1
+      value: 3.551295
+      objectReference: {fileID: 0}
+    - target: {fileID: 1312561123427874, guid: 3c3397e7856804eb58b4eb3d70a95823, type: 2}
+      propertyPath: m_Name
+      value: BadNPCField
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3c3397e7856804eb58b4eb3d70a95823, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &340577214 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4719971373321880, guid: 3c3397e7856804eb58b4eb3d70a95823,
-    type: 2}
-  m_PrefabInternal: {fileID: 340577213}
 --- !u!1 &359447883
 GameObject:
   m_ObjectHideFlags: 0
@@ -41633,7 +41632,7 @@ Transform:
   - {fileID: 113838950}
   - {fileID: 1456465435}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1439305128
 GameObject:
@@ -51358,35 +51357,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.15999997, y: 0}
   m_SizeDelta: {x: 26, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1794853139
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1794853140}
-  m_Layer: 0
-  m_Name: NPCs
-  m_TagString: NPCs
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1794853140
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1794853139}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.885385, y: 16.239462, z: 8.042969}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 340577214}
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1829544245
 GameObject:
   m_ObjectHideFlags: 0
