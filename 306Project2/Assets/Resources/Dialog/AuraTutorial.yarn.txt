@@ -1,0 +1,11 @@
+title: AuraTutorial
+---
+<<if $hasDoneTutorial is false>>
+	<<set $hasDoneTutorial to true>>
+	Oh no! The company has sent some people back in time to stop me!
+	I need to avoid their auras or remove the company's influence!
+	Press the arrow keys on the screen in the correct order before the time runs out to clear the aura.
+	If you fail to do so you will lose one point of energy.
+	If you lose all your points of energy you will be sent back to the future!
+<<endif>>
+===
