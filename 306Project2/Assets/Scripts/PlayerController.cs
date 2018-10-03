@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Yarn.Unity;
-using UnityEngine.SceneManagement;
 using System;
 
 /**
@@ -15,7 +14,7 @@ public class PlayerController : MonoBehaviour {
     // Player body.
     private Rigidbody2D playerBody;
     // Speed of the player's movements.
-    private int speed = 10;
+    private int speed = 8;
     // The confidence bar to render the confidence.
     public Slider confidenceBar;
     // Stores the number of lives.
