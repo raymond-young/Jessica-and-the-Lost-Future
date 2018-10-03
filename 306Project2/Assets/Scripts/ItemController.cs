@@ -109,9 +109,9 @@ public class ItemController : MonoBehaviour {
         //ONLY USED FOR NUNIT TESTING------------------------------------------
         if (collision.gameObject.tag.Equals("Item"))
         {
-            freeItemSlot.GetComponent<Image>().sprite = currentItemZone.GetComponent<SpriteRenderer>().sprite;
-            items.Remove(currentItemZone.gameObject);
-            Destroy(currentItemZone.gameObject);
+            //freeItemSlot.GetComponent<Image>().sprite = currentItemZone.GetComponent<SpriteRenderer>().sprite;
+            //items.Remove(currentItemZone.gameObject);
+            //Destroy(currentItemZone.gameObject);
         }
         //---------------------------------------------------
     }

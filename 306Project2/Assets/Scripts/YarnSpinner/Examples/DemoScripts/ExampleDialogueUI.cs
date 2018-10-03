@@ -62,6 +62,7 @@ namespace Yarn.Unity.Example {
         /// How quickly to show the text, in seconds per character
         [Tooltip("How quickly to show the text, in seconds per character")]
         public float textSpeed = 0.025f;
+        private float currentTextSpeed;
 
         /// The buttons that let the user choose an option
         public List<Button> optionButtons;
@@ -90,17 +91,27 @@ namespace Yarn.Unity.Example {
         /// Show a line of dialogue, gradually
         public override IEnumerator RunLine (Yarn.Line line)
         {
+            currentTextSpeed = textSpeed;
             // Show the text
             lineText.gameObject.SetActive (true);
 
-            if (textSpeed > 0.0f) {
+            if (currentTextSpeed > 0.0f) {
                 // Display the line one character at a time
                 var stringBuilder = new StringBuilder ();
 
                 foreach (char c in line.text) {
                     stringBuilder.Append (c);
                     lineText.text = stringBuilder.ToString ();
-                    yield return new WaitForSeconds (textSpeed);
+                    // Skip the text if a key is down.
+                    if (Input.anyKeyDown == true) {
+                        lineText.text = line.text;
+                        // Wait until the key is not down.
+                        while (Input.anyKeyDown == true) {
+                            yield return null;
+                        }
+                        break;
+                    }
+                    yield return new WaitForSeconds (currentTextSpeed);
                 }
             } else {
                 // Display the line immediately if textSpeed == 0
@@ -121,6 +132,11 @@ namespace Yarn.Unity.Example {
 
             if (continuePrompt != null)
                 continuePrompt.SetActive (false);
+
+            // Wait until key released.
+            while (Input.anyKeyDown == true) {
+                yield return null;
+            }
 
         }
 
