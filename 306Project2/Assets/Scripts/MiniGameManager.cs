@@ -58,6 +58,7 @@ public class MiniGameManager : MonoBehaviour {
 
             miniGame.transform.SetParent(canvas.transform);
 
+            //Ensures mini game is positioned correctly on canvas
             miniGame.GetComponent<RectTransform>().position = Vector2.zero;
             miniGame.GetComponent<RectTransform>().localPosition = Vector2.zero;
             miniGame.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
