@@ -269,10 +269,10 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    public float CalculateScore() 
+    public int CalculateScore() 
     {
         // Score calulated from confidence + the number of lives left.
-        score = (confidenceBar.value * 100) + ((float)numLives * 20);
+        int score = (int)(confidenceBar.value * 100) + ((int)numLives * 20);
         return score;
     }
 
