@@ -49,6 +49,9 @@ public class PlayerController : MonoBehaviour
 
         playerBody = gameObject.GetComponent<Rigidbody2D>();
 
+        //Prevents rotation of main character
+        playerBody.freezeRotation = true;
+
         storeLives = GameObject.FindGameObjectWithTag("StoreLives");
 
         for (int i = storeLives.transform.childCount - 1; i >= 0; i--)
@@ -85,13 +88,6 @@ public class PlayerController : MonoBehaviour
 
 			//Movement of character * speed
 			playerBody.velocity = (movement * speed);
-
-			//Prevents rotation on collision
-			if (playerBody.rotation != 0)
-			{
-				playerBody.rotation = 0;
-
-			}
 
 			//update character Animation to face the right direction
 			anim.SetFloat("MoveX",Input.GetAxisRaw("Horizontal"));
