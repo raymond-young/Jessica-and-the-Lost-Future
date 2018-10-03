@@ -1,0 +1,13 @@
+title: LockerNote
+---
+This is a note that reads:
+People to ask for my programming group:
+- Jenny
+- Jessica
+- James
+- Grace
+<<if $hasLockerNote is false>>
+	<<set $hasLockerNote to true>>
+	<<change_confidence Player 10>>
+<<endif>>
+===
