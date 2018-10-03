@@ -1,0 +1,23 @@
+title: MrsBeryl
+---
+<<if $talkedToMrsBeryl is false>>
+	<<set $talkedToMrsBeryl to true>>
+	Mrs Beryl: Hi Jessica, remember you've got to pick an elective today!
+	Don't forget to go to the library and do some research.
+	You need to read at least three books before you choose!
+<<else>>
+	Mrs Beryl: Have you decided yet?
+	-> Yes
+		Mrs Beryl: Great! What did you choose?
+		-> Electronics Technology
+			Mrs. Beryl: That’s wonderful Jessica, don’t forget to pop in to the workshop for your next class!
+		-> Programming
+			Mrs. Beryl: That’s wonderful Jessica, don’t forget to pop in to the workshop for your next class!
+		-> Cooking
+			Something tells you you shouldn't pick that...
+		-> Textiles
+			Something tells you you shouldn't pick that...
+	-> No
+		Mrs. Beryl: Come back when you've decided!
+<<endif>>
+===
