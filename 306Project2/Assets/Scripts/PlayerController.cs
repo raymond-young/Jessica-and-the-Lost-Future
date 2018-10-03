@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
 {
 
 	private Rigidbody2D playerBody;
-	private int speed = 10;
+	private int speed = 8;
 	public Slider confidenceBar;
 
 	private GameObject storeLives;
