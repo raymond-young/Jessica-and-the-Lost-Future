@@ -1,0 +1,4 @@
+title: ShouldGoToClass
+---
+School is starting soon! Don't be late!
+===

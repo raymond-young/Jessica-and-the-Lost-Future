@@ -310,6 +310,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 start = new Vector2(0, 0);
         gameObject.transform.position = start;
+        cam.transform.position = new Vector2(1, 0);
     }
 
 
