@@ -1,0 +1,6 @@
+title: ComputerBlock
+---
+<<if $talkedToMrsBeryl is false>>
+	Class is starting soon! Don't be late!
+<<endif>>
+===

@@ -1,0 +1,7 @@
+title: Key
+---
+<<if $hasKey is false>>
+	<<set $hasKey to true>>
+	You picked up the Key.
+<<endif>>
+===
