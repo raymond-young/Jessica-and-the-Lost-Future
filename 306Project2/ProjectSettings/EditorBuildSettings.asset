@@ -8,9 +8,9 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: 
-    guid: b95dc987ce2827944b4c54e333c453a2
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/WelcomeScene.unity
     guid: 14b75b25490e88e489fc981b530c5b22
@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EndOfLevelScene.unity
     guid: 48ba46e0aee880442b5fa71123908aff
+  - enabled: 1
+    path: Assets/Resources/Scenes for unit tests/TestItemScene.unity
+    guid: df13f0a09b6826c45b8c35bfc23ee816
+  - enabled: 1
+    path: Assets/Resources/Scenes for unit tests/TestMovementScene.unity
+    guid: 808854a7edcd5b944966b8354cfaec28
   m_configObjects: {}
