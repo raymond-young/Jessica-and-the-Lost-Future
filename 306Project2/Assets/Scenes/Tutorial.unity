@@ -2595,6 +2595,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   confidenceBar: {fileID: 1866223548}
+  scoreTransfer: {fileID: 0}
   cam: {fileID: 1196126220}
   scoreText: {fileID: 0}
   interactionRadius: 2
@@ -4013,7 +4014,7 @@ GameObject:
   - component: {fileID: 515047183}
   m_Layer: 0
   m_Name: TimeMachine
-  m_TagString: NPCs
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

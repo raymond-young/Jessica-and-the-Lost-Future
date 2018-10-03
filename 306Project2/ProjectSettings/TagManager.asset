@@ -14,8 +14,7 @@ TagManager:
   - MImage
   - NPCs
   - EventZone
-  - TestNPC
-  - scoreTransferObject
+  - NPC
   layers:
   - Default
   - TransparentFX

@@ -208,7 +208,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnTriggerExit2D(Collider2D collider) {
-    	if (collider.gameObject.tag.Equals("Item") || collider.gameObject.tag.Equals("NPCs")) {
+    	if (collider.gameObject.tag.Equals("Item") || collider.gameObject.tag.Equals("NPC")) {
     		currentNPCZone = null;
             glow.SetActive(false);
             inNPCZone = false;
@@ -244,7 +244,7 @@ public class PlayerController : MonoBehaviour
 			// Set the position of the player to be teleported.
 			teleportX = collider.GetComponent<Door>().playerX;
 			teleportY = collider.GetComponent<Door>().playerY;
-		} else if (collider.tag == "NPCs" || collider.tag == "Item" && !isTransitioning) {
+		} else if (collider.tag == "NPC" || collider.tag == "Item" && !isTransitioning) {
 			inNPCZone = true;
 			currentNPCZone = collider;
             Vector2 temp = collider.gameObject.transform.position;

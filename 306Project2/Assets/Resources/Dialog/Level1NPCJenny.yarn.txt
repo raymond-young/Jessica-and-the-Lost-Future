@@ -6,15 +6,15 @@ title: Jenny
 	Jessica: I’m taking the electronics technology and programming classes!
 	Jenny: I wish I could do that, but I don’t think I’m good enough. So I’m taking the cooking class....
 	-> You are good enough
-		Jessica: I believe you’re good enough!
-		Jenny: Really? That sounds hard.
-		Jessica: Yes! Anyone can learn. And you can do it with me so you won’t be alone.
-		Jenny: I’m excited to do it together!
-		<<change_confidence Player 15>>
-	-> Jessica: Agree
-		Jessica: My parents said that I should do cooking too.
-		Jessica: At least it’ll be easy.
-		<<change_confidence Player -10>>
+    	Jessica: I believe you’re good enough!
+    	Jenny: Really? That sounds hard.
+    	Jessica: Yes! Anyone can learn. And you can do it with me so you won’t be alone.
+    	Jenny: I’m excited to do it together!
+    	<<change_confidence Player 15>>
+	-> My parents said that I should do cooking too.
+    	Jessica: My parents said that I should do cooking too.
+    	Jessica: At least it’ll be easy.
+    	<<change_confidence Player -10>>
 <<else>>
 	We've talked already.
 <<endif>>

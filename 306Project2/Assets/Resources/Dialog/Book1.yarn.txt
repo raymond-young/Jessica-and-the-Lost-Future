@@ -3,4 +3,8 @@ title: Book1
 Title: Margaret Hamilton: Software Engineering Pioneer
 Margaret Hamilton was among the earliest computer software programmers.
 She directed the team that developed software for the Apollo space program.
+<<if $readBook1 is false>>
+	<<set $readBook1 to true>>
+	<<change_confidence Player 5>>
+<<endif>>
 ===

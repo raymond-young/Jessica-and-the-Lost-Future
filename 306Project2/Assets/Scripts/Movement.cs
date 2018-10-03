@@ -28,10 +28,10 @@ public abstract class Movement : MonoBehaviour {
 		customFixedUpdate();
 	}
 
-    protected IEnumerator DoLinearMove(Vector3 end, float speed)
+    protected IEnumerator DoLinearMove(Vector2 end, float speed)
     {
         //Calculate the remaining distance to move. 
-        float RemainingDistance = Vector3.Distance(transform.position, end);
+        float RemainingDistance = Vector2.Distance(transform.position, end);
         //While that distance is greater than a very small amount
         while (RemainingDistance > 0.05)
         {
@@ -40,7 +40,7 @@ public abstract class Movement : MonoBehaviour {
             Vector2 calculatedPos = Vector2.MoveTowards(transform.position, end, speed * Time.deltaTime);
             npcBody.MovePosition(calculatedPos);
             //Recalculate the remaining distance after moving.
-            RemainingDistance = Vector3.Distance(transform.position, end);
+            RemainingDistance = Vector2.Distance(transform.position, end);
             //Return and loop until sqrRemainingDistance is close enough to zero to end the function
             yield return null;
         }
