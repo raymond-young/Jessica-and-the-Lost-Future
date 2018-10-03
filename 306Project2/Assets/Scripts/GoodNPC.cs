@@ -33,17 +33,38 @@ public class GoodNPC : Movement {
     }
 
     // Update is called once per frame
-    protected override void FixedUpdate () {
-        if (isMovingCharacter) {
-           if (!wait) {
+
+    protected override void FixedUpdate()
+    {
+        if (isMovingCharacter)
+        {
+            if (!wait)
+            {
                 Vector2 newPos;
-                if (movingTowards) {
+                if (movingTowards)
+                {
                     newPos = new Vector2(xPos, yPos);
                 }
-                else {
+                else
+                {
                     newPos = originalPos;
                 }
                 MoveToPos(originalPos, newPos);
+            }
+        }
+    }
+
+    protected override void customFixedUpdate () {
+       if (!wait)
+        {
+            Vector2 newPos;
+            if (movingTowards)
+            {
+                newPos = new Vector2(xPos, yPos);
+            }
+            else
+            {
+                newPos = origonalPos;
             }
         }
     }

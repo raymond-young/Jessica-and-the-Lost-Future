@@ -20,8 +20,8 @@ public class ItemController : MonoBehaviour {
     private PlayerController player;
 
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start() {
 
         GameObject itemSlots = GameObject.FindGameObjectWithTag("ItemSlots");
 
@@ -38,7 +38,7 @@ public class ItemController : MonoBehaviour {
         //Loads item sprites
         for (int i = 0; i < sprites.Length; i++)
         {
-            Sprite sprite = (Sprite) sprites[i];
+            Sprite sprite = (Sprite)sprites[i];
             itemSprites.Add(sprite);
         }
 
@@ -53,9 +53,9 @@ public class ItemController : MonoBehaviour {
         glow.SetActive(false);
 
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update() {
 
         if (inItemZone)
         {
@@ -68,7 +68,7 @@ public class ItemController : MonoBehaviour {
             }
         }
 
-	}
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -103,4 +103,14 @@ public class ItemController : MonoBehaviour {
             inItemZone = false;
         }
     }
+
+    public void OnTriggerStay2D(Collider2D collision)
+    {
+        //ONLY USED FOR NUNIT TESTING------------------------------------------
+        freeItemSlot.GetComponent<Image>().sprite = currentItemZone.GetComponent<SpriteRenderer>().sprite;
+        items.Remove(currentItemZone.gameObject);
+        Destroy(currentItemZone.gameObject);
+        //---------------------------------------------------
+    }
+
 }

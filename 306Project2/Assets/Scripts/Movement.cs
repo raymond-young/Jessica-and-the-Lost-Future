@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Movement : MonoBehaviour {
 
     private Rigidbody2D npcBody;
+    private Transform mainCharacter;
 
     protected bool wait = false;
     protected bool movingTowards = true;
@@ -14,13 +15,21 @@ public abstract class Movement : MonoBehaviour {
     // Use this for initialization
     protected virtual void Start () {
         npcBody = gameObject.GetComponent<Rigidbody2D>();
+        mainCharacter = GameObject.FindGameObjectWithTag("player").transform;
     }
 
     // Update is called once per frame
     protected virtual void FixedUpdate () {
+        if(gameObject.transform.position.y > mainCharacter.position.y){
+            gameObject.GetComponent<SpriteRenderer>().sortingOrder = 0;
+        }else{
+            gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
+        }
+		customFixedUpdate();
 	}
 
-    protected IEnumerator DoLinearMove(Vector3 end, float speed) {
+    protected IEnumerator DoLinearMove(Vector3 end, float speed)
+    {
         //Calculate the remaining distance to move. 
         float RemainingDistance = Vector3.Distance(transform.position, end);
         //While that distance is greater than a very small amount
@@ -47,7 +56,8 @@ public abstract class Movement : MonoBehaviour {
         }
     }
 
-    protected IEnumerator DoRectangleMove(Vector2 origonalPos, Vector2 thirdPos, float speed, bool clockwise, int segmentNum) {
+    protected IEnumerator DoRectangleMove(Vector2 origonalPos, Vector2 thirdPos, float speed, bool clockwise, int segmentNum)
+    {
 
         ISegment segment = SegmentFactory.MakePoints(segmentNum, PathMovement.square);
         List<Vector2> rectanglePoints = segment.CalculatePoints(origonalPos, thirdPos, clockwise);
@@ -74,7 +84,8 @@ public abstract class Movement : MonoBehaviour {
         wait = false;
     }
 
-    protected IEnumerator DoCircularMove(Vector2 origionalPos, Vector2 centerPos, float speed, int segmentNum) {
+    protected IEnumerator DoCircularMove(Vector2 origionalPos, Vector2 centerPos, float speed, int segmentNum)
+    {
         float angle = 0;
 
         int sin = 1;
@@ -186,4 +197,5 @@ public abstract class Movement : MonoBehaviour {
         wait = false;
     }
 
+    protected abstract void customFixedUpdate();
 }
