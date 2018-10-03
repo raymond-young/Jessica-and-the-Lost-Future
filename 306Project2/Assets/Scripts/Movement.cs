@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Movement : MonoBehaviour {
 
     private Rigidbody2D npcBody;
+    private Transform mainCharacter;
 
     protected bool wait = false;
     protected bool movingTowards = true;
@@ -14,18 +15,24 @@ public abstract class Movement : MonoBehaviour {
     // Use this for initialization
     protected virtual void Start () {
         npcBody = gameObject.GetComponent<Rigidbody2D>();
-      
+        mainCharacter = GameObject.FindGameObjectWithTag("player").transform;
     }
 
     // Update is called once per frame
     protected virtual void FixedUpdate () {
-		
+        if(gameObject.transform.position.y > mainCharacter.position.y){
+            gameObject.GetComponent<SpriteRenderer>().sortingOrder = 0;
+        }else{
+            gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
+        }
+		customFixedUpdate();
 	}
 
-    protected IEnumerator DoLinearMove(Vector3 end, float speed)
+    protected IEnumerator DoLinearMove(Vector2 end, float speed)
     {
+        
         //Calculate the remaining distance to move. 
-        float RemainingDistance = Vector3.Distance(transform.position, end);
+        float RemainingDistance = Vector2.Distance(transform.position, end);
         //While that distance is greater than a very small amount
         while (RemainingDistance > 0.05)
         {
@@ -33,13 +40,17 @@ public abstract class Movement : MonoBehaviour {
 
             Vector2 calculatedPos = Vector2.MoveTowards(transform.position, end, speed * Time.deltaTime);
             npcBody.MovePosition(calculatedPos);
+   
             //Recalculate the remaining distance after moving.
-            RemainingDistance = Vector3.Distance(transform.position, end);
+            RemainingDistance = Vector2.Distance(transform.position, end);
             //Return and loop until sqrRemainingDistance is close enough to zero to end the function
             yield return null;
         }
 
+        //Set wait to false to inidcate the movement is completed
         wait = false;
+
+        //Toggle direction
         if (movingTowards)
         {
             movingTowards = false;
@@ -75,6 +86,7 @@ public abstract class Movement : MonoBehaviour {
                 yield return null;
             }
         }
+        //Set wait to false to inidcate the movement is completed
         wait = false;
     }
 
@@ -191,4 +203,5 @@ public abstract class Movement : MonoBehaviour {
         wait = false;
     }
 
+    protected abstract void customFixedUpdate();
 }

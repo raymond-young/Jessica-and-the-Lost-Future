@@ -1,0 +1,10 @@
+title: LockerPoster
+---
+This is a poster that reads:
+Become an engineer now!
+We care about what's in your head, not who you are.
+<<if $hasPoster is false>>
+	<<set $hasPoster to true>>
+	<<change_confidence Player 10>>
+<<endif>>
+===

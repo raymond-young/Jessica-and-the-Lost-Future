@@ -61,7 +61,7 @@ public class EnemyNPC : Movement
     }
 
     // Update is called once per frame
-    protected override void FixedUpdate() {
+    protected override void customFixedUpdate() {
         if (dropDown.Equals(PathMovement.linear))
         {
             if (!wait)

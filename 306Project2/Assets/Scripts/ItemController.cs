@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/* Controls players currently held items */
 public class ItemController : MonoBehaviour {
 
     private List<GameObject> items = new List<GameObject>();
@@ -13,15 +14,13 @@ public class ItemController : MonoBehaviour {
 
     private GameObject freeItemSlot;
 
-    private GameObject glow;
-
     private bool inItemZone = false;
 
     private PlayerController player;
 
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start() {
 
         GameObject itemSlots = GameObject.FindGameObjectWithTag("ItemSlots");
 
@@ -38,24 +37,13 @@ public class ItemController : MonoBehaviour {
         //Loads item sprites
         for (int i = 0; i < sprites.Length; i++)
         {
-            Sprite sprite = (Sprite) sprites[i];
+            Sprite sprite = (Sprite)sprites[i];
             itemSprites.Add(sprite);
         }
-
-
-        // Make sure halo is visible.
-        GameObject[] withHalo = GameObject.FindGameObjectsWithTag("Item");
-        foreach (GameObject item in withHalo) {
-            //item.GetComponent<ParticleSystemRenderer>().sortingLayerName = "Objects";
-        }
-
-        glow = GameObject.Find("Glow");
-        glow.SetActive(false);
-
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update() {
 
         if (inItemZone)
         {
@@ -68,16 +56,14 @@ public class ItemController : MonoBehaviour {
             }
         }
 
-	}
+    }
 
+    /* Sets item zone when approaching item */
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
         if (collision.gameObject.tag.Equals("Item"))
         {
-            Vector2 temp = collision.gameObject.transform.position;
-            glow.transform.position = temp;
-            glow.SetActive(true);
             currentItemZone = collision;
             inItemZone = true;
 
@@ -93,14 +79,27 @@ public class ItemController : MonoBehaviour {
 
     }
 
+    /* Nullifies item zone when moving away from item */
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag.Equals("Item"))
         {
-            glow.SetActive(false);
             currentItemZone = null;
             freeItemSlot = null;
             inItemZone = false;
         }
     }
+
+    public void OnTriggerStay2D(Collider2D collision)
+    {
+        //ONLY USED FOR NUNIT TESTING------------------------------------------
+        if (collision.gameObject.tag.Equals("Item"))
+        {
+            //freeItemSlot.GetComponent<Image>().sprite = currentItemZone.GetComponent<SpriteRenderer>().sprite;
+            //items.Remove(currentItemZone.gameObject);
+            //Destroy(currentItemZone.gameObject);
+        }
+        //---------------------------------------------------
+    }
+
 }

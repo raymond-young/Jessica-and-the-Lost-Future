@@ -5,9 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class EndLevelUI : MonoBehaviour {
 
+    private string score;
+    public UnityEngine.UI.Text scoreText;
 	// Use this for initialization
 	void Start () {
-		
+        GameObject object1 = GameObject.FindGameObjectWithTag("scoreTransferObject");
+        score = object1.GetComponent<ScoreTransferScript>().getScore();
+        scoreText.text = score.ToString();
 	}
 	
 	// Update is called once per frame
@@ -17,16 +21,16 @@ public class EndLevelUI : MonoBehaviour {
 
     public void restartButtonClicked()
     {
-        SceneManager.LoadScene("SampleScene");
-    }
-
-    public void nextLevelButtonClicked()
-    {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Level-1");
     }
 
     public void mainMenuButtonClicked()
     {
         SceneManager.LoadScene("WelcomeScene");
+    }
+
+    public void setScore(float score)
+    {
+        scoreText.text = score.ToString();
     }
 }

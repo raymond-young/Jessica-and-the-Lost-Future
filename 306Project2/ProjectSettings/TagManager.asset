@@ -13,6 +13,10 @@ TagManager:
   - MiniGameManager
   - MImage
   - NPCs
+  - EventZone
+  - NPC
+  - scoreTransferObject
+  - BadNPC
   layers:
   - Default
   - TransparentFX

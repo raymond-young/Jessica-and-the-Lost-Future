@@ -1,0 +1,13 @@
+title: LockedLab
+---
+<<if $hasKey is false>>
+	You need a key to get through... maybe it was dropped outside?
+	<<repel Player>>
+<<endif>>
+<<if $hasKey is true>>
+	<<if $openedDoor is false>>
+		You use the key to unlock the door.
+		<<set $openedDoor to true>>
+	<<endif>>
+<<endif>>
+===

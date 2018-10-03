@@ -16,6 +16,8 @@ public class ArrowsMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        // Format the button depending on the key pressed
         previousIndex = index;
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
@@ -47,15 +49,15 @@ public class ArrowsMovement : MonoBehaviour {
     void FormatButton()
     {
 
-        //cancel the glow for the previous button 
+        // Cancel the glow for the previous button 
         list[previousIndex].GetComponentInChildren<Text>().GetComponent<Outline>().enabled = false;
 
-        //glow the current button 
+        // Glow the current button 
         list[index].GetComponentInChildren<Text>().GetComponent<Outline>().enabled = true;
 
         GameObject button = list[index];
         float buttonYPosition = button.gameObject.transform.position.y;
-        //move arrow
+        // Move arrow
         transform.position = new Vector2(transform.position.x, buttonYPosition);
 
     }

@@ -3,7 +3,8 @@ title: TimeMachine
 <<if $hasWrench is true>>
     Time Machine: Great! You fixed the time machine.
     -> Travel to Jessica's first day in high school.
+    	<<transition Player Level-1>>
 <<else>>
-    Jessica: You need a wrench to fix the time machine.
+    Jessica: You need a hammer to fix the time machine.
 <<endif>>
 ===
