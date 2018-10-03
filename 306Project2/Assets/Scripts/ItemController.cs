@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/* Controls players currently held items */
 public class ItemController : MonoBehaviour {
 
     private List<GameObject> items = new List<GameObject>();
@@ -39,14 +40,6 @@ public class ItemController : MonoBehaviour {
             Sprite sprite = (Sprite)sprites[i];
             itemSprites.Add(sprite);
         }
-
-
-        // Make sure halo is visible.
-        GameObject[] withHalo = GameObject.FindGameObjectsWithTag("Item");
-        foreach (GameObject item in withHalo) {
-            //item.GetComponent<ParticleSystemRenderer>().sortingLayerName = "Objects";
-        }
-
     }
 
     // Update is called once per frame
@@ -65,6 +58,7 @@ public class ItemController : MonoBehaviour {
 
     }
 
+    /* Sets item zone when approaching item */
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
@@ -85,6 +79,7 @@ public class ItemController : MonoBehaviour {
 
     }
 
+    /* Nullifies item zone when moving away from item */
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag.Equals("Item"))

@@ -3,5 +3,10 @@ title: ComputerBlock
 <<if $talkedToMrsBeryl is false>>
 	Class is starting soon! Don't be late!
 	<<repel Player>>
+<<else>>
+	<<if $hasDecided is false>>
+		Don't you need to choose your elective?
+		<<repel Player>>
+	<<endif>>
 <<endif>>
 ===
