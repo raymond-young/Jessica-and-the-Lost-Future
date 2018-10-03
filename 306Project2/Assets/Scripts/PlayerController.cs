@@ -16,7 +16,9 @@ public class PlayerController : MonoBehaviour
 
 	private GameObject storeLives;
 
-	private List<GameObject> power = new List<GameObject>();
+    private GameObject glow;
+
+    private List<GameObject> power = new List<GameObject>();
 
     public GameObject scoreTransfer;
 	// Variables for camera movement.
@@ -63,7 +65,10 @@ public class PlayerController : MonoBehaviour
             }
 
         }
-        
+
+        glow = GameObject.Find("Glow");
+        glow.SetActive(false);
+
         UpdateScoreText();
 
     }
@@ -203,9 +208,10 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnTriggerExit2D(Collider2D collider) {
-    	if (collider.gameObject.tag.Equals("Item") || collider.gameObject.tag.Equals("NPC")) {
+    	if (collider.gameObject.tag.Equals("Item") || collider.gameObject.tag.Equals("NPCs")) {
     		currentNPCZone = null;
-    		inNPCZone = false;
+            glow.SetActive(false);
+            inNPCZone = false;
     	}
     }
 
@@ -241,7 +247,10 @@ public class PlayerController : MonoBehaviour
 		} else if (collider.tag == "NPCs" || collider.tag == "Item" && !isTransitioning) {
 			inNPCZone = true;
 			currentNPCZone = collider;
-		}  else if (collider.tag == "EventZone" && !isTransitioning)
+            Vector2 temp = collider.gameObject.transform.position;
+            glow.transform.position = temp;
+            glow.SetActive(true);
+        }  else if (collider.tag == "EventZone" && !isTransitioning)
         {
         	SetMotionToZero();
             FindObjectOfType<DialogueRunner>().StartDialogue(collider.GetComponent<GoodNPC>().talkToNode);

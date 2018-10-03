@@ -13,8 +13,6 @@ public class ItemController : MonoBehaviour {
 
     private GameObject freeItemSlot;
 
-    private GameObject glow;
-
     private bool inItemZone = false;
 
     private PlayerController player;
@@ -49,9 +47,6 @@ public class ItemController : MonoBehaviour {
             //item.GetComponent<ParticleSystemRenderer>().sortingLayerName = "Objects";
         }
 
-        glow = GameObject.Find("Glow");
-        glow.SetActive(false);
-
     }
 
     // Update is called once per frame
@@ -75,9 +70,6 @@ public class ItemController : MonoBehaviour {
 
         if (collision.gameObject.tag.Equals("Item"))
         {
-            Vector2 temp = collision.gameObject.transform.position;
-            glow.transform.position = temp;
-            glow.SetActive(true);
             currentItemZone = collision;
             inItemZone = true;
 
@@ -97,7 +89,6 @@ public class ItemController : MonoBehaviour {
     {
         if (collision.gameObject.tag.Equals("Item"))
         {
-            glow.SetActive(false);
             currentItemZone = null;
             freeItemSlot = null;
             inItemZone = false;
