@@ -139,14 +139,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //Prevents rotation of character on corners
-        playerBody.angularVelocity = 0;
+
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        //Prevents rotation of character on corners
-        playerBody.angularVelocity = 0;
+
     }
 
     // Confidence is a percentage between 0-100
