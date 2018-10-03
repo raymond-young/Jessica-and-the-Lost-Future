@@ -182,12 +182,17 @@ public class PlayerController : MonoBehaviour
         if (gameOver)
         {
             //Game over here code----------------------------------------
-            Vector3 pos = new Vector3(0,0,0);
-            GameObject scoreTransferObject = Instantiate(scoreTransfer, pos, Quaternion.identity);
-            DontDestroyOnLoad(scoreTransferObject);
-            scoreTransferObject.GetComponent<ScoreTransferScript>().setScore(score);
+            transferScore();
             SceneManager.LoadScene("EndOfLevelScene");
         }
+    }
+
+    public void transferScore()
+    {
+        Vector3 pos = new Vector3(0, 0, 0);
+        GameObject scoreTransferObject = Instantiate(scoreTransfer, pos, Quaternion.identity);
+        DontDestroyOnLoad(scoreTransferObject);
+        scoreTransferObject.GetComponent<ScoreTransferScript>().setScore(score);
     }
 
     public void GainOnePower()
@@ -311,6 +316,7 @@ public class PlayerController : MonoBehaviour
 	// Changes the scene to a different level.
 	[YarnCommand("transition")]
 	public void ChangeLevel(string destination) {
+        transferScore();
 		SceneManager.LoadScene(destination);
 	}
 
