@@ -8,7 +8,9 @@
 ### Requirements:
 Unity version 2018.1.2f1
 ### Steps:
-1) Run Prototype.exe inside the Prototype folder
+Download contents of Prototype folder and:
+
+1) Run Prototype.exe
 
 OR build from unity:
 
