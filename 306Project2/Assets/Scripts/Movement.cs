@@ -30,6 +30,7 @@ public abstract class Movement : MonoBehaviour {
 
     protected IEnumerator DoLinearMove(Vector2 end, float speed)
     {
+        
         //Calculate the remaining distance to move. 
         float RemainingDistance = Vector2.Distance(transform.position, end);
         //While that distance is greater than a very small amount
@@ -39,6 +40,7 @@ public abstract class Movement : MonoBehaviour {
 
             Vector2 calculatedPos = Vector2.MoveTowards(transform.position, end, speed * Time.deltaTime);
             npcBody.MovePosition(calculatedPos);
+   
             //Recalculate the remaining distance after moving.
             RemainingDistance = Vector2.Distance(transform.position, end);
             //Return and loop until sqrRemainingDistance is close enough to zero to end the function

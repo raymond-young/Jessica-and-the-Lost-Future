@@ -19,10 +19,10 @@ public class MiniGameManager : MonoBehaviour {
     void Start () {
 
         //Initialises reference to other NPC objects
-        GameObject npcGameObject = GameObject.FindGameObjectWithTag("NPCs");
-        for (int i = 0; i < npcGameObject.transform.childCount; i++)
+        GameObject[] npcGameObject = GameObject.FindGameObjectsWithTag("BadNPC");
+        for (int i = 0; i < npcGameObject[i].transform.childCount; i++)
         {
-            npcs.Add(npcGameObject.transform.GetChild(i).gameObject);
+            npcs.Add(npcGameObject[i].transform.GetChild(i).gameObject);
         }
 
         //Initialises reference to player object

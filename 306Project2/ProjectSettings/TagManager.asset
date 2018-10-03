@@ -15,6 +15,8 @@ TagManager:
   - NPCs
   - EventZone
   - NPC
+  - scoreTransferObject
+  - BadNPC
   layers:
   - Default
   - TransparentFX
