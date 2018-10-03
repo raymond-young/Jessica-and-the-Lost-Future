@@ -17,7 +17,12 @@ public class WelcomeScreenButtonActions : MonoBehaviour {
 
     public void playButtonClicked()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Tutorial");
+    }
+
+    public void settingsButtonClicked()
+    {
+        SceneManager.LoadScene("SettingsScene");
     }
 
     public void quitButtonClicked()

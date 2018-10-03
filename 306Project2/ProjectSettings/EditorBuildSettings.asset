@@ -5,12 +5,14 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+
   - enabled: 1
     path: Assets/Scenes/WelcomeScene.unity
     guid: 14b75b25490e88e489fc981b530c5b22
@@ -26,4 +28,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Resources/Scenes for unit tests/TestMovementScene.unity
     guid: 808854a7edcd5b944966b8354cfaec28
+    path: Assets/Scenes/SettingsScene.unity
+    guid: 4ea35dd92e1765846b71902ad4085bd4
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: e7e9bda9236464c0f8b335a2214f3379
+  - enabled: 1
+    path: Assets/Scenes/Level-1.unity
+    guid: 8df201861539f974ea375f7aaa33f53f
+  - enabled: 1
+    path: Assets/Scenes/PauseMenu.unity
+    guid: 8e23c94a81f72824a84ef12c04d94c76
+  - enabled: 1
+    path: Assets/Scenes/EndOfLevelScene.unity
+    guid: 48ba46e0aee880442b5fa71123908aff
+  - enabled: 1
+    path: Assets/Scenes/CongratulationsScene.unity
+    guid: f5a26a78375f640418ad1ef40ab3d426
+    
   m_configObjects: {}
