@@ -9,7 +9,9 @@
 Unity version 2018.1.2f1
 ### Steps:
 1) Run Prototype.exe inside the Prototype folder
-OR
+
+OR build from unity:
+
 1) clone https://github.com/rayyoung122/306-Project-2 onto a local directory
 2) pull from the repository (prototype branch)
 3) open the cloned folder in Unity
