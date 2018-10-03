@@ -91,6 +91,10 @@ public class Hop : MonoBehaviour
         {
             Finish();
         }
+        if (stairRef.Count < numOfStairs)
+        {
+            generateStair();
+        }
 
         //Listen to key press event
         Event e = Event.current;
@@ -99,7 +103,9 @@ public class Hop : MonoBehaviour
             //If the right key was pressed, change color of the game object and move to the next one
             if (e.keyCode.ToString().Equals(stairRef.Peek().ToString()) && e.keyCode != KeyCode.None)
             {
-                stairQueue.Dequeue();
+                GameObject s = stairQueue.Dequeue();
+                Destroy(s);
+                stairRef.Dequeue();
             }
             else
             {
