@@ -323,6 +323,16 @@ public class PlayerController : MonoBehaviour
         cam.transform.position = new Vector2(1, -1);
     }
 
+    //Repels player on walls
+    [YarnCommand("repel")]
+    public void RepelPlayer()
+    {
+        //Calculates the opposite direction to the npc from the players input
+        Vector2 direction = (transform.position).normalized;
+
+        transform.Translate(-direction);
+
+    }
 
 }
 
