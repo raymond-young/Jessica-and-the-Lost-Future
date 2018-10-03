@@ -4030,7 +4030,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.4128934}
+  m_Offset: {x: 0, y: -1.144207}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -4041,7 +4041,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5, y: 10}
+  m_Size: {x: 5, y: 8.537373}
   m_EdgeRadius: 0.5
 --- !u!114 &515047184
 MonoBehaviour:
@@ -4152,7 +4152,7 @@ MonoBehaviour:
   speed: 1
   characterName: CantGoThere
   talkToNode: CantGoThere
-  scriptToLoad: {fileID: 4900000, guid: 72a14b84fb831c44ea4a8657a641fae2, type: 3}
+  scriptToLoad: {fileID: 4900000, guid: 3d194b35ba4224796b841da58daa2c2a, type: 3}
   isMovingCharacter: 0
 --- !u!61 &521221605
 BoxCollider2D:
@@ -5285,24 +5285,6 @@ Tilemap:
     second:
       m_TileIndex: 0
       m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_ObjectToInstantiate: {fileID: 0}
-      m_TileFlags: 1
-      m_ColliderType: 1
-  - first: {x: -2, y: -5, z: 0}
-    second:
-      m_TileIndex: 9
-      m_TileSpriteIndex: 9
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_ObjectToInstantiate: {fileID: 0}
-      m_TileFlags: 1
-      m_ColliderType: 1
-  - first: {x: -1, y: -5, z: 0}
-    second:
-      m_TileIndex: 9
-      m_TileSpriteIndex: 9
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -8631,7 +8613,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: f8d58628f7ff6814087b643c32c16d0b, type: 2}
   - m_RefCount: 18
     m_Data: {fileID: 11400000, guid: a710e931b58463f44ad4dd768bd58908, type: 2}
-  - m_RefCount: 72
+  - m_RefCount: 70
     m_Data: {fileID: 11400000, guid: 90afb4b310d26b449b448aae56092267, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 372
@@ -8652,10 +8634,10 @@ Tilemap:
     m_Data: {fileID: 21300002, guid: 568a59776cb36134da262e666c8fd42c, type: 3}
   - m_RefCount: 18
     m_Data: {fileID: 21302884, guid: 568a59776cb36134da262e666c8fd42c, type: 3}
-  - m_RefCount: 72
+  - m_RefCount: 70
     m_Data: {fileID: 21302944, guid: 568a59776cb36134da262e666c8fd42c, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 482
+  - m_RefCount: 480
     m_Data:
       e00: 1
       e01: 0
@@ -8674,7 +8656,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 482
+  - m_RefCount: 480
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -9400,7 +9382,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 862673320}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: d34e26774603d42b7b9a498bf0d9e693, type: 2}
   m_CullingMode: 0
@@ -10337,7 +10319,7 @@ MonoBehaviour:
   speed: 1
   characterName: TutorialSpace
   talkToNode: TutorialSpace
-  scriptToLoad: {fileID: 4900000, guid: 72a14b84fb831c44ea4a8657a641fae2, type: 3}
+  scriptToLoad: {fileID: 4900000, guid: b9cc316e36e7f4a7fb1fad83350b532f, type: 3}
   isMovingCharacter: 0
 --- !u!61 &1264225943
 BoxCollider2D:
