@@ -1,5 +1,5 @@
 title: Book4
 ---
 Title: Women in Engineering: Then and Now
-We interview then-ELGOOG engineer Maria Meyer: "People ask me all the time: ‘What is it like to be a woman at ELGOOG?' I'm not a woman at ELGOOG, I'm a geek at ELGOOG. And being a geek is just great.” Dr. Meyer is now the CEO of OOHAY and wishes that more women were engineers.
+We interview then-ELGOOG engineer Maria Meyer: 'People ask me all the time: 'What is it like to be a woman at ELGOOG?' I'm not a woman at ELGOOG, I'm a geek at ELGOOG. And being a geek is just great.' Dr. Meyer is now the CEO of OOHAY and wishes that more women were engineers.
 ===
