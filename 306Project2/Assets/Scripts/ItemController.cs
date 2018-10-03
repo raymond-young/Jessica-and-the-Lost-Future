@@ -107,9 +107,12 @@ public class ItemController : MonoBehaviour {
     public void OnTriggerStay2D(Collider2D collision)
     {
         //ONLY USED FOR NUNIT TESTING------------------------------------------
-        freeItemSlot.GetComponent<Image>().sprite = currentItemZone.GetComponent<SpriteRenderer>().sprite;
-        items.Remove(currentItemZone.gameObject);
-        Destroy(currentItemZone.gameObject);
+        if (collision.gameObject.tag.Equals("Item"))
+        {
+            freeItemSlot.GetComponent<Image>().sprite = currentItemZone.GetComponent<SpriteRenderer>().sprite;
+            items.Remove(currentItemZone.gameObject);
+            Destroy(currentItemZone.gameObject);
+        }
         //---------------------------------------------------
     }
 

@@ -1,6 +1,4 @@
 title: ShouldGoToClass
 ---
-<<if $free is false>>
-	Class is starting soon! Don't be late!
-<<endif>>
+Class is starting soon! Don't be late!
 ===

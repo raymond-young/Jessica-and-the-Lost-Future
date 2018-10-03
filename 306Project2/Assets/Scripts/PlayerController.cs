@@ -312,12 +312,12 @@ public class PlayerController : MonoBehaviour
 	}
 
     // Shows player
-    [YarnCommand("show")]
+    [YarnCommand("move_player")]
     public void Show(string destination)
     {
-        Vector2 start = new Vector2(0, 0);
+        Vector2 start = new Vector2(0, -2);
         gameObject.transform.position = start;
-        cam.transform.position = new Vector2(1, 0);
+        cam.transform.position = new Vector2(1, -1);
     }
 
 

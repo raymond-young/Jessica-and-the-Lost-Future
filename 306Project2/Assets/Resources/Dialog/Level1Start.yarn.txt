@@ -8,6 +8,6 @@ title: Start
 	Mum: Girls aren't good at technical things.
 	Jessica: But I don't like cooking...
 	Dad: We're here! Now don't be late to class!
-	<<show Player test>>
+	<<move_player Player test>>
 <<endif>>
 ===

@@ -64,7 +64,7 @@ public class GoodNPC : Movement {
             }
             else
             {
-                newPos = origonalPos;
+                newPos = originalPos;
             }
         }
     }
