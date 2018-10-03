@@ -154,17 +154,21 @@ namespace Yarn.Unity.Example {
             int i = 0;
             foreach (var optionString in optionsCollection.options) {
                 optionButtons [i].gameObject.SetActive (true);
+                Debug.Log(optionButtons[i]);
                 optionButtons [i].GetComponentInChildren<Text> ().text = optionString;
                 i++;
             }
 
             // Record that we're using it
             SetSelectedOption = optionChooser;
+            Debug.Log(optionChooser);
 
             // Wait until the chooser has been used and then removed (see SetOption below)
             while (SetSelectedOption != null) {
                 yield return null;
             }
+
+            Debug.Log(SetSelectedOption);
 
             // Hide all the buttons
             foreach (var button in optionButtons) {

@@ -9,20 +9,8 @@ title: MrsBeryl
 	<<if $hasDecided is false>>
 		<<if $readBook1 is true and $readBook2 is true and $readBook4 is true>>
 			Mrs Beryl: Have you decided yet?
-			-> Yes
-				Mrs Beryl: Great! What did you choose?
-				-> Electronics Technology
-					Mrs. Beryl: That’s wonderful Jessica, don’t forget to pop in to the workshop for your next class!
-					<<set $hasDecided to true>>
-				-> Programming
-					Mrs. Beryl: That’s wonderful Jessica, don’t forget to pop in to the workshop for your next class!
-					<<set $hasDecided to true>>
-				-> Cooking
-					Something tells you you shouldn't pick that...
-				-> Textiles
-					Something tells you you shouldn't pick that...
-			-> No
-				Mrs. Beryl: Come back when you've decided!
+			[[Yes|MrsBeryl.Yes]]
+			[[No|MrsBeryl.No]]
 		<<else>>
 			You need to read more books before you decide.
 		<<endif>>
@@ -30,4 +18,28 @@ title: MrsBeryl
 		I hope you have a great day!
 	<<endif>>
 <<endif>>
+===
+
+title: MrsBeryl.Yes
+---
+Mrs Beryl: Great! What did you choose?
+[[Electronics Technology|MrsBeryl.GoodChoice]]
+[[Programming|MrsBeryl.GoodChoice]]
+[[Cooking|MrsBeryl.BadChoice]]
+===
+
+title: MrsBeryl.No
+---
+Mrs. Beryl: Come back when you've decided!
+===
+
+title: MrsBeryl.BadChoice
+---
+Something tells you you shouldn't pick that...
+===
+
+title: MrsBeryl.GoodChoice
+---
+Mrs. Beryl: That’s wonderful Jessica, don’t forget to pop in to the workshop for your next class!
+<<set $hasDecided to true>>
 ===

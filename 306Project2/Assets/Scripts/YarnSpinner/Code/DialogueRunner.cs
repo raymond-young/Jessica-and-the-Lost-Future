@@ -225,7 +225,6 @@ namespace Yarn.Unity
                     yield return StartCoroutine (this.dialogueUI.RunLine (lineResult.line));
 
                 } else if (step is Yarn.Dialogue.OptionSetResult) {
-
                     // Wait for user to finish picking an option
                     var optionSetResult = step as Yarn.Dialogue.OptionSetResult;
                     yield return StartCoroutine (
