@@ -13,7 +13,7 @@ title: Mentor
 		Jessica: Thank you.
 		Professor Waston: I believe in you, Jessica.
 		<<transition Player CongratulationsScene>>
-	-> Jenny wants to do electronics technology too, but...
+	-> Jenny wants to do electronics technology too, but... <<if $talkedToJenny is true>>
 		Jessica: There’s a girl in my class who wants to do electronics technology too but doesn’t think she’s good enough.
 		Professor Waston: Do you have any ideas to change people's attitudes permanently (systemic change)?
 		-> Make electronics technology and programming mandatory.
