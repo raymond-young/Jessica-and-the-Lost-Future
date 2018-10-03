@@ -1,0 +1,9 @@
+title: ConfidenceTutorial
+---
+<<if $hasDoneConfidenceTutorial is false>>
+	<<set $hasDoneConfidenceTutorial to true>>
+	You're not feeling very confident.
+	Positive interactions will inspire you and cause your confidence to increase.
+	Confidence and energy is shown in the top left of the screen.
+<<endif>>
+===
