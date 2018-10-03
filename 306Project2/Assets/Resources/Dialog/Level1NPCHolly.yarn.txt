@@ -1,0 +1,14 @@
+title: LibraryHolly
+---
+<<if $talkedToHolly is false>>
+	<<set $talkedToHolly to true>>
+	Holly: Were you thinking of computer class too?
+	-> No
+		Holly: Oh, that's a shame.
+	-> Yes
+		Holly: Isn't it cool? We should totally do it together!
+		<<change_confidence Player 5>>
+<<else>>
+	We've talked already.
+<<endif>>
+===

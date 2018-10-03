@@ -1,0 +1,14 @@
+title: Coach
+---
+<<if $talkedToBarry is false>>
+	<<set $talkedToBarry to true>>
+	Barry: What do you need the key for?
+	-> Professor Waston told me that she dropped it here somewhere.
+		Barry: Sure thing.
+	-> I want to go into the workshop.
+		Barry: That's great, we need more young women like you in engineering.
+		<<change_confidence Player 5>>
+<<else>>
+	We've talked already.
+<<endif>>
+===

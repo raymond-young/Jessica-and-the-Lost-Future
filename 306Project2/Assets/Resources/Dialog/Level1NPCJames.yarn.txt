@@ -1,0 +1,10 @@
+title: DigitalJames
+---
+<<if $talkedToJames is false>>
+	<<set $talkedToJames to true>>
+	James: I think it’s great that more girls are doing this class. It gets boring when there’s only guys.
+	<<change_confidence Player 10>>
+<<else>>
+	We've talked already.
+<<endif>>
+===

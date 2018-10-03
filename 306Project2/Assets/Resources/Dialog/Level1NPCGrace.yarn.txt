@@ -1,0 +1,14 @@
+title: FriendGrace
+---
+<<if $talkedToGrace is false>>
+	<<set $talkedToGrace to true>>
+	Grace: Making us pick electives this early feels rushed.
+	Jessica: I’ve already picked my options though! Electronics technology and programming.
+	Grace: You could be an engineer and invent things with those choices!
+	Jessica: Do you really think so?
+	Grace: You can do it!
+	<<change_confidence Player 15>>
+<<else>>
+	We've talked already.
+<<endif>>
+===

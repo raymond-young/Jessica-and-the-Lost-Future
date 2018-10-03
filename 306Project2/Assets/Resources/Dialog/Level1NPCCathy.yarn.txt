@@ -1,0 +1,33 @@
+title: Mentor
+---
+<<if $talkedToWaston is false>>
+	<<set $talkedToWaston to true>>
+	Jessica: Sorry to bother you, Mrs…
+	Professor Waston: Call me Cathy. I’m an inventor and also your electronics technology teacher.
+	Jessica: I want to be an engineer, but so many people - my parents, teachers, friends - all say that girls shouldn’t be engineers.
+	Professor Waston: Don’t listen to them! Anyone can be an engineer.
+	Professor Waston: Being an engineer is more than calculations or computers. It’s about doing practical things to make the world a better place. You help people by inventing things.
+	Jessica: What should I do to become an engineer?
+	Professor Waston: Take all the science and maths classes you can! Physics, chemistry, digital and electronics technologies and programming. 
+	-> Thank you
+		Jessica: Thank you.
+		Professor Waston: I believe in you, Jessica.
+	-> Jenny wants to do electronics technology too, but...
+		Jessica: There’s a girl in my class who wants to do electronics technology too but doesn’t think she’s good enough.
+		Professor Waston: Do you have any ideas to change people's attitudes permanently (systemic change)?
+		-> Make mandatory courses
+			Jessica: We could make electronics technology and programming mandatory.
+			Professor Waston: That’s a great idea. If it’s mandatory, girls will do it find they’re actually good at it instead of never trying because other people tell them they can't do it.
+			<<change_confidence Player 20>>
+		-> Talk to her
+			Jessica: Could you invite her personally? I think she would believe more in herself if you told her she could do it.
+			Professor Waston: That’s a good idea. We’ll change beliefs one at a time.
+			<<change_confidence Player 15>>
+		-> Girls-only class
+			Jessica: We could organize a girls-only programming class.
+			Professor Waston: That’s not a good idea long-term because it doesn't change society's biases but still a way to encourage more girls to try it out! Good idea.
+			<<change_confidence Player 10>>
+<<else>>
+	We've talked already.
+<<endif>>
+===

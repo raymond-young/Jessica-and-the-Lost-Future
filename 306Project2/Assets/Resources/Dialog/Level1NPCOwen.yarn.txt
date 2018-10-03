@@ -1,0 +1,27 @@
+title: BadOwen
+---
+<<if $talkedToOwen is false>>
+	<<set $talkedToOwen to true>>
+	Owen: You don’t look like an engineer. Are you sure you’re in the right class?
+	-> Anyone can be an engineer
+		Jessica: Anyone can be an engineer, you know. It’s rude to judge based on appearances.
+		Owen: Girls are just hardworking, but boys are clever. So if you’ll excuse me, I have actual students to teach.
+		Jessica: That’s a stereotype. Anyone can learn equally well.
+		Owen: You should pick a more feminine subject. Engineering is just something that boys do.
+		Jessica: Engineering isn’t just for boys. The first computer was created by a girl, Grace Hopper! And another girl, Hedy Lamarr, invented Wi-Fi.
+		Owen: I guess that’s true...You’ve given me something to think about.
+		<<change_confidence Player 15>>
+	-> I’m in the right class
+		Jessica: Yes, I’m in the right class.
+		Owen: Girls are just hardworking, but boys are clever. So if you’ll excuse me, I have actual students to teach.
+		<<change_confidence Player -5>>
+	-> Um…
+		Jessica: Um…
+		Owen: Well, speak up, young lady.
+		Jessica: I have to go, sorry.
+		Owen: I think you’d make a great nurse or teacher. Those are better options for a girl than engineering.
+		<<change_confidence Player -20>>
+<<else>>
+	We've talked already.
+<<endif>>
+===
