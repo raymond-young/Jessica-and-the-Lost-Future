@@ -7,14 +7,16 @@ title: MrsBeryl
 	You need to read at least three books before you choose!
 <<else>>
 	<<if $hasDecided is false>>
-		<<if $readBook1 is true and $readBook2 is true and $readBook3 is true>>
+		<<if $readBook1 is true and $readBook2 is true and $readBook4 is true>>
 			Mrs Beryl: Have you decided yet?
 			-> Yes
 				Mrs Beryl: Great! What did you choose?
 				-> Electronics Technology
 					Mrs. Beryl: That’s wonderful Jessica, don’t forget to pop in to the workshop for your next class!
+					<<set $hasDecided to true>>
 				-> Programming
 					Mrs. Beryl: That’s wonderful Jessica, don’t forget to pop in to the workshop for your next class!
+					<<set $hasDecided to true>>
 				-> Cooking
 					Something tells you you shouldn't pick that...
 				-> Textiles
