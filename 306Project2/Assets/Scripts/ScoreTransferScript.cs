@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScoreTransferScript : MonoBehaviour {
 
-    private float _score;
+    private string _score;
 
 	// Use this for initialization
 	void Start () {
@@ -16,12 +16,12 @@ public class ScoreTransferScript : MonoBehaviour {
 		
 	}
 
-    public void setScore(float score)
+    public void setScore(string score)
     {
         _score = score;
     }
 
-    public float getScore()
+    public string getScore()
     {
         return _score;
     }

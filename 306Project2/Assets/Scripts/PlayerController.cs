@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
 	private float teleportX;
 	private float teleportY;
 
-    private float score = 0;
+    private int score = 0;
     private int numLives = 0;
     public Text scoreText;
 
@@ -193,10 +193,18 @@ public class PlayerController : MonoBehaviour
 
     public void transferScore()
     {
+        Debug.Log("Before - Score is " + score.ToString());
+        GameObject[] transferObjects = GameObject.FindGameObjectsWithTag("scoreTransferObject");
+        for(int i = 0; i< transferObjects.Length;i++)
+        {
+            Destroy(transferObjects[i]);
+        }
+
         Vector3 pos = new Vector3(0, 0, 0);
         GameObject scoreTransferObject = Instantiate(scoreTransfer, pos, Quaternion.identity);
         DontDestroyOnLoad(scoreTransferObject);
-        scoreTransferObject.GetComponent<ScoreTransferScript>().setScore(score);
+        scoreTransferObject.GetComponent<ScoreTransferScript>().setScore(scoreText.text);
+        Debug.Log("Score is " + score.ToString());
     }
 
     public void GainOnePower()
@@ -282,7 +290,10 @@ public class PlayerController : MonoBehaviour
 
     public void UpdateScoreText()
     {
+        Debug.Log("updateScore - Score is " + CalculateScore().ToString());
         scoreText.text = "Score: " + CalculateScore().ToString();
+
+        Debug.Log(scoreText.text+"");
     }
 	
 	// Move the camera to the center of the new room.
