@@ -17,6 +17,8 @@ TagManager:
   - NPC
   - scoreTransferObject
   - BadNPC
+  - FogOfWar
+  - minimap
   layers:
   - Default
   - TransparentFX
@@ -26,8 +28,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - world
+  - MiniMap
   - 
   - 
   - 

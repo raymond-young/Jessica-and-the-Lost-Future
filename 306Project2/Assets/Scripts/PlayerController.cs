@@ -59,6 +59,10 @@ public class PlayerController : MonoBehaviour {
     // The zone, if the player is in a zone.
     private Collider2D currentNPCZone;
 
+    public GameObject miniMapPlayer;
+
+    private GameObject miniMap;
+
     // Use this for initialization.
     void Start() {
         // Get the components.
@@ -86,13 +90,20 @@ public class PlayerController : MonoBehaviour {
 
         // Update all score text.
         UpdateScoreText();
+
+        //Minimap reference
+        miniMap = GameObject.FindGameObjectWithTag("minimap");
     }
 
     // Update is called once per frame.
     // This checks for conversations, room transitions, and item interactions.
     void FixedUpdate()
     {
-        
+        if (miniMapPlayer != null)
+        {
+            miniMapPlayer.transform.position = transform.position;
+        }
+
         // Remove all player control when we're in dialogue
         if (FindObjectOfType<DialogueRunner>().isDialogueRunning == true) {
             return;
@@ -235,6 +246,7 @@ public class PlayerController : MonoBehaviour {
     // Triggers camera transition when the player enters a room.
     void OnTriggerEnter2D(Collider2D collider)
     {
+
         // If there is no current room, set it.
         if (currentRoom == null) {
             currentRoom = collider;
@@ -297,9 +309,20 @@ public class PlayerController : MonoBehaviour {
         cam.transform.position = newCameraPosition;
         isTransitioning = false;
         if (isTeleporting) {
-            playerBody.transform.position = new Vector3(teleportX, teleportY, playerBody.transform.position.z);
+
+            Vector3 vector = new Vector3(teleportX, teleportY, playerBody.transform.position.z);
+
+            playerBody.transform.position = vector;
             isTeleporting = false;
+
+            MiniMap m = miniMap.GetComponent<MiniMap>();
+            //Removes fog of war from miniMap
+            m.RemoveFogOfWar(currentRoom);
+
         }
+
+
+
     }
 
     /** Find all DialogueParticipants. Filter them to those that have a Yarn start node and are in range; 
@@ -317,6 +340,7 @@ public class PlayerController : MonoBehaviour {
     [YarnCommand("transition")]
     public void ChangeLevel(string destination) {
         transferScore();
+
         SceneManager.LoadScene(destination);
     }
 
