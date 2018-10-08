@@ -152,7 +152,6 @@ public class Hop : MonoBehaviour
         {
             if (currentTime >= 0) //Start game. Set arrows visible
             {
-                Debug.Log("gameStart");
                 go.SetActive(false);
                 ready.SetActive(false);
                 gameStart = true;
@@ -167,7 +166,6 @@ public class Hop : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("show go");
                     go.SetActive(true);
                     ready.SetActive(false);
                 }
@@ -182,7 +180,6 @@ public class Hop : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("show ready");
                     go.SetActive(false);
                     ready.SetActive(true);
                 }
