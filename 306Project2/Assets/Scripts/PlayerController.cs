@@ -62,6 +62,7 @@ public class PlayerController : MonoBehaviour {
     public GameObject miniMapPlayer;
 
     private GameObject miniMap;
+    private GameObject mapBorder;
 
     // Use this for initialization.
     void Start() {
@@ -69,6 +70,8 @@ public class PlayerController : MonoBehaviour {
         anim = GetComponent<Animator>();
         playerBody = gameObject.GetComponent<Rigidbody2D>();
         storeLives = GameObject.FindGameObjectWithTag("StoreLives");
+
+        mapBorder = GameObject.FindGameObjectWithTag("MiniMapBorder");
 
         //Prevents rotation of main character.
         playerBody.freezeRotation = true;
@@ -358,6 +361,10 @@ public class PlayerController : MonoBehaviour {
         Vector2 start = new Vector2(0, -2);
         gameObject.transform.position = start;
         cam.transform.position = new Vector2(1, -1);
+
+        //Activates minimap on start of game
+        mapBorder.SetActive(true);
+
     }
 
     // Repels player from walls when they are not allowed to go there yet.
@@ -368,5 +375,6 @@ public class PlayerController : MonoBehaviour {
 
         transform.Translate(-direction);
     }
+
 
 }

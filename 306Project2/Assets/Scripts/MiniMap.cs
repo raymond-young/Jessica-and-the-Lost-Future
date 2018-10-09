@@ -10,6 +10,7 @@ public class MiniMap : MonoBehaviour {
     public GameObject mainCamera;
     public GameObject minimapImage;
     public GameObject miniMapPlayer;
+    public bool setStartActive = false;
 
     private List<GameObject> fogOfWar = new List<GameObject>();
 
@@ -38,6 +39,12 @@ public class MiniMap : MonoBehaviour {
             fogOfWar.Add(fwObj.transform.GetChild(i).gameObject);
         }
 
+        //Set minimap not active at start of scene for cutscenes
+        if (!setStartActive)
+        {
+            minimapImage.transform.parent.gameObject.SetActive(false);
+        }
+        
     }
 
 
