@@ -2,6 +2,7 @@ title: Key
 ---
 <<if $hasKey is false>>
 	<<set $hasKey to true>>
+	<<change_character DialogueManager Key>>
 	You picked up the Key.
 <<endif>>
 ===
