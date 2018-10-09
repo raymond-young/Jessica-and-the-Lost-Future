@@ -64,6 +64,14 @@ public class AchievementManager : MonoBehaviour {
 		{
 			showAchievementScreen = !showAchievementScreen;
 			achievementMenu.SetActive(showAchievementScreen);
+
+			// Pause
+			if (showAchievementScreen) 
+			{
+				Time.timeScale = 0.00001f;
+			} else {
+				Time.timeScale = 1f;
+			}
 		}
 		
 		// Test achievement
