@@ -2,6 +2,7 @@ title: Wrench
 ---
 <<if $hasWrench is false>>
 	<<set $hasWrench to true>>
+	<<change_character DialogueManager Wrench>>
 	You picked up the Hammer.
 <<endif>>
 ===
