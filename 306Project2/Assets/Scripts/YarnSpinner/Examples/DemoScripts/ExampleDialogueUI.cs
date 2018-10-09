@@ -83,11 +83,11 @@ namespace Yarn.Unity.Example {
         public void Start() {
         	// Load all resources.
         	spriteMap = new Dictionary<string, Sprite>();
-        	spriteMap["Jessica"] = Resources.Load("Sprites/jessica") as Sprite;
-        	spriteMap["nozamA Executive 1"] = Resources.Load("Sprites/exec1") as Sprite;
-        	spriteMap["nozamA Executive 2"] = Resources.Load("Sprites/exec2") as Sprite;
-        	spriteMap["Wrench"] = Resources.Load("Sprites/wrench") as Sprite;
-        	spriteMap["Time Machine"] = Resources.Load("Sprites/timemachine") as Sprite;
+        	spriteMap["Jessica"] = Resources.Load<Sprite>("Sprites/jessica");
+        	spriteMap["nozamA Executive 1"] = Resources.Load<Sprite>("Sprites/exec1");
+        	spriteMap["nozamA Executive 2"] = Resources.Load<Sprite>("Sprites/exec2");
+        	spriteMap["Hammer"] = Resources.Load<Sprite>("Sprites/hammer");
+        	spriteMap["Time Machine"] = Resources.Load<Sprite>("Sprites/timemachine");
 
         }
 
