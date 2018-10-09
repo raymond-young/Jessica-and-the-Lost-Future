@@ -137,6 +137,7 @@ public class Hop : MonoBehaviour
             if (e.keyCode.ToString().Equals(stairRef.Peek().ToString()) && e.keyCode != KeyCode.None)
             {
                 GameObject s = stairQueue.Dequeue();
+                blobPrefab.GetComponent<RectTransform>().localPosition = stairQueue.Peek().GetComponent<RectTransform>().localPosition;
                 Destroy(s);
                 stairRef.Dequeue();
             }
@@ -195,6 +196,9 @@ public class Hop : MonoBehaviour
                 stairRectTransform.localPosition = new Vector2(newX, newY);
 
             }
+            float newY = blobPrefab.GetComponent<RectTransform>().localPosition.y - speed;
+            float newX = blobPrefab.GetComponent<RectTransform>().localPosition.x;
+            blobPrefab.GetComponent<RectTransform>().localPosition = new Vector2(newX, newY);
             bar.value = Mathf.Lerp(0f, 1f, currentTime / timeLimit);
         }
         currentTime += Time.deltaTime;

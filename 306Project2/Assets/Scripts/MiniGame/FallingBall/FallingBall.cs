@@ -37,7 +37,6 @@ public class FallingBall : MonoBehaviour {
         timeLimit = 10f;
         count.text = goal.ToString();
         
-
         xRange = gameObject.GetComponentInParent<Canvas>().pixelRect.width / 2;
         y = gameObject.GetComponentInParent<Canvas>().pixelRect.height / 2;
 
@@ -80,8 +79,12 @@ public class FallingBall : MonoBehaviour {
         {
             Finish();
         }
-        //if (gameStart)
-        //{
+        if (gameStart)
+        {
+            if (currentTime > timeLimit)
+            {
+                Fail();
+            }
             //Listen to key press event
             Event e = Event.current;
             if (e.type == EventType.KeyDown)
@@ -97,7 +100,7 @@ public class FallingBall : MonoBehaviour {
                     backet.GetComponent<RectTransform>().localPosition = new Vector2(x + 10, y);
                 }
             }
-       // }
+        }
     }
 
 
@@ -173,5 +176,6 @@ public class FallingBall : MonoBehaviour {
     {
         //Notify the game manager that the player has failed the game
         //GameObject.FindGameObjectWithTag("MiniGameManager").GetComponent<MiniGameManager>().FinishGame(false);
+        Debug.Log("failed");
     }
 }
