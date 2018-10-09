@@ -41,6 +41,9 @@ public class AchievementManager : MonoBehaviour {
 	{
 		// Test Achivevement
 		CreateAchievement("GeneralAchievement", "Press W","Press W to unlock", 0);
+		CreateAchievement("GeneralAchievement", "Press A","Press A to unlock", 0);
+		CreateAchievement("GeneralAchievement", "Press S","Press S to unlock", 0);
+		CreateAchievement("GeneralAchievement", "Press D","Press D to unlock", 0);
 
 
 	}
@@ -67,6 +70,24 @@ public class AchievementManager : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.W))
 		{
 			EarnAchievement("Press W");
+		}
+
+		// Test achievement
+		if (Input.GetKeyDown(KeyCode.A))
+		{
+			EarnAchievement("Press A");
+		}
+
+		// Test achievement
+		if (Input.GetKeyDown(KeyCode.S))
+		{
+			EarnAchievement("Press S");
+		}
+
+		// Test achievement
+		if (Input.GetKeyDown(KeyCode.D))
+		{
+			EarnAchievement("Press D");
 		}
 	}
 
