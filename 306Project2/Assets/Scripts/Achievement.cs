@@ -56,8 +56,11 @@ public class Achievement
 	{
 		if(!unlocked) 
 		{
-			// Change the image to the unlocked image
+			// Change the background to the unlocked image
 			achievementRef.GetComponent<Image>().sprite = AchievementManager.Instance.unlockedSprite;
+
+			achievementRef.transform.GetChild(3).GetComponent<Image>().sprite = AchievementManager.Instance.sprites[1];
+
 
 			this.unlocked = true;
 			return true;

@@ -17,6 +17,8 @@ TagManager:
   - NPC
   - scoreTransferObject
   - BadNPC
+  - GeneralAchievement
+  - EarnAchivementCanvas
   layers:
   - Default
   - TransparentFX
