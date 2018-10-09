@@ -19,6 +19,7 @@ TagManager:
   - BadNPC
   - FogOfWar
   - minimap
+  - MiniMapBorder
   layers:
   - Default
   - TransparentFX

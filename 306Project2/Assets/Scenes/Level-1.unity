@@ -29447,6 +29447,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf90d427624af9e428a2a9ced7c088b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSize: 0
+  minSize: 0
 --- !u!1001 &930375164
 Prefab:
   m_ObjectHideFlags: 0
@@ -47018,6 +47020,7 @@ MonoBehaviour:
   mainCamera: {fileID: 234201146}
   minimapImage: {fileID: 916890727}
   miniMapPlayer: {fileID: 1272728424}
+  setStartActive: 0
 --- !u!20 &1600814328
 Camera:
   m_ObjectHideFlags: 0
@@ -70231,7 +70234,7 @@ GameObject:
   - component: {fileID: 1993880136}
   m_Layer: 5
   m_Name: MiniMapBorder
-  m_TagString: Untagged
+  m_TagString: MiniMapBorder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
