@@ -88,7 +88,19 @@ namespace Yarn.Unity.Example {
         	spriteMap["nozamA Executive 2"] = Resources.Load<Sprite>("Sprites/exec2");
         	spriteMap["Hammer"] = Resources.Load<Sprite>("Sprites/hammer");
         	spriteMap["Time Machine"] = Resources.Load<Sprite>("Sprites/timemachine");
-
+        	spriteMap["Mrs. Beryl"] = Resources.Load<Sprite>("Sprites/exec2");
+        	spriteMap["Owen"] = Resources.Load<Sprite>("Sprites/owen");
+        	spriteMap["Barry"] = Resources.Load<Sprite>("Sprites/barry");
+        	spriteMap["James"] = Resources.Load<Sprite>("Sprites/james");
+        	spriteMap["Grace"] = Resources.Load<Sprite>("Sprites/grace");
+        	spriteMap["Jenny"] = Resources.Load<Sprite>("Sprites/jenny");
+        	spriteMap["Book"] = Resources.Load<Sprite>("Sprites/book");
+        	spriteMap["Key"] = Resources.Load<Sprite>("Sprites/key");
+        	spriteMap["Poster"] = Resources.Load<Sprite>("Sprites/poster");
+        	spriteMap["Note"] = Resources.Load<Sprite>("Sprites/note");
+        	spriteMap["Professor Waston"] = Resources.Load<Sprite>("Sprites/cathy");
+        	spriteMap["Mum"] = Resources.Load<Sprite>("Sprites/mum");
+        	spriteMap["Dad"] = Resources.Load<Sprite>("Sprites/dad");
         }
 
         void Awake ()
