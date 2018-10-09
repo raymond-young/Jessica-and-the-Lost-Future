@@ -45,10 +45,16 @@ public class AuraController : MonoBehaviour {
     }
 
     //Reset the minigame
-    public void FinishedMiniGame()
+    public void FinishedMiniGame(bool success)
     {
         playingMiniGame = false;
-        //StartCoroutine(WaitFewSeconds());
+
+        //Destroys the minimap object when enemy killed, child must be element 1 of parent
+        if (success)
+        {
+            Destroy(gameObject.transform.parent.transform.GetChild(1).gameObject);
+        }
+        
     }
 
     private IEnumerator WaitFewSeconds()

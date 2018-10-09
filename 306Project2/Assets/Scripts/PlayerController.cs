@@ -251,12 +251,18 @@ public class PlayerController : MonoBehaviour {
         if (currentRoom == null) {
             currentRoom = collider;
         }
+
         // If the player enters a collision area that is a new room, set the new camera position to the center of the new room.
-        if (collider.tag == "Room" && !isTransitioning && currentRoom != collider) {
+        if (collider.tag == "Room" && !isTransitioning && currentRoom != collider)
+        {
             isTransitioning = true;
             newCameraPosition = new Vector3(collider.transform.position.x, collider.transform.position.y, cam.transform.position.z);
             // Set the new room.
             currentRoom = collider;
+
+            //Removes fog of war from miniMap
+            MiniMap m = miniMap.GetComponent<MiniMap>();
+            m.RemoveFogOfWar(collider);
         }
         else if (collider.tag == "Door" && !isTransitioning) {
             // A door, which teleports the player.
@@ -270,6 +276,12 @@ public class PlayerController : MonoBehaviour {
             // Set the position of the player to be teleported.
             teleportX = collider.GetComponent<Door>().playerX;
             teleportY = collider.GetComponent<Door>().playerY;
+
+            //Removes fog of war from miniMap
+            MiniMap m = miniMap.GetComponent<MiniMap>();
+            m.RemoveFogOfWar(newRoom);
+
+
         } else if (collider.tag == "NPC" || collider.tag == "Item" && !isTransitioning) {
             // If this is an NPC or item, show the interactable item glow.
             inNPCZone = true;
@@ -300,8 +312,6 @@ public class PlayerController : MonoBehaviour {
 
     public void UpdateScoreText() {
         scoreText.text = "Score: " + CalculateScore().ToString();
-
-        Debug.Log(scoreText.text+"");
     }
     
     // Move the camera to the center of the new room.
@@ -315,9 +325,7 @@ public class PlayerController : MonoBehaviour {
             playerBody.transform.position = vector;
             isTeleporting = false;
 
-            MiniMap m = miniMap.GetComponent<MiniMap>();
-            //Removes fog of war from miniMap
-            m.RemoveFogOfWar(currentRoom);
+
 
         }
 

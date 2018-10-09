@@ -98,7 +98,7 @@ public class MiniGameManager : MonoBehaviour {
 
         //Set delay for aura
         AuraController controller = currentNpc.transform.GetChild(0).GetComponent<AuraController>();
-        controller.FinishedMiniGame();
+        controller.FinishedMiniGame(success);
 
         if (!success)
         {

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class MiniMap : MonoBehaviour {
@@ -26,6 +27,7 @@ public class MiniMap : MonoBehaviour {
         camera.targetTexture = renderTexture;
         camera.aspect = cachedCameraAspect;
 
+
         minimapImage.GetComponent<RawImage>().texture = camera.targetTexture;
 
         //Gets fog of war map components
@@ -38,6 +40,7 @@ public class MiniMap : MonoBehaviour {
 
     }
 
+
     // Removes fog of war as the player moves through the map
     public void RemoveFogOfWar(Collider2D collisonRoom)
     {
@@ -45,7 +48,6 @@ public class MiniMap : MonoBehaviour {
         
         foreach (GameObject fog in fogOfWar)
         {
-            Debug.Log("C=" + fog.name + "dewfwefwfw=" + collisonRoom.name);
             if (fog.name.Equals(collisonRoom.name))
             {
                 fogToRemove = fog;
