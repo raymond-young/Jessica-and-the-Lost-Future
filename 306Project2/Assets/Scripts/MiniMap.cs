@@ -46,8 +46,10 @@ public class MiniMap : MonoBehaviour {
     {
         GameObject fogToRemove = null;
         
+        //Loop through each fog of war object in game
         foreach (GameObject fog in fogOfWar)
         {
+            //Check if collision matches fog of war object and if so delete it
             if (fog.name.Equals(collisonRoom.name))
             {
                 fogToRemove = fog;
@@ -56,6 +58,7 @@ public class MiniMap : MonoBehaviour {
             }
         }
 
+        //Remove from map if fog deleted
         if (fogToRemove != null)
         {
             fogOfWar.Remove(fogToRemove);
