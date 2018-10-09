@@ -61,7 +61,7 @@ public class MiniGameGenerator : MonoBehaviour {
 
         bar = Instantiate(slider);
         RectTransform barRectTransform = bar.GetComponent<RectTransform>();
-        barRectTransform.sizeDelta = new Vector2((gameObject.GetComponentInParent<Canvas>().pixelRect.width - arrowSpace/2), arrowSpace * 0.25f);
+        barRectTransform.sizeDelta = new Vector2(gameObject.GetComponentInParent<Canvas>().pixelRect.width * 0.95f, arrowSpace * 0.25f);
 		float sliderYPosition = gameObject.GetComponentInParent<Canvas>().pixelRect.height/2 - barRectTransform.rect.height;
         barRectTransform.SetParent(parentRectTransform);
         barRectTransform.localPosition = new Vector2(0, -sliderYPosition);
