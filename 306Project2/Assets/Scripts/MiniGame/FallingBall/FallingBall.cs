@@ -12,6 +12,10 @@ public class FallingBall : MonoBehaviour {
     public GameObject readyPrefab;
     public GameObject goPrefab;
 
+    Slider bar;
+    GameObject ready;
+    GameObject go;
+
     float timeLimit;
     float currentTime;
     float readyTime = 0.9f;
@@ -25,10 +29,12 @@ public class FallingBall : MonoBehaviour {
 
     float leftWall;
     float rightWall;
+    bool gameStart;
 
 	// Use this for initialization
 	void Start () {
         goal = 98;
+        timeLimit = 10f;
         count.text = goal.ToString();
         
 
@@ -38,6 +44,31 @@ public class FallingBall : MonoBehaviour {
         rightWall = gameObject.GetComponentInParent<Canvas>().pixelRect.width / 2;
         leftWall = -rightWall;
 
+
+        //Initialise time bar
+        RectTransform parentRectTransform = gameObject.GetComponent<RectTransform>();
+        bar = Instantiate(slider);
+        RectTransform barRectTransform = bar.GetComponent<RectTransform>();
+        barRectTransform.sizeDelta = new Vector2(gameObject.GetComponentInParent<Canvas>().pixelRect.width * 0.95f,
+            gameObject.GetComponentInParent<Canvas>().pixelRect.height * 0.02f);
+        float sliderYPosition = gameObject.GetComponentInParent<Canvas>().pixelRect.height / 2 - barRectTransform.rect.height;
+        barRectTransform.SetParent(parentRectTransform);
+        barRectTransform.localPosition = new Vector2(0, -sliderYPosition);
+        bar.value = 0;
+
+        //Generate Ready/Go and set default properties
+        ready = Instantiate(readyPrefab);
+        ready.GetComponent<RectTransform>().SetParent(parentRectTransform);
+        ready.GetComponent<RectTransform>().localPosition = new Vector2(0, 0);
+        ready.SetActive(false);
+
+        go = Instantiate(goPrefab);
+        go.GetComponent<RectTransform>().SetParent(parentRectTransform);
+        go.GetComponent<RectTransform>().localPosition = new Vector2(0, 0);
+        go.SetActive(false);
+
+        currentTime = -readyTime - goTime;
+        gameStart = false;
     }
     
 
@@ -72,14 +103,56 @@ public class FallingBall : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (currentBalls < numOfBalls)
+        if (!gameStart)
         {
-            GameObject ball = Instantiate(ballPrefab);
-            ball.GetComponent<RectTransform>().SetParent(gameObject.GetComponent<RectTransform>());
-            ball.GetComponent<RectTransform>().localPosition = new Vector2(Random.Range(0, xRange) * Random.Range(-1f, 1f), y);
-            currentBalls++;
+            if (currentTime >= 0) //Start game. Set arrows visible
+            {
+                go.SetActive(false);
+                ready.SetActive(false);
+                gameStart = true;
+                currentTime = 0;
+            }
+            else if (Mathf.Abs(currentTime) < goTime) //Show "Go!"
+            {
+                if (go.activeSelf)
+                {
+                    float time = Mathf.Sin(Mathf.Lerp(0f, 1f, Mathf.Abs(currentTime) / goTime));
+                    go.GetComponent<Text>().color = new Color(time, time, 0);
+                }
+                else
+                {
+                    go.SetActive(true);
+                    ready.SetActive(false);
+                }
+            }
+            else //Show "Read?"
+            {
+                if (ready.activeSelf)
+                {
+                    float percentage = Mathf.Abs(currentTime) - goTime;
+                    float time = Mathf.Sin(Mathf.Lerp(0f, 1f, percentage / readyTime));
+                    ready.GetComponent<Text>().color = new Color(0, time, 0);
+                }
+                else
+                {
+                    go.SetActive(false);
+                    ready.SetActive(true);
+                }
+            }
         }
-	}
+        else
+        {
+            if (currentBalls < numOfBalls)
+            {
+                GameObject ball = Instantiate(ballPrefab);
+                ball.GetComponent<RectTransform>().SetParent(gameObject.GetComponent<RectTransform>());
+                ball.GetComponent<RectTransform>().localPosition = new Vector2(Random.Range(0, xRange) * Random.Range(-1f, 1f), y);
+                currentBalls++;
+            }
+            bar.value = Mathf.Lerp(0f, 1f, currentTime / timeLimit);
+        }
+        currentTime += Time.deltaTime;
+    }
 
     public void catchBall(GameObject ball)
     {
