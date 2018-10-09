@@ -1,0 +1,72 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class Achievement
+{
+	private string name;
+
+	public string Name
+	{
+		get { return name; }
+		set { name = value; }
+	}
+
+	private string description;
+
+	public string Description
+	{
+		get { return description; }
+		set { description = value; }
+	}
+
+	private bool unlocked;
+
+	private int points;
+
+	public int Points
+	{
+		get { return points; }
+		set { points = value; }
+	}
+
+	private int spriteIndex;
+
+	public int SpriteIndex
+	{
+		get { return spriteIndex; }
+		set { spriteIndex = value; }
+	}
+
+	private GameObject achievementRef;
+
+	public Achievement(string name, string description, int points, int spriteIndex, GameObject achievementRef) 
+	{
+		this.name = name;
+		this.description = description;
+		this.points = points;
+		this.spriteIndex = spriteIndex;
+		this.achievementRef = achievementRef;
+
+		this.unlocked = false;
+	}
+
+	public bool EarnAchievement()
+	{
+		if(!unlocked) 
+		{
+			// Change the image to the unlocked image
+			achievementRef.GetComponent<Image>().sprite = AchievementManager.Instance.unlockedSprite;
+
+			this.unlocked = true;
+			return true;
+		} 
+		else 
+		{
+			return false;
+		}
+	}
+
+
+}
