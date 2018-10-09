@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class Hop : MonoBehaviour
 {
+    List<Color> rainbow = new List<Color>();
+    int colorIndex;
+
     enum Arrow { LeftArrow, RightArrow };
 
     public GameObject stairPrefab;
@@ -45,6 +48,15 @@ public class Hop : MonoBehaviour
         numOfStairs = 10;
         timeLimit = 10f;
         
+        //Add colors
+        rainbow.Add(new Color(0, 136f/255f, 1));
+        rainbow.Add(new Color(1, 170f/255f, 0));
+        rainbow.Add(new Color(1, 119f/255f, 0));
+        rainbow.Add(new Color(1, 0, 51f/255f));
+        rainbow.Add(new Color(153f/255f, 17f/255f, 177f/255f));
+        rainbow.Add(new Color(170f/255f, 221f/255f, 34f/255f));
+        colorIndex = 0;
+
         x = stairPrefab.GetComponent<RectTransform>().rect.width;
         y = gameObject.GetComponentInParent<Canvas>().pixelRect.height / 2;
         speed = stairPrefab.GetComponent<RectTransform>().rect.height / 10;
@@ -110,6 +122,15 @@ public class Hop : MonoBehaviour
             stairRectTransform.localPosition = new Vector2(-x, thisY);
             stairRef.Enqueue(Arrow.LeftArrow);
         }
+        //Assign color
+        if (colorIndex > rainbow.Count - 1)
+        {
+            colorIndex = 0;
+        }
+        stair.GetComponent<Image>().color = rainbow[colorIndex];
+        colorIndex++;
+        Debug.Log(colorIndex);
+
         stairQueue.Enqueue(stair);
         lastStair = stair;
         if (speed < speedThreshold) {
