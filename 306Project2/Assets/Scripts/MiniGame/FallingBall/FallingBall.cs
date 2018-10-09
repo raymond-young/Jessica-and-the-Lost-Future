@@ -12,6 +12,9 @@ public class FallingBall : MonoBehaviour {
     public GameObject readyPrefab;
     public GameObject goPrefab;
 
+    // List of possible sprite appearances.
+    public List<Sprite> possibleSprites = new List<Sprite>();
+
     Slider bar;
     GameObject ready;
     GameObject go;
@@ -21,7 +24,7 @@ public class FallingBall : MonoBehaviour {
     float readyTime = 0.9f;
     float goTime = 0.5f;
 
-    int numOfBalls = 10;
+    int numOfBalls = 5;
     int currentBalls = 0;
     int goal;
     float xRange;
@@ -147,8 +150,14 @@ public class FallingBall : MonoBehaviour {
         {
             if (currentBalls < numOfBalls)
             {
+                // Create a new ball.
                 GameObject ball = Instantiate(ballPrefab);
+                // Set it to have a random appearance.
+                int i = Random.Range(0, possibleSprites.Count);
+                ball.GetComponent<Image>().sprite = possibleSprites[i];
+                // Get the ball's parent and position.
                 ball.GetComponent<RectTransform>().SetParent(gameObject.GetComponent<RectTransform>());
+                // Set it to a random position.
                 ball.GetComponent<RectTransform>().localPosition = new Vector2(Random.Range(0, xRange) * Random.Range(-1f, 1f), y);
                 currentBalls++;
             }
