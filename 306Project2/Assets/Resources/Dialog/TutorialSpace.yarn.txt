@@ -3,6 +3,7 @@ title: TutorialSpace
 <<if $hasSpaced is false>>
 	<<set $hasSpaced to true>>
 	<<change_character DialogueManager Jessica>>
+	<<hide TutorialSpace TutorialSpace>>
 	The time machine is broken! I need to fix it somehow.
 	Use the space bar near items to pick them up, and near objects or characters to interact with them.
 <<endif>>

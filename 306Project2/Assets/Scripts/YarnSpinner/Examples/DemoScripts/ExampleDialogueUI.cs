@@ -147,6 +147,8 @@ namespace Yarn.Unity.Example {
                 yield return null;
             }
 
+            PlayDialogueSound();
+
             // Hide the text and prompt
             lineText.gameObject.SetActive (false);
 
@@ -263,6 +265,15 @@ namespace Yarn.Unity.Example {
             }
 
             yield break;
+        }
+
+        void PlayDialogueSound()
+        {
+            if (GameObject.Find("Dialogue Sound") != null)
+            {
+                GameObject sound = GameObject.Find("Dialogue Sound");
+                sound.GetComponent<AudioSource>().Play(0);
+            }
         }
 
     }

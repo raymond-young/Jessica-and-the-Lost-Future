@@ -2,6 +2,7 @@ title: Tutorial
 ---
 <<if $hasStarted is false>>
 	<<set $hasStarted to true>>
+	<<hide StartZone StartZone>>
 	<<change_character DialogueManager nozamA Executive 1>>
 	Did you hear about the time machine that female engineer Jessica invented?
 	<<change_character DialogueManager nozamA Executive 2>>
