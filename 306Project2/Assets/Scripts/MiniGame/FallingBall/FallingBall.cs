@@ -7,11 +7,18 @@ public class FallingBall : MonoBehaviour {
     public GameObject ballPrefab;
     public GameObject backet;
     public Text count;
-    
 
-    List<GameObject> balls = new List<GameObject>();
+    public Slider slider;
+    public GameObject readyPrefab;
+    public GameObject goPrefab;
+
+    float timeLimit;
+    float currentTime;
+    float readyTime = 0.9f;
+    float goTime = 0.5f;
 
     int numOfBalls = 10;
+    int currentBalls = 0;
     int goal;
     float xRange;
     float y;
@@ -30,6 +37,7 @@ public class FallingBall : MonoBehaviour {
 
         rightWall = gameObject.GetComponentInParent<Canvas>().pixelRect.width / 2;
         leftWall = -rightWall;
+
     }
     
 
@@ -48,31 +56,38 @@ public class FallingBall : MonoBehaviour {
             if (e.type == EventType.KeyDown)
             {
                 float x = backet.GetComponent<RectTransform>().localPosition.x;
+                float y = backet.GetComponent<RectTransform>().localPosition.y;
                 if (e.keyCode.ToString().Equals("LeftArrow") && x > leftWall)
                 {
-                    backet.GetComponent<RectTransform>().localPosition.x = x - 10;
+                    backet.GetComponent<RectTransform>().localPosition = new Vector2 (x - 10, y);
                 }
                 else if (e.keyCode.ToString().Equals("RightArrow") && x < rightWall)
                 {
-                    backet.GetComponent<RectTransform>().localPosition.x = x + 10;
-
+                    backet.GetComponent<RectTransform>().localPosition = new Vector2(x + 10, y);
                 }
             }
        // }
     }
 
+
     // Update is called once per frame
     void Update () {
-        
-        if (balls.Count < numOfBalls)
+        if (currentBalls < numOfBalls)
         {
             GameObject ball = Instantiate(ballPrefab);
             ball.GetComponent<RectTransform>().SetParent(gameObject.GetComponent<RectTransform>());
             ball.GetComponent<RectTransform>().localPosition = new Vector2(Random.Range(0, xRange) * Random.Range(-1f, 1f), y);
-            balls.Add(ball);
+            currentBalls++;
         }
 	}
 
+    public void catchBall(GameObject ball)
+    {
+        Destroy(ball);
+        goal--;
+        currentBalls--;
+        count.text = goal.ToString();
+    }
 
     private void Finish()
     {

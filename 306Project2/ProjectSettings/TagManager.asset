@@ -17,6 +17,7 @@ TagManager:
   - NPC
   - scoreTransferObject
   - BadNPC
+  - MinigameFallingBall
   layers:
   - Default
   - TransparentFX
