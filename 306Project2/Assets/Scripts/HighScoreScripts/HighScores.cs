@@ -15,6 +15,8 @@ public class HighScores : MonoBehaviour {
 
     private float heightInterval = 30;
 
+    private List<GameObject> currentPlayers = new List<GameObject>();
+
 	// Use this for initialization
 	void Start () {
         //Initalize reading from file here into (highScorePlayers)
@@ -23,10 +25,8 @@ public class HighScores : MonoBehaviour {
         level2Panel.SetActive(false);
         level3Panel.SetActive(false);
 
-        //Add players to list here dependent on file contents
-        GameObject p = Instantiate(playerListPrefab, parentPanel.transform);
-        p.transform.localPosition = new Vector2(0f, 105f);
-        p.GetComponent<Text>().text = "hello";
+        //Loads players to appropriate level
+        ReadFile(0);
        
     }
 
@@ -36,8 +36,52 @@ public class HighScores : MonoBehaviour {
 
     }
 
+    //Refreshes players on game completion
+    public void RefreshPlayers(string player, int score)
+    {
+        //Loop through all current players to update
+        for (int i = 0; i < currentPlayers.Count; i++)
+        {
+            //Checks the name of the object is equal to the name of the player
+            if (currentPlayers[i].name.Equals(player))
+            {
+                currentPlayers[i].GetComponent<Text>().text = player + " " + score.ToString();
+                break;
+            }
+        }
+    }
+
+    private void ReadFile(int level)
+    {
+
+        if (level == 0)
+        {
+            GameObject p = Instantiate(playerListPrefab, parentPanel.transform);
+            p.transform.localPosition = new Vector2(0f, 105f);
+            p.GetComponent<Text>().text = "yianni 50";
+            p.name = "yianni";
+
+            //Read file code here
+            currentPlayers.Add(p);
+        }
+        else if (level == 1)
+        {
+
+        }
+        else if (level == 2)
+        {
+
+        }
+        else if (level == 3)
+        {
+
+        }
+
+    }
+
     public void Level1()
     {
+        RefreshPlayers("yianni", 200);
         level1Panel.SetActive(true);
         level2Panel.SetActive(false);
         level3Panel.SetActive(false);
