@@ -20,6 +20,7 @@ TagManager:
   - FogOfWar
   - minimap
   - MiniMapBorder
+  - HighScorePanel
   layers:
   - Default
   - TransparentFX
