@@ -67,6 +67,7 @@ public class HighScores : MonoBehaviour {
         }
     }
 
+    //Reads files related to gamemode and level to show high scores
     private void ReadFile(int level, int gameMode)
     {
         if (gameMode == 0)
