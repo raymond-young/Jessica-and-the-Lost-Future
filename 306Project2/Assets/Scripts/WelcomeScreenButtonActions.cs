@@ -29,4 +29,9 @@ public class WelcomeScreenButtonActions : MonoBehaviour {
     {
         Application.Quit();
     }
+
+    public void HighScoreButtonClick()
+    {
+        SceneManager.LoadScene("HighScore");
+    }
 }

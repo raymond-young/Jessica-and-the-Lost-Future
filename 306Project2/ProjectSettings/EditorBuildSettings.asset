@@ -41,4 +41,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CongratulationsScene.unity
     guid: f5a26a78375f640418ad1ef40ab3d426
+  - enabled: 1
+    path: Assets/Scenes/HighScore.unity
+    guid: 5b80a9dd9f317af4cb47c9558a30cace
   m_configObjects: {}

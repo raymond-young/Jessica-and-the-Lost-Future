@@ -37,7 +37,7 @@ public class HighScores : MonoBehaviour {
         level3Panel.SetActive(false);
 
         //Loads players to appropriate level
-        ReadFile(0);
+        ReadFile(0, gameMode);
 
         //Sets up buttons, default easy is selected
         easyButton.GetComponent<Image>().color = color;
@@ -67,32 +67,61 @@ public class HighScores : MonoBehaviour {
         }
     }
 
-    private void ReadFile(int level)
+    private void ReadFile(int level, int gameMode)
     {
-
-        if (level == 0)
+        if (gameMode == 0)
         {
-            GameObject p = Instantiate(playerListPrefab, parentPanel.transform);
-            p.transform.localPosition = new Vector2(0f, 160f);
-            p.GetComponent<Text>().text = "yianni 50";
-            p.GetComponent<Text>().fontSize = 40;
-            p.name = "yianni";
+            if (level == 0)
+            {
+                GameObject p = Instantiate(playerListPrefab, parentPanel.transform);
+                p.transform.localPosition = new Vector2(0f, 160f);
+                p.GetComponent<Text>().text = "yianni 50";
+                p.GetComponent<Text>().fontSize = 40;
+                p.name = "yianni";
 
-            //Read file code here
-            currentPlayers.Add(p);
+                //Read file code here
+                currentPlayers.Add(p);
+            }
+            else if (level == 1)
+            {
+
+            }
+            else if (level == 2)
+            {
+
+            }
+            else if (level == 3)
+            {
+
+            }
         }
-        else if (level == 1)
+        else if (gameMode == 1)
         {
+            if (level == 0)
+            {
+                GameObject p = Instantiate(playerListPrefab, parentPanel.transform);
+                p.transform.localPosition = new Vector2(0f, 160f);
+                p.GetComponent<Text>().text = "yianni 50";
+                p.GetComponent<Text>().fontSize = 40;
+                p.name = "yianni";
 
-        }
-        else if (level == 2)
-        {
+                //Read file code here
+                currentPlayers.Add(p);
+            }
+            else if (level == 1)
+            {
 
-        }
-        else if (level == 3)
-        {
+            }
+            else if (level == 2)
+            {
 
+            }
+            else if (level == 3)
+            {
+
+            }
         }
+        
 
     }
 
