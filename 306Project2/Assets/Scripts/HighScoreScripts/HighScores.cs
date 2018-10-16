@@ -26,7 +26,7 @@ public class HighScores : MonoBehaviour {
     private Color color = new Color(0.9433962f, 0.511748f, 0.511748f);
     private Color levelColor = new Color(0.1135636f, 0.5811083f, 0.8301887f);
 
-    private float startPosForFormat = 130f;
+    private float startPosForFormat = 180f;
     private float heightInterval = 30f;
 
     private GameObject highScorePanel;
@@ -60,11 +60,12 @@ public class HighScores : MonoBehaviour {
 
         List<SaveData> sortedSaves = SortLevels(saves);
 
-        float format = 0;
+        float format = startPosForFormat;
         //Loads players to appropriate level
         for (int i = 0; i < sortedSaves.Count; i++)
         {
-            format = startPosForFormat - heightInterval - format;
+            format = format - heightInterval;
+
             SaveData data = sortedSaves[i];
 
             ReadFile(data.GetLevel(), data.GetDifferculty(), data, format);
