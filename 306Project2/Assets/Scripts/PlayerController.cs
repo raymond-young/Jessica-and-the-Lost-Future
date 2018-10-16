@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Yarn.Unity;
 using System;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.RegularExpressions;
 
 /**
@@ -157,16 +155,6 @@ public class PlayerController : MonoBehaviour {
             CheckForNearbyNPC();
         }
 
-    }
-
-    private void LateUpdate()
-    {
-
-        //Saves current level on key press
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            //saveManager.SaveLevel(startOfLevelScore, currentLevel, playerName, differculty);
-        }
     }
 
     // Gets the player's last position to get their last direction before minigame starts.
