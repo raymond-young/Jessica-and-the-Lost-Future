@@ -27,7 +27,7 @@ public class HighScores : MonoBehaviour {
     private Color levelColor = new Color(0.1135636f, 0.5811083f, 0.8301887f);
 
     private float startPosForFormat = 180f;
-    private float heightInterval = 30f;
+    private float heightInterval = 40f;
 
     private GameObject highScorePanel;
 
@@ -36,8 +36,12 @@ public class HighScores : MonoBehaviour {
 
     private int levelSelected;
 
+    private Font font;
+
 	// Use this for initialization
 	void Start () {
+
+        font = (Font) Resources.Load("Font/earthorbiter");
 
         selectedDifferculty = 0;
         levelSelected = 0;
@@ -56,14 +60,26 @@ public class HighScores : MonoBehaviour {
 
         SaveManager saveManager = new SaveManager();
 
+        //Test ONLY
+       // saveManager.SaveLevel(50, 2, "Steve", 0);
+
         List<SaveData> saves = saveManager.LoadSave();
 
         List<SaveData> sortedSaves = SortLevels(saves);
 
         float format = startPosForFormat;
+
+        int previousLevel = 0;
         //Loads players to appropriate level
         for (int i = 0; i < sortedSaves.Count; i++)
         {
+            if (previousLevel != sortedSaves[i].GetLevel())
+            {
+                format = startPosForFormat;
+            }
+
+            previousLevel = sortedSaves[i].GetLevel();
+
             format = format - heightInterval;
 
             SaveData data = sortedSaves[i];
@@ -133,7 +149,7 @@ public class HighScores : MonoBehaviour {
 
         p.transform.localPosition = new Vector2(0f, format);
         p.GetComponent<Text>().text = data.GetPlayerName() + " " + data.GetScore().ToString();
-        p.GetComponent<Text>().fontSize = 40;
+        p.GetComponent<Text>().font = font;
         p.name = data.GetPlayerName();
 
     }
@@ -353,86 +369,81 @@ public class HighScores : MonoBehaviour {
         List<SaveData> level2Hard = saveData.Where(s => s.GetLevel() == 2 && s.GetDifferculty() == 1).ToList();
         List<SaveData> level3Hard = saveData.Where(s => s.GetLevel() == 3 && s.GetDifferculty() == 1).ToList();
 
-        if (totalEasy.Count > 6)
+
+        totalEasy = totalEasy.OrderBy(s => s.GetScore()).ToList();
+        level1Easy = level1Easy.OrderBy(s => s.GetScore()).ToList();
+        level2Easy = level2Easy.OrderBy(s => s.GetScore()).ToList();
+        level3Easy = level3Easy.OrderBy(s => s.GetScore()).ToList();
+
+        totalHard = totalHard.OrderBy(s => s.GetScore()).ToList();
+        level1Hard = level1Hard.OrderBy(s => s.GetScore()).ToList();
+        level2Hard = level2Hard.OrderBy(s => s.GetScore()).ToList();
+        level3Hard = level3Hard.OrderBy(s => s.GetScore()).ToList();
+
+        for (int i = 0; i < 6; i++)
         {
-            totalEasy = totalEasy.OrderBy(s => s.GetScore()).ToList();
-            
-            for (int i = 0; i < 6; i++)
-            {
+           if (totalEasy.Count > i)
+           {
                 sortedData.Add(totalEasy[i]);
-            }
+           }
+           
         }
 
-        if (level1Easy.Count > 6)
+        for (int i = 0; i < 6; i++)
         {
-            level1Easy = level1Easy.OrderBy(s => s.GetScore()).ToList();
-
-            for (int i = 0; i < 6; i++)
+            if (level1Easy.Count > i)
             {
                 sortedData.Add(level1Easy[i]);
             }
         }
 
-        if (level2Easy.Count > 6)
+        for (int i = 0; i < 6; i++)
         {
-            level2Easy = level2Easy.OrderBy(s => s.GetScore()).ToList();
-
-            for (int i = 0; i < 6; i++)
+            if (level2Easy.Count > i)
             {
                 sortedData.Add(level2Easy[i]);
             }
         }
 
-        if (level3Easy.Count > 6)
+        for (int i = 0; i < 6; i++)
         {
-            level3Easy = level3Easy.OrderBy(s => s.GetScore()).ToList();
-
-            for (int i = 0; i < 6; i++)
+            if (level3Easy.Count > i)
             {
                 sortedData.Add(level3Easy[i]);
             }
         }
 
-        if (totalHard.Count > 6)
+        for (int i = 0; i < 6; i++)
         {
-            totalHard = totalHard.OrderBy(s => s.GetScore()).ToList();
-
-            for (int i = 0; i < 6; i++)
+            if (totalHard.Count > i)
             {
                 sortedData.Add(totalHard[i]);
             }
         }
-
-        if (level1Hard.Count > 6)
+        
+        for (int i = 0; i < 6; i++)
         {
-            level1Hard = level1Hard.OrderBy(s => s.GetScore()).ToList();
-
-            for (int i = 0; i < 6; i++)
+            if (level1Hard.Count > i)
             {
                 sortedData.Add(level1Hard[i]);
             }
         }
 
-        if (level2Hard.Count > 6)
+        for (int i = 0; i < 6; i++)
         {
-            level2Hard = level2Hard.OrderBy(s => s.GetScore()).ToList();
-
-            for (int i = 0; i < 6; i++)
+            if (level2Hard.Count > i)
             {
                 sortedData.Add(level2Hard[i]);
             }
         }
 
-        if (level3Hard.Count > 6)
+        for (int i = 0; i < 6; i++)
         {
-            level3Hard = level3Hard.OrderBy(s => s.GetScore()).ToList();
-
-            for (int i = 0; i < 6; i++)
+            if (level3Hard.Count > i)
             {
                 sortedData.Add(level3Hard[i]);
             }
         }
-
 
         return sortedData;
     }
