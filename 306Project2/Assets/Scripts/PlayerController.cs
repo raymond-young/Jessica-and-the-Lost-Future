@@ -54,6 +54,9 @@ public class PlayerController : MonoBehaviour {
     // For dialogue.
     // Interaction radius until you can pick up an item.
     public float interactionRadius = 2.0f;
+
+    public AchievementManager achievementManager;
+
     // If the player is currently in a zone that triggers dialogue.
     private bool inNPCZone = false;
     // The zone, if the player is in a zone.
@@ -265,6 +268,7 @@ public class PlayerController : MonoBehaviour {
             Vector2 temp = collider.gameObject.transform.position;
             glow.transform.position = temp;
             glow.SetActive(true);
+            // achievementManager.EarnAchievement("Glow");
         }  else if (collider.tag == "EventZone" && !isTransitioning) {
             // Start any dialogue that is automatically triggered.
             SetMotionToZero();

@@ -23,14 +23,6 @@ public class Achievement
 
 	private bool unlocked;
 
-	private int points;
-
-	public int Points
-	{
-		get { return points; }
-		set { points = value; }
-	}
-
 	private int spriteIndex;
 
 	public int SpriteIndex
@@ -41,11 +33,10 @@ public class Achievement
 
 	private GameObject achievementRef;
 
-	public Achievement(string name, string description, int points, int spriteIndex, GameObject achievementRef) 
+	public Achievement(string name, string description, int spriteIndex, GameObject achievementRef) 
 	{
 		this.name = name;
 		this.description = description;
-		this.points = points;
 		this.spriteIndex = spriteIndex;
 		this.achievementRef = achievementRef;
 

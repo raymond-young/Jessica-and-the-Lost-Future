@@ -17,9 +17,10 @@ public class AchievementManager : MonoBehaviour {
 
 
 	// Used to toggle showing the achievements screen
-	public bool showAchievementScreen;
+	private bool showAchievementScreen;
 	public GameObject achievementMenu;
 
+	public GameObject player;
 
 	public Sprite unlockedSprite;
 
@@ -39,12 +40,17 @@ public class AchievementManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		// Test Achivevement
-		CreateAchievement("GeneralAchievement", "Press W","Press W to unlock", 0);
-		CreateAchievement("GeneralAchievement", "Press A","Press A to unlock", 0);
-		CreateAchievement("GeneralAchievement", "Press S","Press S to unlock", 0);
-		CreateAchievement("GeneralAchievement", "Press D","Press D to unlock", 0);
+		CreateAchievement("GeneralAchievement", "Item Grabber","Pick up an item", 0);
+		// CreateAchievement("GeneralAchievement", "Glow","Walk past an item to unlock", 0);
+		CreateAchievement("GeneralAchievement", "First Timer","Play the minigame for the first time.", 0);
+		CreateAchievement("GeneralAchievement", "Keyboard Warrior","Play the minigame without losing a life.", 0);
 
+		// Test Achivevements
+		// CreateAchievement("GeneralAchievement", "Press W","Press W to unlock", 0);
+		// CreateAchievement("GeneralAchievement", "Press A","Press A to unlock", 0);
+		// CreateAchievement("GeneralAchievement", "Press S","Press S to unlock", 0);
+		// CreateAchievement("GeneralAchievement", "Press D","Press D to unlock", 0);
+		
 
 	}
 	
@@ -74,29 +80,31 @@ public class AchievementManager : MonoBehaviour {
 			}
 		}
 		
-		// Test achievement
-		if (Input.GetKeyDown(KeyCode.W))
-		{
-			EarnAchievement("Press W");
-		}
+		// // Test achievement
+		// if (Input.GetKeyDown(KeyCode.W))
+		// {
+		// 	EarnAchievement("Press W");
+		// }
 
-		// Test achievement
-		if (Input.GetKeyDown(KeyCode.A))
-		{
-			EarnAchievement("Press A");
-		}
+		// // Test achievement
+		// if (Input.GetKeyDown(KeyCode.A))
+		// {
+		// 	EarnAchievement("Press A");
+		// }
 
-		// Test achievement
-		if (Input.GetKeyDown(KeyCode.S))
-		{
-			EarnAchievement("Press S");
-		}
+		// // Test achievement
+		// if (Input.GetKeyDown(KeyCode.S))
+		// {
+		// 	EarnAchievement("Press S");
+		// }
 
-		// Test achievement
-		if (Input.GetKeyDown(KeyCode.D))
-		{
-			EarnAchievement("Press D");
-		}
+		// // Test achievement
+		// if (Input.GetKeyDown(KeyCode.D))
+		// {
+		// 	EarnAchievement("Press D");
+		// }
+
+
 	}
 
 	public void EarnAchievement(string title)
@@ -124,7 +132,7 @@ public class AchievementManager : MonoBehaviour {
 		GameObject achievement = (GameObject)Instantiate(achievementPrefab);
 
 		// Create a new Achievement Object and add it to the Achievement Map.
-		Achievement newAchievement = new Achievement(name, description, 10, spriteIndex, achievement);
+		Achievement newAchievement = new Achievement(name, description, spriteIndex, achievement);
 		achievements.Add(title, newAchievement);
 
 		// Set the achievement info according to it's title and the new instace you've made.
@@ -147,8 +155,47 @@ public class AchievementManager : MonoBehaviour {
 		// Get the description (child 1)
 		achievement.transform.GetChild(1).GetComponent<Text>().text = achievements[title].Description;
 
-		// Get the sprite (child 3)
-		achievement.transform.GetChild(3).GetComponent<Image>().sprite = sprites[achievements[title].SpriteIndex];
+		// Get the sprite (child 2)
+		achievement.transform.GetChild(2).GetComponent<Image>().sprite = sprites[achievements[title].SpriteIndex];
 
 	}
+
+	
+	// 	//complete level one
+	// public bool MEET_MENTOR = false;
+
+	// //complete level one having not failed any minigames
+	// public bool COMPLETE_LEVEL_ONE_MAX_LIVES = false;
+
+	// //meet mentor with maximum confidence
+	// public bool COMPLETE_LEVEL_ONE_MAX_CONFIDENCE = false;
+
+	// //All rooms in level one discovered
+	// public bool EXPLORE_LEVEL_ONE = false;
+
+	// //game runs LOL
+	// public bool START_GAME = false;
+
+	// //pass through 1 door
+	// public bool ENTER_ONE_ROOM = false;
+	
+	// //pass through 10 doors
+	// public bool ENTER_TEN_ROOMS = false;
+
+	// //pass through 100 doors
+	// public bool ENTER_HUNDRED_ROOMS = false;
+
+	// //pick up an item
+	// public bool PICKED_UP_FIRST_ITEM = false;
+
+	// //talk to a npc
+	// public bool TALKED_TO_FIRST_NPC = false;
+
+	// //clear the arrow minigame ONCE
+	// public bool KEYBOARD_WARRIOR = false;
+
+	// //clear the arrow minigame with less than 1 second to spare
+	// public bool JUST_IN_TIME = false;
+	
+	
 }

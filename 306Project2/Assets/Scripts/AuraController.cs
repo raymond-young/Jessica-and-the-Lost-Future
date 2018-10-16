@@ -6,11 +6,16 @@ public class AuraController : MonoBehaviour {
 
     private MiniGameManager miniGameReset;
 
+    public AchievementManager achievementManager;
+
     private bool playingMiniGame = false;
 
 	// Use this for initialization
 	void Start () {
         miniGameReset = GameObject.FindGameObjectWithTag("MiniGameManager").GetComponent<MiniGameManager>();
+        // (GameObject) achievementManager = GameObject.FindGameObjectWithTag("AchievementManager").GetComponent<MiniGameManager>();
+        achievementManager = GameObject.FindObjectOfType<AchievementManager>();
+
     }
 	
 	// Update is called once per frame
@@ -48,6 +53,7 @@ public class AuraController : MonoBehaviour {
     public void FinishedMiniGame()
     {
         playingMiniGame = false;
+        achievementManager.EarnAchievement("First Timer");
         //StartCoroutine(WaitFewSeconds());
     }
 

@@ -19,6 +19,7 @@ TagManager:
   - BadNPC
   - GeneralAchievement
   - EarnAchivementCanvas
+  - AchievementManager
   layers:
   - Default
   - TransparentFX

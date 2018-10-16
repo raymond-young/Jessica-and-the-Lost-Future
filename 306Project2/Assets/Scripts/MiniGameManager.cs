@@ -9,6 +9,8 @@ public class MiniGameManager : MonoBehaviour {
     private List<GameObject> npcs = new List<GameObject>();
     private PlayerController player;
 
+    public AchievementManager achievementManager;
+
     private bool startGame = false;
     private bool hasStarted = false;
 
@@ -129,8 +131,11 @@ public class MiniGameManager : MonoBehaviour {
         }
         else
         { 
+            Debug.Log("Finished minigame");
             //Successful minigame so destroy aura
             Destroy(currentNpc.transform.GetChild(0).gameObject);
+            
+            achievementManager.EarnAchievement("Keyboard Warrior");
         }
 
     }
