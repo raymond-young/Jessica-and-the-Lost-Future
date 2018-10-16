@@ -46,8 +46,6 @@ public class PlayerController : MonoBehaviour {
     // Animates the player.
     private Animator anim;
     
-    // If we should calculate the next position.
-    private bool calcNextPos = true;
     // The previous position of the player.
     private Vector2 previousPos;
     
@@ -126,10 +124,6 @@ public class PlayerController : MonoBehaviour {
             anim.SetFloat("MoveX",Input.GetAxisRaw("Horizontal"));
             anim.SetFloat("MoveY",Input.GetAxisRaw("Vertical"));
 
-            //Calculates the player's last position every second.
-            if (calcNextPos) {
-                StartCoroutine(CalcLastPos());
-            }
         }
         else {
             // If we are moving between rooms.
@@ -146,10 +140,10 @@ public class PlayerController : MonoBehaviour {
 
     // Gets the player's last position to get their last direction before minigame starts.
     private IEnumerator CalcLastPos() {
-        calcNextPos = false;
+
+        yield return new WaitForSeconds(0.01f);
         previousPos = gameObject.transform.position;
-        yield return new WaitForSeconds(1);
-        calcNextPos = true;
+
     }
 
     // Getter method for the player's previous position.
@@ -266,6 +260,9 @@ public class PlayerController : MonoBehaviour {
             //Removes fog of war from miniMap
             MiniMap m = miniMap.GetComponent<MiniMap>();
             m.RemoveFogOfWar(collider);
+
+            //Teleports player to previous entry pos of room if they fail minigame
+            StartCoroutine(CalcLastPos());
         }
         else if (collider.tag == "Door" && !isTransitioning) {
             // A door, which teleports the player.
@@ -284,6 +281,8 @@ public class PlayerController : MonoBehaviour {
             MiniMap m = miniMap.GetComponent<MiniMap>();
             m.RemoveFogOfWar(newRoom);
 
+            //Teleports player to previous entry pos of room if they fail minigame
+            StartCoroutine(CalcLastPos());
 
         } else if (collider.tag == "NPC" || collider.tag == "Item" && !isTransitioning) {
             // If this is an NPC or item, show the interactable item glow.
@@ -297,6 +296,7 @@ public class PlayerController : MonoBehaviour {
             SetMotionToZero();
             FindObjectOfType<DialogueRunner>().StartDialogue(collider.GetComponent<GoodNPC>().talkToNode);
         }
+
     }
 
     // Used to stop the player moving when the minigame starts
