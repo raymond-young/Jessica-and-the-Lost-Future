@@ -427,6 +427,12 @@ MonoBehaviour:
   readyPrefab: {fileID: 1317794115039652, guid: c8b000f1a7ad2864fa24ee8c9abf9d8f,
     type: 2}
   goPrefab: {fileID: 1278749601602204, guid: 6b3cea029b7fb3a42b4a10f961c7d559, type: 2}
+  possibleSprites:
+  - {fileID: 21300000, guid: df70d8c034bbd3f4c950ed63d8806700, type: 3}
+  - {fileID: 21300000, guid: f88e1801a40d2034e9a42bd39d031cde, type: 3}
+  - {fileID: 21300000, guid: a4bb9ee9b722a61449b61bed9840ae34, type: 3}
+  - {fileID: 21300000, guid: 84be7d4aac866584ca12223651d974a6, type: 3}
+  - {fileID: 21300000, guid: 83ecbfd768cfbba4a8a5e496fcf26320, type: 3}
 --- !u!1001 &1572178571
 Prefab:
   m_ObjectHideFlags: 0

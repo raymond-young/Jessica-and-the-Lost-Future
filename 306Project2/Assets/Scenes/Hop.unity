@@ -243,7 +243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stairPrefab: {fileID: 1497936648261658, guid: 224cc3defe378814fa744decc17983f2,
     type: 2}
-  blobPrefab: {fileID: 1243076826048300, guid: 09376b32fb5b4524f8af54ecdbf6bf96, type: 2}
+  blobPrefab: {fileID: 1935059765}
   slider: {fileID: 114420902774227680, guid: ee78f1dc00ff0b94e882d92bd8776f76, type: 2}
   readyPrefab: {fileID: 1317794115039652, guid: c8b000f1a7ad2864fa24ee8c9abf9d8f,
     type: 2}
@@ -572,6 +572,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 09376b32fb5b4524f8af54ecdbf6bf96, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1935059765 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1243076826048300, guid: 09376b32fb5b4524f8af54ecdbf6bf96,
+    type: 2}
+  m_PrefabInternal: {fileID: 1629116143}
 --- !u!224 &2103516741 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224187882048346064, guid: 09376b32fb5b4524f8af54ecdbf6bf96,

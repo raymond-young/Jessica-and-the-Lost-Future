@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class Hop : MonoBehaviour
 {
+    List<Color> rainbow = new List<Color>();
+    int colorIndex;
+
     enum Arrow { LeftArrow, RightArrow };
 
     public GameObject stairPrefab;
@@ -15,6 +18,7 @@ public class Hop : MonoBehaviour
 
     private Queue<GameObject> stairQueue = new Queue<GameObject>();
     private GameObject lastStair;
+    private GameObject stepOnStair;
     private Queue<Arrow> stairRef = new Queue<Arrow>();
     private Slider bar;
     GameObject ready;
@@ -44,6 +48,15 @@ public class Hop : MonoBehaviour
         numOfStairs = 10;
         timeLimit = 10f;
         
+        //Add colors
+        rainbow.Add(new Color(0, 136f/255f, 1));
+        rainbow.Add(new Color(1, 170f/255f, 0));
+        rainbow.Add(new Color(1, 119f/255f, 0));
+        rainbow.Add(new Color(1, 0, 51f/255f));
+        rainbow.Add(new Color(153f/255f, 17f/255f, 177f/255f));
+        rainbow.Add(new Color(170f/255f, 221f/255f, 34f/255f));
+        colorIndex = 0;
+
         x = stairPrefab.GetComponent<RectTransform>().rect.width;
         y = gameObject.GetComponentInParent<Canvas>().pixelRect.height / 2;
         speed = stairPrefab.GetComponent<RectTransform>().rect.height / 10;
@@ -109,6 +122,15 @@ public class Hop : MonoBehaviour
             stairRectTransform.localPosition = new Vector2(-x, thisY);
             stairRef.Enqueue(Arrow.LeftArrow);
         }
+        //Assign color
+        if (colorIndex > rainbow.Count - 1)
+        {
+            colorIndex = 0;
+        }
+        stair.GetComponent<Image>().color = rainbow[colorIndex];
+        colorIndex++;
+        Debug.Log(colorIndex);
+
         stairQueue.Enqueue(stair);
         lastStair = stair;
         if (speed < speedThreshold) {
@@ -129,6 +151,11 @@ public class Hop : MonoBehaviour
             generateStair();
         }
 
+        if (!inSafeZone())
+        {
+            Debug.Log("not in safe zone");
+            Fail();
+        }    
         //Listen to key press event
         Event e = Event.current;
         if (gameStart && e.type == EventType.KeyDown)
@@ -137,9 +164,18 @@ public class Hop : MonoBehaviour
             if (e.keyCode.ToString().Equals(stairRef.Peek().ToString()) && e.keyCode != KeyCode.None)
             {
                 GameObject s = stairQueue.Dequeue();
-                blobPrefab.GetComponent<RectTransform>().localPosition = stairQueue.Peek().GetComponent<RectTransform>().localPosition;
-                Destroy(s);
                 stairRef.Dequeue();
+
+                if (stepOnStair != null)
+                {
+                    Destroy(stepOnStair);
+                }
+                stepOnStair = s;
+                float blobX = s.GetComponent<RectTransform>().localPosition.x;
+                float blobY = s.GetComponent<RectTransform>().localPosition.y 
+                    + s.GetComponent<RectTransform>().rect.height/2 
+                    + blobPrefab.GetComponent<RectTransform>().rect.height / 2;
+                blobPrefab.GetComponent<RectTransform>().localPosition = new Vector2(blobX, blobY);
             }
             else
             {
@@ -148,17 +184,26 @@ public class Hop : MonoBehaviour
         }
     }
 
+    bool inSafeZone()
+    {
+        float y = blobPrefab.GetComponent<RectTransform>().localPosition.y;
+        return Mathf.Abs(y) < gameObject.GetComponentInParent<Canvas>().pixelRect.height / 2
+            && y < stairQueue.Peek().GetComponent<RectTransform>().localPosition.y;
+    }
+
     void Update () {
         if (!gameStart)
-        {
-            if (currentTime >= 0) //Start game. Set arrows visible
+        {   
+            //Start game. Set arrows visible
+            if (currentTime >= 0)
             {
                 go.SetActive(false);
                 ready.SetActive(false);
                 gameStart = true;
                 currentTime = 0;
             }
-            else if (Mathf.Abs(currentTime) < goTime) //Show "Go!"
+            //Show "Go!"
+            else if (Mathf.Abs(currentTime) < goTime)
             {
                 if (go.activeSelf)
                 {
@@ -171,7 +216,8 @@ public class Hop : MonoBehaviour
                     ready.SetActive(false);
                 }
             }
-            else //Show "Read?"
+            //Show "Read?"
+            else
             {
                 if (ready.activeSelf)
                 {
@@ -189,19 +235,33 @@ public class Hop : MonoBehaviour
         else
         {
             float newY, newX;
+            //Move all the stairs
             foreach (GameObject stair in stairQueue)
             {
                 RectTransform stairRectTransform = stair.GetComponent<RectTransform>();
                 newY = stairRectTransform.localPosition.y - speed;
                 newX = stairRectTransform.localPosition.x;
                 stairRectTransform.localPosition = new Vector2(newX, newY);
+            }
 
+            //Manually move blob and the stair it is on
+            if (stepOnStair != null)
+            {
+                float blobX = blobPrefab.GetComponent<RectTransform>().localPosition.x;
+                float blobY = blobPrefab.GetComponent<RectTransform>().localPosition.y - speed;
+                blobPrefab.GetComponent<RectTransform>().localPosition = new Vector2(blobX, blobY);
+                float stairX = stepOnStair.GetComponent<RectTransform>().localPosition.x;
+                float stairY = stepOnStair.GetComponent<RectTransform>().localPosition.y - speed;
+                stepOnStair.GetComponent<RectTransform>().localPosition = new Vector2(stairX, stairY);
             }
             newY = blobPrefab.GetComponent<RectTransform>().localPosition.y - speed;
             newX = blobPrefab.GetComponent<RectTransform>().localPosition.x;
             blobPrefab.GetComponent<RectTransform>().localPosition = new Vector2(newX, newY);
+            
+            //Update time bar
             bar.value = Mathf.Lerp(0f, 1f, currentTime / timeLimit);
         }
+        //Update timer
         currentTime += Time.deltaTime;
     }
 
