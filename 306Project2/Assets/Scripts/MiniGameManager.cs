@@ -105,26 +105,8 @@ public class MiniGameManager : MonoBehaviour {
             //Failed minigame so loose power
             player.LoseOnePower();
 
-            //Calculates the opposite direction to the npc from the players input
-            Vector2 direction = (player.transform.position - currentNpc.transform.position).normalized;
-
-            //Used to detect if player stuck between another object and the bad npc
-            RaycastHit2D hit = Physics2D.Raycast(player.transform.position, direction * 5f);
-
-         
-            if (hit.collider != null)
-            {
-                //If stuck, teleport player to their last prevoius recorded position 
-                player.transform.position = player.GetPreviousPos();
-            }
-            else
-            {
-                //If not stuck, teleport player in opposite direction to the bad npc
-                player.transform.Translate(direction * 5f);
-            }
-
-                
-
+            //If stuck, teleport player to their last prevoius recorded position 
+            player.transform.position = player.GetPreviousPos();
 
         }
         else

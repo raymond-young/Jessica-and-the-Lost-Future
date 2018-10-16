@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -30,13 +31,10 @@ public class HighScores : MonoBehaviour {
 
     private GameObject highScorePanel;
 
-    //Initialize gamemode to 0 for easy (default) at 1 for hard
-    private int gameMode = 0;
-
+    //Initialize differculty to 0 for easy (default) at 1 for hard
     private int selectedDifferculty;
-    private int levelSelected;
 
-    private List<GameObject> currentPlayers = new List<GameObject>();
+    private int levelSelected;
 
 	// Use this for initialization
 	void Start () {
@@ -60,18 +58,17 @@ public class HighScores : MonoBehaviour {
 
         List<SaveData> saves = saveManager.LoadSave();
 
+        List<SaveData> sortedSaves = SortLevels(saves);
+
         float format = 0;
         //Loads players to appropriate level
-        for (int i = 0; i < saves.Count; i++)
+        for (int i = 0; i < sortedSaves.Count; i++)
         {
             format = startPosForFormat - heightInterval - format;
-            SaveData data = saves[i];
+            SaveData data = sortedSaves[i];
 
             ReadFile(data.GetLevel(), data.GetDifferculty(), data, format);
         }
-        
-
-
 
         //Sets up buttons, default easy is selected
         easyButton.GetComponent<Image>().color = color;
@@ -86,20 +83,6 @@ public class HighScores : MonoBehaviour {
 
     }
 
-    //Refreshes players on game completion
-    public void RefreshPlayers(string player, int score)
-    {
-        //Loop through all current players to update
-        for (int i = 0; i < currentPlayers.Count; i++)
-        {
-            //Checks the name of the object is equal to the name of the player
-            if (currentPlayers[i].name.Equals(player))
-            {
-                currentPlayers[i].GetComponent<Text>().text = player + " " + score.ToString();
-                break;
-            }
-        }
-    }
 
     //Reads files related to gamemode and level to show high scores
     private void ReadFile(int level, int gameMode, SaveData data, float format)
@@ -352,5 +335,104 @@ public class HighScores : MonoBehaviour {
         {
             Total();
         }
+    }
+
+    private List<SaveData> SortLevels(List<SaveData> saveData)
+    {
+
+        List<SaveData> sortedData = new List<SaveData>();
+
+        List<SaveData> totalEasy = saveData.Where(s => s.GetLevel() == 0 && s.GetDifferculty() == 0).ToList();
+        List<SaveData> level1Easy = saveData.Where(s => s.GetLevel() == 1 && s.GetDifferculty() == 0).ToList();
+        List<SaveData> level2Easy = saveData.Where(s => s.GetLevel() == 2 && s.GetDifferculty() == 0).ToList();
+        List<SaveData> level3Easy = saveData.Where(s => s.GetLevel() == 3 && s.GetDifferculty() == 0).ToList();
+
+        List<SaveData> totalHard = saveData.Where(s => s.GetLevel() == 0 && s.GetDifferculty() == 1).ToList();
+        List<SaveData> level1Hard = saveData.Where(s => s.GetLevel() == 1 && s.GetDifferculty() == 1).ToList();
+        List<SaveData> level2Hard = saveData.Where(s => s.GetLevel() == 2 && s.GetDifferculty() == 1).ToList();
+        List<SaveData> level3Hard = saveData.Where(s => s.GetLevel() == 3 && s.GetDifferculty() == 1).ToList();
+
+        if (totalEasy.Count > 6)
+        {
+            totalEasy = totalEasy.OrderBy(s => s.GetScore()).ToList();
+            
+            for (int i = 0; i < 6; i++)
+            {
+                sortedData.Add(totalEasy[i]);
+            }
+        }
+
+        if (level1Easy.Count > 6)
+        {
+            level1Easy = level1Easy.OrderBy(s => s.GetScore()).ToList();
+
+            for (int i = 0; i < 6; i++)
+            {
+                sortedData.Add(level1Easy[i]);
+            }
+        }
+
+        if (level2Easy.Count > 6)
+        {
+            level2Easy = level2Easy.OrderBy(s => s.GetScore()).ToList();
+
+            for (int i = 0; i < 6; i++)
+            {
+                sortedData.Add(level2Easy[i]);
+            }
+        }
+
+        if (level3Easy.Count > 6)
+        {
+            level3Easy = level3Easy.OrderBy(s => s.GetScore()).ToList();
+
+            for (int i = 0; i < 6; i++)
+            {
+                sortedData.Add(level3Easy[i]);
+            }
+        }
+
+        if (totalHard.Count > 6)
+        {
+            totalHard = totalHard.OrderBy(s => s.GetScore()).ToList();
+
+            for (int i = 0; i < 6; i++)
+            {
+                sortedData.Add(totalHard[i]);
+            }
+        }
+
+        if (level1Hard.Count > 6)
+        {
+            level1Hard = level1Hard.OrderBy(s => s.GetScore()).ToList();
+
+            for (int i = 0; i < 6; i++)
+            {
+                sortedData.Add(level1Hard[i]);
+            }
+        }
+
+        if (level2Hard.Count > 6)
+        {
+            level2Hard = level2Hard.OrderBy(s => s.GetScore()).ToList();
+
+            for (int i = 0; i < 6; i++)
+            {
+                sortedData.Add(level2Hard[i]);
+            }
+        }
+
+        if (level3Hard.Count > 6)
+        {
+            level3Hard = level3Hard.OrderBy(s => s.GetScore()).ToList();
+
+            for (int i = 0; i < 6; i++)
+            {
+                sortedData.Add(level3Hard[i]);
+            }
+        }
+
+
+        return sortedData;
     }
 }
