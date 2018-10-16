@@ -31,6 +31,7 @@ public class FallingBall : MonoBehaviour {
     float leftWall;
     float rightWall;
     bool gameStart;
+    bool gameEnd;
 
 	// Use this for initialization
 	void Start () {
@@ -68,6 +69,7 @@ public class FallingBall : MonoBehaviour {
 
         currentTime = -readyTime - goTime;
         gameStart = false;
+        gameEnd = false;
     }
     
 
@@ -79,7 +81,7 @@ public class FallingBall : MonoBehaviour {
         {
             Finish();
         }
-        if (gameStart)
+        if (gameStart & !gameEnd)
         {
             if (currentTime > timeLimit)
             {
@@ -143,7 +145,7 @@ public class FallingBall : MonoBehaviour {
                 }
             }
         }
-        else
+        else if(!gameEnd)
         {
             if (generateTime > 0.3f)
             {
@@ -174,6 +176,7 @@ public class FallingBall : MonoBehaviour {
         //Notify the game manager that the player has successfully finished the game
         //GameObject.FindGameObjectWithTag("MiniGameManager").GetComponent<MiniGameManager>().FinishGame(true);
         Debug.Log("finished");
+        gameEnd = true;
     }
 
     private void Fail()
@@ -181,5 +184,6 @@ public class FallingBall : MonoBehaviour {
         //Notify the game manager that the player has failed the game
         //GameObject.FindGameObjectWithTag("MiniGameManager").GetComponent<MiniGameManager>().FinishGame(false);
         Debug.Log("failed");
+        gameEnd = true;
     }
 }
