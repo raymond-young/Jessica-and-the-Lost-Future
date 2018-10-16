@@ -8,6 +8,9 @@ public class WelcomeScreenButtonActions : MonoBehaviour {
     public GameObject main;
     public GameObject options;
     public GameObject levelSelect;
+    public GameObject difficulty;
+
+    private string level = "Tutorial";
 
 	// Use this for initialization
 	void Start () {
@@ -18,24 +21,40 @@ public class WelcomeScreenButtonActions : MonoBehaviour {
 
     }
 
+    public void NewGameButtonClicked()
+    {
+        level = "Tutorial";
+        ShowDifficulty();
+    }
+
     public void PlayButtonClicked()
     {
-        SceneManager.LoadScene("Tutorial");
+        SceneManager.LoadScene(level);
     }
 
     public void PlayChapterOne()
     {
-        SceneManager.LoadScene("Level-1");
+        level = "Level-1";
+        ShowDifficulty();
     }
 
     public void PlayChapterTwo()
     {
-
+        level = "Level-2";
+        ShowDifficulty();
     }
 
     public void PlayChapterThree()
     {
+        level = "Level-3";
+        ShowDifficulty();
+    }
 
+    public void ShowDifficulty()
+    {
+        main.SetActive(false);
+        levelSelect.SetActive(false);
+        difficulty.SetActive(true);
     }
 
     public void OptionsButtonClicked()
@@ -50,10 +69,25 @@ public class WelcomeScreenButtonActions : MonoBehaviour {
         levelSelect.SetActive(true);
     }
 
+    public void DifficultyBackButtonClicked()
+    {
+        if (level == "Tutorial")
+        {
+            difficulty.SetActive(false);
+            main.SetActive(true);
+        }
+        else
+        {
+            difficulty.SetActive(false);
+            levelSelect.SetActive(true);
+        }
+    }
+
     public void BackButtonClicked()
     {
         options.SetActive(false);
         levelSelect.SetActive(false);
+        difficulty.SetActive(false);
         main.SetActive(true);
     }
 
