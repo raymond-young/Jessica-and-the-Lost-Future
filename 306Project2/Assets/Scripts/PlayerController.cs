@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Yarn.Unity;
 using System;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Text.RegularExpressions;
 
 /**
 * Represents a player. Controls player movement, dialogue triggering, and camera movement. 
@@ -62,8 +65,26 @@ public class PlayerController : MonoBehaviour {
     private GameObject miniMap;
     private GameObject mapBorder;
 
+    private int currentLevel;
+    private float startOfLevelScore;
+
+    private SaveManager saveManager;
+    
+    //TODO needs connection with welcome screen--------------------------------------------------------
+    private string playerName = "default";
+    private int differculty;
+
     // Use this for initialization.
-    void Start() {
+    void Start()
+    {
+        saveManager = GameObject.FindGameObjectWithTag("SaveManager").GetComponent<SaveManager>();
+
+        //Gets level dependent on scene
+        if (SceneManager.GetActiveScene().name.Equals("Level-1")) {
+            currentLevel = 1;
+        }
+       
+
         // Get the components.
         anim = GetComponent<Animator>();
         playerBody = gameObject.GetComponent<Rigidbody2D>();
@@ -138,6 +159,16 @@ public class PlayerController : MonoBehaviour {
 
     }
 
+    private void LateUpdate()
+    {
+
+        //Saves current level on key press
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            //saveManager.SaveLevel(startOfLevelScore, currentLevel, playerName, differculty);
+        }
+    }
+
     // Gets the player's last position to get their last direction before minigame starts.
     private IEnumerator CalcLastPos() {
 
@@ -193,16 +224,16 @@ public class PlayerController : MonoBehaviour {
         // If the game is over.
         if (gameOver) {
             // Transfer the score.
-            transferScore();
+            TransferScore();
             // Display the end-game scene.
             SceneManager.LoadScene("EndOfLevelScene");
         }
     }
 
     // Transfers the score between scenes.
-    public void transferScore()
+    public void TransferScore()
     {
-        Debug.Log("Before - Score is " + score.ToString());
+
         GameObject[] transferObjects = GameObject.FindGameObjectsWithTag("scoreTransferObject");
         for(int i = 0; i< transferObjects.Length;i++)
         {
@@ -213,7 +244,7 @@ public class PlayerController : MonoBehaviour {
         GameObject scoreTransferObject = Instantiate(scoreTransfer, pos, Quaternion.identity);
         DontDestroyOnLoad(scoreTransferObject);
         scoreTransferObject.GetComponent<ScoreTransferScript>().setScore(scoreText.text);
-        Debug.Log("Score is " + score.ToString());
+
     }
 
     // Visually increases one energy.
@@ -350,7 +381,14 @@ public class PlayerController : MonoBehaviour {
     // Changes the scene to a different level.
     [YarnCommand("transition")]
     public void ChangeLevel(string destination) {
-        transferScore();
+        TransferScore();
+
+        Regex regexObj = new Regex(@"[^\d]");
+        string score = regexObj.Replace(scoreText.text, "");
+
+        startOfLevelScore = float.Parse(score);
+        
+        saveManager.SaveLevel(startOfLevelScore, currentLevel, playerName, differculty);
 
         SceneManager.LoadScene(destination);
     }
@@ -377,4 +415,5 @@ public class PlayerController : MonoBehaviour {
     }
 
 
+   
 }

@@ -21,6 +21,7 @@ TagManager:
   - minimap
   - MiniMapBorder
   - HighScorePanel
+  - SaveManager
   layers:
   - Default
   - TransparentFX
