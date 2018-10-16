@@ -2,10 +2,6 @@ title: TimeMachine
 ---
 <<if $hasWrench is true>>
     Time Machine: Great! You fixed the time machine.
-<<<<<<< Updated upstream
-    -> Travel to Jessica's first day in high school.
-    	<<transition Player Level-1>>
-=======
     <<if $level3 is true and $level2 is true>>
         -> Travel to Jessica's first day in high school.
     	    <<transition Player Level-1>>
@@ -24,7 +20,6 @@ title: TimeMachine
         -> Travel to Jessica's first day in high school.
     	    <<transition Player Level-1>>
     <<endif>>
->>>>>>> Stashed changes
 <<else>>
     Jessica: You need a hammer to fix the time machine.
 <<endif>>

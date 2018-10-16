@@ -227,10 +227,6 @@ namespace Yarn.Unity.Example {
             yield break;
         }
 
-        public checkLevel(){
-            
-        }
-
     }
 
 }
