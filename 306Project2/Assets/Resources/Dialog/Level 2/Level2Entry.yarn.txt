@@ -1,0 +1,22 @@
+title: Level2Entry
+---
+<<if $hasStarted is false>>
+    <<set $hasStarted to true>>
+    <<change_character DialogueManager Dean of Engineering>>
+    Welcome everyone to the Engineering open day! Engineers make a positive difference in many aspects of our lives. 
+    Their skills and knowledge have direct impacts on our living, health and wellbeing. 
+    If you’re passionate about designing creative solutions to problems, then consider a career in engineering!
+    <<change_character DialogueManager Jessica>>
+    Finally here. This sounds exactly like what I want to do. I am getting really excited? How about you Jenny?
+    <<change_character DialogueManager Jenny>>
+    Engineering sounds to be the right choice. 
+    I want to meet other girls who are thinking about engineering while we are here. 
+    <<change_character DialogueManager Jenny>>
+    (Looking around) hmm… Can’t seem to see any other girls around. Seems we are the only girls in this room. :(
+    Do you still want to stay and explore a bit more? 
+    <<change_character DialogueManager Jessica>>
+    -> We will be fine! Let’s check out the department exhibitions.
+    -> hm..maybe we should check out the other faulties instead?
+       Let’s just hang out a bit more and see if more girls turn up.
+<<endif>>
+===
