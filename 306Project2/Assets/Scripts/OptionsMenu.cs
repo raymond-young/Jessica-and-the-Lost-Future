@@ -11,6 +11,8 @@ public class OptionsMenu : MonoBehaviour {
 
     public Dropdown resolutionDropdown;
     public AudioMixer mixer;
+    public Slider musicSlider;
+    public Slider effectsSlider;
     public GameObject optionsMenu;
     public static bool isPaused = false;
 
@@ -34,6 +36,18 @@ public class OptionsMenu : MonoBehaviour {
                 current = i;
             }
         }
+        float effectsValue = 0;
+        float musicValue = 0;
+
+        mixer.GetFloat("effects", out effectsValue);
+        mixer.GetFloat("music", out musicValue);
+
+        Debug.Log(effectsValue);
+        Debug.Log(musicValue);
+
+
+        effectsSlider.value = Mathf.Pow(10f, effectsValue / 20);
+        musicSlider.value = Mathf.Pow(10f, musicValue / 20);
 
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = current;

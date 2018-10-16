@@ -11977,6 +11977,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resolutionDropdown: {fileID: 383067780}
   mixer: {fileID: 24100000, guid: 469d1b33e614cf7449e833af9875e390, type: 2}
+  musicSlider: {fileID: 897560620}
+  effectsSlider: {fileID: 566745194}
   optionsMenu: {fileID: 1897179137}
 --- !u!1 &968682625
 GameObject:

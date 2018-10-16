@@ -5,15 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class WelcomeScreenButtonActions : MonoBehaviour {
 
-    private GameObject main;
-    private GameObject options;
+    public GameObject main;
+    public GameObject options;
+    public GameObject levelSelect;
 
 	// Use this for initialization
 	void Start () {
-        main = GameObject.Find("Main");
-        options = GameObject.Find("Options");
-
-        options.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -26,15 +23,37 @@ public class WelcomeScreenButtonActions : MonoBehaviour {
         SceneManager.LoadScene("Tutorial");
     }
 
+    public void PlayChapterOne()
+    {
+        SceneManager.LoadScene("Level-1");
+    }
+
+    public void PlayChapterTwo()
+    {
+
+    }
+
+    public void PlayChapterThree()
+    {
+
+    }
+
     public void OptionsButtonClicked()
     {
         main.SetActive(false);
         options.SetActive(true);
     }
 
+    public void LevelSelectButtonClicked()
+    {
+        main.SetActive(false);
+        levelSelect.SetActive(true);
+    }
+
     public void BackButtonClicked()
     {
         options.SetActive(false);
+        levelSelect.SetActive(false);
         main.SetActive(true);
     }
 
