@@ -16,6 +16,6 @@ public class Backet : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        GameObject.FindGameObjectWithTag("MinigameFallingBall").GetComponent<FallingBall>().catchBall(collider.gameObject);
+        GameObject.FindGameObjectWithTag("MinigameFallingBall").GetComponent<FallingBall>().CatchBall(collider.gameObject);
     }
 }

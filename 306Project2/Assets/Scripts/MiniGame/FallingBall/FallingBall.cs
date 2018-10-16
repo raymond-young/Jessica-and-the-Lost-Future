@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class FallingBall : MonoBehaviour {
     public GameObject ballPrefab;
     public GameObject backet;
+    public GameObject boundary;
     public Text count;
 
     public Slider slider;
@@ -18,11 +19,11 @@ public class FallingBall : MonoBehaviour {
 
     float timeLimit;
     float currentTime;
+    float generateTime = 0f;
     float readyTime = 0.9f;
     float goTime = 0.5f;
 
     int numOfBalls = 10;
-    int currentBalls = 0;
     int goal;
     float xRange;
     float y;
@@ -37,12 +38,11 @@ public class FallingBall : MonoBehaviour {
         timeLimit = 10f;
         count.text = goal.ToString();
         
-        xRange = gameObject.GetComponentInParent<Canvas>().pixelRect.width / 2;
+        xRange = boundary.GetComponent<RectTransform>().rect.width / 2 - backet.GetComponent<RectTransform>().rect.width / 2;
         y = gameObject.GetComponentInParent<Canvas>().pixelRect.height / 2;
 
-        rightWall = gameObject.GetComponentInParent<Canvas>().pixelRect.width / 2;
+        rightWall = xRange;
         leftWall = -rightWall;
-
 
         //Initialise time bar
         RectTransform parentRectTransform = gameObject.GetComponent<RectTransform>();
@@ -145,23 +145,27 @@ public class FallingBall : MonoBehaviour {
         }
         else
         {
-            if (currentBalls < numOfBalls)
+            if (generateTime > 0.3f)
             {
-                GameObject ball = Instantiate(ballPrefab);
-                ball.GetComponent<RectTransform>().SetParent(gameObject.GetComponent<RectTransform>());
-                ball.GetComponent<RectTransform>().localPosition = new Vector2(Random.Range(0, xRange) * Random.Range(-1f, 1f), y);
-                currentBalls++;
+                for (int i = 0; i < Random.Range(1, 3); i++)
+                {
+                    GameObject ball = Instantiate(ballPrefab);
+                    ball.GetComponent<RectTransform>().SetParent(gameObject.GetComponent<RectTransform>());
+                    ball.GetComponent<RectTransform>().localPosition = new Vector2(Random.Range(0, xRange) * Random.Range(-1f, 1f), y);
+                }
+                generateTime = 0;
             }
+            //Update time bar
             bar.value = Mathf.Lerp(0f, 1f, currentTime / timeLimit);
         }
         currentTime += Time.deltaTime;
+        generateTime += Time.deltaTime;
     }
 
-    public void catchBall(GameObject ball)
+    public void CatchBall(GameObject ball)
     {
         Destroy(ball);
         goal--;
-        currentBalls--;
         count.text = goal.ToString();
     }
 
