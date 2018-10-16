@@ -12,31 +12,44 @@ public class FallingBall : MonoBehaviour {
     public Slider slider;
     public GameObject readyPrefab;
     public GameObject goPrefab;
+    
+    // List of possible sprite appearances.
+    public List<Sprite> possibleSprites = new List<Sprite>();
 
+    // Game objects for user feedback.
     Slider bar;
     GameObject ready;
     GameObject go;
 
-    float timeLimit;
+    public float timeLimit;
     float currentTime;
     float generateTime = 0f;
     float readyTime = 0.9f;
     float goTime = 0.5f;
 
+    // Variables controlling aspects of the game's difficulty.
     int numOfBalls = 10;
     int goal;
+
+    // Position contraints
     float xRange;
     float y;
 
+    // Ways to prevent the user from going past the limit of the screen.
     float leftWall;
     float rightWall;
     bool gameStart;
     bool gameEnd;
+    
+    
+    // A way to query if the game has started.
+    public bool gameStarted() {
+        return gameStart;
+    }
+    
 
-	// Use this for initialization
-	void Start () {
-        goal = 98;
-        timeLimit = 10f;
+    // Use this for initialization
+    void Start () {
         count.text = goal.ToString();
         
         xRange = boundary.GetComponent<RectTransform>().rect.width / 2 - backet.GetComponent<RectTransform>().rect.width / 2;
@@ -77,7 +90,7 @@ public class FallingBall : MonoBehaviour {
     void OnGUI()
     {
         //Finish game when tehre is no more arrows to press
-        if (goal == 0)
+        if (goal <= 0)
         {
             Finish();
         }
@@ -86,21 +99,6 @@ public class FallingBall : MonoBehaviour {
             if (currentTime > timeLimit)
             {
                 Fail();
-            }
-            //Listen to key press event
-            Event e = Event.current;
-            if (e.type == EventType.KeyDown)
-            {
-                float x = backet.GetComponent<RectTransform>().localPosition.x;
-                float y = backet.GetComponent<RectTransform>().localPosition.y;
-                if (e.keyCode.ToString().Equals("LeftArrow") && x > leftWall)
-                {
-                    backet.GetComponent<RectTransform>().localPosition = new Vector2 (x - 10, y);
-                }
-                else if (e.keyCode.ToString().Equals("RightArrow") && x < rightWall)
-                {
-                    backet.GetComponent<RectTransform>().localPosition = new Vector2(x + 10, y);
-                }
             }
         }
     }
@@ -151,8 +149,15 @@ public class FallingBall : MonoBehaviour {
             {
                 for (int i = 0; i < Random.Range(1, 3); i++)
                 {
+                    // Create a new ball.
                     GameObject ball = Instantiate(ballPrefab);
+                    // Set it to have a random appearance.
+                    int s = Random.Range(0, possibleSprites.Count);
+                    ball.GetComponent<Image>().sprite = possibleSprites[s];
+
+                    // Get the ball's parent and position.
                     ball.GetComponent<RectTransform>().SetParent(gameObject.GetComponent<RectTransform>());
+                    // Set it to a random position.
                     ball.GetComponent<RectTransform>().localPosition = new Vector2(Random.Range(0, xRange) * Random.Range(-1f, 1f), y);
                 }
                 generateTime = 0;

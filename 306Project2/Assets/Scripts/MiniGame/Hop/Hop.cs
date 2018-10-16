@@ -234,12 +234,13 @@ public class Hop : MonoBehaviour
         }
         else
         {
+            float newY, newX;
             //Move all the stairs
             foreach (GameObject stair in stairQueue)
             {
                 RectTransform stairRectTransform = stair.GetComponent<RectTransform>();
-                float newY = stairRectTransform.localPosition.y - speed;
-                float newX = stairRectTransform.localPosition.x;
+                newY = stairRectTransform.localPosition.y - speed;
+                newX = stairRectTransform.localPosition.x;
                 stairRectTransform.localPosition = new Vector2(newX, newY);
             }
 
@@ -253,6 +254,9 @@ public class Hop : MonoBehaviour
                 float stairY = stepOnStair.GetComponent<RectTransform>().localPosition.y - speed;
                 stepOnStair.GetComponent<RectTransform>().localPosition = new Vector2(stairX, stairY);
             }
+            newY = blobPrefab.GetComponent<RectTransform>().localPosition.y - speed;
+            newX = blobPrefab.GetComponent<RectTransform>().localPosition.x;
+            blobPrefab.GetComponent<RectTransform>().localPosition = new Vector2(newX, newY);
             
             //Update time bar
             bar.value = Mathf.Lerp(0f, 1f, currentTime / timeLimit);
