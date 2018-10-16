@@ -19,7 +19,15 @@ public class SaveManager : MonoBehaviour {
 
     public void SaveLevel(float startOfLevelScore, int currentLevel, string playerName, int differculty)
     {
-        string destination = Application.persistentDataPath + "/" + playerName + ".dat";
+        bool exists = Directory.Exists(Application.persistentDataPath + "/" + "HighScoreFiles");
+
+        if (!exists)
+        {
+            Directory.CreateDirectory(Application.persistentDataPath + "/" + "HighScoreFiles");
+        }
+            
+
+        string destination = Application.persistentDataPath + "/HighScoreFiles/" + playerName + ".dat";
         FileStream file;
 
         if (File.Exists(destination)) file = File.OpenWrite(destination);
@@ -35,16 +43,22 @@ public class SaveManager : MonoBehaviour {
     {
         List<SaveData> saves = new List<SaveData>();
 
-        foreach (string fileName in Directory.GetFiles(Application.persistentDataPath, "*.dat"))
-        {
-            FileStream file;
-            file = File.OpenRead(fileName);
-            BinaryFormatter bf = new BinaryFormatter();
-            SaveData data = (SaveData)bf.Deserialize(file);
-            file.Close();
+        bool exists = Directory.Exists(Application.persistentDataPath + "/" + "HighScoreFiles");
 
-            saves.Add(data);
+        if (exists)
+        {
+            foreach (string fileName in Directory.GetFiles(Application.persistentDataPath + "/HighScoreFiles/", "*.dat"))
+            {
+                FileStream file;
+                file = File.OpenRead(fileName);
+                BinaryFormatter bf = new BinaryFormatter();
+                SaveData data = (SaveData)bf.Deserialize(file);
+                file.Close();
+
+                saves.Add(data);
+            }
         }
+        
 
         return saves;
     }

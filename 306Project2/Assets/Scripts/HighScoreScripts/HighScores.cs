@@ -61,7 +61,7 @@ public class HighScores : MonoBehaviour {
         SaveManager saveManager = new SaveManager();
 
         //Test ONLY
-       // saveManager.SaveLevel(50, 2, "Steve", 0);
+        saveManager.SaveLevel(10, 2, "e", 0);
 
         List<SaveData> saves = saveManager.LoadSave();
 
@@ -359,41 +359,31 @@ public class HighScores : MonoBehaviour {
 
         List<SaveData> sortedData = new List<SaveData>();
 
-        List<SaveData> totalEasy = saveData.Where(s => s.GetLevel() == 0 && s.GetDifferculty() == 0).ToList();
+        List<SaveData> totalEasy = new List<SaveData>();
         List<SaveData> level1Easy = saveData.Where(s => s.GetLevel() == 1 && s.GetDifferculty() == 0).ToList();
         List<SaveData> level2Easy = saveData.Where(s => s.GetLevel() == 2 && s.GetDifferculty() == 0).ToList();
         List<SaveData> level3Easy = saveData.Where(s => s.GetLevel() == 3 && s.GetDifferculty() == 0).ToList();
 
-        List<SaveData> totalHard = saveData.Where(s => s.GetLevel() == 0 && s.GetDifferculty() == 1).ToList();
+        List<SaveData> totalHard = new List<SaveData>();
         List<SaveData> level1Hard = saveData.Where(s => s.GetLevel() == 1 && s.GetDifferculty() == 1).ToList();
         List<SaveData> level2Hard = saveData.Where(s => s.GetLevel() == 2 && s.GetDifferculty() == 1).ToList();
         List<SaveData> level3Hard = saveData.Where(s => s.GetLevel() == 3 && s.GetDifferculty() == 1).ToList();
+    
+        level1Easy = level1Easy.OrderByDescending(s => s.GetScore()).ToList();
+        level2Easy = level2Easy.OrderByDescending(s => s.GetScore()).ToList();
+        level3Easy = level3Easy.OrderByDescending(s => s.GetScore()).ToList();
 
+        level1Hard = level1Hard.OrderByDescending(s => s.GetScore()).ToList();
+        level2Hard = level2Hard.OrderByDescending(s => s.GetScore()).ToList();
+        level3Hard = level3Hard.OrderByDescending(s => s.GetScore()).ToList();
 
-        totalEasy = totalEasy.OrderBy(s => s.GetScore()).ToList();
-        level1Easy = level1Easy.OrderBy(s => s.GetScore()).ToList();
-        level2Easy = level2Easy.OrderBy(s => s.GetScore()).ToList();
-        level3Easy = level3Easy.OrderBy(s => s.GetScore()).ToList();
-
-        totalHard = totalHard.OrderBy(s => s.GetScore()).ToList();
-        level1Hard = level1Hard.OrderBy(s => s.GetScore()).ToList();
-        level2Hard = level2Hard.OrderBy(s => s.GetScore()).ToList();
-        level3Hard = level3Hard.OrderBy(s => s.GetScore()).ToList();
-
-        for (int i = 0; i < 6; i++)
-        {
-           if (totalEasy.Count > i)
-           {
-                sortedData.Add(totalEasy[i]);
-           }
-           
-        }
 
         for (int i = 0; i < 6; i++)
         {
             if (level1Easy.Count > i)
             {
                 sortedData.Add(level1Easy[i]);
+
             }
         }
 
@@ -444,6 +434,7 @@ public class HighScores : MonoBehaviour {
                 sortedData.Add(level3Hard[i]);
             }
         }
+
 
         return sortedData;
     }
