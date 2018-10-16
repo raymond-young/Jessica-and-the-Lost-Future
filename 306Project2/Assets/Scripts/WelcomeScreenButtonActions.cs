@@ -91,6 +91,11 @@ public class WelcomeScreenButtonActions : MonoBehaviour {
         main.SetActive(true);
     }
 
+    public void HighScoreButtonClicked()
+    {
+        
+    }
+
     public void SettingsButtonClicked()
     {
         SceneManager.LoadScene("SettingsScene");
