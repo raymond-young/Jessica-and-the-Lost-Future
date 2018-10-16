@@ -75,7 +75,12 @@ public class PlayerController : MonoBehaviour {
     // Use this for initialization.
     void Start()
     {
-        saveManager = GameObject.FindGameObjectWithTag("SaveManager").GetComponent<SaveManager>();
+        if (GameObject.FindGameObjectWithTag("SaveManager") != null)
+        {
+            saveManager = GameObject.FindGameObjectWithTag("SaveManager").GetComponent<SaveManager>();
+        }
+
+        
 
         //Gets level dependent on scene
         if (SceneManager.GetActiveScene().name.Equals("Level-1")) {
@@ -88,7 +93,11 @@ public class PlayerController : MonoBehaviour {
         playerBody = gameObject.GetComponent<Rigidbody2D>();
         storeLives = GameObject.FindGameObjectWithTag("StoreLives");
 
-        mapBorder = GameObject.FindGameObjectWithTag("MiniMapBorder");
+        if (GameObject.FindGameObjectWithTag("MiniMapBorder") != null)
+        {
+            mapBorder = GameObject.FindGameObjectWithTag("MiniMapBorder");
+        }
+            
 
         //Prevents rotation of main character.
         playerBody.freezeRotation = true;
@@ -112,7 +121,10 @@ public class PlayerController : MonoBehaviour {
         UpdateScoreText();
 
         //Minimap reference
-        miniMap = GameObject.FindGameObjectWithTag("minimap");
+        if (GameObject.FindGameObjectWithTag("minimap") != null)
+        {
+            miniMap = GameObject.FindGameObjectWithTag("minimap");
+        }
     }
 
     // Update is called once per frame.
@@ -277,8 +289,13 @@ public class PlayerController : MonoBehaviour {
             currentRoom = collider;
 
             //Removes fog of war from miniMap
-            MiniMap m = miniMap.GetComponent<MiniMap>();
-            m.RemoveFogOfWar(collider);
+            if (miniMap != null)
+            {
+                MiniMap m = miniMap.GetComponent<MiniMap>();
+                m.RemoveFogOfWar(collider);
+
+            }
+
 
             //Teleports player to previous entry pos of room if they fail minigame
             StartCoroutine(CalcLastPos());
@@ -297,8 +314,12 @@ public class PlayerController : MonoBehaviour {
             teleportY = collider.GetComponent<Door>().playerY;
 
             //Removes fog of war from miniMap
-            MiniMap m = miniMap.GetComponent<MiniMap>();
-            m.RemoveFogOfWar(newRoom);
+            if (miniMap != null)
+            {
+                MiniMap m = miniMap.GetComponent<MiniMap>();
+                m.RemoveFogOfWar(collider);
+
+            }
 
             //Teleports player to previous entry pos of room if they fail minigame
             StartCoroutine(CalcLastPos());
@@ -376,7 +397,11 @@ public class PlayerController : MonoBehaviour {
 
         startOfLevelScore = float.Parse(score);
         
-        saveManager.SaveLevel(startOfLevelScore, currentLevel, playerName, differculty);
+        if (!SceneManager.GetActiveScene().name.Equals("Tutorial"))
+        {
+            saveManager.SaveLevel(startOfLevelScore, currentLevel, playerName, differculty);
+        }
+        
 
         SceneManager.LoadScene(destination);
     }

@@ -5,22 +5,65 @@ using UnityEngine;
 [System.Serializable]
 public class SaveData {
 
-    private float score;
     private int level;
     private string playerName;
     private int differculty;
 
+    private float level1SaveScore;
+    private float level2SaveScore;
+    private float level3SaveScore;
+    private float totalScore;
+
     public SaveData(float score, int level, string playerName, int differculty)
     {
-        this.score = score;
         this.level = level;
+
+        if (level == 0)
+        {
+            totalScore = score;
+        }
+        else if (level == 1)
+        {
+            level1SaveScore = score;
+        }
+        else if (level == 2)
+        {
+            level2SaveScore = score;
+        }
+        else if (level == 3)
+        {
+            level3SaveScore = score;
+        }
+
         this.differculty = differculty;
         this.playerName = playerName;
     }
 
-    public float GetScore()
+
+    public float TotalScore()
     {
-        return score;
+        return totalScore;
+    }
+
+    public float GetTotalScore()
+    {
+        float scoreTemp = level1SaveScore + level2SaveScore + level3SaveScore;
+        return scoreTemp;
+    }
+
+    public float GetLevel1Score()
+    {
+        return level1SaveScore;
+    }
+
+    public float GetLevel2Score()
+    {
+        return level2SaveScore;
+    }
+
+    public float GetLevel3Score()
+    {
+        return level3SaveScore;
     }
 
     public int GetLevel()

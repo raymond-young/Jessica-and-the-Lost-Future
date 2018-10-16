@@ -6271,7 +6271,7 @@ GameObject:
   - component: {fileID: 182435555}
   - component: {fileID: 182435556}
   m_Layer: 9
-  m_Name: CollidableRoomHallway
+  m_Name: HallDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

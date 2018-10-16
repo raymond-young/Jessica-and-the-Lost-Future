@@ -9069,6 +9069,11 @@ Prefab:
       propertyPath: confidenceBar
       value: 
       objectReference: {fileID: 1472057139}
+    - target: {fileID: 114380228009464110, guid: 5057d547abcb6f44589566c1be9f78a5,
+        type: 2}
+      propertyPath: miniMapPlayer
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5057d547abcb6f44589566c1be9f78a5, type: 2}
   m_IsPrefabParent: 0
