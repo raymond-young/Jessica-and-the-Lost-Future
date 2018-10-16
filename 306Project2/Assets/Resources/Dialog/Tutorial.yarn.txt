@@ -10,4 +10,7 @@ title: Tutorial
 	Jessica: I need to save myself!
 	Use the arrow keys to move around.
 <<endif>>
+<<set $true_variable to true>>
+<<set $false_variable to false>>
+<<checkLevel Dialogue>>
 ===
