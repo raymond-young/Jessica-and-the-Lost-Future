@@ -63,7 +63,7 @@ public class HighScores : MonoBehaviour {
         SaveManager saveManager = new SaveManager();
 
         //Test ONLY
-        saveManager.SaveLevel(10, 2, "e", 0);
+        //saveManager.SaveLevel(10, 2, "e", 0);
 
         List<SaveData> saves = saveManager.LoadSave();
 

@@ -13,6 +13,7 @@ public class SaveData {
     private float level2SaveScore;
     private float level3SaveScore;
     private float totalScore;
+    public Dictionary<string, bool> levels = new Dictionary<string, bool>();
 
     public SaveData(float score, int level, string playerName, int differculty)
     {
@@ -37,6 +38,9 @@ public class SaveData {
 
         this.differculty = differculty;
         this.playerName = playerName;
+
+        levels.Add("level2", false);
+        levels.Add("level3", false);
     }
 
 

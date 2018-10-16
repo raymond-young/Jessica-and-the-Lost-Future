@@ -47,6 +47,9 @@ namespace Yarn.Unity
     [AddComponentMenu("Scripts/Yarn Spinner/Dialogue Runner")]
     public class DialogueRunner : MonoBehaviour
     {
+
+        private GameObject player;
+
         /// The JSON files to load the conversation from
         public TextAsset[] sourceText;
 
@@ -75,8 +78,6 @@ namespace Yarn.Unity
 
         public bool automaticCommands = true;
 
-        private String levelConfigName = "/LevelConf.dat";
-
         /// Our conversation engine
         /** Automatically created on first access
          */
@@ -102,6 +103,9 @@ namespace Yarn.Unity
         /// Start the dialogue
         void Start ()
         {
+            player = GameObject.FindGameObjectWithTag("player");
+
+
             // Ensure that we have our Implementation object
             if (dialogueUI == null) {
                 Debug.LogError ("Implementation was not set! Can't run the dialogue!");
@@ -317,34 +321,26 @@ namespace Yarn.Unity
         }
 
         [YarnCommand("checkLevel")]
-        public void checkLevel(){
-        //Ensure that the level variables are up to date as per the config file.
-        if(File.Exists(Application.persistentDataPath + levelConfigName)){
+        public void checkLevel() {
+
+            string playerName = player.GetComponent<PlayerController>().GetPlayerName();
+            int difficulty = player.GetComponent<PlayerController>().GetDifficulty();
+
+            //Ensure that the level variables are up to date as per the config file.
+            if (File.Exists(Application.persistentDataPath + "/" + playerName + ".dat")){
                 BinaryFormatter bf = new BinaryFormatter();
-                FileStream file = File.Open(Application.persistentDataPath + levelConfigName, FileMode.Open);
-                LevelData data = (LevelData) bf.Deserialize(file);
+                FileStream file = File.Open(Application.persistentDataPath + "/" + playerName + ".dat", FileMode.Open);
+                SaveData data = (SaveData) bf.Deserialize(file);
                 file.Close();
                 foreach(KeyValuePair<string, bool> entry in data.levels){
                     variableStorage.SetValue("$" + entry.Key, entry.Value ? variableStorage.GetValue("$true_variable") : variableStorage.GetValue("$false_variable"));
                 }
             }else{
                 BinaryFormatter bf = new BinaryFormatter();
-                FileStream file = File.Create(Application.persistentDataPath + levelConfigName);
-                bf.Serialize(file, new LevelData());
+                FileStream file = File.Create(Application.persistentDataPath + "/" + playerName + ".dat");
+                bf.Serialize(file, new SaveData(0, 0, playerName, difficulty));
                 file.Close();
             }
-        }
-
-        [YarnCommand("passLevel")]
-        public void passlevel(string level){
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + levelConfigName, FileMode.Open);
-            LevelData data = (LevelData) bf.Deserialize(file);
-            file.Close();
-            data.levels[level] = true;
-            FileStream newFile = File.Create(Application.persistentDataPath + levelConfigName);
-            bf.Serialize(newFile, data);
-            newFile.Close();
         }
 
 
@@ -547,16 +543,4 @@ namespace Yarn.Unity
         public abstract void ResetToDefaults ();
 
     }
-
-    //This is the data object that represents how to parse the binary save file. The file is binary to avoid editing by players.
-    [System.Serializable]
-    class LevelData {
-        //these variable names MUST match to the variable names used in the TimeMachine.Yarn file.
-        public Dictionary<string, bool> levels = new Dictionary<string, bool>();
-        public LevelData(){
-            levels.Add("level2", false);
-            levels.Add("level3", false);
-        }
-    }
-
 }

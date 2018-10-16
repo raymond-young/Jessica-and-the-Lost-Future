@@ -390,19 +390,6 @@ public class PlayerController : MonoBehaviour {
     // Changes the scene to a different level.
     [YarnCommand("transition")]
     public void ChangeLevel(string destination) {
-        TransferScore();
-
-        Regex regexObj = new Regex(@"[^\d]");
-        string score = regexObj.Replace(scoreText.text, "");
-
-        startOfLevelScore = float.Parse(score);
-        
-        if (!SceneManager.GetActiveScene().name.Equals("Tutorial"))
-        {
-            saveManager.SaveLevel(startOfLevelScore, currentLevel, playerName, differculty);
-        }
-        
-
         SceneManager.LoadScene(destination);
     }
 
@@ -427,6 +414,33 @@ public class PlayerController : MonoBehaviour {
         transform.Translate(-direction);
     }
 
+    [YarnCommand("passLevel")]
+    public void passlevel(string level)
+    {
 
-   
+        TransferScore();
+
+        Regex regexObj = new Regex(@"[^\d]");
+        string score = regexObj.Replace(scoreText.text, "");
+
+        startOfLevelScore = float.Parse(score);
+
+        //Dont save if level change is from tutorial
+        if (!SceneManager.GetActiveScene().name.Equals("Tutorial"))
+        {
+            saveManager.SaveLevel(startOfLevelScore, currentLevel, playerName, differculty);
+        }
+
+    }
+
+    public string GetPlayerName()
+    {
+        return playerName;
+    }
+
+    public int GetDifficulty()
+    {
+        return differculty;
+    }
+
 }
