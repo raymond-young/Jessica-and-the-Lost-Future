@@ -15,29 +15,35 @@ public class FallingBall : MonoBehaviour {
     // List of possible sprite appearances.
     public List<Sprite> possibleSprites = new List<Sprite>();
 
-    Slider bar;
-    GameObject ready;
-    GameObject go;
+    // Game objects for user feedback.
+    public Slider bar;
+    public GameObject ready;
+    public GameObject go;
 
-    float timeLimit;
-    float currentTime;
-    float readyTime = 0.9f;
-    float goTime = 0.5f;
+    public float timeLimit = 10f;
+    private float currentTime;
+    private float readyTime = 0.9f;
+    private float goTime = 0.5f;
 
-    int numOfBalls = 5;
-    int currentBalls = 0;
-    int goal;
-    float xRange;
-    float y;
+    // Variables controlling aspects of the game's difficulty.
+    public int numOfBalls = 5;
+    private int currentBalls = 0;
+    public int goal = 15;
+    private float xRange;
+    private float y;
 
-    float leftWall;
-    float rightWall;
-    bool gameStart;
+    // Ways to prevent the user from going past the limit of the screen.
+    private float leftWall;
+    private float rightWall;
+    private bool gameStart;
+
+    // A way to query if the game has started.
+    public bool gameStarted() {
+        return gameStart;
+    }
 
 	// Use this for initialization
 	void Start () {
-        goal = 98;
-        timeLimit = 10f;
         count.text = goal.ToString();
         
         xRange = gameObject.GetComponentInParent<Canvas>().pixelRect.width / 2;
@@ -78,7 +84,7 @@ public class FallingBall : MonoBehaviour {
     void OnGUI()
     {
         //Finish game when tehre is no more arrows to press
-        if (goal == 0)
+        if (goal <= 0)
         {
             Finish();
         }
@@ -87,21 +93,6 @@ public class FallingBall : MonoBehaviour {
             if (currentTime > timeLimit)
             {
                 Fail();
-            }
-            //Listen to key press event
-            Event e = Event.current;
-            if (e.type == EventType.KeyDown)
-            {
-                float x = backet.GetComponent<RectTransform>().localPosition.x;
-                float y = backet.GetComponent<RectTransform>().localPosition.y;
-                if (e.keyCode.ToString().Equals("LeftArrow") && x > leftWall)
-                {
-                    backet.GetComponent<RectTransform>().localPosition = new Vector2 (x - 10, y);
-                }
-                else if (e.keyCode.ToString().Equals("RightArrow") && x < rightWall)
-                {
-                    backet.GetComponent<RectTransform>().localPosition = new Vector2(x + 10, y);
-                }
             }
         }
     }

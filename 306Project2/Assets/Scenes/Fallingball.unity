@@ -204,6 +204,11 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224767037433215432, guid: 02601ddcd26409349a00b84520b25985,
     type: 2}
   m_PrefabInternal: {fileID: 1572178571}
+--- !u!50 &201546552 stripped
+Rigidbody2D:
+  m_PrefabParentObject: {fileID: 50415684197574842, guid: 02601ddcd26409349a00b84520b25985,
+    type: 2}
+  m_PrefabInternal: {fileID: 1572178571}
 --- !u!1 &534781743
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,6 +438,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a4bb9ee9b722a61449b61bed9840ae34, type: 3}
   - {fileID: 21300000, guid: 84be7d4aac866584ca12223651d974a6, type: 3}
   - {fileID: 21300000, guid: 83ecbfd768cfbba4a8a5e496fcf26320, type: 3}
+  bar: {fileID: 0}
+  ready: {fileID: 0}
+  go: {fileID: 0}
+  timeLimit: 0
+  numOfBalls: 5
+  goal: 0
 --- !u!1001 &1572178571
 Prefab:
   m_ObjectHideFlags: 0
@@ -530,6 +541,11 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114657157226698936, guid: 02601ddcd26409349a00b84520b25985,
+        type: 2}
+      propertyPath: bucketBody
+      value: 
+      objectReference: {fileID: 201546552}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 02601ddcd26409349a00b84520b25985, type: 2}
   m_IsPrefabParent: 0
