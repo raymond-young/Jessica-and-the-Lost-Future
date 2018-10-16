@@ -51,6 +51,15 @@ namespace Yarn.Unity.Example {
         /// The UI element that displays lines
         public Text lineText;
 
+        // The UI element that displays the person currently speaking.
+        public Text personSpeaking;
+
+        // The UI element that displays the person speaking as an image.
+        public GameObject personSpeakingSprite;
+
+        // Private map of sprites and names.
+        private Dictionary<string, Sprite> spriteMap;
+
         /// A UI element that appears after lines have finished appearing
         public GameObject continuePrompt;
 
@@ -70,6 +79,29 @@ namespace Yarn.Unity.Example {
         /// Make it possible to temporarily disable the controls when
         /// dialogue is active and to restore them when dialogue ends
         public RectTransform gameControlsContainer;
+
+        public void Start() {
+        	// Load all resources.
+        	spriteMap = new Dictionary<string, Sprite>();
+        	spriteMap["Jessica"] = Resources.Load<Sprite>("Sprites/jessica");
+        	spriteMap["nozamA Executive 1"] = Resources.Load<Sprite>("Sprites/exec1");
+        	spriteMap["nozamA Executive 2"] = Resources.Load<Sprite>("Sprites/exec2");
+        	spriteMap["Hammer"] = Resources.Load<Sprite>("Sprites/hammer");
+        	spriteMap["Time Machine"] = Resources.Load<Sprite>("Sprites/timemachine");
+        	spriteMap["Mrs. Beryl"] = Resources.Load<Sprite>("Sprites/exec2");
+        	spriteMap["Owen"] = Resources.Load<Sprite>("Sprites/owen");
+        	spriteMap["Barry"] = Resources.Load<Sprite>("Sprites/barry");
+        	spriteMap["James"] = Resources.Load<Sprite>("Sprites/james");
+        	spriteMap["Grace"] = Resources.Load<Sprite>("Sprites/grace");
+        	spriteMap["Jenny"] = Resources.Load<Sprite>("Sprites/jenny");
+        	spriteMap["Book"] = Resources.Load<Sprite>("Sprites/book");
+        	spriteMap["Key"] = Resources.Load<Sprite>("Sprites/key");
+        	spriteMap["Poster"] = Resources.Load<Sprite>("Sprites/poster");
+        	spriteMap["Note"] = Resources.Load<Sprite>("Sprites/note");
+        	spriteMap["Professor Waston"] = Resources.Load<Sprite>("Sprites/cathy");
+        	spriteMap["Mum"] = Resources.Load<Sprite>("Sprites/mum");
+        	spriteMap["Dad"] = Resources.Load<Sprite>("Sprites/dad");
+        }
 
         void Awake ()
         {
@@ -138,6 +170,24 @@ namespace Yarn.Unity.Example {
                 yield return null;
             }
 
+        }
+
+        [YarnCommand("change_character")]
+        public void ChangeCharacter(string characterToChange) {
+        	// Changes the character sprite and name currently speaking.
+        	personSpeaking.text = characterToChange.ToUpper() + ":";
+        	// Change the sprite.
+        	personSpeakingSprite.GetComponent<Image>().sprite = spriteMap[characterToChange];
+        }
+
+        [YarnCommand("change_character")]
+        public void ChangeCharacter(string string1, string string2) {
+        	ChangeCharacter(string1 + " " + string2);
+        }
+
+        [YarnCommand("change_character")]
+        public void ChangeCharacter(string string1, string string2, string string3) {
+        	ChangeCharacter(string1 + " " + string2 + " " + string3);
         }
 
         /// Show a list of options, and wait for the player to make a selection.
