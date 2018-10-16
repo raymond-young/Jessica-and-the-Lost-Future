@@ -29,6 +29,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using CsvHelper;
+using System;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 namespace Yarn.Unity
 {
@@ -72,6 +75,10 @@ namespace Yarn.Unity
 
         public bool automaticCommands = true;
 
+        private String levelConfigName = "/LevelConf.dat";
+
+        private LevelData levelconfig = new LevelData();
+
         /// Our conversation engine
         /** Automatically created on first access
          */
@@ -111,6 +118,26 @@ namespace Yarn.Unity
 
             // Ensure that the variable storage has the right stuff in it
             variableStorage.ResetToDefaults ();
+
+            // //Ensure that the level variables are up to date as per the config file.
+            // if(File.Exists(Application.persistentDataPath + levelConfigName) && false){
+            //     BinaryFormatter bf = new BinaryFormatter();
+            //     FileStream file = File.Open(Application.persistentDataPath + levelConfigName, FileMode.Open);
+            //     LevelData data = (LevelData) bf.Deserialize(file);
+            //     file.Close();
+            //     foreach(KeyValuePair<string, bool> entry in data.levels){
+            //         variableStorage.SetValue(entry.Key, entry.Value ? variableStorage.GetValue("$true_variable") : variableStorage.GetValue("$false_variable"));
+            //     }
+            // }else{
+            //     BinaryFormatter bf = new BinaryFormatter();
+            //     FileStream file = File.Create(Application.persistentDataPath + levelConfigName);
+            //     bf.Serialize(file, levelconfig);
+            //     file.Close();
+            //     variableStorage.SetValue("$level2", variableStorage.GetValue("$true_variable"));
+            //     Debug.Log(variableStorage.GetValue("true_variable"));
+            //     Debug.Log(variableStorage.GetValue("$true_variable"));
+            //     Debug.Log(variableStorage.GetValue("$$true_variable"));
+            // }
 
             // Load all scripts
             if (sourceText != null) {
@@ -490,6 +517,17 @@ namespace Yarn.Unity
 
         public abstract void ResetToDefaults ();
 
+    }
+
+    //This is the data object that represents how to parse the binary save file. The file is binary to avoid editing by players.
+    [System.Serializable]
+    class LevelData {
+        //these variable names MUST match to the variable names used in the TimeMachine.Yarn file.
+        public Dictionary<string, bool> levels = new Dictionary<string, bool>();
+        public LevelData(){
+            levels.Add("level2", false);
+            levels.Add("level3", false);
+        }
     }
 
 }
