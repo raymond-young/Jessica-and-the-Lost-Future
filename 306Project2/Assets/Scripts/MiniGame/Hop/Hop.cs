@@ -20,6 +20,7 @@ public class Hop : MonoBehaviour
     private GameObject lastStair;
     private GameObject stepOnStair;
     private Queue<Arrow> stairRef = new Queue<Arrow>();
+
     private Slider bar;
     GameObject ready;
     GameObject go;
@@ -112,6 +113,7 @@ public class Hop : MonoBehaviour
             thisY = y;
         }
 
+        //Randomly decide the next stair (on the left or on the right)
         if (random.Next(0, 2) == 0)
         {
             stairRectTransform.localPosition = new Vector2(x, thisY);
@@ -122,6 +124,7 @@ public class Hop : MonoBehaviour
             stairRectTransform.localPosition = new Vector2(-x, thisY);
             stairRef.Enqueue(Arrow.LeftArrow);
         }
+
         //Assign color
         if (colorIndex > rainbow.Count - 1)
         {
@@ -155,7 +158,8 @@ public class Hop : MonoBehaviour
         {
             Debug.Log("not in safe zone");
             Fail();
-        }    
+        }   
+        
         //Listen to key press event
         Event e = Event.current;
         if (gameStart && e.type == EventType.KeyDown)
@@ -173,7 +177,7 @@ public class Hop : MonoBehaviour
                 stepOnStair = s;
                 float blobX = s.GetComponent<RectTransform>().localPosition.x;
                 float blobY = s.GetComponent<RectTransform>().localPosition.y 
-                    + s.GetComponent<RectTransform>().rect.height/2 
+                    + s.GetComponent<RectTransform>().rect.height / 2 
                     + blobPrefab.GetComponent<RectTransform>().rect.height / 2;
                 blobPrefab.GetComponent<RectTransform>().localPosition = new Vector2(blobX, blobY);
             }
@@ -234,13 +238,12 @@ public class Hop : MonoBehaviour
         }
         else
         {
-            float newY, newX;
             //Move all the stairs
             foreach (GameObject stair in stairQueue)
             {
                 RectTransform stairRectTransform = stair.GetComponent<RectTransform>();
-                newY = stairRectTransform.localPosition.y - speed;
-                newX = stairRectTransform.localPosition.x;
+                float newY = stairRectTransform.localPosition.y - speed;
+                float newX = stairRectTransform.localPosition.x;
                 stairRectTransform.localPosition = new Vector2(newX, newY);
             }
 
@@ -254,16 +257,14 @@ public class Hop : MonoBehaviour
                 float stairY = stepOnStair.GetComponent<RectTransform>().localPosition.y - speed;
                 stepOnStair.GetComponent<RectTransform>().localPosition = new Vector2(stairX, stairY);
             }
-            newY = blobPrefab.GetComponent<RectTransform>().localPosition.y - speed;
-            newX = blobPrefab.GetComponent<RectTransform>().localPosition.x;
-            blobPrefab.GetComponent<RectTransform>().localPosition = new Vector2(newX, newY);
-            
+
             //Update time bar
             bar.value = Mathf.Lerp(0f, 1f, currentTime / timeLimit);
         }
         //Update timer
         currentTime += Time.deltaTime;
     }
+
 
 
 
