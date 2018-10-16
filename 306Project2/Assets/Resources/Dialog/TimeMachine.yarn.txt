@@ -14,8 +14,6 @@ title: TimeMachine
     	    <<transition Player Level-1>>
 	-> Travel to Jessica's University open day.
             <<transition Player Level-2>>
-    <<elseif $level2 is false>>
-        -> ITS FALSE FUCK
     <<else>>
         -> Travel to Jessica's first day in high school.
     	    <<transition Player Level-1>>
