@@ -181,6 +181,12 @@ public class PlayerController : MonoBehaviour {
             CheckForNearbyNPC();
         }
 
+        // Test achievement
+		if (Input.GetKeyDown(KeyCode.F))
+		{
+            achievementManager.EarnAchievement("Paying respects");
+		}
+
     }
 
     // Gets the player's last position to get their last direction before minigame starts.
@@ -289,9 +295,9 @@ public class PlayerController : MonoBehaviour {
         achievementMenuTransfer.transform.SetParent(null);
         DontDestroyOnLoad(achievementMenuTransfer);
 
-        // Transfer the EarnAchievementCanvas
-        GameObject earnAchievementCanvasTransfer = GameObject.FindGameObjectWithTag("EarnAchievementCanvas");
-        DontDestroyOnLoad(earnAchievementCanvasTransfer);
+        // // Transfer the EarnAchievementCanvas
+        // GameObject earnAchievementCanvasTransfer = GameObject.FindGameObjectWithTag("EarnAchievementCanvas");
+        // DontDestroyOnLoad(earnAchievementCanvasTransfer);
         
     }
 

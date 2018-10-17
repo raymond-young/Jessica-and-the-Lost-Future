@@ -123,11 +123,11 @@ public class AchievementManager : MonoBehaviour {
 		// 	EarnAchievement("Press D");
 		// }
 
-		// Test achievement
-		if (Input.GetKeyDown(KeyCode.F))
-		{
-			EarnAchievement("Paying respects");
-		}
+		// // Test achievement
+		// if (Input.GetKeyDown(KeyCode.F))
+		// {
+		// 	EarnAchievement("Paying respects");
+		// }
 
 
 	}
