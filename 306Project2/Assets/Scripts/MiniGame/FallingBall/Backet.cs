@@ -6,7 +6,7 @@ public class Backet : MonoBehaviour {
 
 	private FallingBall fallingBallController;
 	public Rigidbody2D bucketBody;
-	private float speed = 8f;
+	private float speed = 500f;
 
 	// Use this for initialization
 	void Start () {
@@ -17,9 +17,16 @@ public class Backet : MonoBehaviour {
 	void Update () {
 		 if (fallingBallController.gameStarted()) {
             float x = Input.GetAxis("Horizontal");
-
+            float wall = fallingBallController.GetWall();
             // Velocity is movement of bucket * speed.
-            bucketBody.velocity = (speed * x * Vector2.right);
+            if ((x < 0 && gameObject.GetComponent<RectTransform>().localPosition.x < -wall) || (x > 0 && gameObject.GetComponent<RectTransform>().localPosition.x > wall))
+            {
+                bucketBody.velocity = new Vector2(0, 0);
+            }
+            else
+            {
+                bucketBody.velocity = (speed * x * Vector2.right);
+            }
         }
 	}
 
