@@ -20,6 +20,6 @@ title: Rose
 
     <<change_confidence Player 30>>
     <<passLevel Player level3>>
-    <<transition Player EndOfLevelScene>>
+    <<transition Player PassScene>>
 <<endif>>
 ===

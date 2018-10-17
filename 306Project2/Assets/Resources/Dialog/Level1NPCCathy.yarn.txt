@@ -21,7 +21,7 @@ title: Mentor
 		<<change_character DialogueManager Professor Waston>>
 		I believe in you, Jessica.
 		<<passLevel Player level2>>
-		<<transition Player EndOfLevelScene>>
+		<<transition Player PassScene>>
 	-> Jenny wants to do electronics technology too, but... <<if $talkedToJenny is true>>
 		There’s a girl in my class who wants to do electronics technology too but doesn’t think she’s good enough.
 		<<change_character DialogueManager Professor Waston>>
@@ -33,21 +33,21 @@ title: Mentor
 			That’s a great idea. If it’s mandatory, girls will do it find they’re actually good at it instead of never trying because other people tell them they can't do it.
 			<<change_confidence Player 20>>
 			<<passLevel Player level2>>
-			<<transition Player EndOfLevelScene>>
+			<<transition Player PassScene>>
 		-> Could you invite her personally?
 			Could you invite her personally? I think she would believe more in herself if you told her she could do it.
 			<<change_character DialogueManager Professor Waston>>
 			That’s a good idea. We’ll change beliefs one at a time.
 			<<change_confidence Player 15>>
 			<<passLevel Player level2>>
-			<<transition Player EndOfLevelScene>>
+			<<transition Player PassScene>>
 		-> Organize a girls-only programming class.
 			We could organize a girls-only programming class.
 			<<change_character DialogueManager Professor Waston>>
 			That’s not a good idea long-term because it doesn't change society's biases, but it's still a way to encourage more girls to try it out in an inclusive environment! Good idea.
 			<<change_confidence Player 10>>
 			<<passLevel Player level2>>
-			<<transition Player EndOfLevelScene>>
+			<<transition Player PassScene>>
 <<else>>
 	We've talked already.
 <<endif>>
