@@ -41,17 +41,18 @@ public class AchievementManager : MonoBehaviour {
 	void Start () 
 	{
 		CreateAchievement("GeneralAchievement", "Item Grabber","Pick up an item", 0);
-		// CreateAchievement("GeneralAchievement", "Glow","Walk past an item to unlock", 0);
 		CreateAchievement("GeneralAchievement", "First Timer","Play the minigame for the first time.", 0);
 		CreateAchievement("GeneralAchievement", "Keyboard Warrior","Play the minigame without losing a life.", 0);
+		CreateAchievement("GeneralAchievement", "Conversation Starter","Talk to 5 NPCs.", 0);
+		CreateAchievement("GeneralAchievement", "Maxed Out", "Fill up the confidence bar.", 0);
 
 		// Test Achivevements
 		// CreateAchievement("GeneralAchievement", "Press W","Press W to unlock", 0);
 		// CreateAchievement("GeneralAchievement", "Press A","Press A to unlock", 0);
 		// CreateAchievement("GeneralAchievement", "Press S","Press S to unlock", 0);
 		// CreateAchievement("GeneralAchievement", "Press D","Press D to unlock", 0);
+		// CreateAchievement("GeneralAchievement", "Glow","Walk past an item to unlock", 0);
 		
-
 	}
 	
 	bool startUp = true;
@@ -172,18 +173,6 @@ public class AchievementManager : MonoBehaviour {
 
 	// //All rooms in level one discovered
 	// public bool EXPLORE_LEVEL_ONE = false;
-
-	// //game runs LOL
-	// public bool START_GAME = false;
-
-	// //pass through 1 door
-	// public bool ENTER_ONE_ROOM = false;
-	
-	// //pass through 10 doors
-	// public bool ENTER_TEN_ROOMS = false;
-
-	// //pass through 100 doors
-	// public bool ENTER_HUNDRED_ROOMS = false;
 
 	// //pick up an item
 	// public bool PICKED_UP_FIRST_ITEM = false;

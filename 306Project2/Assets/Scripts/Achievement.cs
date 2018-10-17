@@ -50,7 +50,7 @@ public class Achievement
 			// Change the background to the unlocked image
 			achievementRef.GetComponent<Image>().sprite = AchievementManager.Instance.unlockedSprite;
 
-			achievementRef.transform.GetChild(3).GetComponent<Image>().sprite = AchievementManager.Instance.sprites[1];
+			achievementRef.transform.GetChild(2).GetComponent<Image>().sprite = AchievementManager.Instance.sprites[1];
 
 
 			this.unlocked = true;

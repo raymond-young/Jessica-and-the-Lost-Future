@@ -152,9 +152,12 @@ public class PlayerController : MonoBehaviour {
     private void OnCollisionStay2D(Collision2D collision) {
     }
 
-    // Changes the player's confidence. Confidence is a percentage between 0-100.
+    // Changes the player's confidence. Confidence is a percentage value between 0-100.
     public void ChangeConfidence(double damagePercent) {
         confidenceBar.value = confidenceBar.value + (float)(damagePercent / 100.0);
+        if (confidenceBar.value == 1) {
+            achievementManager.EarnAchievement("Maxed Out");
+        }
         UpdateScoreText();
     }
 
@@ -209,6 +212,26 @@ public class PlayerController : MonoBehaviour {
         DontDestroyOnLoad(scoreTransferObject);
         scoreTransferObject.GetComponent<ScoreTransferScript>().setScore(scoreText.text);
         Debug.Log("Score is " + score.ToString());
+    }
+
+    // Transfers the achievements between scenes.
+    public void transferAchievements()
+    {
+        // Debug.Log("Before - Score is " + score.ToString());
+        // GameObject[] transferObjects = GameObject.FindGameObjectsWithTag("AchievementManager");
+        // for(int i = 0; i< transferObjects.Length;i++)
+        // {
+        //     Destroy(transferObjects[i]);
+        // }
+
+        // Vector3 pos = new Vector3(0, 0, 0);
+        // GameObject achievementTransferObject = Instantiate(scoreTransfer, pos, Quaternion.identity);
+        GameObject[] achievementTransferObject = GameObject.FindGameObjectsWithTag("achieveTransferObj");
+        for (int i=0; i< achievementTransferObject.Length; i++){
+            DontDestroyOnLoad(achievementTransferObject[i]);
+        }
+        // achievementTransferObject.GetComponent<ScoreTransferScript>().setScore(scoreText.text);
+        // Debug.Log("Score is " + score.ToString());
     }
 
     // Visually increases one energy.
@@ -286,7 +309,7 @@ public class PlayerController : MonoBehaviour {
     // Calculates the score.
     public int CalculateScore()  {
         // Score calulated from confidence + the number of lives left.
-        int score = (int)(confidenceBar.value * 100) + ((int)numLives * 20);
+        int score = (int)(confidenceBar.value * 100) + ((int)numLives * 50);
         return score;
     }
 
