@@ -22,6 +22,8 @@ public class HighScores : MonoBehaviour {
     private float startPosForFormat = 185f;
     private float heightInterval = 40f;
 
+    List<bool> showLevelText = new List<bool>();
+
     private GameObject highScorePanel;
 
     //Initialize differculty to 0 for easy (default) at 1 for hard
@@ -36,11 +38,16 @@ public class HighScores : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+
+        showLevelText.Add(false);
+        showLevelText.Add(false);
+        showLevelText.Add(false);
+        showLevelText.Add(false);
+
         noPlayersText.SetActive(false);
 
         font = (Font) Resources.Load("Font/earthorbiter");
 
-        selectedDifferculty = 0;
         levelSelected = 0;
 
         //Initalize reading from file here into (highScorePlayers)
@@ -135,23 +142,31 @@ public class HighScores : MonoBehaviour {
         p.transform.localPosition = new Vector2(0f, format);
         p.GetComponent<Text>().text = data.GetPlayerName() + " " + score.ToString();
         p.GetComponent<Text>().font = font;
-     //   p.
         p.name = data.GetPlayerName();
 
     }
 
     public void Level1()
     {
-        levelSelected = 1;
-        if (selectedDifferculty == 0)
-        {
-            //Toggle panels
-            level1PanelEasy.SetActive(true);
-            level2PanelEasy.SetActive(false);
-            level3PanelEasy.SetActive(false);
-            totalPanelEasy.SetActive(false);
 
+        if (showLevelText[0] == false)
+        {
+            noPlayersText.SetActive(true);
         }
+        else
+        {
+            noPlayersText.SetActive(false);
+        }
+
+        levelSelected = 1;
+
+        //Toggle panels
+        level1PanelEasy.SetActive(true);
+        level2PanelEasy.SetActive(false);
+        level3PanelEasy.SetActive(false);
+        totalPanelEasy.SetActive(false);
+
+        
 
         //Color change code
         for (int i = 0; i < highScorePanel.transform.childCount; i++)
@@ -164,16 +179,23 @@ public class HighScores : MonoBehaviour {
 
     public void Level2()
     {
-        levelSelected = 2;
-        if (selectedDifferculty == 0)
-        {
-            //Toggle panels
-            level1PanelEasy.SetActive(false);
-            level2PanelEasy.SetActive(true);
-            level3PanelEasy.SetActive(false);
-            totalPanelEasy.SetActive(false);
 
+        if (showLevelText[1] == false)
+        {
+            noPlayersText.SetActive(true);
         }
+        else
+        {
+            noPlayersText.SetActive(false);
+        }
+
+        levelSelected = 2;
+
+        //Toggle panels
+        level1PanelEasy.SetActive(false);
+        level2PanelEasy.SetActive(true);
+        level3PanelEasy.SetActive(false);
+        totalPanelEasy.SetActive(false);
 
         //Color change code
         for (int i = 0; i < highScorePanel.transform.childCount; i++)
@@ -185,16 +207,24 @@ public class HighScores : MonoBehaviour {
 
     public void Level3()
     {
-        levelSelected = 3;
-        if (selectedDifferculty == 0)
+        if (showLevelText[2] == false)
         {
-            //Toggle panels
-            level1PanelEasy.SetActive(false);
-            level2PanelEasy.SetActive(false);
-            level3PanelEasy.SetActive(true);
-            totalPanelEasy.SetActive(false);
-
+            noPlayersText.SetActive(true);
         }
+        else
+        {
+            noPlayersText.SetActive(false);
+        }
+
+        levelSelected = 3;
+
+        //Toggle panels
+        level1PanelEasy.SetActive(false);
+        level2PanelEasy.SetActive(false);
+        level3PanelEasy.SetActive(true);
+        totalPanelEasy.SetActive(false);
+
+        
 
         //Color change code
         for (int i = 0; i < highScorePanel.transform.childCount; i++)
@@ -206,16 +236,22 @@ public class HighScores : MonoBehaviour {
 
     public void Total()
     {
-        levelSelected = 0;
-        if (selectedDifferculty == 0)
+        if (showLevelText[3] == false)
         {
-            //Toggle panels
-            level1PanelEasy.SetActive(false);
-            level2PanelEasy.SetActive(false);
-            level3PanelEasy.SetActive(false);
-            totalPanelEasy.SetActive(true);
-
+            noPlayersText.SetActive(true);
         }
+        else
+        {
+            noPlayersText.SetActive(false);
+        }
+
+        levelSelected = 0;
+
+        //Toggle panels
+        level1PanelEasy.SetActive(false);
+        level2PanelEasy.SetActive(false);
+        level3PanelEasy.SetActive(false);
+        totalPanelEasy.SetActive(true);
 
         //Color change code
         for (int i = 0; i < highScorePanel.transform.childCount; i++)
@@ -275,25 +311,53 @@ public class HighScores : MonoBehaviour {
 
             if (level1EasySaves.Count > i)
             {
-                level1EasyData.Add(level1EasySaves[i]);
+                if (level1EasySaves[i].GetLevel1Score() > 0)
+                {
+                    level1EasyData.Add(level1EasySaves[i]);
+                }
+
             }
 
             if (level2EasySaves.Count > i)
             {
-                level2EasyData.Add(level2EasySaves[i]);
+                if (level2EasySaves[i].GetLevel2Score() > 0)
+                {
+                    level2EasyData.Add(level2EasySaves[i]);
+                }
+                
             }
 
             if (level3EasySaves.Count > i)
             {
-                level3EasyData.Add(level3EasySaves[i]);
+                if (level3EasySaves[i].GetLevel3Score() > 0)
+                {
+                    level3EasyData.Add(level3EasySaves[i]);
+                }
             }
 
             if (totalEasySaves.Count > i)
             {
-                totalEasyData.Add(totalEasySaves[i]);
+                if (totalEasySaves[i].TotalScore() > 0)
+                {
+                    totalEasyData.Add(totalEasySaves[i]);
+                }
+                
             }
             
 
+        }
+
+        if (level1EasyData.Count > 0) 
+        {
+            showLevelText[0] = true;
+        }
+        if (level2EasyData.Count > 0)
+        {
+            showLevelText[1] = true;
+        }
+        if (level3EasyData.Count > 0)
+        {
+            showLevelText[2] = true;
         }
 
 
@@ -302,8 +366,12 @@ public class HighScores : MonoBehaviour {
         sortedData.AddRange(level3EasyData);
         sortedData.AddRange(totalEasyData);
 
-        if (sortedData.Count == 0)
+        if (sortedData.Count > 0)
         {
+            showLevelText[3] = true;
+            
+        }
+        else {
             noPlayersText.SetActive(true);
         }
 
