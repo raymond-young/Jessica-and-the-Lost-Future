@@ -1,6 +1,7 @@
 title: Laptop
 ---
 <<if $Allocating>>
+	<<change_character DialogueManager Laptop>>
 	<<if $NumberOfPeople >= 3>>
 		Allocate people?
 		[[Yes|Laptop.Yes]]
