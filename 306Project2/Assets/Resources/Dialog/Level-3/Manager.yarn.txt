@@ -1,5 +1,17 @@
 title: Manager
 ---
+<<if $cheatCodeUsed is false>>
+	<<change_character DialogueManager cheat>>
+	Use CheatCode
+	-> Yes
+		<<set $cheatCodeUsed to true>>
+		<<set $SamHasPrinting to true>>
+		<<set $hasPrinting to true>>
+		<<set $SamHasCoffee to true>>
+		<<set $hasCoffee to true>>
+		<<set $readTODO to true>>
+	-> No
+<<endif>>
 <<change_character DialogueManager Sam(Manager)>>
 <<if $readTODO is false>>
 	You should get back to work. There's a lot of things to do today
@@ -16,10 +28,10 @@ title: Manager
 				<<if $completeAllocation is true>>
 						<<if $XunilAllocated is true and $hsotnicamAllocated is true and $SwindowsAllocated is true>>
 							<<if $points < 30>>
-								<<change_confidence Player 20>>
+								<<change_confidence Player -20>>
 								the allocation doesn't seem right, could you go and redo them
 								<<set $Allocating to true>>
-							<<elseif $points < 70>>
+							<<elseif $points < 50>>
 								It's not perfect but it works
 								<<change_confidence Player 20>>
 								Could you go and tell Sophia about it and see what she thinks. 

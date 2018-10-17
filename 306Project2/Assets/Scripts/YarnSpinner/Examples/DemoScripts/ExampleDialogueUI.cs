@@ -90,7 +90,7 @@ namespace Yarn.Unity.Example {
         	spriteMap["Hammer"] = Resources.Load<Sprite>("Sprites/hammer");
         	spriteMap["Time Machine"] = Resources.Load<Sprite>("Sprites/timemachine");
         	spriteMap["Mrs. Beryl"] = Resources.Load<Sprite>("Sprites/exec2");
-        	spriteMap["Owen"] = Resources.Load<Sprite>("Sprites/owen");
+        	spriteMap["Owen"] = Resources.Load<Sprite>("Sprites/tom");
         	spriteMap["Barry"] = Resources.Load<Sprite>("Sprites/barry");
         	spriteMap["James"] = Resources.Load<Sprite>("Sprites/james");
         	spriteMap["Grace"] = Resources.Load<Sprite>("Sprites/grace");
@@ -128,6 +128,7 @@ namespace Yarn.Unity.Example {
             spriteMap["TODO"] = Resources.Load<Sprite>("Sprites/book");
             spriteMap["coffee"] = Resources.Load<Sprite>("Sprites/coffee");
             spriteMap["Laptop"] = Resources.Load<Sprite>("Sprites/laptop");
+            spriteMap["cheat"] = Resources.Load<Sprite>("Sprites/Cheat");
 
         }
 
