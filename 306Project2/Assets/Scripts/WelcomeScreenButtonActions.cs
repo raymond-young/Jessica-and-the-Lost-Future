@@ -61,6 +61,11 @@ public class WelcomeScreenButtonActions : MonoBehaviour {
                     //throw an error as trying to create a new game with a taken user name
                     errorObject.GetComponent<Text>().text = "Username taken, please enter a unique username";
                 }
+                else if (!File.Exists(Application.persistentDataPath + "/" + playerName + ".dat") && level == "LevelSelect")
+                {
+                    //Trying to continue a game without a valid save file throw an error
+                    errorObject.GetComponent<Text>().text = "No save file found for username";
+                }
                 else if (!File.Exists(Application.persistentDataPath + "/" + playerName + ".dat"))
                 {
                     //Start a new game and create the default storage file
@@ -72,11 +77,7 @@ public class WelcomeScreenButtonActions : MonoBehaviour {
                     playerTransfer.GetComponent<PlayerNameObjectTransfer>().SetPlayerName(playerName);
                     SceneManager.LoadScene(level);
                 }
-                else if (!File.Exists(Application.persistentDataPath + "/" + playerName + ".dat") && level == "LevelSelect")
-                {
-                    //Trying to continue a game without a valid save file throw an error
-                    errorObject.GetComponent<Text>().text = "No save file found for username";
-                }
+                
                 StartCoroutine(LockRoutine());
             }
 
