@@ -10,9 +10,11 @@ public class OptionsMenu : MonoBehaviour {
     private Resolution[] screenResolutions;
 
     public Dropdown resolutionDropdown;
+    public Dropdown qualityDropdown;
     public AudioMixer mixer;
     public Slider musicSlider;
     public Slider effectsSlider;
+    public Toggle fullscreenToggle;
     public GameObject optionsMenu;
     public static bool isPaused = false;
 
@@ -36,37 +38,43 @@ public class OptionsMenu : MonoBehaviour {
                 current = i;
             }
         }
+
+        resolutionDropdown.AddOptions(options);
+        resolutionDropdown.RefreshShownValue();
+        resolutionDropdown.value = current;
+
         float effectsValue = 0;
         float musicValue = 0;
 
         mixer.GetFloat("effects", out effectsValue);
         mixer.GetFloat("music", out musicValue);
 
-        Debug.Log(effectsValue);
-        Debug.Log(musicValue);
-
-
         effectsSlider.value = Mathf.Pow(10f, effectsValue / 20);
         musicSlider.value = Mathf.Pow(10f, musicValue / 20);
 
-        resolutionDropdown.AddOptions(options);
-        resolutionDropdown.value = current;
-        resolutionDropdown.RefreshShownValue();
+        
 
+        qualityDropdown.value = QualitySettings.GetQualityLevel();
+
+        fullscreenToggle.isOn = Screen.fullScreen;
     }
 
     void Update ()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (isPaused)
+            if (SceneManager.GetActiveScene().name != "WelcomeScene")
             {
-                Debug.Log("resume");
-                Resume();
-            } else
-            {
-                Debug.Log("pause");
-                Pause();
+                if (isPaused)
+                {
+                    Debug.Log("resume");
+                    Resume();
+                }
+                else
+                {
+                    Debug.Log("pause");
+                    Pause();
+                }
             }
         }
     }
@@ -83,7 +91,7 @@ public class OptionsMenu : MonoBehaviour {
 
     public void SetFullscreen(bool fullscreen)
     {
-        Screen.fullScreen = fullscreen;
+        Screen.SetResolution(Screen.width, Screen.height, fullscreen);
     }
 
     public void SetQuality(int quality)
