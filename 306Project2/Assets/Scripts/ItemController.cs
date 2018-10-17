@@ -52,6 +52,7 @@ public class ItemController : MonoBehaviour {
                 freeItemSlot.GetComponent<Image>().sprite = currentItemZone.GetComponent<SpriteRenderer>().sprite;
                 items.Remove(currentItemZone.gameObject);
                 Destroy(currentItemZone.gameObject);
+                PlayItemSound();
                 player.ChangeConfidence(20);
             }
         }
@@ -100,6 +101,14 @@ public class ItemController : MonoBehaviour {
             //Destroy(currentItemZone.gameObject);
         }
         //---------------------------------------------------
+    }
+
+    public void PlayItemSound()
+    {
+        Debug.Log("Play Sound");
+        GameObject sound = GameObject.Find("Item Sound");
+        sound.GetComponent<AudioSource>().Play(0);
+
     }
 
 }

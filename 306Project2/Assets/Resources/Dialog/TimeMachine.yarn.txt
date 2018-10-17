@@ -1,6 +1,7 @@
 title: TimeMachine
 ---
 <<if $hasWrench is true>>
+    <<change_character DialogueManager Time Machine>>
     Time Machine: Great! You fixed the time machine.
     <<if $level3 is true and $level2 is true>>
         -> Travel to Jessica's first day in high school.
@@ -19,6 +20,7 @@ title: TimeMachine
     	    <<transition Player Level-1>>
     <<endif>>
 <<else>>
+    <<change_character DialogueManager Jessica>>
     Jessica: You need a hammer to fix the time machine.
 <<endif>>
 ===

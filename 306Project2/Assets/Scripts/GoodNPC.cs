@@ -86,4 +86,12 @@ public class GoodNPC : Movement {
         MoveToPos(originalPos, newPos);
         
     }
+
+    // Hides event zone when no longer needed
+    [YarnCommand("hide")]
+    public void Hide(string destination)
+    {
+        GameObject.Find(destination).SetActive(false);
+    }
+
 }

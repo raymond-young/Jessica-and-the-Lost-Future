@@ -8,6 +8,7 @@ title: LockedLab
 	<<if $openedDoor is false>>
 		You use the key to unlock the door.
 		<<set $openedDoor to true>>
+		<<hide LabBlock LabBlock>>
 	<<endif>>
 <<endif>>
 ===

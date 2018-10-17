@@ -2,12 +2,19 @@ title: Tutorial
 ---
 <<if $hasStarted is false>>
 	<<set $hasStarted to true>>
-	nozamA Exec 1: Did you hear about that time machine that female engineer Jessica invented?
-	nozamA Exec 2: !?  Time Machine!? That must be very valuable.
-	nozamA Exec 1: We could make a lot of profit if we had the patent!
-	nozamA Exec 2: What if we stole it? We can go back in time and stop it before it happens!
-	nozamA Exec 1: If we stop her from becoming an engineer we can get the credit for inventing it.
-	Jessica: I need to save myself!
+	<<hide StartZone StartZone>>
+	<<change_character DialogueManager nozamA Executive 1>>
+	Did you hear about the time machine that female engineer Jessica invented?
+	<<change_character DialogueManager nozamA Executive 2>>
+	!?  Time Machine!? That must be very valuable.
+	<<change_character DialogueManager nozamA Executive 1>>
+	We could make a lot of profit if we had the patent!
+	<<change_character DialogueManager nozamA Executive 2>>
+	What if we stole it? We can go back in time and stop it before it happens!
+	<<change_character DialogueManager nozamA Executive 1>>
+	If we stop her from becoming an engineer we can get the credit for inventing it.
+	<<change_character DialogueManager Jessica>>
+	I need to save myself by inspiring my past self to resist the company's attacks, and make sure I become an engineer!
 	Use the arrow keys to move around.
 <<endif>>
 <<set $true_variable to true>>
