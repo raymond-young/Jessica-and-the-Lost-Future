@@ -29,6 +29,7 @@ TagManager:
   - EarnAchievementCanvas
   - AchievementMenu
   - PlayerNameObjectTransfer
+  - MinigameFallingBall
   layers:
   - Default
   - TransparentFX

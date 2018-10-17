@@ -12,6 +12,7 @@ public class HighScores : MonoBehaviour {
     public GameObject level1PanelEasy;
     public GameObject level2PanelEasy;
     public GameObject level3PanelEasy;
+    public GameObject highScorePanel;
 
     public GameObject playerListPrefab;
 
@@ -23,8 +24,6 @@ public class HighScores : MonoBehaviour {
     private float heightInterval = 40f;
 
     List<bool> showLevelText = new List<bool>();
-
-    private GameObject highScorePanel;
 
     //Initialize differculty to 0 for easy (default) at 1 for hard
     private int selectedDifferculty;
@@ -96,9 +95,6 @@ public class HighScores : MonoBehaviour {
 
             ReadFile(data.GetLevel(), data, format);
         }
-
-        //Gets reference to highscorepanel
-        highScorePanel = GameObject.FindGameObjectWithTag("HighScorePanel");
     }
 
     // Update is called once per frame
