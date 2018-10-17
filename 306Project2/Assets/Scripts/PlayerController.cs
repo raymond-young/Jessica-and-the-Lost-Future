@@ -82,9 +82,17 @@ public class PlayerController : MonoBehaviour {
             saveManager = GameObject.FindGameObjectWithTag("SaveManager").GetComponent<SaveManager>();
         }
 
+<<<<<<< HEAD
         if(GameObject.FindGameObjectWithTag("PlayerNameObjectTransfer") == null){
             playerName = "TestName";
         }else{
+=======
+        if (GameObject.FindGameObjectWithTag("AchievementManager") != null) {
+            achievementManager = GameObject.FindObjectOfType<AchievementManager>();
+        }
+
+        if (GameObject.FindGameObjectWithTag("PlayerNameObjectTransfer") != null) {
+>>>>>>> 2b914542d2d72ac0cc4ee7b86cbbec8e04cce644
             playerName = GameObject.FindGameObjectWithTag("PlayerNameObjectTransfer").GetComponent<PlayerNameObjectTransfer>().GetPlayerName();
         }
 
