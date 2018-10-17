@@ -191,77 +191,78 @@ Use cheat code to skip part 2 for marking purposes:
 ## Images of Game ##
 
 <p align="center">
-  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/1.png"/>
+  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/1.PNG"/>
 </p>
 <p align="center">
-  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/2.png"/>
+  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/2.PNG"/>
 </p>
 <p align="center">
-  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/3.png"/>
+  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/3.PNG"/>
 </p>
 <p align="center">
-  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/4.png"/>
+  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/4.PNG"/>
 </p>
 <p align="center">
-  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/5.png"/>
+  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/5.PNG"/>
 </p>
 <p align="center">
-  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/6.png"/>
+  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/6.PNG"/>
 </p>
 <p align="center">
-  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/7.png"/>
+  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/7.PNG"/>
 </p>
 <p align="center">
-  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/8.png"/>
+  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/8.PNG"/>
 </p>
 <p align="center">
-  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/8.1.png"/>
+  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/8.1.PNG"/>
 </p>
 <p align="center">
-  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/8.2.png"/>
+  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/8.2.PNG"/>
 </p>
 <p align="center">
-  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/9.png"/>
+  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/9.PNG"/>
 </p>
 <p align="center">
-  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/10.png"/>
+  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/10.PNG"/>
 </p>
 <p align="center">
-  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/11.png"/>
+  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/11.PNG"/>
 </p>
 <p align="center">
-  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/12.1.png"/>
+  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/12.1.PNG"/>
 </p>
 <p align="center">
-  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/12.2.png"/>
+  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/12.2.PNG"/>
 </p>
 <p align="center">
-  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/13.png"/>
+  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/13.PNG"/>
 </p>
 <p align="center">
-  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/14.png"/>
+  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/14.PNG"/>
 </p>
 <p align="center">
-  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/15.png"/>
+  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/15.PNG"/>
 </p>
 <p align="center">
-  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/15.1.png"/>
+  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/15.1.PNG"/>
 </p>
 <p align="center">
-  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/15.2.png"/>
+  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/15.2.PNG"/>
 </p>
 <p align="center">
-  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/15.2.png"/>
+  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/15.2.PNG"/>
 </p>
 <p align="center">
-  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/16.png"/>
+  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/16.PNG"/>
 </p>
 <p align="center">
-  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/17.png"/>
+  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/17.PNG"/>
 </p>
 <p align="center">
-  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/18.png"/>
+  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/18.PNG"/>
 </p>
-## Documentation
+
+## Documentation ##
 * Link to wiki: https://github.com/rayyoung122/306-Project-2/wiki
 * Link to drive(please use auckland university email): https://docs.google.com/presentation/d/1C08-Vh8kKUJytQSK6Q-UHY517M6R-vqNzhssSz1kQKk/edit?usp=sharing
