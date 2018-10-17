@@ -69,7 +69,7 @@ public class Hop : MonoBehaviour
         bar = Instantiate(slider);
         RectTransform barRectTransform = bar.GetComponent<RectTransform>();
         barRectTransform.sizeDelta = new Vector2(gameObject.GetComponentInParent<Canvas>().pixelRect.width * 0.95f,
-            gameObject.GetComponentInParent<Canvas>().pixelRect.height * 0.02f);
+            gameObject.GetComponentInParent<Canvas>().pixelRect.height * 0.1f);
         float sliderYPosition = gameObject.GetComponentInParent<Canvas>().pixelRect.height / 2 - barRectTransform.rect.height;
         barRectTransform.SetParent(parentRectTransform);
         barRectTransform.localPosition = new Vector2(0, -sliderYPosition);

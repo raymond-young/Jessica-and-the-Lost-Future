@@ -139,13 +139,13 @@ public class MiniGameManager : MonoBehaviour
     private void RandomiseMiniGame(int level)
     {
         System.Random rnd = new System.Random();
-
-        level = 3;
-
+       
         if (level == 1)
         {
             //Start arrows minigame
             miniGame = Instantiate(Resources.Load("MGame", typeof(GameObject))) as GameObject;
+            miniGame.GetComponent<MiniGameGenerator>().InitDifficulty(level);
+           
         }
         else if (level == 2)
         {
@@ -155,11 +155,13 @@ public class MiniGameManager : MonoBehaviour
             {
                 //Start arrows minigame
                 miniGame = Instantiate(Resources.Load("MGame", typeof(GameObject))) as GameObject;
+                miniGame.GetComponent<MiniGameGenerator>().InitDifficulty(level);
             }
             else if (randNum == 2)
             {
                 //Start Hop minigame
-                miniGame = Instantiate(Resources.Load("Hop", typeof(GameObject))) as GameObject;
+                miniGame = Instantiate(Resources.Load("FallingBall", typeof(GameObject))) as GameObject;
+                miniGame.GetComponent<FallingBall>().InitDifficulty(level);
             }
            
         }
@@ -171,16 +173,20 @@ public class MiniGameManager : MonoBehaviour
             {
                 //Start arrows minigame
                 miniGame = Instantiate(Resources.Load("MGame", typeof(GameObject))) as GameObject;
+                miniGame.GetComponent<MiniGameGenerator>().InitDifficulty(level);
             }
             else if (randNum == 2)
             {
-                //Start Hop minigame
-                miniGame = Instantiate(Resources.Load("Hop", typeof(GameObject))) as GameObject;
+                //Start falling ball minigame
+                miniGame = Instantiate(Resources.Load("FallingBall", typeof(GameObject))) as GameObject;
+                miniGame.GetComponent<FallingBall>().InitDifficulty(level);
+                
+                
             }
             else if (randNum == 3)
             {
-                //Start falling ball minigame
-                miniGame = Instantiate(Resources.Load("FallingBall", typeof(GameObject))) as GameObject;
+                //Start Hop minigame
+                miniGame = Instantiate(Resources.Load("Hop", typeof(GameObject))) as GameObject;
             }
             
         }
