@@ -77,6 +77,8 @@ public class PlayerController : MonoBehaviour {
  
     private string playerName;
 
+    private bool zoom;
+
 
     // Use this for initialization.
     void Start()
@@ -169,6 +171,19 @@ public class PlayerController : MonoBehaviour {
             var y = Input.GetAxis("Vertical");
 
             Vector2 movement = new Vector2(x, y);
+
+
+            if (Input.GetKeyDown(KeyCode.LeftShift)) {
+                Debug.Log("ZOOM");
+                if (!zoom) {
+                    speed = 16;
+                    zoom = true;
+                } else {
+                    speed = 8;
+                    zoom = false;
+                }
+            }
+
 
             // Velocity is movement of character * speed.
             playerBody.velocity = (movement * speed);
