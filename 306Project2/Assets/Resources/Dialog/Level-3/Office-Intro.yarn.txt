@@ -11,7 +11,7 @@ title: Office-Intro
 	The company has sent some people back in time to stop me!
 	You need to avoid their auras or remove the company's influence!
 	They have made it more difficult since the last attempt, 
-	their new power is to use force you to use the left and right arrow keys to climb levels. 
+	their new power is to force you to use the left and right arrow keys to climb levels. 
 	and once you reach the top then you can clear the aura.
 	If you fail to do so you will lose one point of energy.
 	If you lose all your points of energy you will be sent back to the future!
