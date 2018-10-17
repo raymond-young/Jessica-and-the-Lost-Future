@@ -161,6 +161,7 @@ public class Hop : MonoBehaviour
                     + blobPrefab.GetComponent<RectTransform>().rect.height / 2;
                 blobPrefab.GetComponent<RectTransform>().localPosition = new Vector2(blobX, blobY);
                 pos++;
+                PlayCorrectSound();
                 
                 //Slowly increase speed
                 if (speed < speedThreshold)
@@ -171,6 +172,7 @@ public class Hop : MonoBehaviour
             //Press wrong key, add time penalty
             else
             {
+                PlayWrongSound();
                 currentTime += timePenalty;
                 bar.value = Mathf.Lerp(0f, 1f, currentTime / timeLimit);
             }
@@ -208,6 +210,7 @@ public class Hop : MonoBehaviour
                 else
                 {
                     go.SetActive(true);
+                    PlayGoSound();
                     ready.SetActive(false);
                 }
             }
@@ -222,6 +225,7 @@ public class Hop : MonoBehaviour
                 else
                 {
                     go.SetActive(false);
+                    PlayReadySound();
                     ready.SetActive(true);
                 }
             }
@@ -265,13 +269,61 @@ public class Hop : MonoBehaviour
 
     private void Finish()
     {
+        PlaySucceedSound();
         //Notify the game manager that the player has successfully finished the game
         //GameObject.FindGameObjectWithTag("MiniGameManager").GetComponent<MiniGameManager>().FinishGame(true);
+
     }
 
     private void Fail()
     {
+        PlayFailSound();
         //Notify the game manager that the player has failed the game
         //GameObject.FindGameObjectWithTag("MiniGameManager").GetComponent<MiniGameManager>().FinishGame(false);
+    }
+
+    public void PlayCorrectSound()
+    {
+        Debug.Log("Play Sound");
+        GameObject sound = GameObject.Find("Arrow Correct");
+        sound.GetComponent<AudioSource>().Play(0);
+
+    }
+
+    public void PlayWrongSound()
+    {
+        Debug.Log("Play Sound");
+        GameObject sound = GameObject.Find("Arrow Wrong");
+        sound.GetComponent<AudioSource>().Play(0);
+    }
+
+    public void PlaySucceedSound()
+    {
+        Debug.Log("Play Sound");
+        GameObject sound = GameObject.Find("Succeed");
+        sound.GetComponent<AudioSource>().Play(0);
+
+    }
+
+    public void PlayFailSound()
+    {
+        Debug.Log("Play Sound");
+        GameObject sound = GameObject.Find("Fail");
+        sound.GetComponent<AudioSource>().Play(0);
+
+    }
+
+    public void PlayReadySound()
+    {
+        Debug.Log("Play Sound");
+        GameObject sound = GameObject.Find("Ready Set");
+        sound.GetComponent<AudioSource>().Play(0);
+    }
+
+    public void PlayGoSound()
+    {
+        Debug.Log("Play Sound");
+        GameObject sound = GameObject.Find("Go");
+        sound.GetComponent<AudioSource>().Play(0);
     }
 }
