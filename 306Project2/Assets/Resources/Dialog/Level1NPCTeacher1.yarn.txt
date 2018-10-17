@@ -6,6 +6,7 @@ title: MrsBeryl
 	Hi Jessica, remember you've got to pick an elective today!
 	Don't forget to go to the library and do some research.
 	You need to read at least three books before you choose!
+	<<hide LibraryBlock LibraryBlock>>
 <<else>>
 	<<if $hasDecided is false>>
 		<<if $readBook1 is true and $readBook2 is true and $readBook4 is true>>
@@ -49,4 +50,6 @@ title: MrsBeryl.GoodChoice
 <<change_character DialogueManager Mrs. Beryl>>
 Mrs. Beryl: That’s wonderful Jessica, don’t forget to pop in to the workshop for your next class!
 <<set $hasDecided to true>>
+<<hide FieldBlock FieldBlock>>
+<<hide ComputerBlock ComputerBlock>>
 ===
