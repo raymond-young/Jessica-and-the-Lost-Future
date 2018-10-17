@@ -3135,6 +3135,7 @@ MonoBehaviour:
   - {fileID: 941428638}
   - {fileID: 2012470353}
   - {fileID: 1949666365}
+  - {fileID: 1466475528}
 --- !u!1 &742225479
 GameObject:
   m_ObjectHideFlags: 0
@@ -4974,7 +4975,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 265e5d8eee086464a8b03313801b0199, type: 3}
-  m_Color: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -5854,6 +5855,7 @@ MonoBehaviour:
   - {fileID: 941428638}
   - {fileID: 2012470353}
   - {fileID: 1949666365}
+  - {fileID: 1466475528}
 --- !u!1 &1188872041
 GameObject:
   m_ObjectHideFlags: 0
@@ -7539,7 +7541,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1412578538}
-        m_MethodName: PlayButtonClicked
+        m_MethodName: ContinueButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8865,6 +8867,34 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1775763886}
+--- !u!1 &1781664862
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1781664863}
+  m_Layer: 0
+  m_Name: InterSceneDataExchange
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1781664863
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1781664862}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 119.69356, y: 45.434322, z: 12.580537}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1786139094
 GameObject:
   m_ObjectHideFlags: 0

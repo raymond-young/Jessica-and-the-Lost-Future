@@ -32,15 +32,25 @@ public class WelcomeScreenButtonActions : MonoBehaviour {
 
     public void PlayButtonClicked()
     {
-        playerName = 
-        if (File.Exists(Application.persistentDataPath + "/" + playerName + ".dat")){
-                //ToDo give some feedback that the name is taken
-            }else{
-                BinaryFormatter bf = new BinaryFormatter();
+        string playerName = "default";
+        //continue and there is a save file
+        if(File.Exists(Application.persistentDataPath + "/" + playerName + ".dat") && level == "LevelSelect"){
+            //do nothing simply load the level select scene
+        }else if(File.Exists(Application.persistentDataPath + "/" + playerName + ".dat") && level == "Tutorial"){
+            //throw an error as trying to create a new game with a taken user name
+
+        }else if(!File.Exists(Application.persistentDataPath + "/" + playerName + ".dat") && level == "Tutorial"){
+            //Start a new game and create the default storage file
+            BinaryFormatter bf = new BinaryFormatter();
                 FileStream file = File.Create(Application.persistentDataPath + "/" + playerName + ".dat");
                 bf.Serialize(file, new SaveData(0, 0, playerName));
                 file.Close();
-            }
+        }else if(!File.Exists(Application.persistentDataPath + "/" + playerName + ".dat") && level == "levelSelect"){
+            //Trying to continue a game without a valid save file
+        }else{
+            Debug.Log("Something seriously wrongs happen");
+            level = "";
+        }
         SceneManager.LoadScene(level);
     }
 
@@ -83,7 +93,7 @@ public class WelcomeScreenButtonActions : MonoBehaviour {
 
     public void DifficultyBackButtonClicked()
     {
-        if (level == "Tutorial")
+        if (level == "Tutorial" || level == "LevelSelect")
         {
             difficulty.SetActive(false);
             main.SetActive(true);
@@ -126,5 +136,10 @@ public class WelcomeScreenButtonActions : MonoBehaviour {
     public void HighScoreButtonClick()
     {
         SceneManager.LoadScene("HighScore");
+    }
+
+    public void ContinueButtonClicked(){
+        level = "LevelSelect";
+        ShowDifficulty();
     }
 }
