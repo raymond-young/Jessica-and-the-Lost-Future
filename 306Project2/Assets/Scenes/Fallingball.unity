@@ -425,6 +425,7 @@ MonoBehaviour:
   backet: {fileID: 201546549}
   boundary: {fileID: 1603113580}
   count: {fileID: 997208053}
+  toCatch: {fileID: 2146630758}
   slider: {fileID: 114420902774227680, guid: 92bc99f43d3b395479d95e922774b23c, type: 2}
   readyPrefab: {fileID: 1317794115039652, guid: c8b000f1a7ad2864fa24ee8c9abf9d8f,
     type: 2}

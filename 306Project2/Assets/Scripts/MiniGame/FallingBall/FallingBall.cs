@@ -8,6 +8,7 @@ public class FallingBall : MonoBehaviour {
     public GameObject backet;
     public GameObject boundary;
     public Text count;
+    public GameObject toCatch;
 
     public Slider slider;
     public GameObject readyPrefab;
@@ -78,6 +79,8 @@ public class FallingBall : MonoBehaviour {
         currentTime = -readyTime - goTime;
         generateTime = 0f;
         gameStart = false;
+        count.gameObject.SetActive(false);
+        toCatch.SetActive(false);
     }
     
 
@@ -88,17 +91,19 @@ public class FallingBall : MonoBehaviour {
         {
             if (currentTime >= 0) //Start game. Set arrows visible
             {
+                count.gameObject.SetActive(true);
+                toCatch.SetActive(true);
                 go.SetActive(false);
                 ready.SetActive(false);
                 gameStart = true;
                 currentTime = 0;
             }
-            else if (Mathf.Abs(currentTime) < goTime) //Show "Go!"
+             else if (Mathf.Abs(currentTime) < goTime) //Show "Go!"
             {
                 if (go.activeSelf)
                 {
-                    float time = Mathf.Sin(Mathf.Lerp(0f, 1f, Mathf.Abs(currentTime) / goTime));
-                    go.GetComponent<Text>().color = new Color(time, time, 0);
+                    float time = Mathf.Sin(Mathf.Lerp(0.25f, 1f, Mathf.Abs(currentTime) / goTime));
+                    go.GetComponent<Text>().color = new Color(time, time, time);
                 }
                 else
                 {
@@ -111,8 +116,8 @@ public class FallingBall : MonoBehaviour {
                 if (ready.activeSelf)
                 {
                     float percentage = Mathf.Abs(currentTime) - goTime;
-                    float time = Mathf.Sin(Mathf.Lerp(0f, 1f, percentage / readyTime));
-                    ready.GetComponent<Text>().color = new Color(0, time, 0);
+                    float time = Mathf.Sin(Mathf.Lerp(0.25f, 1f, percentage / readyTime));
+                    ready.GetComponent<Text>().color = new Color(time, time, time);
                 }
                 else
                 {

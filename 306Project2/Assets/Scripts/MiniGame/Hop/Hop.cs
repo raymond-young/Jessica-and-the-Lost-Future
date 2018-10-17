@@ -198,13 +198,12 @@ public class Hop : MonoBehaviour
                 gameStart = true;
                 currentTime = 0;
             }
-            //Show "Go!"
-            else if (Mathf.Abs(currentTime) < goTime)
+            else if (Mathf.Abs(currentTime) < goTime) //Show "Go!"
             {
                 if (go.activeSelf)
                 {
-                    float time = Mathf.Sin(Mathf.Lerp(0f, 1f, Mathf.Abs(currentTime) / goTime));
-                    go.GetComponent<Text>().color = new Color(time, time, 0);
+                    float time = Mathf.Sin(Mathf.Lerp(0.25f, 1f, Mathf.Abs(currentTime) / goTime));
+                    go.GetComponent<Text>().color = new Color(time, time, time);
                 }
                 else
                 {
@@ -212,14 +211,13 @@ public class Hop : MonoBehaviour
                     ready.SetActive(false);
                 }
             }
-            //Show "Read?"
-            else
+            else //Show "Read?"
             {
                 if (ready.activeSelf)
                 {
                     float percentage = Mathf.Abs(currentTime) - goTime;
-                    float time = Mathf.Sin(Mathf.Lerp(0f, 1f, percentage / readyTime));
-                    ready.GetComponent<Text>().color = new Color(0, time, 0);
+                    float time = Mathf.Sin(Mathf.Lerp(0.25f, 1f, percentage / readyTime));
+                    ready.GetComponent<Text>().color = new Color(time, time, time);
                 }
                 else
                 {
