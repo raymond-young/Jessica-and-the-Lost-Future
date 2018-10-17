@@ -15,6 +15,7 @@ public class Arrow : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		Debug.Log(2);
 		TurnDefault();
 		state = State.Default;
 		errorTime = 0.5f;
@@ -22,6 +23,7 @@ public class Arrow : MonoBehaviour {
 	}
 	
 	void Update () {
+		Debug.Log(1);
 		Debug.Log(state);
 		if (state == State.Wrong){
 			Debug.Log(timeCount);
@@ -39,11 +41,13 @@ public class Arrow : MonoBehaviour {
 
 	// Change state to red.
 	public void TurnRight(){
+		Debug.Log(3);
 		gameObject.GetComponent<Image>().sprite = greenState;
 		state = State.Right;
 	}
 
 	public void TurnWrong(){
+		Debug.Log(4);
 		gameObject.GetComponent<Image>().sprite = redState;
 		state = State.Wrong;
 	}
