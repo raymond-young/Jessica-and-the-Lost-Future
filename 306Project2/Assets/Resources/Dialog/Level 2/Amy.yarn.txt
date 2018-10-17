@@ -11,22 +11,25 @@ title: Amy
     WEN refers to women in engineering which is a social network that builds communication between female engineers. 
     At today's event, new female students will get to know each other, 
     and WEN Leaders are also going to share their experience and top tips in Engineering. 
-<<elseif $finishECE is true && $finishCivil is true>> 
+<<elseif $talkedDepartmentEnding is true>>
+    <<change_character DialogueManager Amy>>
+    Hi! Be sure to check out the WEN event upstairs later. 
+<<elseif $finishECE is true && $finishCivil is true && $talkedAboutECECivil is false>> 
     <<set $talkedAboutECECivil to true>> 
     Great! There is just the Mechanical department left. 
     Their display is upstairs in the lecture room. Please talk to Alex who is in charge. 
     <<set $startMechanical to true>> 
-<<elseif $finishECE is true && $finishMechanical is true>> 
+<<elseif $finishECE is true && $finishMechanical is true && $talkedAboutECEMechanical is false>> 
     <<set $talkedAboutECEMechanical to true>> 
     Great! There is just the Civil department left. 
     Their display is in the study space down the hall. Please talk to Alice who is in charge of the display. 
     <<set $startCivil to true>> 
-<<elseif $finishCivil is true && $finishMechanical is true>> 
+<<elseif $finishCivil is true && $finishMechanical is true && $talkedAboutCivilMechanical is false>> 
     <<set $talkedAboutCivilMechanical to true>> 
     Great! There is just the ECE department left. 
     Their display is in the computer lab. Please talk to Kevin about the ECE department. 
     <<set $startECE to true>> 
-<<elseif $startECE is true && $finishECE is true && $talkedAboutECEEnding is false>> 
+<<elseif $finishECE is true && $finishCivil is false && $finishMechanical is false && $talkedAboutECEEnding is false>> 
    <<set $talkedAboutECEEnding to true>> 
    <<change_character DialogueManager Amy>>
    Cool! I can see that you have finished exploring the ECE display. 
@@ -40,7 +43,7 @@ title: Amy
       Cool! The Mechanical department is located upstairs, and talk to Alice who is in charge of the display.
       Come back after you finish and I will direct you to the Civil department.
       <<set $startMechanical to true>>  
-<<elseif $startCivil is true && $finishCivil is true && $talkedAboutCivilEnding is false>> 
+<<elseif $finishCivil is true && $finishMechanical is false && $finishECE is false && $talkedAboutCivilEnding is false>> 
    <<set $talkedAboutCivilEnding to true>>
    <<change_character DialogueManager Amy>>
    Cool! I can see that you have finished exploring the Civil display. 
@@ -53,7 +56,7 @@ title: Amy
       Cool! The Mechanical department is located upstairs.
       Come back after you finish and I will direct you to the ECE department.
       <<set $startMechanical to true>>  
-<<elseif $startMechanical is true && $finishMechanical is true && $talkedAboutMechanicalEnding is false>> 
+<<elseif $finishMechanical is true && $finishCivil is false && $finishECE is false && $talkedAboutMechanicalEnding is false>> 
    <<set $talkedAboutMechanicalEnding to true>>
    <<change_character DialogueManager Amy>>
    Cool! I see that you have finished exploring the Mechanical display. 
@@ -66,9 +69,15 @@ title: Amy
       Cool! The Civil department is located at the study space.
       Come back after you finish and I will direct you to the ECE department.
       <<set $startCivil to true>> 
-<<elseif $startECE is true || $startCivil is true || $startMechanical is true>>
+<<elseif $startECE is true && $finishECE is false>> 
     <<change_character DialogueManager Amy>>
-    Please finish the display first. 
+    Please finish the ECE display first before you come back.
+<<elseif $startCivil is true && $finishCivil is false>> 
+    <<change_character DialogueManager Amy>>
+    Please finish the Civil display first before you come back.
+<<elseif $startMechanical is true && $finishMechanical is false>>
+    <<change_character DialogueManager Amy>> 
+    Please finish the Mechanical display first before you come back.
 <<else>>
     <<change_character DialogueManager Amy>>
     We've talked already.

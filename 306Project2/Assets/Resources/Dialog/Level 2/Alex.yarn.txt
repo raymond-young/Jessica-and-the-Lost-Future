@@ -11,6 +11,7 @@ title: Alex
         Let's all for Mechanical display. Make sure you talk to Amy for more info about other departments we have.
         <<change_confidence Player 10>> 
         <<set $finishMechanical to true>>
+        <<set $startMechanical to false>>
     <<elseif $hasWhiteGear is true && $talkedToAlex is true>>
         That's all for our department. Please check out the other departments or Amy might have something for you.  
     <<else>> 
