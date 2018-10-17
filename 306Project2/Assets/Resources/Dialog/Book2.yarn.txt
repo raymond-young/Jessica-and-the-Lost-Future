@@ -1,5 +1,6 @@
 title: Book2
 ---
+<<change_character DialogueManager Book>>
 Title: Marie Curie: Physicist and Chemist
 Marie Curie was a Polish scientist who became the first woman to win a Nobel prize, and the first woman to become a professor at the University of Paris.
 <<if $readBook2 is false>>

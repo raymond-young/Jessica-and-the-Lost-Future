@@ -1,5 +1,6 @@
 title: Book1
 ---
+<<change_character DialogueManager Book>>
 Title: Margaret Hamilton: Software Engineering Pioneer
 Margaret Hamilton was among the earliest computer software programmers.
 She directed the team that developed software for the Apollo space program.
