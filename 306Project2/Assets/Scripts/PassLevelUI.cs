@@ -21,7 +21,7 @@ public class PassLevelUI : MonoBehaviour {
 
     public void continueButtonClicked()
     {
-        SceneManager.LoadScene("Level-1");
+        SceneManager.LoadScene("LevelSelect");
     }
 
     public void mainMenuButtonClicked()

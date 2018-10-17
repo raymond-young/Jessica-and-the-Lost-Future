@@ -475,6 +475,7 @@ public class PlayerController : MonoBehaviour {
 
         TransferScore();
         TransferAchievements();
+        Debug.Log(destination);
         SceneManager.LoadScene(destination);
     }
 
