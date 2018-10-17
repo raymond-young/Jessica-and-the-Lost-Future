@@ -22,6 +22,12 @@ TagManager:
   - MiniMapBorder
   - HighScorePanel
   - SaveManager
+  - GeneralAchievement
+  - AchievementManager
+  - achieveTransferObj
+  - Canvas
+  - EarnAchievementCanvas
+  - AchievementMenu
   layers:
   - Default
   - TransparentFX

@@ -53,6 +53,9 @@ public class PlayerController : MonoBehaviour {
     // For dialogue.
     // Interaction radius until you can pick up an item.
     public float interactionRadius = 2.0f;
+
+    public AchievementManager achievementManager;
+
     // If the player is currently in a zone that triggers dialogue.
     private bool inNPCZone = false;
     // The zone, if the player is in a zone.
@@ -188,9 +191,12 @@ public class PlayerController : MonoBehaviour {
     private void OnCollisionStay2D(Collision2D collision) {
     }
 
-    // Changes the player's confidence. Confidence is a percentage between 0-100.
+    // Changes the player's confidence. Confidence is a percentage value between 0-100.
     public void ChangeConfidence(double damagePercent) {
         confidenceBar.value = confidenceBar.value + (float)(damagePercent / 100.0);
+        if (confidenceBar.value == 1) {
+            achievementManager.EarnAchievement("Maxed Out");
+        }
         UpdateScoreText();
     }
 
@@ -223,8 +229,10 @@ public class PlayerController : MonoBehaviour {
 
         // If the game is over.
         if (gameOver) {
-            // Transfer the score.
+            // Transfer the score and achievements
             TransferScore();
+            transferAchievements();
+
             // Display the end-game scene.
             SceneManager.LoadScene("EndOfLevelScene");
         }
@@ -245,6 +253,28 @@ public class PlayerController : MonoBehaviour {
         DontDestroyOnLoad(scoreTransferObject);
         scoreTransferObject.GetComponent<ScoreTransferScript>().setScore(scoreText.text);
 
+    }
+
+    // Transfers the achievements between scenes.
+    public void transferAchievements()
+    {
+        Debug.Log("Transferring achievements");
+
+        // Transfer the AchievementManager
+        achievementManager.SetStartup(true);
+        GameObject achievementManagerTransfer = GameObject.FindGameObjectWithTag("AchievementManager");
+        DontDestroyOnLoad(achievementManagerTransfer);
+
+        // Make the AchievementMenu active so you can set it to the top of the hierarchy, then transfer it.
+        achievementManager.achievementMenu.SetActive(true);
+        GameObject achievementMenuTransfer = GameObject.FindGameObjectWithTag("AchievementMenu");
+        achievementMenuTransfer.transform.SetParent(null);
+        DontDestroyOnLoad(achievementMenuTransfer);
+
+        // Transfer the EarnAchievementCanvas
+        GameObject earnAchievementCanvasTransfer = GameObject.FindGameObjectWithTag("EarnAchievementCanvas");
+        DontDestroyOnLoad(earnAchievementCanvasTransfer);
+        
     }
 
     // Visually increases one energy.
@@ -331,6 +361,7 @@ public class PlayerController : MonoBehaviour {
             Vector2 temp = collider.gameObject.transform.position;
             glow.transform.position = temp;
             glow.SetActive(true);
+            // achievementManager.EarnAchievement("Glow");
         }  else if (collider.tag == "EventZone" && !isTransitioning) {
             // Start any dialogue that is automatically triggered.
             SetMotionToZero();
@@ -349,7 +380,7 @@ public class PlayerController : MonoBehaviour {
     // Calculates the score.
     public int CalculateScore()  {
         // Score calulated from confidence + the number of lives left.
-        int score = (int)(confidenceBar.value * 100) + ((int)numLives * 20);
+        int score = (int)(confidenceBar.value * 100) + ((int)numLives * 50);
         return score;
     }
 
@@ -390,6 +421,12 @@ public class PlayerController : MonoBehaviour {
     // Changes the scene to a different level.
     [YarnCommand("transition")]
     public void ChangeLevel(string destination) {
+        if (destination.Equals("Level-1") ) {
+            achievementManager.EarnAchievement("Back to the Past");
+        }
+
+        TransferScore();
+        transferAchievements();
         SceneManager.LoadScene(destination);
     }
 
