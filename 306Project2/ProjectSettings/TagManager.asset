@@ -28,6 +28,7 @@ TagManager:
   - Canvas
   - EarnAchievementCanvas
   - AchievementMenu
+  - PlayerNameObjectTransfer
   layers:
   - Default
   - TransparentFX

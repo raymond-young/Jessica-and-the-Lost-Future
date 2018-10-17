@@ -121,26 +121,6 @@ namespace Yarn.Unity
             // Ensure that the variable storage has the right stuff in it
             variableStorage.ResetToDefaults ();
 
-            // //Ensure that the level variables are up to date as per the config file.
-            // if(File.Exists(Application.persistentDataPath + levelConfigName) && false){
-            //     BinaryFormatter bf = new BinaryFormatter();
-            //     FileStream file = File.Open(Application.persistentDataPath + levelConfigName, FileMode.Open);
-            //     LevelData data = (LevelData) bf.Deserialize(file);
-            //     file.Close();
-            //     foreach(KeyValuePair<string, bool> entry in data.levels){
-            //         variableStorage.SetValue(entry.Key, entry.Value ? variableStorage.GetValue("$true_variable") : variableStorage.GetValue("$false_variable"));
-            //     }
-            // }else{
-            //     BinaryFormatter bf = new BinaryFormatter();
-            //     FileStream file = File.Create(Application.persistentDataPath + levelConfigName);
-            //     bf.Serialize(file, levelconfig);
-            //     file.Close();
-            //     variableStorage.SetValue("$level2", variableStorage.GetValue("$true_variable"));
-            //     Debug.Log(variableStorage.GetValue("true_variable"));
-            //     Debug.Log(variableStorage.GetValue("$true_variable"));
-            //     Debug.Log(variableStorage.GetValue("$$true_variable"));
-            // }
-
             // Load all scripts
             if (sourceText != null) {
                 foreach (var source in sourceText) {
@@ -326,7 +306,6 @@ namespace Yarn.Unity
             string playerName = player.GetComponent<PlayerController>().GetPlayerName();
 
             //Ensure that the level variables are up to date as per the config file.
-            if (File.Exists(Application.persistentDataPath + "/" + playerName + ".dat")){
                 BinaryFormatter bf = new BinaryFormatter();
                 FileStream file = File.Open(Application.persistentDataPath + "/" + playerName + ".dat", FileMode.Open);
                 SaveData data = (SaveData) bf.Deserialize(file);
@@ -334,12 +313,6 @@ namespace Yarn.Unity
                 foreach(KeyValuePair<string, bool> entry in data.levels){
                     variableStorage.SetValue("$" + entry.Key, entry.Value ? variableStorage.GetValue("$true_variable") : variableStorage.GetValue("$false_variable"));
                 }
-            }else{
-                BinaryFormatter bf = new BinaryFormatter();
-                FileStream file = File.Create(Application.persistentDataPath + "/" + playerName + ".dat");
-                bf.Serialize(file, new SaveData(0, 0, playerName));
-                file.Close();
-            }
         }
 
 
