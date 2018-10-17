@@ -96,6 +96,11 @@ public class WelcomeScreenButtonActions : MonoBehaviour {
         
     }
 
+    public void AchievementsButtonClicked()
+    {
+
+    }
+
     public void SettingsButtonClicked()
     {
         SceneManager.LoadScene("SettingsScene");
