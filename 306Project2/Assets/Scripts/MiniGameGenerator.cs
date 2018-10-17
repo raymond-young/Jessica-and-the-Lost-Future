@@ -14,14 +14,14 @@ public class MiniGameGenerator : MonoBehaviour {
 	public GameObject up;
 	public GameObject down;
 	public GameObject box;
-    public Slider slider;
+    public Slider bar;
     public GameObject readyPrefab;
     public GameObject goPrefab;
 
     //Placeholders that hold game objects that will be random generated during the game
     List<GameObject> arrows = new List<GameObject>();
     List<ArrowKey> arrowRef = new List<ArrowKey>();
-    Slider bar;
+    //Slider bar;
 	GameObject holder;
     GameObject ready;
     GameObject go;
@@ -42,29 +42,20 @@ public class MiniGameGenerator : MonoBehaviour {
     float timePenalty;
 
     void Start () {
-
         //Get measurements of the canvas
 		RectTransform parentRectTransform = gameObject.GetComponent<RectTransform>();
+
         //Calculate size assigned to one arrow
-	  	float arrowSpace = up.GetComponent<RectTransform>().rect.width * 1.05f;
-		
+        float arrowSpace = up.GetComponent<RectTransform>().rect.width * 1.05f;
+
         //Generate holder and bar. Set default properties according to the screen size and number of arrows
 		holder = Instantiate(box);
         RectTransform holderRectTransform = holder.GetComponent<RectTransform>();
         holderRectTransform.sizeDelta = new Vector2(arrowSpace * noOfArrows * 1.08f, arrowSpace * 2.8f);
         holderRectTransform.SetParent(parentRectTransform);
         holderRectTransform.localPosition = new Vector2(0, 0);
+        
 
-        //Initialise time bar
-        bar = Instantiate(slider);
-        RectTransform barRectTransform = bar.GetComponent<RectTransform>();
-        barRectTransform.sizeDelta = new Vector2(gameObject.GetComponentInParent<Canvas>().pixelRect.width * 0.95f,
-            gameObject.GetComponentInParent<Canvas>().pixelRect.height * 0.1f);
-        //float sliderYPosition = gameObject.GetComponentInParent<Canvas>().pixelRect.height - 350f;
-        float sliderYPosition = gameObject.GetComponentInParent<Canvas>().pixelRect.height / 2 - barRectTransform.rect.height;
-        barRectTransform.SetParent(parentRectTransform);
-        barRectTransform.localPosition = new Vector2(0, -sliderYPosition);
-        bar.value = 0;
 
         //Generate arrows
         for (int i = 0; i < noOfArrows; i++){
@@ -100,14 +91,14 @@ public class MiniGameGenerator : MonoBehaviour {
         }
         //Generate Ready/Go and set default properties
         RectTransform textRectTransform = holder.GetComponent<RectTransform>();
-
+        
         ready = Instantiate(readyPrefab);
         RectTransform readyRectTransform = ready.GetComponent<RectTransform>();
         readyRectTransform.sizeDelta = new Vector2(arrowSpace * noOfArrows, arrowSpace * 1.6f);
         readyRectTransform.SetParent(parentRectTransform);
         readyRectTransform.localPosition = new Vector2(0, 0);
         ready.SetActive(false);
-
+        
         go = Instantiate(goPrefab);
         RectTransform goRectTransform = go.GetComponent<RectTransform>();
         goRectTransform.sizeDelta = new Vector2(arrowSpace * noOfArrows, arrowSpace * 1.6f);
@@ -118,10 +109,9 @@ public class MiniGameGenerator : MonoBehaviour {
         //Get ready for the game
         //the left most arrow is the last index of the array it appears
         currentIndex = 0;
-        currentTime = -readyTime - goTime;
+        currentTime = - readyTime - goTime;
         gameStart = false;
         bar.value = 0;
-
     }
 
 	void OnGUI(){
@@ -138,7 +128,6 @@ public class MiniGameGenerator : MonoBehaviour {
             //If the right key was pressed, change color of the game object and move to the next one
             if(e.keyCode.ToString().Equals(arrowRef[currentIndex].ToString()) && e.keyCode != KeyCode.None){
                 arrows[currentIndex].GetComponent<Arrow>().TurnRight();
-
 			    currentIndex++;
 			 } else {
                 //If the wrong key was pressed, add time penalty, reset progress
@@ -243,14 +232,14 @@ public class MiniGameGenerator : MonoBehaviour {
     {
         //Notify the game manager that the player has successfully finished the game
         GameObject.FindGameObjectWithTag("MiniGameManager").GetComponent<MiniGameManager>().FinishGame(true);
-        PlaySucceedSound();
+        //PlaySucceedSound();
     }
 
     private void Fail()
     {
         //Notify the game manager that the player has failed the game
         GameObject.FindGameObjectWithTag("MiniGameManager").GetComponent<MiniGameManager>().FinishGame(false);
-        PlayFailSound();
+        //PlayFailSound();
     }
 
     public void PlaySucceedSound()

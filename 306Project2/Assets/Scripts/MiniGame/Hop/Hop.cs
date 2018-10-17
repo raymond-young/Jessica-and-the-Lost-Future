@@ -12,11 +12,11 @@ public class Hop : MonoBehaviour
 
     public GameObject stairPrefab;
     public GameObject blobPrefab;
-    public Slider slider;
+    public Slider bar;
     public GameObject readyPrefab;
     public GameObject goPrefab;
 
-    private Slider bar;
+    //private Slider bar;
     GameObject ready;
     GameObject go;
 
@@ -35,8 +35,7 @@ public class Hop : MonoBehaviour
     private float goTime = 0.5f;
     
     private bool gameStart;
-
-
+    
     private float x;
     private float y;
     private float speed;
@@ -64,18 +63,10 @@ public class Hop : MonoBehaviour
         colorIndex = 0;
 
         //Initialise time bar
-        RectTransform parentRectTransform = gameObject.GetComponent<RectTransform>();
-    
-        bar = Instantiate(slider);
-        RectTransform barRectTransform = bar.GetComponent<RectTransform>();
-        barRectTransform.sizeDelta = new Vector2(gameObject.GetComponentInParent<Canvas>().pixelRect.width * 0.95f,
-            gameObject.GetComponentInParent<Canvas>().pixelRect.height * 0.1f);
-        float sliderYPosition = gameObject.GetComponentInParent<Canvas>().pixelRect.height / 2 - barRectTransform.rect.height;
-        barRectTransform.SetParent(parentRectTransform);
-        barRectTransform.localPosition = new Vector2(0, -sliderYPosition);
         bar.value = 0;
 
         //Generate Ready/Go and set default properties
+        RectTransform parentRectTransform = gameObject.GetComponent<RectTransform>();
         ready = Instantiate(readyPrefab);
         ready.GetComponent<RectTransform>().SetParent(parentRectTransform);
         ready.GetComponent<RectTransform>().localPosition = new Vector2(0, 0);

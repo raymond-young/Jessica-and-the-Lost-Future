@@ -10,7 +10,7 @@ public class FallingBall : MonoBehaviour {
     public Text count;
     public GameObject toCatch;
 
-    public Slider slider;
+    public Slider bar;
     public GameObject readyPrefab;
     public GameObject goPrefab;
     
@@ -18,7 +18,7 @@ public class FallingBall : MonoBehaviour {
     public List<Sprite> possibleSprites = new List<Sprite>();
 
     // Game objects for user feedback.
-    Slider bar;
+    //Slider bar;
     GameObject ready;
     GameObject go;
 
@@ -51,17 +51,10 @@ public class FallingBall : MonoBehaviour {
         wall = xRange - backet.GetComponent<RectTransform>().rect.width / 2;
 
         //Initialise time bar
-        RectTransform parentRectTransform = gameObject.GetComponent<RectTransform>();
-        bar = Instantiate(slider);
-        RectTransform barRectTransform = bar.GetComponent<RectTransform>();
-        barRectTransform.sizeDelta = new Vector2(gameObject.GetComponentInParent<Canvas>().pixelRect.width * 0.95f,
-            gameObject.GetComponentInParent<Canvas>().pixelRect.height * 0.1f);
-        float sliderYPosition = gameObject.GetComponentInParent<Canvas>().pixelRect.height / 2 - barRectTransform.rect.height;
-        barRectTransform.SetParent(parentRectTransform);
-        barRectTransform.localPosition = new Vector2(0, -sliderYPosition);
         bar.value = 0;
 
         //Generate Ready/Go and set default properties
+        RectTransform parentRectTransform = gameObject.GetComponent<RectTransform>();
         ready = Instantiate(readyPrefab);
         ready.GetComponent<RectTransform>().SetParent(parentRectTransform);
         ready.GetComponent<RectTransform>().localPosition = new Vector2(0, 0);
