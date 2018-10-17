@@ -139,7 +139,7 @@ public class MiniGameManager : MonoBehaviour
     private void RandomiseMiniGame(int level)
     {
         System.Random rnd = new System.Random();
-       
+        level = 1;
         if (level == 1)
         {
             //Start arrows minigame
