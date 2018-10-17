@@ -7,5 +7,6 @@ title: AuraTutorial
 	Press the arrow keys on the screen in the correct order before the time runs out to clear the aura.
 	If you fail to do so you will lose one point of energy.
 	If you lose all your points of energy you will be sent back to the future!
+	<<hide AuraTutorial AuraTutorial>>
 <<endif>>
 ===

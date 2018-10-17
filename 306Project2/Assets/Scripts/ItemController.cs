@@ -89,6 +89,12 @@ public class ItemController : MonoBehaviour {
                 else {
                     pickupItem();
                 }
+                freeItemSlot.GetComponent<Image>().sprite = currentItemZone.GetComponent<SpriteRenderer>().sprite;
+                items.Remove(currentItemZone.gameObject);
+                Destroy(currentItemZone.gameObject);
+                player.achievementManager.EarnAchievement("Item Grabber");
+                PlayItemSound();
+                player.ChangeConfidence(20);
             }
         }
 
@@ -115,7 +121,7 @@ public class ItemController : MonoBehaviour {
             foreach (GameObject item in items)
             {
                 Debug.Log("triggered");
-                    freeItemSlot = item;
+                freeItemSlot = item;
             }
         }
 
@@ -181,4 +187,13 @@ public class ItemController : MonoBehaviour {
     {
         needBlackGear = true;
     }
+
+    public void PlayItemSound()
+    {
+        Debug.Log("Play Sound");
+        GameObject sound = GameObject.Find("Item Sound");
+        sound.GetComponent<AudioSource>().Play(0);
+
+    }
+
 }

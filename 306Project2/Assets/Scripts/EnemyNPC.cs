@@ -106,6 +106,17 @@ public class EnemyNPC : Movement
 
     }
 
+    void LateUpdate()
+    {
+        //Minimap enemy position code
+        for (int i = 0; i < gameObject.transform.childCount; i++)
+        {
+            if (gameObject.transform.GetChild(i).name.Equals("miniMapEnemy"))
+            {
+                gameObject.transform.GetChild(i).gameObject.transform.position = gameObject.transform.position;
+            }
+        }
+    }
 
     /**
      * Method that checks which direction the NPC should be facing depending on its destination

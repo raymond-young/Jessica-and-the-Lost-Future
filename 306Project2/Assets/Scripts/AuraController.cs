@@ -6,11 +6,15 @@ public class AuraController : MonoBehaviour {
 
     private MiniGameManager miniGameReset;
 
+    public AchievementManager achievementManager;
+
     private bool playingMiniGame = false;
 
 	// Use this for initialization
 	void Start () {
         miniGameReset = GameObject.FindGameObjectWithTag("MiniGameManager").GetComponent<MiniGameManager>();
+        achievementManager = GameObject.FindObjectOfType<AchievementManager>();
+
     }
 	
 	// Update is called once per frame
@@ -45,9 +49,17 @@ public class AuraController : MonoBehaviour {
     }
 
     //Reset the minigame
-    public void FinishedMiniGame()
+    public void FinishedMiniGame(bool success)
     {
         playingMiniGame = false;
+
+        //Destroys the minimap object when enemy killed, child must be element 1 of parent
+        if (success)
+        {
+            Destroy(gameObject.transform.parent.transform.GetChild(1).gameObject);
+        }
+        
+        achievementManager.EarnAchievement("First Timer");
         //StartCoroutine(WaitFewSeconds());
     }
 

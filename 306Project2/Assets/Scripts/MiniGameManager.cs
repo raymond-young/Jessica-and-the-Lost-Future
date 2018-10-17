@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MiniGameManager : MonoBehaviour {
+public class MiniGameManager : MonoBehaviour
+{
 
     //Reference list of enemy NPCs
     private GameObject canvas;
     private List<GameObject> npcs = new List<GameObject>();
     private PlayerController player;
+
+    public AchievementManager achievementManager;
 
     private bool startGame = false;
     private bool hasStarted = false;
@@ -17,12 +20,14 @@ public class MiniGameManager : MonoBehaviour {
     private GameObject miniGame;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         canvas = GameObject.Find("Canvas");
 
 
         //Initialises reference to other NPC objects
         GameObject[] npcGameObject = GameObject.FindGameObjectsWithTag("BadNPC");
+        achievementManager = GameObject.FindObjectOfType<AchievementManager>();
 
         for (int i = 0; i < npcGameObject.Length; i++)
         {
@@ -34,10 +39,11 @@ public class MiniGameManager : MonoBehaviour {
         player = p.GetComponent<PlayerController>();
 
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+    // Update is called once per frame
+    void Update()
+    {
+
         //On collision with aura, start minigame
         if (startGame && !hasStarted)
         {
@@ -63,19 +69,19 @@ public class MiniGameManager : MonoBehaviour {
             miniGame.GetComponent<RectTransform>().localPosition = Vector2.zero;
             miniGame.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
 
-            
+
             hasStarted = true;
         }
 
-	}
-    
+    }
+
     //Starts minigame from aura collision
     public void SetStartGame(bool startGame, GameObject npc)
     {
         this.startGame = startGame;
         currentNpc = npc;
     }
-    
+
     //Finish minigame (called by minigame generator on finish)
     public void FinishGame(bool success)
     {
@@ -98,39 +104,28 @@ public class MiniGameManager : MonoBehaviour {
 
         //Set delay for aura
         AuraController controller = currentNpc.transform.GetChild(0).GetComponent<AuraController>();
-        controller.FinishedMiniGame();
+        controller.FinishedMiniGame(success);
 
         if (!success)
         {
             //Failed minigame so loose power
             player.LoseOnePower();
 
-            //Calculates the opposite direction to the npc from the players input
-            Vector2 direction = (player.transform.position - currentNpc.transform.position).normalized;
-
-            //Used to detect if player stuck between another object and the bad npc
-            RaycastHit2D hit = Physics2D.Raycast(player.transform.position, direction * 5f);
-
-         
-            if (hit.collider != null)
-            {
-                //If stuck, teleport player to their last prevoius recorded position 
-                player.transform.position = player.GetPreviousPos();
-            }
-            else
-            {
-                //If not stuck, teleport player in opposite direction to the bad npc
-                player.transform.Translate(direction * 5f);
-            }
-
-                
-
-
+            //If stuck, teleport player to their last prevoius recorded position 
+            player.transform.position = player.GetPreviousPos();
+            // Show warning.
+            StartCoroutine(player.popupManager.showWarning("-1 Energy. Be more careful next time!"));
         }
         else
-        { 
+        {
+            Debug.Log("Finished minigame");
             //Successful minigame so destroy aura
             Destroy(currentNpc.transform.GetChild(0).gameObject);
+
+            achievementManager.EarnAchievement("Keyboard Warrior");
+
+            // Show congratulations message.
+            StartCoroutine(player.popupManager.showEnemyPassed());
         }
 
     }

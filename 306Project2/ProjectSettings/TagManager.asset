@@ -17,6 +17,19 @@ TagManager:
   - NPC
   - scoreTransferObject
   - BadNPC
+  - FogOfWar
+  - minimap
+  - MiniMapBorder
+  - HighScorePanel
+  - SaveManager
+  - GeneralAchievement
+  - AchievementManager
+  - achieveTransferObj
+  - Canvas
+  - EarnAchievementCanvas
+  - AchievementMenu
+  - PlayerNameObjectTransfer
+  - MinigameFallingBall
   layers:
   - Default
   - TransparentFX
@@ -26,9 +39,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - world
+  - MiniMap
+  - Ignore
   - 
   - 
   - 
