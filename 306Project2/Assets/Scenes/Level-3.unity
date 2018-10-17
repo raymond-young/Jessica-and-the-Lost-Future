@@ -17377,7 +17377,7 @@ GameObject:
   - component: {fileID: 1647227877}
   - component: {fileID: 1647227878}
   m_Layer: 9
-  m_Name: MeetingRoom
+  m_Name: SophiaOffice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
