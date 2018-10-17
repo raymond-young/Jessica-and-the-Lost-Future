@@ -1,0 +1,22 @@
+title: Rose
+---
+<<if $talkedToRose is false>>
+    <<set $talkedToRose to true>>
+    <<change_character DialogueManager Rose>>
+    Hi! Welcome to the our WEN event today! My name is Rose and I am currently in my last year of Civil Engineering.
+    What do you feel about exploring all the Engineering departments today? 
+    <<change_character DialogueManager Jessica>> 
+    -> Yes! I definitely want to do Engineering!
+       <<change_character DialogueManager Rose>> 
+       That is awesome! 
+    -> hmm.. I am not too sure about doing Engineering at the moment. 
+       <<change_character DialogueManager Rose>> 
+       That's okay. I have been in the same situation as you. Making a decision about future is always difficult. 
+    As most of you know, women are under-represented in the engineering field, and many of future female engineers often 
+    faces gender stereotypes towards choossing a career in Engineering, which is often perceived as a male's thing. 
+    However, everyone has the right to choose to be what they want to be, not what they are assumed to be by other people. 
+    For myself, studying Engineering has definitely been a great challenge in my life, but I've never regreted this decision.
+    I wish that no matter what choice you make, it is what you truly believe in, and hope you all the best for the future!
+    <<transition Player CongratulationsScene>>
+<<endif>>
+===
