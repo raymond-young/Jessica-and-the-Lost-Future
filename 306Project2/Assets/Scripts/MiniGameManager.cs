@@ -113,7 +113,8 @@ public class MiniGameManager : MonoBehaviour
 
             //If stuck, teleport player to their last prevoius recorded position 
             player.transform.position = player.GetPreviousPos();
-
+            // Show warning.
+            StartCoroutine(player.popupManager.showWarning("-1 Energy. Be more careful next time!"));
         }
         else
         {
@@ -122,6 +123,9 @@ public class MiniGameManager : MonoBehaviour
             Destroy(currentNpc.transform.GetChild(0).gameObject);
 
             achievementManager.EarnAchievement("Keyboard Warrior");
+
+            // Show congratulations message.
+            StartCoroutine(player.popupManager.showEnemyPassed());
         }
 
     }
