@@ -16,10 +16,10 @@ public class SaveManager : MonoBehaviour {
 		
 	}
 
-
+    //Saves at the end of a level
     public void SaveLevel(float startOfLevelScore, int currentLevel, string playerName)
     {
-
+        //Checks if existing level exists
         SaveData save = CheckScoreSingleSave(startOfLevelScore, currentLevel, playerName);
 
         string destination = Application.persistentDataPath + "/" + playerName + ".dat";
@@ -28,38 +28,38 @@ public class SaveManager : MonoBehaviour {
         file = File.OpenWrite(destination);
         SaveData data = new SaveData(startOfLevelScore, currentLevel, playerName);
 
-     
-            if (data.GetLevel1Score() > save.GetLevel1Score())
-            {
-                data.SetLevel1Score(data.GetLevel1Score());
-            }
-            else
-            {
-                data.SetLevel1Score(save.GetLevel1Score());
-            }
+        //Checks if current attempt score better than previous attempt, keep the best score, do this for all levels
+        if (data.GetLevel1Score() > save.GetLevel1Score())
+        {
+            data.SetLevel1Score(data.GetLevel1Score());
+        }
+        else
+        {
+            data.SetLevel1Score(save.GetLevel1Score());
+        }
         
 
-            if (data.GetLevel2Score() > save.GetLevel2Score())
-            {
-                data.SetLevel2Score(data.GetLevel2Score());
-            }
-            else
-            {
-                data.SetLevel2Score(save.GetLevel2Score());
-            }
+        if (data.GetLevel2Score() > save.GetLevel2Score())
+        {
+            data.SetLevel2Score(data.GetLevel2Score());
+        }
+        else
+        {
+            data.SetLevel2Score(save.GetLevel2Score());
+        }
 
 
-            if (data.GetLevel3Score() > save.GetLevel3Score())
-            {
-                data.SetLevel3Score(data.GetLevel3Score());
-            }
-            else
-            {
-                data.SetLevel3Score(save.GetLevel3Score());
-            }
+        if (data.GetLevel3Score() > save.GetLevel3Score())
+        {
+            data.SetLevel3Score(data.GetLevel3Score());
+        }
+        else
+        {
+            data.SetLevel3Score(save.GetLevel3Score());
+        }
             
         
-
+        //For saving level state
         switch (currentLevel)
         {
             case 1:
@@ -77,62 +77,48 @@ public class SaveManager : MonoBehaviour {
 
     }
 
+    //Checks if already file exists i.e. player already played a game
     private SaveData CheckScoreSingleSave(float startOfLevelScore, int currentLevel, string playerName)
     {
         string[] fileName = Directory.GetFiles(Application.persistentDataPath, playerName + ".dat");
 
         if (fileName.Length > 0)
         {
+            //Loads previous attempt
             FileStream file;
             file = File.OpenRead(fileName[0]);
             BinaryFormatter bf = new BinaryFormatter();
             SaveData data = (SaveData)bf.Deserialize(file);
             file.Close();
 
-            float score = 0;
-            
-            if (currentLevel == 0)
-            {
-                score = data.TotalScore();
-            }
-            else if (currentLevel == 1)
-            {
-                score = data.GetLevel1Score();
-            }
-            else if (currentLevel == 2)
-            {
-                score = data.GetLevel2Score();
-            }
-            else if (currentLevel == 3)
-            {
-                score = data.GetLevel3Score();
-            }
-
             return data;
       
         }
         else
         {
+            //Return score of current game if prevoius doesnt exist
             return new SaveData(startOfLevelScore, currentLevel, playerName);
         }
         
 
     }
 
+    //Loads all saved games for display on high score screen
     public List<SaveData> LoadSave()
     {
         List<SaveData> saves = new List<SaveData>();
 
-            foreach (string fileName in Directory.GetFiles(Application.persistentDataPath, "*.dat"))
-            {
-                FileStream file;
-                file = File.OpenRead(fileName);
-                BinaryFormatter bf = new BinaryFormatter();
-                SaveData data = (SaveData)bf.Deserialize(file);
-                file.Close();
+        // Loop through all applications
+        foreach (string fileName in Directory.GetFiles(Application.persistentDataPath, "*.dat"))
+        {
+            FileStream file;
+            file = File.OpenRead(fileName);
+            BinaryFormatter bf = new BinaryFormatter();
+            SaveData data = (SaveData)bf.Deserialize(file);
+            file.Close();
 
-                saves.Add(data);
-            }
+            saves.Add(data);
+        }
 
         return saves;
     }
