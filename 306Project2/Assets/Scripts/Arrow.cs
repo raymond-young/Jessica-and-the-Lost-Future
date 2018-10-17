@@ -45,13 +45,13 @@ public class Arrow : MonoBehaviour {
 	public void TurnRight(){
 		gameObject.GetComponent<Image>().sprite = greenState;
 		state = State.Right;
-        //PlayCorrectSound();
+        PlayCorrectSound();
 	}
 
 	public void TurnWrong(){
 		gameObject.GetComponent<Image>().sprite = redState;
 		state = State.Wrong;
-        //PlayWrongSound();
+        PlayWrongSound();
 	}
 
 	public void TurnDefault(){
@@ -65,7 +65,7 @@ public class Arrow : MonoBehaviour {
     {
         Debug.Log("Play Sound");
         GameObject sound = GameObject.Find("Arrow Correct");
-        //sound.GetComponent<AudioSource>().Play(0);
+        sound.GetComponent<AudioSource>().Play(0);
 
     }
 
@@ -73,6 +73,6 @@ public class Arrow : MonoBehaviour {
     {
         Debug.Log("Play Sound");
         GameObject sound = GameObject.Find("Arrow Wrong");
-        //sound.GetComponent<AudioSource>().Play(0);
+        sound.GetComponent<AudioSource>().Play(0);
     }
 }
