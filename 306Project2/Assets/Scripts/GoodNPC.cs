@@ -86,4 +86,5 @@ public class GoodNPC : Movement {
         MoveToPos(originalPos, newPos);
         
     }
+
 }

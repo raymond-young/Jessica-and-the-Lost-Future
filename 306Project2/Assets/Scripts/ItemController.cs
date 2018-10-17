@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Yarn.Unity;
 
 /* Controls players currently held items */
 public class ItemController : MonoBehaviour {
@@ -12,11 +13,14 @@ public class ItemController : MonoBehaviour {
 
     private Collider2D currentItemZone;
 
-    private GameObject freeItemSlot;
+    public  GameObject freeItemSlot;
 
     private bool inItemZone = false;
 
     private PlayerController player;
+
+    private bool noteRead = false;
+    private bool needCoffee = false;
 
 
     // Use this for initialization
@@ -49,13 +53,33 @@ public class ItemController : MonoBehaviour {
         {
             if (Input.GetKeyDown(KeyCode.Space) && !currentItemZone.Equals(null))
             {
-                freeItemSlot.GetComponent<Image>().sprite = currentItemZone.GetComponent<SpriteRenderer>().sprite;
-                items.Remove(currentItemZone.gameObject);
-                Destroy(currentItemZone.gameObject);
-                player.ChangeConfidence(20);
+                if (currentItemZone.name == "Printer" )
+                {
+                    if (noteRead)
+                    {
+                        pickupItem();
+                    }
+                }else if(currentItemZone.name == "Coffee")
+                {
+                    if (needCoffee)
+                    {
+                        pickupItem();
+                    }
+                }
+                else {
+                    pickupItem();
+                }
             }
         }
 
+    }
+
+    private void pickupItem()
+    {
+        freeItemSlot.GetComponent<Image>().sprite = currentItemZone.GetComponent<SpriteRenderer>().sprite;
+        items.Remove(currentItemZone.gameObject);
+        Destroy(currentItemZone.gameObject);
+        player.ChangeConfidence(20);
     }
 
     /* Sets item zone when approaching item */
@@ -66,14 +90,12 @@ public class ItemController : MonoBehaviour {
         {
             currentItemZone = collision;
             inItemZone = true;
-
+            Debug.Log("triggered");
             //Loop through item slots to find one that is free
             foreach (GameObject item in items)
             {
-                if (item.GetComponent<Image>().sprite.name.Equals("Background"))
-                {
+                Debug.Log("triggered");
                     freeItemSlot = item;
-                }
             }
         }
 
@@ -102,4 +124,23 @@ public class ItemController : MonoBehaviour {
         //---------------------------------------------------
     }
 
+    [YarnCommand("remove")]
+    public void RemoveItem(string destination)
+    {
+        Debug.Log("item removed triggered");
+        GameObject ItemSlots = GameObject.FindGameObjectWithTag("ItemSlots");
+        ItemSlots.GetComponentInChildren<Image>().sprite = null;
+    }
+
+    [YarnCommand("readNote")]
+    public void ReadNote(string destination)
+    {
+        noteRead = true;
+    }
+
+    [YarnCommand("needCoffee")]
+    public void NeedCoffee(string destination)
+    {
+        needCoffee = true;
+    }
 }

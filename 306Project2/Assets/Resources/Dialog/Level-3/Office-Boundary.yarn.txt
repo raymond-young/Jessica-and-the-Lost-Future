@@ -1,0 +1,6 @@
+title: Office-Boundary
+---
+<<change_character DialogueManager Jessica>>
+You can't go there, you need to get to work.
+<<repel Player>>
+===

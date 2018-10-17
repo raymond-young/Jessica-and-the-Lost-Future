@@ -1,0 +1,61 @@
+title: Manager
+---
+<<change_character DialogueManager Sam(Manager)>>
+<<if $readTODO is false>>
+	You should get back to work. There's a lot of things to do today
+	<<change_character DialogueManager Jessica>>
+	Ok
+<<else>>
+	<<if $SamHasPrinting is true>>
+		<<if $hasCoffee is false>>
+			You should get back to work. There's a lot of things to do today
+			<<change_character DialogueManager Jessica>>
+			Ok
+		<<else>>
+			<<if $needR is true and $Allocating is true>>
+				<<if $completeAllocation is true>>
+					That allocation seems good to me. 
+					Could you go and tell Sophia about it and see how she thinks. 
+					She should be talking to the receptionist
+				<<else>>
+					You should get back to work. There's a lot of things to do today
+					<<change_character DialogueManager Jessica>>
+					Ok
+				<<endif>>
+			<<else>>
+				<<set $SamHasCoffee to true>>
+				<<set $needR to true>>
+				<<change_character DialogueManager Jessica>>
+				Here is your coffee, Sam.
+				Is there anything else you need me to do.
+				<<needCoffee Player player>>
+				<<change_character DialogueManager Sam(Manager)>>
+				Oh yes, I do.
+				Jessica we have 3 projects in hand
+				The swodniw project, The xunil project and The hsotnicam project.
+				Could you help me assign all the team members to a project and then get back to me.
+				There should be more details in this weeks meeting minutes, you can ask Secretary Beryl for them.
+				<<change_character DialogueManager Jessica>>
+				OK
+			<<endif>>
+		<<endif>>
+	<<else>>
+		<<if $hasPrinting is false>>
+			You should get back to work. There's a lot of things to do today
+			<<change_character DialogueManager Jessica>>
+			Ok
+		<<else>>
+			<<set $SamHasPrinting to true>>
+			<<set $needCoffee to true>>
+			<<change_character DialogueManager Jessica>>
+			Here are the minutes, Sam.
+			<<remove Player paper>>
+			<<needCoffee Player player>>
+			<<change_character DialogueManager Sam(Manager)>>
+			thanks, can you get me some coffee
+			<<change_character DialogueManager Jessica>>
+			OK
+		<<endif>>
+	<<endif>>
+<<endif>>
+===

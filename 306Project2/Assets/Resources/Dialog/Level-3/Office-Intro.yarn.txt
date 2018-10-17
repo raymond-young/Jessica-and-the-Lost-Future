@@ -1,0 +1,11 @@
+title: Office-Intro
+---
+<<if $hasDoneOfficeIntro is false>>
+	<<set $hasDoneOfficeIntro to true>>
+	Oh no! I'm back to the office. This was my first graduate job.
+	I was only able to do tedious work here. The boss didn't think I would be able to do anything useful.
+	I couldn't utilise my skills. Everything was terrible here.
+	Until I met Sophia. I need to go and talk to her.
+	I need to make sure she helps me find my place here.
+<<endif>>
+===

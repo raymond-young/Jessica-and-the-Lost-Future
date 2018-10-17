@@ -1,0 +1,11 @@
+title: Coffee
+---
+<<if $needCoffee is true>>
+	<<set $hasCoffee to true>>
+	<<change_character DialogueManager coffee>>
+	You picked up the Coffee.
+<<else>>
+	<<change_character DialogueManager Jessica>>
+	I don't need coffee right now
+<<endif>>
+===
