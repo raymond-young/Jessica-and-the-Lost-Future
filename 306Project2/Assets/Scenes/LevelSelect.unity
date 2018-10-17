@@ -9596,7 +9596,7 @@ GameObject:
   - component: {fileID: 954783937}
   m_Layer: 0
   m_Name: EntryDialogue
-  m_TagString: Untagged
+  m_TagString: EventZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10992,6 +10992,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueContainer: {fileID: 132786536}
   lineText: {fileID: 676209912}
+  personSpeaking: {fileID: 0}
+  personSpeakingSprite: {fileID: 0}
   continuePrompt: {fileID: 0}
   textSpeed: 0.025
   optionButtons:
