@@ -1,0 +1,5 @@
+title: James
+---
+<<change_character DialogueManager James>>
+You should get back to work, theres a lot of things to do 
+===

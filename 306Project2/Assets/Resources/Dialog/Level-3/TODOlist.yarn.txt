@@ -1,0 +1,15 @@
+title: TODOList
+---
+<<change_character DialogueManager TODO>>
+<<set $readTODO to true>>
+<<readNote Player player>>
+Print out meeting minutes and give to Sam(Manager)
+<<if $SamHasPrinting is true>>
+	<<change_character DialogueManager Jessica>>
+	DONE
+<<endif>>
+Make coffee
+Document contract
+<<change_character DialogueManager Jessica>>
+haha work ...
+===

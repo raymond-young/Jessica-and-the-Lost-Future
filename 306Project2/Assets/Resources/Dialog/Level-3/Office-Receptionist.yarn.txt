@@ -1,0 +1,25 @@
+title: Office-Receptionist
+---
+<<if $needR is true>>
+	<<set $Allocating to true>>
+	<<change_character DialogueManager Jessica>>
+	Hi Beryl, can you give me the details of the 3 projects for today's meeting minutes
+	<<change_character DialogueManager Secretary Beryl>>
+	We have 3 projects, the first is the Xunil project, Swodniw project and hsotnicam project. 
+	We need to allocate our 4 team members to each project, 
+	they all have preferences on which one to work on, so can you talk to them and then allocate them to a team, 
+	of course, you can't satisfy everyone, but try to keep to their preferences as possible.
+	to allocate them, you need to log them onto my laptop and then tell Sam and Sophia.
+	<<change_character DialogueManager Jessica>>
+	Ok thanks.
+<<else>>
+	<<change_character DialogueManager Secretary Beryl>>
+	You should get back to work, theres a lot of things to do 
+	<<repel Player>>
+	<<change_character DialogueManager Jessica>>
+	Oh no, the receptionist isn't letting me talk to Sophia,
+	If I don't talk to Sophia, I can't start working on projects with her.
+	But I'm not in Sophia's team right now. She might not want to talk to me.
+	I need to get my work done and then talk to Sophia.
+<<endif>>
+===

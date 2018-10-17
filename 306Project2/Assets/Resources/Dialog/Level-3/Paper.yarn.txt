@@ -1,0 +1,11 @@
+title: Paper
+---
+<<if $readTODO is true and $hasPrinting is false>>
+	<<set $hasPrinting to true>>
+	<<change_character DialogueManager Printer>>
+	You printed out paper.
+<<else>>
+	<<change_character DialogueManager Jessica>>
+	I dont't need to use the printer right now. 
+<<endif>>
+===
