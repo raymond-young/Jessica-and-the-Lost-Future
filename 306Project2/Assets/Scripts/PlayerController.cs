@@ -86,12 +86,14 @@ public class PlayerController : MonoBehaviour {
             saveManager = GameObject.FindGameObjectWithTag("SaveManager").GetComponent<SaveManager>();
         }
 
-        if (GameObject.FindGameObjectWithTag("AchievementManager") != null) {
-            achievementManager = GameObject.FindObjectOfType<AchievementManager>();
+        if(GameObject.FindGameObjectWithTag("PlayerNameObjectTransfer") == null){
+            playerName = "TestName";
+        }else{
+            playerName = GameObject.FindGameObjectWithTag("PlayerNameObjectTransfer").GetComponent<PlayerNameObjectTransfer>().GetPlayerName();
         }
 
-        if (GameObject.FindGameObjectWithTag("PlayerNameObjectTransfer") != null) {
-            playerName = GameObject.FindGameObjectWithTag("PlayerNameObjectTransfer").GetComponent<PlayerNameObjectTransfer>().GetPlayerName();
+        if (GameObject.FindGameObjectWithTag("AchievementManager") != null) {
+            achievementManager = GameObject.FindObjectOfType<AchievementManager>();
         }
 
         //Gets level dependent on scene

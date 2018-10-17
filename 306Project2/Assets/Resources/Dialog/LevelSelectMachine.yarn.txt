@@ -3,7 +3,8 @@ title: LevelSelectMachine
 <<set $true_variable to true>>
 <<set $false_variable to false>>
 <<checkLevel Dialogue>>
-Time Machine: Where to Next?
+<<change_character DialogueManager Time Machine>>
+Where to Next?
 <<if $level3 is true and $level2 is true>>
     -> Travel to Jessica's first day in high school.
     	<<transition Player Level-1>>
