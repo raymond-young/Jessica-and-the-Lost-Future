@@ -1,8 +1,10 @@
 title: WhiteGear
 ---
-<<if $hasWhiteGear is false>>
+<<if $needWhiteGear is true>>
 	<<set $hasWhiteGear to true>>
 	<<change_character DialogueManager WhiteGear>>
 	You picked up the white gear!
+<<else>>
+    You don't need this item right now.
 <<endif>>
 ===

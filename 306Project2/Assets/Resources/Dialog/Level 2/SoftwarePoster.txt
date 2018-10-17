@@ -1,0 +1,11 @@
+title: SoftwarePoster
+---
+<<change_character DialogueManager Book>>
+Title: Grace Hopper: Influential Female Software Engineer 
+Her biggest contribution was creating the first computer language compiler, 
+a program that turns human-readable statements (code) into machine language that a computer can understand
+<<if $seenPoster is false>>
+	<<set $seenPoster to true>>
+    <<change_confidence Player 5>>
+<<endif>>
+===

@@ -87,6 +87,7 @@ public class GoodNPC : Movement {
         
     }
 
+<<<<<<< HEAD
     [YarnCommand("moveSophia")]
     public void MoveSophia(string destination)
     {
@@ -94,6 +95,14 @@ public class GoodNPC : Movement {
         Vector3 move = new Vector3(gameObject.transform.localPosition.x, -0f, 0);
         gameObject.transform.localPosition = move;
 
+=======
+
+    // Hides event zone when no longer needed
+    [YarnCommand("hide")]
+    public void Hide(string destination)
+    {
+        GameObject.Find(destination).SetActive(false);
+>>>>>>> origin/chapt2
     }
 
 }

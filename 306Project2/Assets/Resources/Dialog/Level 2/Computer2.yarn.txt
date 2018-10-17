@@ -10,6 +10,7 @@ title: Computer2
     -> Set an exact time for meeting. 
        Correct!
        <<set $completedQuestion2 to true>>
+       <<change_confidence Player 10>>
 <<else>>
     <<if $startECEActivity is false>>
         This activity is not available yet. 

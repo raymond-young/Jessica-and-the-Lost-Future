@@ -1,0 +1,8 @@
+title: BlockForWEN
+---
+<<if $talkedDepartmentEnding is false>>
+	<<change_character DialogueManager Jessica>>
+    This room is used for WEN event later. Don't go in yet. 
+	<<repel Player>>
+<<endif>>
+===

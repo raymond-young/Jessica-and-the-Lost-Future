@@ -1,27 +1,63 @@
 title: Alex
 ---
-<<if $completedCivilActivity is true>>
-    <<change_character DialogueManager Alice>>
-    Well done! Hope you enjoyed our little activity! Hope to see you next year in Civil. 
-    Let's all for Civils display. Make sure you talk to volunteer Amy for more info about other departments we have. 
-    <<set $finishCivil to true>>
-<<elseif $startCivilActivity is true>>
-    <<change_character DialogueManager Alice>>
-    Please join the group for some cool Lego building activity!
+<<if $needWhiteGear is true>>
+    <<if $hasWhiteGear is true>>
+        <<change_character DialogueManager Alex>>
+        Well done for finding the last object! That was a tough one to find without any clue given. 
+        Hope you enjoyed our little activity and is a bit more familiar with the Engineering building! 
+        Excited to see you next year! 
+        Let's all for Mechanical display. Make sure you talk to Amy for more info about other departments we have.
+        <<change_confidence Player 10>> 
+        <<set $finishMechanical to true>>
+    <<else>> 
+        Find the white gear, there is no clue for this. 
+    <<endif>>
+<<elseif $needGreyGear is true>> 
+    <<if $hasGreyGear is true>> 
+        <<change_character DialogueManager Alex>>
+        <<set $needGreyGear to false>> 
+        <<change_confidence Player 10>>
+        Well done for finding the grey gear!
+        One final object to find is a white gear, and there is no clue.
+        <<set $needWhiteGear to true>>
+        <<needWhiteGear Player player>>
+    <<else>>
+        The clue for the grey gear is "I know a bank where the wild Daisy blows, Where thy gear lays." Good luck!
+    <<endif>>
+<<elseif $needBlackGear is true>>
+    <<if $hasBlackGear is true>> 
+        <<change_character DialogueManager Alex>>
+        <<set $needBlackGear to false>> 
+        <<change_confidence Player 10>>
+        Nice, you got the black gear! 
+        The next item to find is a grey gear.
+        Have fun! 
+        The clue is: "Up the greenwood tree, seek what thou find."
+        <<set $needGreyGear to true>>
+        <<needGreyGear Player player>> 
+    <<else>>
+        Here is a little clue for you: "I know a bank where the wild Daisy blows, Where thy gear lays.""
+        Good luck finding the black gear!
+    <<endif>>
 <<else>>
     <<if $startMechanical is true>> 
         <<change_character DialogueManager Alex>>
-        I am Alice and weclome to the Civil department!
-        Our department is committed to offering tangible solutions for the built environment, 
-        and providing you with the resources necessary to design the foundations of modern society.
-        We have a bridge building activity happening right here. 
-        I think you could join this group of boys. They are missing a group member right now.
-        <<set $startCivilActivity to true>>
+        Hi! I am Alex. Welcome to the Mecanical department!
+        We boast a project-intensive curriculum that prepares you for the challenges of designing 
+        and manufacturing advanced products and services for the 21st century.
+        We currently have a scavenger hunt activity going on right now. Would you be interested in participating?
         <<change_character DialogueManager Jessica>>
-        Sounds good!
+        Sure! I love scavenger hunt!
+        <<change_character DialogueManager Alex>>
+        Great! I will be asking you to find three objects around this building, and the first thing is a black gear!
+        Here is a little clue for you:
+        "I know a bank where the wild Daisy blows, Where thy gear lays.""
+        Good luck!
+        <<needBlackGear Player player>>
+        <<set $needBlackGear to true>>
     <<else>>
-         <<change_character DialogueManager Alice>>
-        Hi! We have the Civil department's display here. Please come visit us later.>>
+        <<change_character DialogueManager Alex>>
+        Hi! We have the Mechanical department's display right here. Please come visit us later.>>
     <<endif>>
 <<endif>>
 ===

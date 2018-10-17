@@ -114,6 +114,9 @@ namespace Yarn.Unity.Example {
             spriteMap["GreyGear"] = Resources.Load<Sprite>("Sprites/greyGear");
             spriteMap["BlackGear"] = Resources.Load<Sprite>("Sprites/blackGear");
             spriteMap["Alex"] = Resources.Load<Sprite>("Sprites/alex");
+            spriteMap["Rebecca"] = Resources.Load<Sprite>("Sprites/rebecca");
+            spriteMap["Rose"] = Resources.Load<Sprite>("Sprites/rose");
+            spriteMap["Statue"] = Resources.Load<Sprite>("Sprites/statue");
 
             spriteMap["Sophia"] = Resources.Load<Sprite>("Sprites/grace");
             spriteMap["Sam(Manager)"] = Resources.Load<Sprite>("Sprites/barry");
@@ -129,8 +132,9 @@ namespace Yarn.Unity.Example {
         void Awake ()
         {
             // Start by hiding the container, line and option buttons
-            if (dialogueContainer != null)
+            if (dialogueContainer != null) {
                 dialogueContainer.SetActive(false);
+            }
 
             lineText.gameObject.SetActive (false);
 
@@ -181,6 +185,8 @@ namespace Yarn.Unity.Example {
             while (Input.anyKeyDown == false) {
                 yield return null;
             }
+
+            PlayDialogueSound();
 
             // Hide the text and prompt
             lineText.gameObject.SetActive (false);
@@ -298,6 +304,15 @@ namespace Yarn.Unity.Example {
             }
 
             yield break;
+        }
+
+        void PlayDialogueSound()
+        {
+            if (GameObject.Find("Dialogue Sound") != null)
+            {
+                GameObject sound = GameObject.Find("Dialogue Sound");
+                sound.GetComponent<AudioSource>().Play(0);
+            }
         }
 
     }

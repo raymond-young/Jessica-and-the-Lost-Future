@@ -16,7 +16,9 @@ title: Level2Entry
     Do you still want to stay and explore a bit more? 
     <<change_character DialogueManager Jessica>>
     -> We will be fine! Let’s check out the department exhibitions.
+       <<change_confidence Player 5>>
     -> hm..maybe we should check out the other faulties instead?
        Let’s just hang out a bit more and see if more girls turn up.
+       <<change_confidence Player -5>>
 <<endif>>
 ===

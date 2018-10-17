@@ -29,6 +29,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using CsvHelper;
+using System;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 namespace Yarn.Unity
 {
@@ -44,6 +47,9 @@ namespace Yarn.Unity
     [AddComponentMenu("Scripts/Yarn Spinner/Dialogue Runner")]
     public class DialogueRunner : MonoBehaviour
     {
+
+        private GameObject player;
+
         /// The JSON files to load the conversation from
         public TextAsset[] sourceText;
 
@@ -97,6 +103,9 @@ namespace Yarn.Unity
         /// Start the dialogue
         void Start ()
         {
+            player = GameObject.FindGameObjectWithTag("player");
+
+
             // Ensure that we have our Implementation object
             if (dialogueUI == null) {
                 Debug.LogError ("Implementation was not set! Can't run the dialogue!");
@@ -289,6 +298,21 @@ namespace Yarn.Unity
             get {
                 return dialogue.currentNode;
             }
+        }
+
+        [YarnCommand("checkLevel")]
+        public void checkLevel() {
+
+            string playerName = player.GetComponent<PlayerController>().GetPlayerName();
+
+            //Ensure that the level variables are up to date as per the config file.
+                BinaryFormatter bf = new BinaryFormatter();
+                FileStream file = File.Open(Application.persistentDataPath + "/" + playerName + ".dat", FileMode.Open);
+                SaveData data = (SaveData) bf.Deserialize(file);
+                file.Close();
+                foreach(KeyValuePair<string, bool> entry in data.levels){
+                    variableStorage.SetValue("$" + entry.Key, entry.Value ? variableStorage.GetValue("$true_variable") : variableStorage.GetValue("$false_variable"));
+                }
         }
 
 
@@ -491,5 +515,4 @@ namespace Yarn.Unity
         public abstract void ResetToDefaults ();
 
     }
-
 }

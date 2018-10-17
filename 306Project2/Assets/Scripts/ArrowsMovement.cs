@@ -27,6 +27,7 @@ public class ArrowsMovement : MonoBehaviour {
             }
 
             FormatButton();
+            PlaySelectSound();
         }
         else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
@@ -36,6 +37,7 @@ public class ArrowsMovement : MonoBehaviour {
             }
 
             FormatButton();
+            PlaySelectSound();
 
         }
         else if (Input.GetKeyDown(KeyCode.Return))
@@ -43,6 +45,7 @@ public class ArrowsMovement : MonoBehaviour {
             GameObject object1 = list[index];
             Button object2 = object1.gameObject.GetComponent<UnityEngine.UI.Button>();
             object2.onClick.Invoke();
+            PlaySelectSound();
         }
     }
 
@@ -59,6 +62,13 @@ public class ArrowsMovement : MonoBehaviour {
         float buttonYPosition = button.gameObject.transform.position.y;
         // Move arrow
         transform.position = new Vector2(transform.position.x, buttonYPosition);
+
+    }
+
+    void PlaySelectSound()
+    {
+        GameObject sound = GameObject.Find("Menu Select Sound");
+        sound.GetComponent<AudioSource>().Play(0);
 
     }
 }

@@ -1,0 +1,24 @@
+title: LevelSelectMachine
+---
+<<set $true_variable to true>>
+<<set $false_variable to false>>
+<<checkLevel Dialogue>>
+<<change_character DialogueManager Time Machine>>
+Where to Next?
+<<if $level3 is true and $level2 is true>>
+    -> Travel to Jessica's first day in high school.
+    	<<transition Player Level-1>>
+    -> Travel to Jessica's University open day.
+        <<transition Player Level-2>>
+    -> Travel to Jessicas Work
+        <<transition Player Level-3>>
+<<elseif $level2 is true>>
+    -> Travel to Jessica's first day in high school.
+    	<<transition Player Level-1>>
+    -> Travel to Jessica's University open day.
+        <<transition Player Level-2>>
+<<else>>
+    -> Travel to Jessica's first day in high school.
+    	<<transition Player Level-1>>
+<<endif>>
+===

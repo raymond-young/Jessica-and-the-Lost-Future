@@ -10,6 +10,7 @@ title: LockedLab
 		<<change_character DialogueManager Jessica>>
 		You use the key to unlock the door.
 		<<set $openedDoor to true>>
+		<<hide LabBlock LabBlock>>
 	<<endif>>
 <<endif>>
 ===

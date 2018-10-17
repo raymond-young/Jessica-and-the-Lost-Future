@@ -1,8 +1,10 @@
 title: GreyGear
 ---
-<<if $hasGreyGear is false>>
+<<if $needGreyGear is true>>
     <<set $hasGreyGear to true>>
     <<change_character DialogueManager GreyGear>>
     You picked up the grey gear!
+<<else>>
+    You don't need this item right now.
 <<endif>>
 ===

@@ -1,0 +1,28 @@
+title: Rebecca
+---
+<<if $talkedToRebecca is false>>
+    <<set $talkedToRebecca to true>> 
+    <<change_character DialogueManager Rebecca>>
+    Hello! I am Rebecca and this is my friend Zoe and Sam.
+    <<change_character DialogueManager Jessica>>
+    Hi! I am Jessica. Such a relieve to meet you guys. I thought I was the only girl here today.
+    <<change_character DialogueManager Rebecca>>
+    Nice meeting you as well! Yeah, my friends and I were getting really nervous to see no other girls are here as well. 
+    But I heard there is a women in engineering social event soon. I think it would be great for us to attend. 
+    <<change_confidence Player 20>>
+    <<change_character DialogueManager Jessica>>
+    <<if $talkedDepartmentEnding is false>>
+        Oh! That sounds awesome! I will definitely go and have a look. 
+        Do you know where it will be held? 
+        <<change_character DialogueManager Rebecca>>
+        I am not quite sure. But I am sure if you ask a volunteer here and they will tell you the details. 
+        <<change_character DialogueManager Jessica>>
+        Cool! See you there then. 
+    <<else>>
+        Yeah! I heard this from the volunteer named Amy as well. I will see you there then. 
+    <<endif>>
+<<else>> 
+    <<change_character DialogueManager Rebecca>>
+    Hi! It was nice meeting you. See you at the WEN event later.  
+<<endif>>
+===

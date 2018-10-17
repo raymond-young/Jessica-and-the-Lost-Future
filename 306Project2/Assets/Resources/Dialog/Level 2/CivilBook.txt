@@ -1,0 +1,11 @@
+title: CivilBook
+---
+<<change_character DialogueManager Statue>>
+Title: Elsie Eaves: American Civil Engineer 
+She is the first female associate member of the American Society of Civil Engineers. 
+In 1920, Elsie Eaves earned her civil engineering degree from the University of Colorado at Boulder.
+<<if $seenBook is false>>
+	<<set $seenBook to true>>
+    <<change_confidence Player 5>>
+<<endif>>
+===

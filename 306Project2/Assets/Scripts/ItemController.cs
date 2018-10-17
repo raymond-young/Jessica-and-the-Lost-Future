@@ -21,7 +21,9 @@ public class ItemController : MonoBehaviour {
 
     private bool noteRead = false;
     private bool needCoffee = false;
-
+    private bool needGreyGear = false;
+    private bool needWhiteGear = false;
+    private bool needBlackGear = false;
 
     // Use this for initialization
     void Start() {
@@ -65,10 +67,34 @@ public class ItemController : MonoBehaviour {
                     {
                         pickupItem();
                     }
+                }else if (currentItemZone.name == "GreyGear")
+                {
+                    if (needGreyGear)
+                    {
+                        pickupItem();
+                    }
+                }else if (currentItemZone.name == "WhiteGear")
+                {
+                    if (needWhiteGear)
+                    {
+                        pickupItem();
+                    }
+                }else if (currentItemZone.name == "BlackGear")
+                {
+                    if (needBlackGear)
+                    {
+                        pickupItem();
+                    }
                 }
                 else {
                     pickupItem();
                 }
+                freeItemSlot.GetComponent<Image>().sprite = currentItemZone.GetComponent<SpriteRenderer>().sprite;
+                items.Remove(currentItemZone.gameObject);
+                Destroy(currentItemZone.gameObject);
+                player.achievementManager.EarnAchievement("Item Grabber");
+                PlayItemSound();
+                player.ChangeConfidence(20);
             }
         }
 
@@ -95,7 +121,7 @@ public class ItemController : MonoBehaviour {
             foreach (GameObject item in items)
             {
                 Debug.Log("triggered");
-                    freeItemSlot = item;
+                freeItemSlot = item;
             }
         }
 
@@ -143,4 +169,31 @@ public class ItemController : MonoBehaviour {
     {
         needCoffee = true;
     }
+
+    [YarnCommand("needGreyGear")]
+    public void NeedGreyGear(string destination)
+    {
+        needGreyGear = true;
+    }
+
+    [YarnCommand("needWhiteGear")]
+    public void NeedWhiteGear(string destination)
+    {
+        needWhiteGear = true;
+    }
+
+    [YarnCommand("needBlackGear")]
+    public void NeedBlackGear(string destination)
+    {
+        needBlackGear = true;
+    }
+
+    public void PlayItemSound()
+    {
+        Debug.Log("Play Sound");
+        GameObject sound = GameObject.Find("Item Sound");
+        sound.GetComponent<AudioSource>().Play(0);
+
+    }
+
 }
