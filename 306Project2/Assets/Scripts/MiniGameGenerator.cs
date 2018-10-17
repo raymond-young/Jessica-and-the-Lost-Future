@@ -42,10 +42,6 @@ public class MiniGameGenerator : MonoBehaviour {
     float timePenalty;
 
     void Start () {
-        //Set up config using default values
-		noOfArrows = 6;
-        timeLimit = 10f;
-		timePenalty = timeLimit / noOfArrows;
 
         //Get measurements of the canvas
 		RectTransform parentRectTransform = gameObject.GetComponent<RectTransform>();
@@ -59,13 +55,17 @@ public class MiniGameGenerator : MonoBehaviour {
         holderRectTransform.SetParent(parentRectTransform);
         holderRectTransform.localPosition = new Vector2(0, 0);
 
+        //Initialise time bar
         bar = Instantiate(slider);
         RectTransform barRectTransform = bar.GetComponent<RectTransform>();
-        barRectTransform.sizeDelta = new Vector2(gameObject.GetComponentInParent<Canvas>().pixelRect.width * 0.95f, arrowSpace * 0.25f);
-		float sliderYPosition = gameObject.GetComponentInParent<Canvas>().pixelRect.height/2 - barRectTransform.rect.height;
+        barRectTransform.sizeDelta = new Vector2(gameObject.GetComponentInParent<Canvas>().pixelRect.width * 0.95f,
+            gameObject.GetComponentInParent<Canvas>().pixelRect.height * 0.1f);
+        //float sliderYPosition = gameObject.GetComponentInParent<Canvas>().pixelRect.height - 350f;
+        float sliderYPosition = gameObject.GetComponentInParent<Canvas>().pixelRect.height / 2 - barRectTransform.rect.height;
         barRectTransform.SetParent(parentRectTransform);
         barRectTransform.localPosition = new Vector2(0, -sliderYPosition);
-        
+        bar.value = 0;
+
         //Generate arrows
         for (int i = 0; i < noOfArrows; i++){
 			GameObject arrow = null;
@@ -121,6 +121,7 @@ public class MiniGameGenerator : MonoBehaviour {
         currentTime = -readyTime - goTime;
         gameStart = false;
         bar.value = 0;
+
     }
 
 	void OnGUI(){
@@ -216,8 +217,9 @@ public class MiniGameGenerator : MonoBehaviour {
         currentTime += Time.deltaTime;
     }
 
-    private void InitDifficulty(int chapther)
+    public void InitDifficulty(int chapther)
     {
+
         switch (chapther)
         {
             case 3:

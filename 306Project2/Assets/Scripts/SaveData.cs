@@ -14,6 +14,8 @@ public class SaveData {
     private float totalScore;
     public Dictionary<string, bool> levels = new Dictionary<string, bool>();
 
+    //Class to represent save data of a player. Consists of their name, score for each level and total score, 
+    //and the players current/previous level played
     public SaveData(float score, int level, string playerName)
     {
         this.level = level;

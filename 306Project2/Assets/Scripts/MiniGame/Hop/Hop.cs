@@ -69,7 +69,7 @@ public class Hop : MonoBehaviour
         bar = Instantiate(slider);
         RectTransform barRectTransform = bar.GetComponent<RectTransform>();
         barRectTransform.sizeDelta = new Vector2(gameObject.GetComponentInParent<Canvas>().pixelRect.width * 0.95f,
-            gameObject.GetComponentInParent<Canvas>().pixelRect.height * 0.02f);
+            gameObject.GetComponentInParent<Canvas>().pixelRect.height * 0.1f);
         float sliderYPosition = gameObject.GetComponentInParent<Canvas>().pixelRect.height / 2 - barRectTransform.rect.height;
         barRectTransform.SetParent(parentRectTransform);
         barRectTransform.localPosition = new Vector2(0, -sliderYPosition);
@@ -147,7 +147,8 @@ public class Hop : MonoBehaviour
         if (gameStart && e.type == EventType.KeyDown)
         {
             //If the right key was pressed, change color of the game object and move to the next one
-            if ( pos < stairs.Count && e.keyCode.ToString().Equals(stairRef[pos].ToString()) && e.keyCode != KeyCode.None)
+            if ( pos < stairs.Count && e.keyCode.ToString().Equals(stairRef[pos].ToString()) && e.keyCode != KeyCode.None
+                || pos > 0 && stairRef[pos-1] == stairRef[pos] && e.keyCode.ToString().Equals("UpArrow"))
             {
                 GameObject s = stairs[pos];
 
@@ -271,15 +272,15 @@ public class Hop : MonoBehaviour
     {
         PlaySucceedSound();
         //Notify the game manager that the player has successfully finished the game
-        //GameObject.FindGameObjectWithTag("MiniGameManager").GetComponent<MiniGameManager>().FinishGame(true);
 
+        GameObject.FindGameObjectWithTag("MiniGameManager").GetComponent<MiniGameManager>().FinishGame(true);
     }
 
     private void Fail()
     {
         PlayFailSound();
         //Notify the game manager that the player has failed the game
-        //GameObject.FindGameObjectWithTag("MiniGameManager").GetComponent<MiniGameManager>().FinishGame(false);
+        GameObject.FindGameObjectWithTag("MiniGameManager").GetComponent<MiniGameManager>().FinishGame(false);
     }
 
     public void PlayCorrectSound()
