@@ -67,9 +67,8 @@ public class PlayerController : MonoBehaviour {
     private float startOfLevelScore;
 
     private SaveManager saveManager;
-    
-    //TODO needs connection with welcome screen--------------------------------------------------------
-    private string playerName = "default";
+ 
+    private string playerName;
 
 
     // Use this for initialization.
@@ -80,8 +79,8 @@ public class PlayerController : MonoBehaviour {
             saveManager = GameObject.FindGameObjectWithTag("SaveManager").GetComponent<SaveManager>();
         }
 
-        
-
+        playerName = GameObject.FindGameObjectWithTag("PlayerNameObjectTransfer").GetComponent<PlayerNameObjectTransfer>().GetPlayerName();
+   
         //Gets level dependent on scene
         if (SceneManager.GetActiveScene().name.Equals("Level-1")) {
             currentLevel = 1;
@@ -438,5 +437,9 @@ public class PlayerController : MonoBehaviour {
         return playerName;
     }
 
+    public void SetPlayerName(string name)
+    {
+        playerName = name;
+    }
 
 }

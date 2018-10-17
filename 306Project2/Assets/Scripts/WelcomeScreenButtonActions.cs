@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using UnityEngine.UI;
 
 public class WelcomeScreenButtonActions : MonoBehaviour {
 
@@ -12,6 +13,9 @@ public class WelcomeScreenButtonActions : MonoBehaviour {
     public GameObject options;
     public GameObject levelSelect;
     public GameObject difficulty;
+    public GameObject playerTransfer;
+
+    public GameObject inputName;
 
     private string level = "Tutorial";
 
@@ -32,16 +36,30 @@ public class WelcomeScreenButtonActions : MonoBehaviour {
 
     public void PlayButtonClicked()
     {
-        playerName = 
-        if (File.Exists(Application.persistentDataPath + "/" + playerName + ".dat")){
+        string playerName = inputName.GetComponent<InputField>().text;
+        
+        if (playerName != null && !playerName.Equals(""))
+        {
+            if (File.Exists(Application.persistentDataPath + "/" + playerName + ".dat"))
+            {
                 //ToDo give some feedback that the name is taken
-            }else{
+            }
+            else
+            {
                 BinaryFormatter bf = new BinaryFormatter();
                 FileStream file = File.Create(Application.persistentDataPath + "/" + playerName + ".dat");
                 bf.Serialize(file, new SaveData(0, 0, playerName));
                 file.Close();
             }
-        SceneManager.LoadScene(level);
+            playerTransfer.GetComponent<PlayerNameObjectTransfer>().SetPlayerName(playerName);
+
+            SceneManager.LoadScene(level);
+        }
+        else
+        {
+            //TODO error, enter name here screen
+        }
+
     }
 
     public void PlayChapterOne()

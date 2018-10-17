@@ -22,6 +22,7 @@ TagManager:
   - MiniMapBorder
   - HighScorePanel
   - SaveManager
+  - PlayerNameObjectTransfer
   layers:
   - Default
   - TransparentFX
