@@ -241,11 +241,29 @@ public class MiniGameGenerator : MonoBehaviour {
     {
         //Notify the game manager that the player has successfully finished the game
         GameObject.FindGameObjectWithTag("MiniGameManager").GetComponent<MiniGameManager>().FinishGame(true);
+        PlaySucceedSound();
     }
 
     private void Fail()
     {
         //Notify the game manager that the player has failed the game
         GameObject.FindGameObjectWithTag("MiniGameManager").GetComponent<MiniGameManager>().FinishGame(false);
+        PlayFailSound();
+    }
+
+    public void PlaySucceedSound()
+    {
+        Debug.Log("Play Sound");
+        GameObject sound = GameObject.Find("Succeed");
+        sound.GetComponent<AudioSource>().Play(0);
+
+    }
+
+    public void PlayFailSound()
+    {
+        Debug.Log("Play Sound");
+        GameObject sound = GameObject.Find("Fail");
+        sound.GetComponent<AudioSource>().Play(0);
+
     }
 }
