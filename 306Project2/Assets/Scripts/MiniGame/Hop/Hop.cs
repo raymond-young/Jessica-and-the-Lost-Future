@@ -147,7 +147,7 @@ public class Hop : MonoBehaviour
         if (gameStart && e.type == EventType.KeyDown)
         {
             //If the right key was pressed, change color of the game object and move to the next one
-            if (e.keyCode.ToString().Equals(stairRef[pos].ToString()) && e.keyCode != KeyCode.None)
+            if ( pos < stairs.Count && e.keyCode.ToString().Equals(stairRef[pos].ToString()) && e.keyCode != KeyCode.None)
             {
                 GameObject s = stairs[pos];
 
@@ -180,8 +180,11 @@ public class Hop : MonoBehaviour
     bool InSafeZone()
     {
         float y = blobPrefab.GetComponent<RectTransform>().localPosition.y;
-        return Mathf.Abs(y) < gameObject.GetComponentInParent<Canvas>().pixelRect.height / 2
-            && y < stairs[0].GetComponent<RectTransform>().localPosition.y;
+        if (pos == 0 && y > stairs[0].GetComponent<RectTransform>().localPosition.y)
+        {
+            return false;
+        }
+        return Mathf.Abs(y) < gameObject.GetComponentInParent<Canvas>().pixelRect.height / 2;
     }
 
     void Update () {
@@ -247,7 +250,7 @@ public class Hop : MonoBehaviour
                 stairRectTransform.localPosition = new Vector2(newX, newY);
             }
 
-            //Manually move blob and the stair it is on
+            //Manually move blob
             if (pos > 0)
             {
                 float blobX = blobPrefab.GetComponent<RectTransform>().localPosition.x;
