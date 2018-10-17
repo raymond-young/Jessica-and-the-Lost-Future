@@ -110,21 +110,25 @@ public class HighScores : MonoBehaviour {
         GameObject parentPanel = null;
         float score = 0;
 
+        //If score relates to total
         if (level == 0)
         {
             score = data.TotalScore();
             parentPanel = totalPanelEasy;
         }
+        //If score relates to level1
         else if (level == 1)
         {
             score = data.GetLevel1Score();
             parentPanel = level1PanelEasy;
         }
+        //If score relates to level2
         else if (level == 2)
         {
             score = data.GetLevel2Score();
             parentPanel = level2PanelEasy;
         }
+        //If score relates to level3
         else if (level == 3)
         {
             score = data.GetLevel3Score();
@@ -132,9 +136,8 @@ public class HighScores : MonoBehaviour {
         }
        
         
-
+        //Create gameobject for player from script
         GameObject p = Instantiate(playerListPrefab, parentPanel.transform);
-
         p.transform.localPosition = new Vector2(0f, format);
         p.GetComponent<Text>().text = data.GetPlayerName() + " " + score.ToString();
         p.GetComponent<Text>().font = font;
@@ -144,7 +147,7 @@ public class HighScores : MonoBehaviour {
 
     public void Level1()
     {
-
+        //Set no player text if no players exist for that score
         if (showLevelText[0] == false)
         {
             noPlayersText.SetActive(true);
@@ -175,7 +178,7 @@ public class HighScores : MonoBehaviour {
 
     public void Level2()
     {
-
+        //Set no player text if no players exist for that score
         if (showLevelText[1] == false)
         {
             noPlayersText.SetActive(true);
@@ -203,6 +206,7 @@ public class HighScores : MonoBehaviour {
 
     public void Level3()
     {
+        //Set no player text if no players exist for that score
         if (showLevelText[2] == false)
         {
             noPlayersText.SetActive(true);
@@ -232,6 +236,7 @@ public class HighScores : MonoBehaviour {
 
     public void Total()
     {
+        //Set no player text if no players exist for that score
         if (showLevelText[3] == false)
         {
             noPlayersText.SetActive(true);
@@ -257,12 +262,13 @@ public class HighScores : MonoBehaviour {
         highScorePanel.transform.GetChild(3).GetComponent<Image>().color = levelColor;
     }
 
+    //Back button to main menu
     public void BackToMenu()
     {
         SceneManager.LoadScene("WelcomeScene");
     }
 
-
+    //Sorts the player scores from the .dat files
     private List<SaveData> SortLevels(List<SaveData> saveData)
     {
 
@@ -273,6 +279,7 @@ public class HighScores : MonoBehaviour {
         List<SaveData> level3EasySaves = new List<SaveData>();
         List<SaveData> totalEasySaves = new List<SaveData>();
 
+        //Loop through all saves and add scores to appropriate data structures via level ordering
         foreach (SaveData save in saveData)
         {
             SaveData level1 = new SaveData(save.GetLevel1Score(), 1, save.GetPlayerName());
@@ -290,7 +297,7 @@ public class HighScores : MonoBehaviour {
             
         }
 
-
+        //Sorts by highest to lowest score
         level1EasySaves = level1EasySaves.OrderByDescending(s => s.GetLevel1Score()).ToList();
         level2EasySaves = level2EasySaves.OrderByDescending(s => s.GetLevel2Score()).ToList();
         level3EasySaves = level3EasySaves.OrderByDescending(s => s.GetLevel3Score()).ToList();
@@ -301,7 +308,7 @@ public class HighScores : MonoBehaviour {
         List<SaveData> level3EasyData = new List<SaveData>();
         List<SaveData> totalEasyData = new List<SaveData>();
 
-
+        //Loop through all scores and show only the top 7 (maxScoreNum)
         for (int i = 0; i < maxScoreNum; i++)
         {
 
@@ -343,6 +350,7 @@ public class HighScores : MonoBehaviour {
 
         }
 
+        //Determines weather to display no score text if player hasnt completed the level for that device
         if (level1EasyData.Count > 0) 
         {
             showLevelText[0] = true;
@@ -356,7 +364,7 @@ public class HighScores : MonoBehaviour {
             showLevelText[2] = true;
         }
 
-
+        //Adds level scores IN ORDER to the sorted data IMPORTANT FOR FORMAT DISTRIBUTUION ON SCREEN LATER
         sortedData.AddRange(level1EasyData);
         sortedData.AddRange(level2EasyData);
         sortedData.AddRange(level3EasyData);

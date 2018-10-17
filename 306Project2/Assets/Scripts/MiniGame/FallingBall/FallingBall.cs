@@ -45,9 +45,6 @@ public class FallingBall : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        //InitDifficulty(2);
-        InitDifficulty(3);
-
         xRange = boundary.GetComponent<RectTransform>().rect.width / 2;
         y = gameObject.GetComponentInParent<Canvas>().pixelRect.height / 2;
 
@@ -58,7 +55,7 @@ public class FallingBall : MonoBehaviour {
         bar = Instantiate(slider);
         RectTransform barRectTransform = bar.GetComponent<RectTransform>();
         barRectTransform.sizeDelta = new Vector2(gameObject.GetComponentInParent<Canvas>().pixelRect.width * 0.95f,
-            gameObject.GetComponentInParent<Canvas>().pixelRect.height * 0.02f);
+            gameObject.GetComponentInParent<Canvas>().pixelRect.height * 0.1f);
         float sliderYPosition = gameObject.GetComponentInParent<Canvas>().pixelRect.height / 2 - barRectTransform.rect.height;
         barRectTransform.SetParent(parentRectTransform);
         barRectTransform.localPosition = new Vector2(0, -sliderYPosition);
@@ -108,6 +105,7 @@ public class FallingBall : MonoBehaviour {
                 else
                 {
                     go.SetActive(true);
+                    PlayGoSound();
                     ready.SetActive(false);
                 }
             }
@@ -122,6 +120,7 @@ public class FallingBall : MonoBehaviour {
                 else
                 {
                     go.SetActive(false);
+                    PlayReadySound();
                     ready.SetActive(true);
                 }
             }
@@ -163,6 +162,7 @@ public class FallingBall : MonoBehaviour {
 
     public void CatchBall(GameObject ball)
     {
+        PlayCorrectSound();
         Destroy(ball);
         goal--;
         count.text = goal.ToString();
@@ -170,11 +170,12 @@ public class FallingBall : MonoBehaviour {
 
     public void MissBall()
     {
+        PlayWrongSound();
         currentTime += timePenalty;
         bar.value = Mathf.Lerp(0f, 1f, currentTime / timeLimit);
     }
 
-    private void InitDifficulty(int chapther)
+    public void InitDifficulty(int chapther)
     {
         switch (chapther)
         {
@@ -198,14 +199,16 @@ public class FallingBall : MonoBehaviour {
 
     private void Finish()
     {
+        PlaySucceedSound();
         //Notify the game manager that the player has successfully finished the game
-        //GameObject.FindGameObjectWithTag("MiniGameManager").GetComponent<MiniGameManager>().FinishGame(true);
+        GameObject.FindGameObjectWithTag("MiniGameManager").GetComponent<MiniGameManager>().FinishGame(true);
     }
 
     private void Fail()
     {
+        PlayFailSound();
         //Notify the game manager that the player has failed the game
-        //GameObject.FindGameObjectWithTag("MiniGameManager").GetComponent<MiniGameManager>().FinishGame(false);
+        GameObject.FindGameObjectWithTag("MiniGameManager").GetComponent<MiniGameManager>().FinishGame(false);
     }
 
     // Returns the boundary the backet can move to
@@ -218,5 +221,50 @@ public class FallingBall : MonoBehaviour {
     public bool gameStarted()
     {
         return gameStart;
+    }
+
+    public void PlayCorrectSound()
+    {
+        Debug.Log("Play Sound");
+        GameObject sound = GameObject.Find("Arrow Correct");
+        sound.GetComponent<AudioSource>().Play(0);
+
+    }
+
+    public void PlayWrongSound()
+    {
+        Debug.Log("Play Sound");
+        GameObject sound = GameObject.Find("Arrow Wrong");
+        sound.GetComponent<AudioSource>().Play(0);
+    }
+
+    public void PlaySucceedSound()
+    {
+        Debug.Log("Play Sound");
+        GameObject sound = GameObject.Find("Succeed");
+        sound.GetComponent<AudioSource>().Play(0);
+
+    }
+
+    public void PlayFailSound()
+    {
+        Debug.Log("Play Sound");
+        GameObject sound = GameObject.Find("Fail");
+        sound.GetComponent<AudioSource>().Play(0);
+
+    }
+
+    public void PlayReadySound()
+    {
+        Debug.Log("Play Sound");
+        GameObject sound = GameObject.Find("Ready Set");
+        sound.GetComponent<AudioSource>().Play(0);
+    }
+
+    public void PlayGoSound()
+    {
+        Debug.Log("Play Sound");
+        GameObject sound = GameObject.Find("Go");
+        sound.GetComponent<AudioSource>().Play(0);
     }
 }

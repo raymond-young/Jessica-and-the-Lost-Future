@@ -16,7 +16,9 @@ title: Tom
     <<change_character DialogueManager Jessica>>
     -> This has nothing to do with gender.
        <<change_confidence Player 15>>
-    -> Maybe I will reconsider my options a bit. 
+       <<set $talkedToTom to true>>
+    -> Maybe I will reconsider my options a bit.
+       <<set $talkedToTom to true>>
        <<change_confidence Player -5>>
 <<elseif $talkedToTom is true>> 
     <<change_character DialogueManager Tom>>

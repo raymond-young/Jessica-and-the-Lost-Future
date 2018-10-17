@@ -1,7 +1,9 @@
 title: Alex
 ---
 <<if $needWhiteGear is true>>
-    <<if $hasWhiteGear is true>>
+    <<if $hasWhiteGear is true && $talkedToAlex is false>>
+        <<remove Player player>> 
+        <<set $talkedToAlex to true>> 
         <<change_character DialogueManager Alex>>
         Well done for finding the last object! That was a tough one to find without any clue given. 
         Hope you enjoyed our little activity and is a bit more familiar with the Engineering building! 
@@ -9,11 +11,14 @@ title: Alex
         Let's all for Mechanical display. Make sure you talk to Amy for more info about other departments we have.
         <<change_confidence Player 10>> 
         <<set $finishMechanical to true>>
+    <<elseif $hasWhiteGear is true && $talkedToAlex is true>>
+        That's all for our department. Please check out the other departments or Amy might have something for you.  
     <<else>> 
         Find the white gear, there is no clue for this. 
     <<endif>>
 <<elseif $needGreyGear is true>> 
     <<if $hasGreyGear is true>> 
+        <<remove Player player>> 
         <<change_character DialogueManager Alex>>
         <<set $needGreyGear to false>> 
         <<change_confidence Player 10>>
@@ -27,6 +32,7 @@ title: Alex
 <<elseif $needBlackGear is true>>
     <<if $hasBlackGear is true>> 
         <<change_character DialogueManager Alex>>
+        <<remove Player player>> 
         <<set $needBlackGear to false>> 
         <<change_confidence Player 10>>
         Nice, you got the black gear! 

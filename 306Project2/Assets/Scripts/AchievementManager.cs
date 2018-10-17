@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class AchievementManager : MonoBehaviour {
 
@@ -24,6 +26,8 @@ public class AchievementManager : MonoBehaviour {
 
 	public static AchievementManager instance;
 
+	public bool Lock; // True if you want to prevent the achievements menu from turning off.
+
 	public static AchievementManager Instance
 	{
 		get { 
@@ -43,18 +47,16 @@ public class AchievementManager : MonoBehaviour {
 		CreateAchievement("GeneralAchievement", "Keyboard Warrior","Play the minigame without losing a life.", 0);
 		CreateAchievement("GeneralAchievement", "Conversation Starter","Talk to 5 NPCs.", 0); // Incomplete
 		CreateAchievement("GeneralAchievement", "Maxed Out", "Fill up the confidence bar.", 0);
+
 		CreateAchievement("GeneralAchievement", "Back to the Past", "Finish the tutorial", 0);
+		CreateAchievement("GeneralAchievement", "Teacher's Pet", "Finish Level 1", 0);
+		CreateAchievement("GeneralAchievement", "School Ace", "Finish Level 1 without losing any lives.", 0);
+		CreateAchievement("GeneralAchievement", "Graduation Nation", "Finish Level 2", 0);
+
 
 		// Test Achivevements
 		CreateAchievement("GeneralAchievement", "Paying respects","Press F to unlock", 0);
-		// CreateAchievement("GeneralAchievement", "Press W","Press W to unlock", 0);
-		// CreateAchievement("GeneralAchievement", "Press A","Press A to unlock", 0);
-		// CreateAchievement("GeneralAchievement", "Press S","Press S to unlock", 0);
-		// CreateAchievement("GeneralAchievement", "Press D","Press D to unlock", 0);
 		// CreateAchievement("GeneralAchievement", "Glow","Walk past an item to unlock", 0);
-
-
-		
 	}
 	
 	bool startUp = true;
@@ -65,7 +67,7 @@ public class AchievementManager : MonoBehaviour {
 			player = GameObject.FindGameObjectWithTag("player");
 		}
 		if (startUp) {
-			Debug.Log ("achievementMenu is false!");
+			Debug.Log ("achievementMenu is false");
 			achievementMenu = GameObject.FindGameObjectWithTag("AchievementMenu");
 			achievementMenu.transform.SetParent(GameObject.Find("Canvas").transform);
 
@@ -78,14 +80,14 @@ public class AchievementManager : MonoBehaviour {
 		}
 
 		// Hide the achievement screen on startup.
-		if (startUp) {
+		if (startUp && !Lock) {
 			showAchievementScreen = false;
 			achievementMenu.SetActive(showAchievementScreen);
 			startUp = false;
 		}
 
 		// Display the achievements if you press the 'i' key.
-		if (Input.GetKeyDown(KeyCode.I))
+		if (Input.GetKeyDown(KeyCode.I) && !Lock)
 		{
 			showAchievementScreen = !showAchievementScreen;
 			achievementMenu.SetActive(showAchievementScreen);
@@ -98,37 +100,6 @@ public class AchievementManager : MonoBehaviour {
 				Time.timeScale = 1f;
 			}
 		}
-		
-		// // Test achievement
-		// if (Input.GetKeyDown(KeyCode.W))
-		// {
-		// 	EarnAchievement("Press W");
-		// }
-
-		// // Test achievement
-		// if (Input.GetKeyDown(KeyCode.A))
-		// {
-		// 	EarnAchievement("Press A");
-		// }
-
-		// // Test achievement
-		// if (Input.GetKeyDown(KeyCode.S))
-		// {
-		// 	EarnAchievement("Press S");
-		// }
-
-		// // Test achievement
-		// if (Input.GetKeyDown(KeyCode.D))
-		// {
-		// 	EarnAchievement("Press D");
-		// }
-
-		// // Test achievement
-		// if (Input.GetKeyDown(KeyCode.F))
-		// {
-		// 	EarnAchievement("Paying respects");
-		// }
-
 
 	}
 
@@ -188,12 +159,11 @@ public class AchievementManager : MonoBehaviour {
 		startUp = start;
 	}
 
-	
-	// 	//complete level one
-	// public bool MEET_MENTOR = false;
+ 	public void BackToMenu()
+    {
+        SceneManager.LoadScene("WelcomeScene");
+    }
 
-	// //complete level one having not failed any minigames
-	// public bool COMPLETE_LEVEL_ONE_MAX_LIVES = false;
 
 	// //meet mentor with maximum confidence
 	// public bool COMPLETE_LEVEL_ONE_MAX_CONFIDENCE = false;
@@ -206,9 +176,6 @@ public class AchievementManager : MonoBehaviour {
 
 	// //talk to a npc
 	// public bool TALKED_TO_FIRST_NPC = false;
-
-	// //clear the arrow minigame ONCE
-	// public bool KEYBOARD_WARRIOR = false;
 
 	// //clear the arrow minigame with less than 1 second to spare
 	// public bool JUST_IN_TIME = false;

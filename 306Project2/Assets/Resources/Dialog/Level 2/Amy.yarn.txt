@@ -13,15 +13,18 @@ title: Amy
     and WEN Leaders are also going to share their experience and top tips in Engineering. 
 <<elseif $finishECE is true && $finishCivil is true>> 
     <<set $talkedAboutECECivil to true>> 
-    Great! There is just the Mechanical department left. Their display is upstairs in the lecture room. 
+    Great! There is just the Mechanical department left. 
+    Their display is upstairs in the lecture room. Please talk to Alex who is in charge. 
     <<set $startMechanical to true>> 
 <<elseif $finishECE is true && $finishMechanical is true>> 
     <<set $talkedAboutECEMechanical to true>> 
-    Great! There is just the Civil department left. Their display is in the study space down the hall.
+    Great! There is just the Civil department left. 
+    Their display is in the study space down the hall. Please talk to Alice who is in charge of the display. 
     <<set $startCivil to true>> 
 <<elseif $finishCivil is true && $finishMechanical is true>> 
     <<set $talkedAboutCivilMechanical to true>> 
-    Great! There is just the ECE department left. Their display is in the computer lab. 
+    Great! There is just the ECE department left. 
+    Their display is in the computer lab. Please talk to Kevin about the ECE department. 
     <<set $startECE to true>> 
 <<elseif $startECE is true && $finishECE is true && $talkedAboutECEEnding is false>> 
    <<set $talkedAboutECEEnding to true>> 
@@ -29,11 +32,12 @@ title: Amy
    Cool! I can see that you have finished exploring the ECE display. 
    We also have the Civil and Mechanical department on display. Which one do you want to explore next?
    -> Civil
-      Cool! The Civil department is located at the study space.
+      Cool! The Civil department is located at the study space, 
+      and please talk to Alice who is in charge of the display.
       Come back after you finish and I will direct you to the Mechanical department.
       <<set $startCivil to true>> 
    -> Mechanical
-      Cool! The Mechanical department is located upstairs.
+      Cool! The Mechanical department is located upstairs, and talk to Alice who is in charge of the display.
       Come back after you finish and I will direct you to the Civil department.
       <<set $startMechanical to true>>  
 <<elseif $startCivil is true && $finishCivil is true && $talkedAboutCivilEnding is false>> 

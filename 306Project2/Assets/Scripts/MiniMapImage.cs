@@ -52,7 +52,7 @@ public class MiniMapImage : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
                 {
                     //Zoom in and change camera pos
                     cam.orthographicSize = cam.orthographicSize - 1f;
-                    cam.transform.position = player.transform.position;
+                    cam.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -10f);
                 }
             }
             //If zoom out
@@ -65,7 +65,7 @@ public class MiniMapImage : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
                 {
                     //Zoom in and change camera pos
                     cam.orthographicSize = cam.orthographicSize + 1f;
-                    cam.transform.position = player.transform.position;
+                    cam.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -10f);
                 }
                 else
                 {
@@ -84,7 +84,7 @@ public class MiniMapImage : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         Camera cam = miniMap.GetComponent<Camera>();
         if (cam.transform.position != initialCamPos)
         {
-            cam.transform.position = player.transform.position;
+            cam.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -10f);
         }
     }
 

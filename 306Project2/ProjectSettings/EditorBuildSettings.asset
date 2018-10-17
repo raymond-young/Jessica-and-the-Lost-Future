@@ -45,6 +45,6 @@ EditorBuildSettings:
     path: Assets/Scenes/HighScore.unity
     guid: 5b80a9dd9f317af4cb47c9558a30cace
   - enabled: 1
-    path: Assets/Scenes/LevelSelect.unity
-    guid: a6db741ebc1dd40b795b581b8a99d1a0
+    path: Assets/Scenes/AchievementScene.unity
+    guid: 46284a570feeb0343980882305cc8654
   m_configObjects: {}
