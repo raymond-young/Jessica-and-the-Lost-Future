@@ -537,6 +537,9 @@ public class PlayerController : MonoBehaviour {
 
         }  else if (SceneManager.GetActiveScene().name.Equals("Level-2")){
             achievementManager.EarnAchievement("Graduation Nation");
+
+        } else if (SceneManager.GetActiveScene().name.Equals("Level-3")){
+            achievementManager.EarnAchievement("Completionist");
         }
 
 
