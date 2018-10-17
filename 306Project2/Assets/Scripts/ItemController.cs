@@ -21,7 +21,9 @@ public class ItemController : MonoBehaviour {
 
     private bool noteRead = false;
     private bool needCoffee = false;
-
+    private bool needGreyGear = false;
+    private bool needWhiteGear = false;
+    private bool needBlackGear = false;
 
     // Use this for initialization
     void Start() {
@@ -62,6 +64,24 @@ public class ItemController : MonoBehaviour {
                 }else if(currentItemZone.name == "Coffee")
                 {
                     if (needCoffee)
+                    {
+                        pickupItem();
+                    }
+                }else if (currentItemZone.name == "GreyGear")
+                {
+                    if (needGreyGear)
+                    {
+                        pickupItem();
+                    }
+                }else if (currentItemZone.name == "WhiteGear")
+                {
+                    if (needWhiteGear)
+                    {
+                        pickupItem();
+                    }
+                }else if (currentItemZone.name == "BlackGear")
+                {
+                    if (needBlackGear)
                     {
                         pickupItem();
                     }
@@ -142,5 +162,23 @@ public class ItemController : MonoBehaviour {
     public void NeedCoffee(string destination)
     {
         needCoffee = true;
+    }
+
+    [YarnCommand("needGreyGear")]
+    public void NeedGreyGear(string destination)
+    {
+        needGreyGear = true;
+    }
+
+    [YarnCommand("needWhiteGear")]
+    public void NeedWhiteGear(string destination)
+    {
+        needWhiteGear = true;
+    }
+
+    [YarnCommand("needBlackGear")]
+    public void NeedBlackGear(string destination)
+    {
+        needBlackGear = true;
     }
 }

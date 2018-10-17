@@ -1,8 +1,10 @@
 title: BlackGear
 ---
-<<if $hasBlackGear is false>>
+<<if $needBlackGear is true>>
 	<<set $hasBlackGear to true>>
 	<<change_character DialogueManager BlackGear>>
 	You picked up the black gear!
+<<else>>
+    You don't need this item right now.
 <<endif>>
 ===
