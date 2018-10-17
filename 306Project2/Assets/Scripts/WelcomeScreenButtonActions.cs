@@ -20,6 +20,7 @@ public class WelcomeScreenButtonActions : MonoBehaviour {
     public GameObject inputName;
 
     private string level = "Tutorial";
+    private bool lockEnter;
 
 	// Use this for initialization
 	void Start () {
@@ -38,40 +39,45 @@ public class WelcomeScreenButtonActions : MonoBehaviour {
 
     public void PlayButtonClicked()
     {
-
+        
         string playerName = inputName.GetComponent<InputField>().text;
 
         if (playerName != null && !playerName.Equals(""))
         {
-            //continue and there is a save file
-            if (File.Exists(Application.persistentDataPath + "/" + playerName + ".dat") && level == "LevelSelect")
+            if (!lockEnter)
             {
-                //do nothing simply load the level select scene
-                playerTransfer.GetComponent<PlayerNameObjectTransfer>().SetPlayerName(playerName);
-                SceneManager.LoadScene(level);
-            }
-            else if (File.Exists(Application.persistentDataPath + "/" + playerName + ".dat") && level == "Tutorial")
-            {
-                //throw an error as trying to create a new game with a taken user name
-                errorObject.GetComponent<Text>().text = "Username taken, please enter a unique username";
-            }
-            else if (!File.Exists(Application.persistentDataPath + "/" + playerName + ".dat") && level == "Tutorial")
-            {
-                //Start a new game and create the default storage file
-                BinaryFormatter bf = new BinaryFormatter();
-                FileStream file = File.Create(Application.persistentDataPath + "/" + playerName + ".dat");
-                bf.Serialize(file, new SaveData(0, 0, playerName));
-                file.Close();
+                lockEnter = true;
+                //continue and there is a save file
+                if (File.Exists(Application.persistentDataPath + "/" + playerName + ".dat") && level == "LevelSelect")
+                {
+                    //do nothing simply load the level select scene
+                    playerTransfer.GetComponent<PlayerNameObjectTransfer>().SetPlayerName(playerName);
+                    SceneManager.LoadScene(level);
+                }
+                else if (File.Exists(Application.persistentDataPath + "/" + playerName + ".dat") && level == "Tutorial")
+                {
+                    //throw an error as trying to create a new game with a taken user name
+                    errorObject.GetComponent<Text>().text = "Username taken, please enter a unique username";
+                }
+                else if (!File.Exists(Application.persistentDataPath + "/" + playerName + ".dat") && level == "Tutorial")
+                {
+                    //Start a new game and create the default storage file
+                    BinaryFormatter bf = new BinaryFormatter();
+                    FileStream file = File.Create(Application.persistentDataPath + "/" + playerName + ".dat");
+                    bf.Serialize(file, new SaveData(0, 0, playerName));
+                    file.Close();
 
-                playerTransfer.GetComponent<PlayerNameObjectTransfer>().SetPlayerName(playerName);
-                SceneManager.LoadScene(level);
+                    playerTransfer.GetComponent<PlayerNameObjectTransfer>().SetPlayerName(playerName);
+                    SceneManager.LoadScene(level);
+                }
+                else if (!File.Exists(Application.persistentDataPath + "/" + playerName + ".dat") && level == "LevelSelect")
+                {
+                    //Trying to continue a game without a valid save file throw an error
+                    errorObject.GetComponent<Text>().text = "No save file found for username";
+                }
+                StartCoroutine(LockRoutine());
             }
-            else if (!File.Exists(Application.persistentDataPath + "/" + playerName + ".dat") && level == "LevelSelect")
-            {
-                //Trying to continue a game without a valid save file throw an error
-                errorObject.GetComponent<Text>().text = "No save file found for username";
-            }
-    
+
         }
         else
         {
@@ -79,6 +85,13 @@ public class WelcomeScreenButtonActions : MonoBehaviour {
             //TODO error, enter not null name here screen
         }
     }
+    
+    private IEnumerator LockRoutine()
+    {
+        yield return new WaitForFixedUpdate();
+        lockEnter = false;
+    }
+
 
     public void PlayChapterOne()
     {
