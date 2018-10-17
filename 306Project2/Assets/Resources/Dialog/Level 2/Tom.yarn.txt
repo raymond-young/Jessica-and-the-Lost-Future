@@ -1,0 +1,26 @@
+title: Tom
+---
+<<if $startECE is true && $talkedToTom is false>>
+    <<change_character DialogueManager Tom>>
+    Hey! I am Tom. Are you thinking about going into ECE as well? 
+    <<change_character DialogueManager Jessica>>
+    Yeah! ECE seems like a good choice to me.  
+    <<change_character DialogueManager Tom>>
+    Oh nice! What programming languages have you used? 
+    I can use at least ten languages, been doing programming since primary school. 
+    <<change_character DialogueManager Jessica>>
+    I have never done programming before. Hopefully uni will teach from the basics.
+    <<change_character DialogueManager Tom>>
+    Oh. Are you sure you want to do programming then? You know, us boys are usually better at programming. 
+    You could probably check out the arts faculty. It’s right across the street. 
+    <<change_character DialogueManager Jessica>>
+    -> This has nothing to do with gender.
+    -> Maybe I will reconsider my options a bit. 
+<<elseif $talkedToTom is true>> 
+    <<change_character DialogueManager Tom>>
+    We have already talked. 
+<<else>> 
+    <<change_character DialogueManager Tom>>
+    Hi! Kind of busy right now. let's talk later. 
+<<endif>>
+===

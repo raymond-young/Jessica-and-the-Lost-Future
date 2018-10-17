@@ -103,6 +103,12 @@ namespace Yarn.Unity.Example {
         	spriteMap["Dad"] = Resources.Load<Sprite>("Sprites/dad");
 
             spriteMap["Dean of Engineering"] = Resources.Load<Sprite>("Sprites/dean");
+            spriteMap["Amy"] = Resources.Load<Sprite>("Sprites/amy");
+            spriteMap["Kevin"] = Resources.Load<Sprite>("Sprites/kevin");
+            spriteMap["Tom"] = Resources.Load<Sprite>("Sprites/tom");
+            spriteMap["Computer"] = Resources.Load<Sprite>("Sprites/computer");
+            spriteMap["Alice"] = Resources.Load<Sprite>("Sprites/alice");
+            spriteMap["Jerry"] = Resources.Load<Sprite>("Sprites/jerry");
 
         }
 

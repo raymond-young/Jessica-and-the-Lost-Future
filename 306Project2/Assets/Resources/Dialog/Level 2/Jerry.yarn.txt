@@ -1,0 +1,31 @@
+title: Jerry
+---
+<<if $startCivilActivity is true && $talkedToJerry is false>>
+    <<set $talkedToJerry is true>>
+    <<change_character DialogueManager Jerry>>
+    Hey! I am Jerry and this is Tom. 
+    <<change_character DialogueManager Jessica>>
+    Hi! I am Jessica. 
+    <<change_character DialogueManager Tom>>
+    We have just started on the activity. So basically it is to use Lego to build a bridge between the two tables, 
+    and there are some requirements that we have to meet: such as the bridge cannot use more than 70 pieces, 
+    and cannot be taller than 40cm. 
+    <<change_character DialogueManager Jerry>>
+    We have a fairly good idea of how to build the bridge already. Do you want to help us to draw our design and write
+    some documentations on this sheet of paper we have to fill in? 
+    <<change_character DialogueManager Jessica>>
+    Okay..
+    <<change_character DialogueManager Tom>>
+    Oh. Are you sure you want to do programming then? You know, us boys are usually better at programming. 
+    You could probably check out the arts faculty. It’s right across the street. 
+    <<change_character DialogueManager Jessica>>
+    -> This has nothing to do with gender.
+    -> Maybe I will reconsider my options a bit. 
+<<elseif $talkedToTom is true>> 
+    <<change_character DialogueManager Tom>>
+    We have already talked. 
+<<else>> 
+    <<change_character DialogueManager Tom>>
+    Hi! Kind of busy right now. let's talk later. 
+<<endif>>
+===

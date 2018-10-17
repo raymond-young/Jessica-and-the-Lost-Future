@@ -1,0 +1,20 @@
+title: Computer1
+---
+<<change_character DialogueManager Computer>>
+<<if $completedQuestion1 is false && $startECEActivity is true>>
+    Imagine a car as a computer, and its engine as a program. Which of the following is an input for the engine program?
+    -> the gas pedal
+       Correct!
+       <<set $completedQuestion1 to true>>
+    -> the driver's seat
+       Incorrect! Please try again.
+    -> the steering wheel
+       Incorrect! Please try again.
+<<else>>
+    <<if $startECEActivity is false>>
+        This activity is not available yet. 
+    <<else>>
+        You have already completed this quiz. 
+    <<endif>>
+<<endif>>
+===

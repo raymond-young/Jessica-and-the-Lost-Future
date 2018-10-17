@@ -1,0 +1,27 @@
+title: Kevin
+---
+<<if $finishECE is true>>
+    <<change_character DialogueManager Kevin>>
+    That's all for the ECE department's display.
+<<elseif $completedQuestion1 is true && $completedQuestion2 is true>>
+    <<change_character DialogueManager Kevin>>
+    Well done! You are so talented! We definitely need more girls like you in our department!
+    Let's all for ECE's display. Make sure you talk to volunteer Amy for more info about other departments we have. 
+    <<set $finishECE to true>>
+<<elseif $startECEActivity is true>>
+    <<change_character DialogueManager Kevin>>
+    Please check out the acitivities we have on the computers on the left.
+<<else>>
+    <<if $startECE is true>> 
+        <<change_character DialogueManager Kevin>>
+        Weclome to the ECE department; we have two specialisations in ECE; software, computer systems. 
+        We also have a few quizes on the 2 lab computers on the left right now! Be sure to check them out. 
+        <<set $startECEActivity to true>>
+        <<change_character DialogueManager Jessica>>
+        Sure! I will give it a try. 
+    <<else>>
+        <<change_character DialogueManager Kevin>>
+        Hi! We have the ECE department's display here. Please come visit us later.>>
+    <<endif>>
+<<endif>>
+===

@@ -1,0 +1,20 @@
+title: Computer2
+---
+<<change_character DialogueManager Computer>>
+<<if $completedQuestion2 is false && $startECEActivity is true>>
+    How can the following instruction be made more specific? "Meet Mark at the corner of Symond St and Prince St."
+    -> Describe how you first met Mark.
+       Incorrect! Please try again.
+    -> Describe current weather condition
+       Incorrect! Please try again.
+    -> Set an exact time for meeting. 
+       Correct!
+       <<set $completedQuestion2 to true>>
+<<else>>
+    <<if $startECEActivity is false>>
+        This activity is not available yet. 
+    <<else>>
+        You have already completed this quiz. 
+    <<endif>>
+<<endif>>
+===
