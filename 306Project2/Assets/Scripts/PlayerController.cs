@@ -489,11 +489,28 @@ public class PlayerController : MonoBehaviour {
     {
 
         TransferScore();
+        TransferAchievements();
 
         Regex regexObj = new Regex(@"[^\d]");
         string score = regexObj.Replace(scoreText.text, "");
 
         startOfLevelScore = float.Parse(score);
+
+        // Earn an achievement based on the level that was completed.
+        if (SceneManager.GetActiveScene().name.Equals("Tutorial")) {
+            achievementManager.EarnAchievement("Back to the Past");
+    
+            if (numLives == 3) {
+                 achievementManager.EarnAchievement("School Ace");
+            }
+
+        } else if (SceneManager.GetActiveScene().name.Equals("Level-1")) {
+            achievementManager.EarnAchievement("Teacher's Pet");
+
+        }  else if (SceneManager.GetActiveScene().name.Equals("Level-2")){
+            achievementManager.EarnAchievement("Graduation Nation");
+        }
+
 
         //Dont save if level change is from tutorial
         if (!SceneManager.GetActiveScene().name.Equals("Tutorial"))
@@ -513,7 +530,9 @@ public class PlayerController : MonoBehaviour {
         playerName = name;
     }
 
-    public int GetLevel() {
+    public int GetLevel()
+    {
+
         return currentLevel;
     }
 

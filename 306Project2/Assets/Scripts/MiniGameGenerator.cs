@@ -42,10 +42,6 @@ public class MiniGameGenerator : MonoBehaviour {
     float timePenalty;
 
     void Start () {
-        //Set up config using default values
-		noOfArrows = 6;
-        timeLimit = 10f;
-		timePenalty = timeLimit / noOfArrows;
 
         //Get measurements of the canvas
 		RectTransform parentRectTransform = gameObject.GetComponent<RectTransform>();
@@ -59,13 +55,17 @@ public class MiniGameGenerator : MonoBehaviour {
         holderRectTransform.SetParent(parentRectTransform);
         holderRectTransform.localPosition = new Vector2(0, 0);
 
+        //Initialise time bar
         bar = Instantiate(slider);
         RectTransform barRectTransform = bar.GetComponent<RectTransform>();
-        barRectTransform.sizeDelta = new Vector2(gameObject.GetComponentInParent<Canvas>().pixelRect.width * 0.95f, arrowSpace * 0.25f);
-		float sliderYPosition = gameObject.GetComponentInParent<Canvas>().pixelRect.height/2 - barRectTransform.rect.height;
+        barRectTransform.sizeDelta = new Vector2(gameObject.GetComponentInParent<Canvas>().pixelRect.width * 0.95f,
+            gameObject.GetComponentInParent<Canvas>().pixelRect.height * 0.1f);
+        //float sliderYPosition = gameObject.GetComponentInParent<Canvas>().pixelRect.height - 350f;
+        float sliderYPosition = gameObject.GetComponentInParent<Canvas>().pixelRect.height / 2 - barRectTransform.rect.height;
         barRectTransform.SetParent(parentRectTransform);
         barRectTransform.localPosition = new Vector2(0, -sliderYPosition);
-        
+        bar.value = 0;
+
         //Generate arrows
         for (int i = 0; i < noOfArrows; i++){
 			GameObject arrow = null;
@@ -121,6 +121,7 @@ public class MiniGameGenerator : MonoBehaviour {
         currentTime = -readyTime - goTime;
         gameStart = false;
         bar.value = 0;
+
     }
 
 	void OnGUI(){
@@ -181,6 +182,7 @@ public class MiniGameGenerator : MonoBehaviour {
                 else
                 {
                     go.SetActive(true);
+                    PlayGoSound();
                     ready.SetActive(false);
                 }
             }
@@ -195,6 +197,7 @@ public class MiniGameGenerator : MonoBehaviour {
                 else
                 {
                     go.SetActive(false);
+                    PlayReadySound();
                     ready.SetActive(true);
                 }
             }
@@ -214,8 +217,9 @@ public class MiniGameGenerator : MonoBehaviour {
         currentTime += Time.deltaTime;
     }
 
-    private void InitDifficulty(int chapther)
+    public void InitDifficulty(int chapther)
     {
+
         switch (chapther)
         {
             case 3:
@@ -265,5 +269,19 @@ public class MiniGameGenerator : MonoBehaviour {
         GameObject sound = GameObject.Find("Fail");
         sound.GetComponent<AudioSource>().Play(0);
 
+    }
+
+    public void PlayReadySound()
+    {
+        Debug.Log("Play Sound");
+        GameObject sound = GameObject.Find("Ready Set");
+        sound.GetComponent<AudioSource>().Play(0);
+    }
+
+    public void PlayGoSound()
+    {
+        Debug.Log("Play Sound");
+        GameObject sound = GameObject.Find("Go");
+        sound.GetComponent<AudioSource>().Play(0);
     }
 }
