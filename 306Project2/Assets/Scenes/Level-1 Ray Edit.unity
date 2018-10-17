@@ -7925,7 +7925,7 @@ GameObject:
   - component: {fileID: 241898545}
   m_Layer: 5
   m_Name: AchievementMenu
-  m_TagString: Untagged
+  m_TagString: achieveTransferObj
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8107,7 +8107,7 @@ GameObject:
   - component: {fileID: 253326960}
   m_Layer: 5
   m_Name: GeneralAchievement
-  m_TagString: GeneralAchievement
+  m_TagString: achieveTransferObj
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8127,7 +8127,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.3999939, y: 0.000021867365}
+  m_AnchoredPosition: {x: 0.3999939, y: -0.000015228436}
   m_SizeDelta: {x: 0.7999878, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &253326960
@@ -21229,7 +21229,7 @@ GameObject:
   - component: {fileID: 567473612}
   m_Layer: 5
   m_Name: Handle
-  m_TagString: Untagged
+  m_TagString: achieveTransferObj
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22840,7 +22840,7 @@ GameObject:
   - component: {fileID: 638462646}
   m_Layer: 5
   m_Name: Sliding Area
-  m_TagString: Untagged
+  m_TagString: achieveTransferObj
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28293,59 +28293,12 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 26, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &750024067
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 750024069}
-  - component: {fileID: 750024068}
-  m_Layer: 0
-  m_Name: AchievementManager
-  m_TagString: AchievementManager
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &750024068
+--- !u!114 &750024068 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 750024067}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
+  m_PrefabParentObject: {fileID: 114980803527706894, guid: cc0d3adcb3eccc7469df6da7f22aa3db,
+    type: 2}
+  m_PrefabInternal: {fileID: 1930342211}
   m_Script: {fileID: 11500000, guid: db1c30d61243e81458efbd042f2e6d15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  achievementPrefab: {fileID: 1422275844205906, guid: 0483a1494b90f0541882c87afdec8bb4,
-    type: 2}
-  sprites:
-  - {fileID: 21300000, guid: 16e463a9653ba8f4787133e4e8e6d5fc, type: 3}
-  - {fileID: 21300000, guid: c8ac87a0b15517e43a51600c83de8741, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  visualAchievement: {fileID: 1042311793201098, guid: 488c1c87d10b0234c934af8ab8e91969,
-    type: 2}
-  achievementMenu: {fileID: 241898543}
-  player: {fileID: 495213529}
-  unlockedSprite: {fileID: 21300000, guid: be4e3c19de3085d46add6171d3e40a7f, type: 3}
---- !u!4 &750024069
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 750024067}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 254.8321, y: 162.44048, z: 1.4375}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 15
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &772912949
 GameObject:
   m_ObjectHideFlags: 0
@@ -29250,7 +29203,7 @@ GameObject:
   - component: {fileID: 873470793}
   m_Layer: 5
   m_Name: AchievementScrollbar
-  m_TagString: Untagged
+  m_TagString: achieveTransferObj
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29312,7 +29265,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 567473612}
   m_HandleRect: {fileID: 567473611}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -38775,131 +38728,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
---- !u!1001 &1330967794
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1640894277}
-    m_Modifications:
-    - target: {fileID: 224191418225481484, guid: 488c1c87d10b0234c934af8ab8e91969,
-        type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224191418225481484, guid: 488c1c87d10b0234c934af8ab8e91969,
-        type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224191418225481484, guid: 488c1c87d10b0234c934af8ab8e91969,
-        type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224191418225481484, guid: 488c1c87d10b0234c934af8ab8e91969,
-        type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224191418225481484, guid: 488c1c87d10b0234c934af8ab8e91969,
-        type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224191418225481484, guid: 488c1c87d10b0234c934af8ab8e91969,
-        type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224191418225481484, guid: 488c1c87d10b0234c934af8ab8e91969,
-        type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224191418225481484, guid: 488c1c87d10b0234c934af8ab8e91969,
-        type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224191418225481484, guid: 488c1c87d10b0234c934af8ab8e91969,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224191418225481484, guid: 488c1c87d10b0234c934af8ab8e91969,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224191418225481484, guid: 488c1c87d10b0234c934af8ab8e91969,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 528.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 224191418225481484, guid: 488c1c87d10b0234c934af8ab8e91969,
-        type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 72
-      objectReference: {fileID: 0}
-    - target: {fileID: 224191418225481484, guid: 488c1c87d10b0234c934af8ab8e91969,
-        type: 2}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224191418225481484, guid: 488c1c87d10b0234c934af8ab8e91969,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224191418225481484, guid: 488c1c87d10b0234c934af8ab8e91969,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224191418225481484, guid: 488c1c87d10b0234c934af8ab8e91969,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224191418225481484, guid: 488c1c87d10b0234c934af8ab8e91969,
-        type: 2}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224191418225481484, guid: 488c1c87d10b0234c934af8ab8e91969,
-        type: 2}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114105536946983888, guid: 488c1c87d10b0234c934af8ab8e91969,
-        type: 2}
-      propertyPath: m_Text
-      value: Achievement Title
-      objectReference: {fileID: 0}
-    - target: {fileID: 224648760634246414, guid: 488c1c87d10b0234c934af8ab8e91969,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 7.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 224648760634246414, guid: 488c1c87d10b0234c934af8ab8e91969,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: -102.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 224062517232877072, guid: 488c1c87d10b0234c934af8ab8e91969,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.0000019073
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 488c1c87d10b0234c934af8ab8e91969, type: 2}
-  m_IsPrefabParent: 0
---- !u!224 &1330967795 stripped
-RectTransform:
-  m_PrefabParentObject: {fileID: 224191418225481484, guid: 488c1c87d10b0234c934af8ab8e91969,
-    type: 2}
-  m_PrefabInternal: {fileID: 1330967794}
 --- !u!1 &1357528559
 GameObject:
   m_ObjectHideFlags: 0
@@ -42645,7 +42473,7 @@ GameObject:
   - component: {fileID: 1418109550}
   m_Layer: 5
   m_Name: AchiementMask
-  m_TagString: Untagged
+  m_TagString: achieveTransferObj
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48303,8 +48131,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
-  m_Children:
-  - {fileID: 1330967795}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -69649,6 +69476,62 @@ Transform:
   m_Father: {fileID: 2086124623}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1930342211
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4265402685277322, guid: cc0d3adcb3eccc7469df6da7f22aa3db, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 254.8321
+      objectReference: {fileID: 0}
+    - target: {fileID: 4265402685277322, guid: cc0d3adcb3eccc7469df6da7f22aa3db, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 162.44048
+      objectReference: {fileID: 0}
+    - target: {fileID: 4265402685277322, guid: cc0d3adcb3eccc7469df6da7f22aa3db, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 1.4375
+      objectReference: {fileID: 0}
+    - target: {fileID: 4265402685277322, guid: cc0d3adcb3eccc7469df6da7f22aa3db, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4265402685277322, guid: cc0d3adcb3eccc7469df6da7f22aa3db, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4265402685277322, guid: cc0d3adcb3eccc7469df6da7f22aa3db, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4265402685277322, guid: cc0d3adcb3eccc7469df6da7f22aa3db, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4265402685277322, guid: cc0d3adcb3eccc7469df6da7f22aa3db, type: 2}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114980803527706894, guid: cc0d3adcb3eccc7469df6da7f22aa3db,
+        type: 2}
+      propertyPath: achievementMenu
+      value: 
+      objectReference: {fileID: 241898543}
+    - target: {fileID: 114980803527706894, guid: cc0d3adcb3eccc7469df6da7f22aa3db,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 495213529}
+    - target: {fileID: 1797474159354240, guid: cc0d3adcb3eccc7469df6da7f22aa3db, type: 2}
+      propertyPath: m_TagString
+      value: achieveTransferObj
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: cc0d3adcb3eccc7469df6da7f22aa3db, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1932962659
 GameObject:
   m_ObjectHideFlags: 0
@@ -70123,8 +70006,8 @@ GameObject:
   - component: {fileID: 2034554750}
   - component: {fileID: 2034554749}
   m_Layer: 5
-  m_Name: Text
-  m_TagString: Untagged
+  m_Name: MenuTitle
+  m_TagString: achieveTransferObj
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70198,7 +70081,7 @@ GameObject:
   - component: {fileID: 2078133426}
   m_Layer: 5
   m_Name: CategoryMask
-  m_TagString: Untagged
+  m_TagString: achieveTransferObj
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

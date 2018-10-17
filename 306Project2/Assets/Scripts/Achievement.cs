@@ -43,6 +43,10 @@ public class Achievement
 		this.unlocked = false;
 	}
 
+	public GameObject getAchieveObject() {
+		return this.achievementRef;
+	}
+
 	public bool EarnAchievement()
 	{
 		if(!unlocked) 
@@ -60,6 +64,10 @@ public class Achievement
 		{
 			return false;
 		}
+	}
+
+	public bool getUnlocked(){
+		return unlocked;
 	}
 
 

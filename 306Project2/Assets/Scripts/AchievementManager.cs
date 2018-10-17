@@ -14,8 +14,6 @@ public class AchievementManager : MonoBehaviour {
 	// Dictionary's are basically Maps
 	public Dictionary<string, Achievement> achievements = new Dictionary<string, Achievement>();
 
-
-
 	// Used to toggle showing the achievements screen
 	private bool showAchievementScreen;
 	public GameObject achievementMenu;
@@ -47,17 +45,36 @@ public class AchievementManager : MonoBehaviour {
 		CreateAchievement("GeneralAchievement", "Maxed Out", "Fill up the confidence bar.", 0);
 
 		// Test Achivevements
+		CreateAchievement("GeneralAchievement", "Pay respects","Press F to unlock", 0);
 		// CreateAchievement("GeneralAchievement", "Press W","Press W to unlock", 0);
 		// CreateAchievement("GeneralAchievement", "Press A","Press A to unlock", 0);
 		// CreateAchievement("GeneralAchievement", "Press S","Press S to unlock", 0);
 		// CreateAchievement("GeneralAchievement", "Press D","Press D to unlock", 0);
 		// CreateAchievement("GeneralAchievement", "Glow","Walk past an item to unlock", 0);
+
+
 		
 	}
 	
 	bool startUp = true;
 	// Update is called once per frame
 	void Update () {
+
+		if (player == null){
+			player = GameObject.FindGameObjectWithTag("player");
+		}
+		if (startUp) {
+			Debug.Log ("achievementMenu is false!");
+			achievementMenu = GameObject.FindGameObjectWithTag("AchievementMenu");
+			achievementMenu.transform.SetParent(GameObject.Find("Canvas").transform);
+
+			Debug.Log("Adding achivements to menu after new level");
+			// Put the achievements in the menu object
+			foreach(KeyValuePair<string,Achievement> entry in achievements) {
+				SetAchievementInfo("GeneralAchievement", entry.Value.getAchieveObject(), entry.Key);
+			}
+
+		}
 
 		// Hide the achievement screen on startup.
 		if (startUp) {
@@ -105,6 +122,12 @@ public class AchievementManager : MonoBehaviour {
 		// 	EarnAchievement("Press D");
 		// }
 
+		// Test achievement
+		if (Input.GetKeyDown(KeyCode.F))
+		{
+			EarnAchievement("Pay respects");
+		}
+
 
 	}
 
@@ -114,7 +137,7 @@ public class AchievementManager : MonoBehaviour {
 		{
 			// Earn the achievement if it's currently not earned.
 			GameObject achievement = (GameObject)Instantiate(visualAchievement);
-			SetAchievementInfo("EarnAchivementCanvas", achievement, title);
+			SetAchievementInfo("EarnAchievementCanvas", achievement, title);
 
 			StartCoroutine(HideAchievement(achievement));
 
@@ -158,7 +181,10 @@ public class AchievementManager : MonoBehaviour {
 
 		// Get the sprite (child 2)
 		achievement.transform.GetChild(2).GetComponent<Image>().sprite = sprites[achievements[title].SpriteIndex];
+	}
 
+	public void SetStartup(bool start) {
+		startUp = start;
 	}
 
 	

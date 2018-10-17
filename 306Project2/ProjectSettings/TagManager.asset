@@ -18,8 +18,11 @@ TagManager:
   - scoreTransferObject
   - BadNPC
   - GeneralAchievement
-  - EarnAchivementCanvas
   - AchievementManager
+  - achieveTransferObj
+  - Canvas
+  - EarnAchievementCanvas
+  - AchievementMenu
   layers:
   - Default
   - TransparentFX

@@ -190,8 +190,11 @@ public class PlayerController : MonoBehaviour {
 
         // If the game is over.
         if (gameOver) {
-            // Transfer the score.
+
+            // Transfer the score and achievements
             transferScore();
+            transferAchievements();
+
             // Display the end-game scene.
             SceneManager.LoadScene("EndOfLevelScene");
         }
@@ -217,21 +220,21 @@ public class PlayerController : MonoBehaviour {
     // Transfers the achievements between scenes.
     public void transferAchievements()
     {
-        // Debug.Log("Before - Score is " + score.ToString());
-        // GameObject[] transferObjects = GameObject.FindGameObjectsWithTag("AchievementManager");
-        // for(int i = 0; i< transferObjects.Length;i++)
-        // {
-        //     Destroy(transferObjects[i]);
-        // }
+        Debug.Log("Transferring achievements");
+        achievementManager.SetStartup(true);
+        Debug.Log("Got here");
+        GameObject achievementTransferObject = GameObject.FindGameObjectWithTag("AchievementManager");
+        Debug.Log("Got he22re");
 
-        // Vector3 pos = new Vector3(0, 0, 0);
-        // GameObject achievementTransferObject = Instantiate(scoreTransfer, pos, Quaternion.identity);
-        GameObject[] achievementTransferObject = GameObject.FindGameObjectsWithTag("achieveTransferObj");
-        for (int i=0; i< achievementTransferObject.Length; i++){
-            DontDestroyOnLoad(achievementTransferObject[i]);
-        }
-        // achievementTransferObject.GetComponent<ScoreTransferScript>().setScore(scoreText.text);
-        // Debug.Log("Score is " + score.ToString());
+        // Make the menu active so you can set it to the top of the hierarchy, then persist it.
+        achievementManager.achievementMenu.SetActive(true);
+        GameObject achievementmenuthing = GameObject.FindGameObjectWithTag("AchievementMenu");
+        achievementmenuthing.transform.SetParent(null);
+        DontDestroyOnLoad(achievementmenuthing);
+
+        GameObject earnAchievementCanvas = GameObject.FindGameObjectWithTag("EarnAchivementCanvas");
+        DontDestroyOnLoad(earnAchievementCanvas);
+        
     }
 
     // Visually increases one energy.
@@ -344,6 +347,7 @@ public class PlayerController : MonoBehaviour {
     [YarnCommand("transition")]
     public void ChangeLevel(string destination) {
         transferScore();
+        transferAchievements();
         SceneManager.LoadScene(destination);
     }
 

@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 114061285439537880}
   m_Layer: 5
   m_Name: Achievement
-  m_TagString: Untagged
+  m_TagString: achieveTransferObj
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
