@@ -181,6 +181,7 @@ public class MiniGameGenerator : MonoBehaviour {
                 else
                 {
                     go.SetActive(true);
+                    PlayGoSound();
                     ready.SetActive(false);
                 }
             }
@@ -195,6 +196,7 @@ public class MiniGameGenerator : MonoBehaviour {
                 else
                 {
                     go.SetActive(false);
+                    PlayReadySound();
                     ready.SetActive(true);
                 }
             }
@@ -265,5 +267,19 @@ public class MiniGameGenerator : MonoBehaviour {
         GameObject sound = GameObject.Find("Fail");
         sound.GetComponent<AudioSource>().Play(0);
 
+    }
+
+    public void PlayReadySound()
+    {
+        Debug.Log("Play Sound");
+        GameObject sound = GameObject.Find("Ready Set");
+        sound.GetComponent<AudioSource>().Play(0);
+    }
+
+    public void PlayGoSound()
+    {
+        Debug.Log("Play Sound");
+        GameObject sound = GameObject.Find("Go");
+        sound.GetComponent<AudioSource>().Play(0);
     }
 }
