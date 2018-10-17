@@ -324,7 +324,6 @@ namespace Yarn.Unity
         public void checkLevel() {
 
             string playerName = player.GetComponent<PlayerController>().GetPlayerName();
-            int difficulty = player.GetComponent<PlayerController>().GetDifficulty();
 
             //Ensure that the level variables are up to date as per the config file.
             if (File.Exists(Application.persistentDataPath + "/" + playerName + ".dat")){
@@ -338,7 +337,7 @@ namespace Yarn.Unity
             }else{
                 BinaryFormatter bf = new BinaryFormatter();
                 FileStream file = File.Create(Application.persistentDataPath + "/" + playerName + ".dat");
-                bf.Serialize(file, new SaveData(0, 0, playerName, difficulty));
+                bf.Serialize(file, new SaveData(0, 0, playerName));
                 file.Close();
             }
         }

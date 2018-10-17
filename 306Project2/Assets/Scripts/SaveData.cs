@@ -7,7 +7,6 @@ public class SaveData {
 
     private int level;
     private string playerName;
-    private int differculty;
 
     private float level1SaveScore;
     private float level2SaveScore;
@@ -15,7 +14,7 @@ public class SaveData {
     private float totalScore;
     public Dictionary<string, bool> levels = new Dictionary<string, bool>();
 
-    public SaveData(float score, int level, string playerName, int differculty)
+    public SaveData(float score, int level, string playerName)
     {
         this.level = level;
 
@@ -36,13 +35,11 @@ public class SaveData {
             level3SaveScore = score;
         }
 
-        this.differculty = differculty;
         this.playerName = playerName;
 
         levels.Add("level2", false);
         levels.Add("level3", false);
     }
-
 
     public float TotalScore()
     {
@@ -80,8 +77,26 @@ public class SaveData {
         return playerName;
     }
 
-    public int GetDifferculty()
+
+    public void SetTotalScore(float score)
     {
-        return differculty;
+        totalScore = score;
     }
+
+    public void SetLevel1Score(float score)
+    {
+        level1SaveScore = score;
+    }
+
+    public void SetLevel2Score(float score)
+    {
+        level2SaveScore = score;
+    }
+
+    public void SetLevel3Score(float score)
+    {
+        level3SaveScore = score;
+    }
+
+
 }

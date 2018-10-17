@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour {
     
     //TODO needs connection with welcome screen--------------------------------------------------------
     private string playerName = "default";
-    private int differculty;
+
 
     // Use this for initialization.
     void Start()
@@ -428,7 +428,7 @@ public class PlayerController : MonoBehaviour {
         //Dont save if level change is from tutorial
         if (!SceneManager.GetActiveScene().name.Equals("Tutorial"))
         {
-            saveManager.SaveLevel(startOfLevelScore, currentLevel, playerName, differculty);
+            saveManager.SaveLevel(startOfLevelScore, currentLevel, playerName);
         }
 
     }
@@ -438,9 +438,5 @@ public class PlayerController : MonoBehaviour {
         return playerName;
     }
 
-    public int GetDifficulty()
-    {
-        return differculty;
-    }
 
 }
