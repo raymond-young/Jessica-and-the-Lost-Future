@@ -14974,7 +14974,7 @@ GameObject:
   - component: {fileID: 459244486}
   - component: {fileID: 459244485}
   m_Layer: 5
-  m_Name: CongratsText
+  m_Name: WarningText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47985,7 +47985,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1718948293
 RectTransform:
   m_ObjectHideFlags: 0
@@ -52208,6 +52208,8 @@ MonoBehaviour:
   popupEnemyPassed: {fileID: 1203131762}
   congratsContainer: {fileID: 756107294}
   congratsText: {fileID: 825125167}
+  warningContainer: {fileID: 1718948292}
+  warningText: {fileID: 459244485}
 --- !u!114 &1752808535
 MonoBehaviour:
   m_ObjectHideFlags: 0
