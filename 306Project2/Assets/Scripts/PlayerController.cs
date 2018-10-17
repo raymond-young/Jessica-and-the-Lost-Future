@@ -86,8 +86,10 @@ public class PlayerController : MonoBehaviour {
             achievementManager = GameObject.FindObjectOfType<AchievementManager>();
         }
 
-        playerName = GameObject.FindGameObjectWithTag("PlayerNameObjectTransfer").GetComponent<PlayerNameObjectTransfer>().GetPlayerName();
-   
+        if (GameObject.FindGameObjectWithTag("PlayerNameObjectTransfer") != null) {
+            playerName = GameObject.FindGameObjectWithTag("PlayerNameObjectTransfer").GetComponent<PlayerNameObjectTransfer>().GetPlayerName();
+        }
+
         //Gets level dependent on scene
         if (SceneManager.GetActiveScene().name.Equals("Level-1")) {
             currentLevel = 1;
