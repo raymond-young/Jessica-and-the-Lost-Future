@@ -42,11 +42,11 @@ public class WelcomeScreenButtonActions : MonoBehaviour {
         }else if(!File.Exists(Application.persistentDataPath + "/" + playerName + ".dat") && level == "Tutorial"){
             //Start a new game and create the default storage file
             BinaryFormatter bf = new BinaryFormatter();
-                FileStream file = File.Create(Application.persistentDataPath + "/" + playerName + ".dat");
-                bf.Serialize(file, new SaveData(0, 0, playerName));
-                file.Close();
+            FileStream file = File.Create(Application.persistentDataPath + "/" + playerName + ".dat");
+            bf.Serialize(file, new SaveData(0, 0, playerName));
+            file.Close();
         }else if(!File.Exists(Application.persistentDataPath + "/" + playerName + ".dat") && level == "levelSelect"){
-            //Trying to continue a game without a valid save file
+            //Trying to continue a game without a valid save file throw an error
         }else{
             Debug.Log("Something seriously wrongs happen");
             level = "";
