@@ -89,12 +89,6 @@ public class ItemController : MonoBehaviour {
                 else {
                     pickupItem();
                 }
-                freeItemSlot.GetComponent<Image>().sprite = currentItemZone.GetComponent<SpriteRenderer>().sprite;
-                items.Remove(currentItemZone.gameObject);
-                Destroy(currentItemZone.gameObject);
-                player.achievementManager.EarnAchievement("Item Grabber");
-                PlayItemSound();
-                player.ChangeConfidence(20);
             }
         }
 
@@ -105,6 +99,9 @@ public class ItemController : MonoBehaviour {
         freeItemSlot.GetComponent<Image>().sprite = currentItemZone.GetComponent<SpriteRenderer>().sprite;
         items.Remove(currentItemZone.gameObject);
         Destroy(currentItemZone.gameObject);
+        player.ChangeConfidence(20);
+        player.achievementManager.EarnAchievement("Item Grabber");
+        PlayItemSound();
         player.ChangeConfidence(20);
     }
 

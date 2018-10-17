@@ -1,5 +1,20 @@
 title: James
 ---
 <<change_character DialogueManager James>>
-You should get back to work, theres a lot of things to do 
+<<if $Allocating is true>>
+	<<if $talkedToJames is false>>
+		<<set $talkedToJames to true>>
+		<<set $NumberOfPeople = $NumberOfPeople + 1>>
+		<<change_character DialogueManager Jessica>>
+		<<change_confidence Player 10>>
+		Hey James, I'm allocating the teams for the projects. Do you have a preference?
+		<<change_character DialogueManager Cathy>>
+		I don't want to work with June, we don't have the same working style.
+		I'm fine with any project.
+	<<else>>
+		we talked already. Don't put me with June.
+	<<endif>>
+<<else>>
+	You should get back to work, theres a lot of things to do 
+<<endif>>
 ===
