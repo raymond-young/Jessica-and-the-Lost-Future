@@ -664,7 +664,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.3999939, y: -0.000012285602}
+  m_AnchoredPosition: {x: 0.3999939, y: -0.00002371417}
   m_SizeDelta: {x: 0.7999878, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &77406497
@@ -1412,7 +1412,7 @@ GameObject:
   - component: {fileID: 196497006}
   - component: {fileID: 196497005}
   - component: {fileID: 196497004}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SophiaOffice
   m_TagString: Room
   m_Icon: {fileID: 0}
@@ -1908,7 +1908,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 276137741}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -18, y: 0, z: 1.9652982}
+  m_LocalPosition: {x: -43.904617, y: 0.088704824, z: 1.9652982}
   m_LocalScale: {x: 12.99072, y: 11.68717, z: 1}
   m_Children:
   - {fileID: 403252240}
@@ -2087,7 +2087,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294966783
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2106,7 +2106,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 312253131}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 26, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3486,7 +3486,7 @@ GameObject:
   - component: {fileID: 478585779}
   - component: {fileID: 478585778}
   - component: {fileID: 478585777}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Office
   m_TagString: Room
   m_Icon: {fileID: 0}
@@ -3729,7 +3729,7 @@ GameObject:
   - component: {fileID: 534039307}
   - component: {fileID: 534039306}
   - component: {fileID: 534039305}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Misc
   m_TagString: Room
   m_Icon: {fileID: 0}
@@ -4547,11 +4547,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4719971373321880, guid: 3c3397e7856804eb58b4eb3d70a95823, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -24.295383
+      value: -54.82
       objectReference: {fileID: 0}
     - target: {fileID: 4719971373321880, guid: 3c3397e7856804eb58b4eb3d70a95823, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.5512953
+      value: 3.69
       objectReference: {fileID: 0}
     - target: {fileID: 4719971373321880, guid: 3c3397e7856804eb58b4eb3d70a95823, type: 2}
       propertyPath: m_LocalPosition.z
@@ -4604,12 +4604,12 @@ Prefab:
     - target: {fileID: 114439472472566028, guid: 3c3397e7856804eb58b4eb3d70a95823,
         type: 2}
       propertyPath: xPos
-      value: -21.29538
+      value: -41
       objectReference: {fileID: 0}
     - target: {fileID: 114439472472566028, guid: 3c3397e7856804eb58b4eb3d70a95823,
         type: 2}
       propertyPath: yPos
-      value: 3.551295
+      value: -4.5
       objectReference: {fileID: 0}
     - target: {fileID: 1312561123427874, guid: 3c3397e7856804eb58b4eb3d70a95823, type: 2}
       propertyPath: m_Name
@@ -5092,7 +5092,7 @@ GameObject:
   - component: {fileID: 844446515}
   - component: {fileID: 844446517}
   - component: {fileID: 844446516}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Building
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13064,7 +13064,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 913109056}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.16, y: 15.7, z: -10}
+  m_LocalPosition: {x: -25.1, y: 0.4, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -13668,11 +13668,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4633343232474580, guid: 5057d547abcb6f44589566c1be9f78a5, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 24.49
+      value: -1.4146175
       objectReference: {fileID: 0}
     - target: {fileID: 4633343232474580, guid: 5057d547abcb6f44589566c1be9f78a5, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -5.41
+      value: -5.321295
       objectReference: {fileID: 0}
     - target: {fileID: 4633343232474580, guid: 5057d547abcb6f44589566c1be9f78a5, type: 2}
       propertyPath: m_LocalPosition.z
@@ -13974,11 +13974,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4719971373321880, guid: 3c3397e7856804eb58b4eb3d70a95823, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -5.75
+      value: -31.654617
       objectReference: {fileID: 0}
     - target: {fileID: 4719971373321880, guid: 3c3397e7856804eb58b4eb3d70a95823, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -2.05
+      value: -1.9612951
       objectReference: {fileID: 0}
     - target: {fileID: 4719971373321880, guid: 3c3397e7856804eb58b4eb3d70a95823, type: 2}
       propertyPath: m_LocalPosition.z
@@ -14031,7 +14031,7 @@ Prefab:
     - target: {fileID: 114439472472566028, guid: 3c3397e7856804eb58b4eb3d70a95823,
         type: 2}
       propertyPath: xPos
-      value: 8
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 114439472472566028, guid: 3c3397e7856804eb58b4eb3d70a95823,
         type: 2}
@@ -14085,7 +14085,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1119280458}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.45, y: -0.51, z: -18.198833}
+  m_LocalPosition: {x: -0.003, y: -0.014, z: -18.198833}
   m_LocalScale: {x: 2.309341, y: 2.5669177, z: 30}
   m_Children: []
   m_Father: {fileID: 442739592}
@@ -14660,7 +14660,7 @@ GameObject:
   - component: {fileID: 1213077718}
   - component: {fileID: 1213077719}
   m_Layer: 9
-  m_Name: Field
+  m_Name: Misc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14734,7 +14734,7 @@ GameObject:
   - component: {fileID: 1245035593}
   - component: {fileID: 1245035594}
   m_Layer: 9
-  m_Name: HallDoor
+  m_Name: Office
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15237,11 +15237,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4719971373321880, guid: 3c3397e7856804eb58b4eb3d70a95823, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -8.5
+      value: -34
       objectReference: {fileID: 0}
     - target: {fileID: 4719971373321880, guid: 3c3397e7856804eb58b4eb3d70a95823, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -11.81
+      value: -18.7
       objectReference: {fileID: 0}
     - target: {fileID: 4719971373321880, guid: 3c3397e7856804eb58b4eb3d70a95823, type: 2}
       propertyPath: m_LocalPosition.z
@@ -15294,12 +15294,12 @@ Prefab:
     - target: {fileID: 114439472472566028, guid: 3c3397e7856804eb58b4eb3d70a95823,
         type: 2}
       propertyPath: xPos
-      value: -8.5
+      value: -34
       objectReference: {fileID: 0}
     - target: {fileID: 114439472472566028, guid: 3c3397e7856804eb58b4eb3d70a95823,
         type: 2}
       propertyPath: yPos
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1312561123427874, guid: 3c3397e7856804eb58b4eb3d70a95823, type: 2}
       propertyPath: m_Name
@@ -15746,7 +15746,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1350073922}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: World
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15760,7 +15760,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1350073921}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.232323, y: -1.8628603, z: -0.234375}
+  m_LocalPosition: {x: -14.672295, y: -1.7741555, z: -0.234375}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 478585776}
@@ -15909,7 +15909,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1360850818}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.92, y: -7.501, z: 0.4375}
+  m_LocalPosition: {x: -0.98461723, y: -7.4122953, z: 0.4375}
   m_LocalScale: {x: 0.5818749, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -15994,7 +15994,7 @@ GameObject:
   - component: {fileID: 1397208590}
   - component: {fileID: 1397208589}
   - component: {fileID: 1397208588}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Reception
   m_TagString: Room
   m_Icon: {fileID: 0}
@@ -16171,7 +16171,7 @@ GameObject:
   - component: {fileID: 1414290841}
   - component: {fileID: 1414290840}
   - component: {fileID: 1414290839}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MeetingRoom
   m_TagString: Room
   m_Icon: {fileID: 0}
@@ -16992,7 +16992,7 @@ GameObject:
   - component: {fileID: 1457096866}
   - component: {fileID: 1457096865}
   - component: {fileID: 1457096864}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: StartZone
   m_TagString: EventZone
   m_Icon: {fileID: 0}
@@ -17302,11 +17302,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4719971373321880, guid: 3c3397e7856804eb58b4eb3d70a95823, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 34.4
+      value: 8.495384
       objectReference: {fileID: 0}
     - target: {fileID: 4719971373321880, guid: 3c3397e7856804eb58b4eb3d70a95823, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 16.16
+      value: 18.32
       objectReference: {fileID: 0}
     - target: {fileID: 4719971373321880, guid: 3c3397e7856804eb58b4eb3d70a95823, type: 2}
       propertyPath: m_LocalPosition.z
@@ -17359,12 +17359,12 @@ Prefab:
     - target: {fileID: 114439472472566028, guid: 3c3397e7856804eb58b4eb3d70a95823,
         type: 2}
       propertyPath: xPos
-      value: 34
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114439472472566028, guid: 3c3397e7856804eb58b4eb3d70a95823,
         type: 2}
       propertyPath: yPos
-      value: 12.6
+      value: 18.3
       objectReference: {fileID: 0}
     - target: {fileID: 1312561123427874, guid: 3c3397e7856804eb58b4eb3d70a95823, type: 2}
       propertyPath: m_Name
@@ -17409,7 +17409,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1482376273
 Transform:
   m_ObjectHideFlags: 0
@@ -17417,7 +17417,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1482376272}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.166278, y: -5.4, z: 0.043706592}
+  m_LocalPosition: {x: -35.070896, y: -5.3112955, z: 0.043706592}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1647227877}
@@ -17462,7 +17462,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -25.904617, y: 0.088704824}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1553427987
@@ -17556,7 +17556,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1560935465}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.21, y: -0.83, z: -18.198833}
+  m_LocalPosition: {x: -0.023, y: -0.007, z: -18.198833}
   m_LocalScale: {x: 2.309341, y: 2.5669184, z: 30}
   m_Children: []
   m_Father: {fileID: 192880812}
@@ -17970,7 +17970,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1613876717}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.8, y: -5.7, z: -10.155865}
+  m_LocalPosition: {x: -1.1046181, y: -5.6112947, z: -10.155865}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children: []
   m_Father: {fileID: 0}
@@ -18378,7 +18378,7 @@ GameObject:
   - component: {fileID: 1647227877}
   - component: {fileID: 1647227878}
   m_Layer: 9
-  m_Name: ComputerLab
+  m_Name: MeetingRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18688,7 +18688,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1686812818}
   - component: {fileID: 1686812819}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19108,7 +19108,7 @@ GameObject:
   - component: {fileID: 1742066916}
   - component: {fileID: 1742066917}
   m_Layer: 9
-  m_Name: Classroom
+  m_Name: SamOffice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19183,7 +19183,7 @@ GameObject:
   - component: {fileID: 1743190368}
   - component: {fileID: 1743190367}
   - component: {fileID: 1743190366}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SamOffice
   m_TagString: Room
   m_Icon: {fileID: 0}
@@ -19528,7 +19528,7 @@ GameObject:
   - component: {fileID: 1812230493}
   - component: {fileID: 1812230495}
   - component: {fileID: 1812230494}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Objects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20746,7 +20746,7 @@ GameObject:
   - component: {fileID: 1894495442}
   - component: {fileID: 1894495443}
   m_Layer: 9
-  m_Name: Workshop
+  m_Name: SophiaOffice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21441,7 +21441,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2026943815}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.842, y: 1.2, z: 0}
+  m_LocalPosition: {x: 2.686, y: 1.562, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 276137742}
@@ -22120,7 +22120,7 @@ GameObject:
   - component: {fileID: 2083474228}
   - component: {fileID: 2083474230}
   - component: {fileID: 2083474229}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41336,7 +41336,7 @@ GameObject:
   - component: {fileID: 2092529763}
   - component: {fileID: 2092529765}
   - component: {fileID: 2092529764}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Foreground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46926,7 +46926,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2096975835}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.21, y: 1.27, z: -18.198833}
+  m_LocalPosition: {x: -0.005, y: 0.022, z: -18.198833}
   m_LocalScale: {x: 2.309341, y: 2.5669184, z: 30}
   m_Children: []
   m_Father: {fileID: 139069682}
@@ -47146,7 +47146,7 @@ GameObject:
   - component: {fileID: 2132639983}
   - component: {fileID: 2132639982}
   - component: {fileID: 2132639981}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
