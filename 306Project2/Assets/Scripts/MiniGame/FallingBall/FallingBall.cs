@@ -199,13 +199,13 @@ public class FallingBall : MonoBehaviour {
     private void Finish()
     {
         //Notify the game manager that the player has successfully finished the game
-        //GameObject.FindGameObjectWithTag("MiniGameManager").GetComponent<MiniGameManager>().FinishGame(true);
+        GameObject.FindGameObjectWithTag("MiniGameManager").GetComponent<MiniGameManager>().FinishGame(true);
     }
 
     private void Fail()
     {
         //Notify the game manager that the player has failed the game
-        //GameObject.FindGameObjectWithTag("MiniGameManager").GetComponent<MiniGameManager>().FinishGame(false);
+        GameObject.FindGameObjectWithTag("MiniGameManager").GetComponent<MiniGameManager>().FinishGame(false);
     }
 
     // Returns the boundary the backet can move to

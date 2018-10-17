@@ -147,7 +147,8 @@ public class Hop : MonoBehaviour
         if (gameStart && e.type == EventType.KeyDown)
         {
             //If the right key was pressed, change color of the game object and move to the next one
-            if ( pos < stairs.Count && e.keyCode.ToString().Equals(stairRef[pos].ToString()) && e.keyCode != KeyCode.None)
+            if ( pos < stairs.Count && e.keyCode.ToString().Equals(stairRef[pos].ToString()) && e.keyCode != KeyCode.None
+                || pos > 0 && stairRef[pos-1] == stairRef[pos] && e.keyCode.ToString().Equals("UpArrow"))
             {
                 GameObject s = stairs[pos];
 
@@ -266,12 +267,12 @@ public class Hop : MonoBehaviour
     private void Finish()
     {
         //Notify the game manager that the player has successfully finished the game
-        //GameObject.FindGameObjectWithTag("MiniGameManager").GetComponent<MiniGameManager>().FinishGame(true);
+        GameObject.FindGameObjectWithTag("MiniGameManager").GetComponent<MiniGameManager>().FinishGame(true);
     }
 
     private void Fail()
     {
         //Notify the game manager that the player has failed the game
-        //GameObject.FindGameObjectWithTag("MiniGameManager").GetComponent<MiniGameManager>().FinishGame(false);
+        GameObject.FindGameObjectWithTag("MiniGameManager").GetComponent<MiniGameManager>().FinishGame(false);
     }
 }
