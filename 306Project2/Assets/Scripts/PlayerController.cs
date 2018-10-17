@@ -83,7 +83,9 @@ public class PlayerController : MonoBehaviour {
             saveManager = GameObject.FindGameObjectWithTag("SaveManager").GetComponent<SaveManager>();
         }
 
-        
+        if (GameObject.FindGameObjectWithTag("AchievementManager") != null) {
+            achievementManager = GameObject.FindObjectOfType<AchievementManager>();
+        }
 
         //Gets level dependent on scene
         if (SceneManager.GetActiveScene().name.Equals("Level-1")) {
