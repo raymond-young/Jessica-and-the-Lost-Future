@@ -14,6 +14,8 @@ public class WelcomeScreenButtonActions : MonoBehaviour {
     public GameObject levelSelect;
     public GameObject difficulty;
     public GameObject playerTransfer;
+    public GameObject highScore;
+    public GameObject pressEnter;
 
     public GameObject errorObject;
 
@@ -151,12 +153,16 @@ public class WelcomeScreenButtonActions : MonoBehaviour {
         options.SetActive(false);
         levelSelect.SetActive(false);
         difficulty.SetActive(false);
+        highScore.SetActive(false);
         main.SetActive(true);
+        pressEnter.SetActive(true);
     }
 
     public void HighScoreButtonClicked()
     {
-        SceneManager.LoadScene("HighScore");
+        main.SetActive(false);
+        highScore.SetActive(true);
+        pressEnter.SetActive(false);
     }
 
     public void AchievementsButtonClicked()
