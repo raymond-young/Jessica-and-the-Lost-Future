@@ -146,9 +146,9 @@ public class MiniGameGenerator : MonoBehaviour {
                 arrows[currentIndex].GetComponent<Arrow>().TurnWrong();
 
                 // Reset to default colours.
-                for (int i = 0; i <= currentIndex; i++)
+                for (int i = 0; i < currentIndex; i++)
                 {
-                    arrows[currentIndex].GetComponent<Arrow>().TurnDefault();
+                    arrows[i].GetComponent<Arrow>().TurnDefault();
                 }
                 currentIndex = 0;
 			}
