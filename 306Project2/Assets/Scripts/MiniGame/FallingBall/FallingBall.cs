@@ -21,42 +21,34 @@ public class FallingBall : MonoBehaviour {
     GameObject ready;
     GameObject go;
 
+    // Variables controlling aspects of the game's difficulty.
     public float timeLimit;
+    int goal;
     float currentTime;
     float generateTime = 0f;
     float readyTime = 0.9f;
     float goTime = 0.5f;
 
-    // Variables controlling aspects of the game's difficulty.
-    int numOfBalls = 10;
-    int goal;
 
     // Position contraints
     float xRange;
     float y;
 
     // Ways to prevent the user from going past the limit of the screen.
-    float leftWall;
-    float rightWall;
+    float wall;
     bool gameStart;
-    bool gameEnd;
-    
-    
-    // A way to query if the game has started.
-    public bool gameStarted() {
-        return gameStart;
-    }
-    
 
+    
     // Use this for initialization
     void Start () {
+        goal = 15;
+        timeLimit = 10f;
         count.text = goal.ToString();
         
-        xRange = boundary.GetComponent<RectTransform>().rect.width / 2 - backet.GetComponent<RectTransform>().rect.width / 2;
+        xRange = boundary.GetComponent<RectTransform>().rect.width / 2;
         y = gameObject.GetComponentInParent<Canvas>().pixelRect.height / 2;
 
-        rightWall = xRange;
-        leftWall = -rightWall;
+        wall = xRange - backet.GetComponent<RectTransform>().rect.width / 2;
 
         //Initialise time bar
         RectTransform parentRectTransform = gameObject.GetComponent<RectTransform>();
@@ -82,26 +74,8 @@ public class FallingBall : MonoBehaviour {
 
         currentTime = -readyTime - goTime;
         gameStart = false;
-        gameEnd = false;
     }
     
-
-
-    void OnGUI()
-    {
-        //Finish game when tehre is no more arrows to press
-        if (goal <= 0)
-        {
-            Finish();
-        }
-        if (gameStart & !gameEnd)
-        {
-            if (currentTime > timeLimit)
-            {
-                Fail();
-            }
-        }
-    }
 
 
     // Update is called once per frame
@@ -143,9 +117,20 @@ public class FallingBall : MonoBehaviour {
                 }
             }
         }
-        else if(!gameEnd)
+        else
         {
-            if (generateTime > 0.3f)
+            //Finish game when there is no more arrows to press or timeout
+            if (goal <= 0)
+            {
+                Finish();
+            }
+            if (currentTime > timeLimit)
+            {
+                Fail();
+            }
+    
+            //Generate new balls
+            if (generateTime > 0.6f)
             {
                 for (int i = 0; i < Random.Range(1, 3); i++)
                 {
@@ -176,12 +161,12 @@ public class FallingBall : MonoBehaviour {
         count.text = goal.ToString();
     }
 
+
     private void Finish()
     {
         //Notify the game manager that the player has successfully finished the game
         //GameObject.FindGameObjectWithTag("MiniGameManager").GetComponent<MiniGameManager>().FinishGame(true);
         Debug.Log("finished");
-        gameEnd = true;
     }
 
     private void Fail()
@@ -189,6 +174,20 @@ public class FallingBall : MonoBehaviour {
         //Notify the game manager that the player has failed the game
         //GameObject.FindGameObjectWithTag("MiniGameManager").GetComponent<MiniGameManager>().FinishGame(false);
         Debug.Log("failed");
-        gameEnd = true;
+    }
+
+
+    //  Helper methods  //
+
+    // Returns the boundary the backet can move to
+    public float GetWall()
+    {
+        return wall;
+    }
+
+    // A way to query if the game has started.
+    public bool gameStarted()
+    {
+        return gameStart;
     }
 }
