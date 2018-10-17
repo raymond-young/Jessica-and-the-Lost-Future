@@ -5,7 +5,7 @@ title: Alex
         <<remove Player player>> 
         <<set $talkedToAlex to true>> 
         <<change_character DialogueManager Alex>>
-        Well done for finding the last object! That was a tough one to find without any clue given. 
+        Well done for finding the object! That was a tough one to find. 
         Hope you enjoyed our little activity and is a bit more familiar with the Engineering building! 
         Excited to see you next year! 
         Let's all for Mechanical display. Make sure you talk to Amy for more info about other departments we have.
@@ -14,36 +14,7 @@ title: Alex
     <<elseif $hasWhiteGear is true && $talkedToAlex is true>>
         That's all for our department. Please check out the other departments or Amy might have something for you.  
     <<else>> 
-        Find the white gear, there is no clue for this. 
-    <<endif>>
-<<elseif $needGreyGear is true>> 
-    <<if $hasGreyGear is true>> 
-        <<remove Player player>> 
-        <<change_character DialogueManager Alex>>
-        <<set $needGreyGear to false>> 
-        <<change_confidence Player 10>>
-        Well done for finding the grey gear!
-        One final object to find is a white gear, and there is no clue.
-        <<set $needWhiteGear to true>>
-        <<needWhiteGear Player player>>
-    <<else>>
-        The clue for the grey gear is "I know a bank where the wild Daisy blows, Where thy gear lays." Good luck!
-    <<endif>>
-<<elseif $needBlackGear is true>>
-    <<if $hasBlackGear is true>> 
-        <<change_character DialogueManager Alex>>
-        <<remove Player player>> 
-        <<set $needBlackGear to false>> 
-        <<change_confidence Player 10>>
-        Nice, you got the black gear! 
-        The next item to find is a grey gear.
-        Have fun! 
-        The clue is: "Up the greenwood tree, seek what thou find."
-        <<set $needGreyGear to true>>
-        <<needGreyGear Player player>> 
-    <<else>>
-        Here is a little clue for you: "I know a bank where the wild Daisy blows, Where thy gear lays.""
-        Good luck finding the black gear!
+        Find the white gear, the clue is ""I know a bank where the wisdom grows, seek what thou find."
     <<endif>>
 <<else>>
     <<if $startMechanical is true>> 
@@ -55,12 +26,12 @@ title: Alex
         <<change_character DialogueManager Jessica>>
         Sure! I love scavenger hunt!
         <<change_character DialogueManager Alex>>
-        Great! I will be asking you to find three objects around this building, and the first thing is a black gear!
+        Great! I will be asking you to find a object around this building, and the object is a white gear!
         Here is a little clue for you:
-        "I know a bank where the wild Daisy blows, Where thy gear lays.""
+        "I know a bank where the wisdom grows, seek what thou find.""
         Good luck!
-        <<needBlackGear Player player>>
-        <<set $needBlackGear to true>>
+        <<needWhiteGear Player player>>
+        <<set $needWhiteGear to true>>
     <<else>>
         <<change_character DialogueManager Alex>>
         Hi! We have the Mechanical department's display right here. Please come visit us later.>>
