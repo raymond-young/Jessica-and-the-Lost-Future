@@ -18,7 +18,12 @@ title: Kevin
         We also have a few quizes on the 2 lab computers on the left right now! Be sure to check them out. 
         <<set $startECEActivity to true>>
         <<change_character DialogueManager Jessica>>
-        Sure! I will give it a try. 
+        Sure! I will give it a try.
+        Cheat code
+        -> Skipped games (just need to talk to this guy again)
+            <<set $completedQuestion1 to true>>
+            <<set $completedQuestion2 to true>>
+        -> Don't skip
     <<else>>
         <<change_character DialogueManager Kevin>>
         Hi! We have the ECE department's display here. Please come visit us later.>>

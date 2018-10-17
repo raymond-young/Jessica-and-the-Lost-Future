@@ -19,6 +19,10 @@ title: Alice
         <<set $startCivilActivity to true>>
         <<change_character DialogueManager Jessica>>
         Sounds good!
+        Cheat code
+        -> Skipped games (just need to talk to this girl again)
+            <<set $completedCivilActivity to true>>
+        -> Don't skip
     <<else>>
          <<change_character DialogueManager Alice>>
         Hi! We have the Civil department's display here. Please come visit us later.>>
