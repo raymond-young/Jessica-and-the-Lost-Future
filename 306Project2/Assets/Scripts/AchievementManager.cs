@@ -41,11 +41,12 @@ public class AchievementManager : MonoBehaviour {
 		CreateAchievement("GeneralAchievement", "Item Grabber","Pick up an item", 0);
 		CreateAchievement("GeneralAchievement", "First Timer","Play the minigame for the first time.", 0);
 		CreateAchievement("GeneralAchievement", "Keyboard Warrior","Play the minigame without losing a life.", 0);
-		CreateAchievement("GeneralAchievement", "Conversation Starter","Talk to 5 NPCs.", 0);
+		CreateAchievement("GeneralAchievement", "Conversation Starter","Talk to 5 NPCs.", 0); // Incomplete
 		CreateAchievement("GeneralAchievement", "Maxed Out", "Fill up the confidence bar.", 0);
+		CreateAchievement("GeneralAchievement", "Back to the Past", "Finish the tutorial", 0);
 
 		// Test Achivevements
-		CreateAchievement("GeneralAchievement", "Pay respects","Press F to unlock", 0);
+		CreateAchievement("GeneralAchievement", "Paying respects","Press F to unlock", 0);
 		// CreateAchievement("GeneralAchievement", "Press W","Press W to unlock", 0);
 		// CreateAchievement("GeneralAchievement", "Press A","Press A to unlock", 0);
 		// CreateAchievement("GeneralAchievement", "Press S","Press S to unlock", 0);
@@ -125,7 +126,7 @@ public class AchievementManager : MonoBehaviour {
 		// Test achievement
 		if (Input.GetKeyDown(KeyCode.F))
 		{
-			EarnAchievement("Pay respects");
+			EarnAchievement("Paying respects");
 		}
 
 

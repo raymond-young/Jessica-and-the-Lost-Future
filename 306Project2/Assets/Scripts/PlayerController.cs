@@ -221,19 +221,21 @@ public class PlayerController : MonoBehaviour {
     public void transferAchievements()
     {
         Debug.Log("Transferring achievements");
+
+        // Transfer the AchievementManager
         achievementManager.SetStartup(true);
-        Debug.Log("Got here");
-        GameObject achievementTransferObject = GameObject.FindGameObjectWithTag("AchievementManager");
-        Debug.Log("Got he22re");
+        GameObject achievementManagerTransfer = GameObject.FindGameObjectWithTag("AchievementManager");
+        DontDestroyOnLoad(achievementManagerTransfer);
 
-        // Make the menu active so you can set it to the top of the hierarchy, then persist it.
+        // Make the AchievementMenu active so you can set it to the top of the hierarchy, then transfer it.
         achievementManager.achievementMenu.SetActive(true);
-        GameObject achievementmenuthing = GameObject.FindGameObjectWithTag("AchievementMenu");
-        achievementmenuthing.transform.SetParent(null);
-        DontDestroyOnLoad(achievementmenuthing);
+        GameObject achievementMenuTransfer = GameObject.FindGameObjectWithTag("AchievementMenu");
+        achievementMenuTransfer.transform.SetParent(null);
+        DontDestroyOnLoad(achievementMenuTransfer);
 
-        GameObject earnAchievementCanvas = GameObject.FindGameObjectWithTag("EarnAchivementCanvas");
-        DontDestroyOnLoad(earnAchievementCanvas);
+        // Transfer the EarnAchievementCanvas
+        GameObject earnAchievementCanvasTransfer = GameObject.FindGameObjectWithTag("EarnAchievementCanvas");
+        DontDestroyOnLoad(earnAchievementCanvasTransfer);
         
     }
 
@@ -346,6 +348,10 @@ public class PlayerController : MonoBehaviour {
     // Changes the scene to a different level.
     [YarnCommand("transition")]
     public void ChangeLevel(string destination) {
+        if (destination.Equals("Level-1") ) {
+            achievementManager.EarnAchievement("Back to the Past");
+        }
+
         transferScore();
         transferAchievements();
         SceneManager.LoadScene(destination);
