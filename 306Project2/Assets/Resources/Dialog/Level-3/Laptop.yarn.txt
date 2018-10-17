@@ -1,18 +1,24 @@
 title: Laptop
 ---
-<<if $Allocating>>
-	<<change_character DialogueManager Laptop>>
-	<<if $NumberOfPeople >= 3>>
-		Allocate people?
-		[[Yes|Laptop.Yes]]
-		[[No|Laptop.No]]
+Use Cheats(for marking)
+-> Yes
+	Adjust points
+	-> Win(points set to 100)
+	-> Lose(points set to 0)
+-> No
+	<<if $Allocating>>
+		<<change_character DialogueManager Laptop>>
+		<<if $NumberOfPeople >= 3>>
+			Allocate people?
+			[[Yes|Laptop.Yes]]
+			[[No|Laptop.No]]
+		<<else>>
+			I think I should talk to more people before allocating.
+		<<endif>>
 	<<else>>
-		I think I should talk to more people before allocating.
+		<<change_character DialogueManager Jessica>>
+		I shouldn't be touching that.
 	<<endif>>
-<<else>>
-	<<change_character DialogueManager Jessica>>
-	I shouldn't be touching that.
-<<endif>>
 ===
 
 title: Laptop.Yes
@@ -115,6 +121,6 @@ title: Laptop.Exit
 ---
 <<set $completeAllocation to true>>
 <<set $Allocating to false>>
-<<change_confidence Player 30>>
+<<change_confidence Player 10>>
 Done, now to talk to Sam
 ===

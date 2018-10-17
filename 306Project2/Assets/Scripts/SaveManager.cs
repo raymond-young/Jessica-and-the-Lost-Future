@@ -66,6 +66,7 @@ public class SaveManager : MonoBehaviour {
                 data.levels["level2"] = true;
                 break;
             case 2:
+                data.levels["level2"] = true;
                 data.levels["level3"] = true;
                 break;
         }

@@ -16,11 +16,12 @@ title: Manager
 				<<if $completeAllocation is true>>
 						<<if $XunilAllocated is true and $hsotnicamAllocated is true and $SwindowsAllocated is true>>
 							<<if $points < 30>>
+								<<change_confidence Player 20>>
 								the allocation doesn't seem right, could you go and redo them
 								<<set $Allocating to true>>
 							<<elseif $points < 70>>
 								It's not perfect but it works
-								<<change_confidence Player 40>>
+								<<change_confidence Player 20>>
 								Could you go and tell Sophia about it and see what she thinks. 
 								She should be talking to the receptionist
 								<<moveSophia Sophia move>>
@@ -48,7 +49,6 @@ title: Manager
 				Is there anything else you need me to do.
 				<<remove Player paper>>
 				<<change_character DialogueManager Sam(Manager)>>
-				<<change_confidence Player 10>>
 				Thank you. Oh yes, I do.
 				Jessica we have 3 projects in hand
 				The swodniw project, The xunil project and The hsotnicam project.
@@ -71,7 +71,6 @@ title: Manager
 			<<remove Player paper>>
 			<<needCoffee Player player>>
 			<<change_character DialogueManager Sam(Manager)>>
-			<<change_confidence Player 10>>
 			thanks, can you get me some coffee
 			<<change_character DialogueManager Jessica>>
 			OK
