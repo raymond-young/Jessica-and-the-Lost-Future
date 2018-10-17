@@ -19,6 +19,7 @@ title: Rose
     I wish that no matter what choice you make, it is what you truly believe in, and hope you all the best for the future!
 
     <<change_confidence Player 30>>
+    <<passLevel Player level2>>
     <<transition Player CongratulationsScene>>
 <<endif>>
 ===
