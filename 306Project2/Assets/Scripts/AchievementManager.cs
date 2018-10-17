@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class AchievementManager : MonoBehaviour {
 
@@ -23,6 +25,8 @@ public class AchievementManager : MonoBehaviour {
 	public Sprite unlockedSprite;
 
 	public static AchievementManager instance;
+
+	public bool Lock; // True if you want to prevent the achievements menu from turning off.
 
 	public static AchievementManager Instance
 	{
@@ -65,7 +69,7 @@ public class AchievementManager : MonoBehaviour {
 			player = GameObject.FindGameObjectWithTag("player");
 		}
 		if (startUp) {
-			Debug.Log ("achievementMenu is false!");
+			Debug.Log ("achievementMenu is false");
 			achievementMenu = GameObject.FindGameObjectWithTag("AchievementMenu");
 			achievementMenu.transform.SetParent(GameObject.Find("Canvas").transform);
 
@@ -78,14 +82,14 @@ public class AchievementManager : MonoBehaviour {
 		}
 
 		// Hide the achievement screen on startup.
-		if (startUp) {
+		if (startUp && !Lock) {
 			showAchievementScreen = false;
 			achievementMenu.SetActive(showAchievementScreen);
 			startUp = false;
 		}
 
 		// Display the achievements if you press the 'i' key.
-		if (Input.GetKeyDown(KeyCode.I))
+		if (Input.GetKeyDown(KeyCode.I) && !Lock)
 		{
 			showAchievementScreen = !showAchievementScreen;
 			achievementMenu.SetActive(showAchievementScreen);
@@ -187,6 +191,12 @@ public class AchievementManager : MonoBehaviour {
 	public void SetStartup(bool start) {
 		startUp = start;
 	}
+
+ 	public void BackToMenu()
+    {
+        SceneManager.LoadScene("WelcomeScene");
+    }
+
 
 	
 	// 	//complete level one
