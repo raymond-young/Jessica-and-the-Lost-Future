@@ -93,7 +93,7 @@ public class WelcomeScreenButtonActions : MonoBehaviour {
 
     public void HighScoreButtonClicked()
     {
-        
+        SceneManager.LoadScene("HighScore");
     }
 
     public void AchievementsButtonClicked()

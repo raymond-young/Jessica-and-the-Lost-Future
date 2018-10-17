@@ -19,7 +19,7 @@ public class HighScores : MonoBehaviour {
 
     private Color levelColor = new Color(0.1135636f, 0.5811083f, 0.8301887f);
 
-    private float startPosForFormat = 180f;
+    private float startPosForFormat = 185f;
     private float heightInterval = 40f;
 
     private GameObject highScorePanel;
@@ -58,9 +58,13 @@ public class HighScores : MonoBehaviour {
         //saveManager.SaveLevel(190, 2, "steve");
         //saveManager.SaveLevel(180, 1, "steve");
         //saveManager.SaveLevel(180, 2, "james");
-        //saveManager.SaveLevel(180, 3, "james");
-
-
+        //saveManager.SaveLevel(110, 3, "james");
+        //saveManager.SaveLevel(140, 3, "efwef");
+        //saveManager.SaveLevel(100, 3, "jameffffffs");
+        //saveManager.SaveLevel(100, 3, "Stetw");
+        //saveManager.SaveLevel(90, 3, "ewfewwfewf");
+        //saveManager.SaveLevel(40, 3, "fwefwefew");
+        //saveManager.SaveLevel(10, 3, "no");
 
         List<SaveData> saves = saveManager.LoadSave();
 
@@ -131,6 +135,7 @@ public class HighScores : MonoBehaviour {
         p.transform.localPosition = new Vector2(0f, format);
         p.GetComponent<Text>().text = data.GetPlayerName() + " " + score.ToString();
         p.GetComponent<Text>().font = font;
+     //   p.
         p.name = data.GetPlayerName();
 
     }
@@ -226,26 +231,6 @@ public class HighScores : MonoBehaviour {
     }
 
 
-    private void UpdateLevel()
-    {
-        if (levelSelected == 1)
-        {
-            Level1();
-        }
-        else if (levelSelected == 2)
-        {
-            Level2();
-        }
-        else if (levelSelected == 3)
-        {
-            Level3();
-        }
-        else if (levelSelected == 0)
-        {
-            Total();
-        }
-    }
-
     private List<SaveData> SortLevels(List<SaveData> saveData)
     {
 
@@ -278,29 +263,6 @@ public class HighScores : MonoBehaviour {
         level2EasySaves = level2EasySaves.OrderByDescending(s => s.GetLevel2Score()).ToList();
         level3EasySaves = level3EasySaves.OrderByDescending(s => s.GetLevel3Score()).ToList();
         totalEasySaves = totalEasySaves.OrderByDescending(s => s.TotalScore()).ToList();
-
-        //List<SaveData> level1Easy = saveData.Where(s => s.GetLevel() == 1 && s.GetDifferculty() == 0).ToList();
-        //List<SaveData> level2Easy = saveData.Where(s => s.GetLevel() == 2 && s.GetDifferculty() == 0).ToList();
-        //List<SaveData> level3Easy = saveData.Where(s => s.GetLevel() == 3 && s.GetDifferculty() == 0).ToList();
-
-        //List<SaveData> level1Hard = saveData.Where(s => s.GetLevel() == 1 && s.GetDifferculty() == 1).ToList();
-        //List<SaveData> level2Hard = saveData.Where(s => s.GetLevel() == 2 && s.GetDifferculty() == 1).ToList();
-        //List<SaveData> level3Hard = saveData.Where(s => s.GetLevel() == 3 && s.GetDifferculty() == 1).ToList();
-
-
-        //List<SaveData> tempEasy = saveData.Where(s => s.GetDifferculty() == 0).ToList();
-        //List<SaveData> tempHard = saveData.Where(s => s.GetDifferculty() == 1).ToList();
-        //List<SaveData> totalEasyTemp = tempEasy.OrderByDescending(s => s.GetTotalScore()).ToList();
-        //List<SaveData> totalHardTemp = tempHard.OrderByDescending(s => s.GetTotalScore()).ToList();
-
-        //level1Easy = level1Easy.OrderByDescending(s => s.GetLevel1Score()).ToList();
-        //level2Easy = level2Easy.OrderByDescending(s => s.GetLevel2Score()).ToList();
-        //level3Easy = level3Easy.OrderByDescending(s => s.GetLevel3Score()).ToList();
-
-        //level1Hard = level1Hard.OrderByDescending(s => s.GetLevel1Score()).ToList();
-        //level2Hard = level2Hard.OrderByDescending(s => s.GetLevel2Score()).ToList();
-        //level3Hard = level3Hard.OrderByDescending(s => s.GetLevel3Score()).ToList();
-
 
         List<SaveData> level1EasyData = new List<SaveData>();
         List<SaveData> level2EasyData = new List<SaveData>();
