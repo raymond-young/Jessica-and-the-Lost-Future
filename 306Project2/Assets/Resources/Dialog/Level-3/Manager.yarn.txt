@@ -46,7 +46,7 @@ title: Manager
 				<<change_character DialogueManager Jessica>>
 				Here is your coffee, Sam.
 				Is there anything else you need me to do.
-				<<needCoffee Player player>>
+				<<remove Player paper>>
 				<<change_character DialogueManager Sam(Manager)>>
 				<<change_confidence Player 10>>
 				Thank you. Oh yes, I do.

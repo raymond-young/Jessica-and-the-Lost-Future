@@ -113,11 +113,9 @@ public class ItemController : MonoBehaviour {
         {
             currentItemZone = collision;
             inItemZone = true;
-            Debug.Log("triggered");
             //Loop through item slots to find one that is free
             foreach (GameObject item in items)
             {
-                Debug.Log("triggered");
                 freeItemSlot = item;
             }
         }
