@@ -28,6 +28,5 @@ I was also once Sams errand girl, but I just preserved and kept working hard, an
 You'll eventually get there don't let anything get to you, everything is a part of the big picture.
 <<change_character DialogueManager Jessica>>
 thank you so much.
-<<passLevel Player level3>>
 <<transition Player CongratulationsScene>>
 ===

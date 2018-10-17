@@ -557,7 +557,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: '
 
-    Level Cleared'
+    game over'
 --- !u!222 &426208092
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -640,7 +640,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 797022041}
         m_MethodName: mainMenuButtonClicked
         m_Mode: 1
         m_Arguments:
@@ -754,7 +754,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Continue
+  m_Text: Replay
 --- !u!222 &499588248
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1102,7 +1102,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 797022041}
-        m_MethodName: continueButtonClicked
+        m_MethodName: restartButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1255,7 +1255,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 797022036}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e58f6d2471e34131b4427e9233f361c, type: 3}
+  m_Script: {fileID: 11500000, guid: d23de5b9790d2dc4e8aa8033e4800d81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1532935005}
