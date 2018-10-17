@@ -5,11 +5,11 @@ title: Start
 	<<change_character DialogueManager Jessica>>
 	I get to pick a class today, I'm so excited! I want to do the programming class.
 	<<change_character DialogueManager Mum>>
-	We don't think you should choose the computer class Jessica, it's not feminine!
+	I'm not sure you should choose the computer class Jessica, it's not very feminine!
 	<<change_character DialogueManager Dad>>
-	Why don't you choose something like cooking instead? Then you'll be able to find a husband more easily.
+	Don't be so hard on her, computer programming sounds pretty interesting.
 	<<change_character DialogueManager Mum>>
-	Girls aren't good at technical things.
+	I'm just saying she should try something like cooking. It'll help her find a husband!
 	<<change_character DialogueManager Jessica>>
 	But I don't like cooking...
 	<<change_character DialogueManager Dad>>
