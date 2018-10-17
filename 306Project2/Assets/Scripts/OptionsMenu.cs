@@ -18,6 +18,7 @@ public class OptionsMenu : MonoBehaviour {
     public GameObject optionsMenu;
     public static bool isPaused = false;
 
+
     void Start ()
     {
         screenResolutions = Screen.resolutions;
@@ -113,9 +114,14 @@ public class OptionsMenu : MonoBehaviour {
         isPaused = false;
     }
 
+    private AchievementManager achievementManager;
     public void Quit()
     {
         Resume();
+        if (GameObject.FindGameObjectWithTag("AchievementManager") != null) {
+            achievementManager = GameObject.FindObjectOfType<AchievementManager>();
+        }
+        // TransferAchievements();
         SceneManager.LoadScene("WelcomeScene");
     }
 
@@ -126,6 +132,27 @@ public class OptionsMenu : MonoBehaviour {
         Time.timeScale = 0f;
         isPaused = true;
     }
+
+    // public void TransferAchievements()
+    // {
+    //     Debug.Log("Transferring achievements");
+
+    //     // Transfer the AchievementManager
+    //     achievementManager.SetStartup(true);
+    //     GameObject achievementManagerTransfer = GameObject.FindGameObjectWithTag("AchievementManager");
+    //     DontDestroyOnLoad(achievementManagerTransfer);
+
+    //     // Make the AchievementMenu active so you can set it to the top of the hierarchy, then transfer it.
+    //     achievementManager.achievementMenu.SetActive(true);
+    //     GameObject achievementMenuTransfer = GameObject.FindGameObjectWithTag("AchievementMenu");
+    //     achievementMenuTransfer.transform.SetParent(null);
+    //     DontDestroyOnLoad(achievementMenuTransfer);
+
+    //     // // Transfer the EarnAchievementCanvas
+    //     // GameObject earnAchievementCanvasTransfer = GameObject.FindGameObjectWithTag("EarnAchievementCanvas");
+    //     // DontDestroyOnLoad(earnAchievementCanvasTransfer);
+        
+    // }
 
 
 }
