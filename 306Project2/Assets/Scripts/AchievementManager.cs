@@ -48,17 +48,12 @@ public class AchievementManager : MonoBehaviour {
 		CreateAchievement("GeneralAchievement", "Conversation Starter","Talk to 5 NPCs.", 0); // Incomplete
 		CreateAchievement("GeneralAchievement", "Maxed Out", "Fill up the confidence bar.", 0);
 		CreateAchievement("GeneralAchievement", "Back to the Past", "Finish the tutorial", 0);
+		CreateAchievement("GeneralAchievement", "Teacher's Pet", "Finish Level 1", 0);
+		CreateAchievement("GeneralAchievement", "School Ace", "Finish Level 1 without losing any lives.", 0);
 
 		// Test Achivevements
 		CreateAchievement("GeneralAchievement", "Paying respects","Press F to unlock", 0);
-		// CreateAchievement("GeneralAchievement", "Press W","Press W to unlock", 0);
-		// CreateAchievement("GeneralAchievement", "Press A","Press A to unlock", 0);
-		// CreateAchievement("GeneralAchievement", "Press S","Press S to unlock", 0);
-		// CreateAchievement("GeneralAchievement", "Press D","Press D to unlock", 0);
 		// CreateAchievement("GeneralAchievement", "Glow","Walk past an item to unlock", 0);
-
-
-		
 	}
 	
 	bool startUp = true;
@@ -102,37 +97,6 @@ public class AchievementManager : MonoBehaviour {
 				Time.timeScale = 1f;
 			}
 		}
-		
-		// // Test achievement
-		// if (Input.GetKeyDown(KeyCode.W))
-		// {
-		// 	EarnAchievement("Press W");
-		// }
-
-		// // Test achievement
-		// if (Input.GetKeyDown(KeyCode.A))
-		// {
-		// 	EarnAchievement("Press A");
-		// }
-
-		// // Test achievement
-		// if (Input.GetKeyDown(KeyCode.S))
-		// {
-		// 	EarnAchievement("Press S");
-		// }
-
-		// // Test achievement
-		// if (Input.GetKeyDown(KeyCode.D))
-		// {
-		// 	EarnAchievement("Press D");
-		// }
-
-		// // Test achievement
-		// if (Input.GetKeyDown(KeyCode.F))
-		// {
-		// 	EarnAchievement("Paying respects");
-		// }
-
 
 	}
 
@@ -198,13 +162,6 @@ public class AchievementManager : MonoBehaviour {
     }
 
 
-	
-	// 	//complete level one
-	// public bool MEET_MENTOR = false;
-
-	// //complete level one having not failed any minigames
-	// public bool COMPLETE_LEVEL_ONE_MAX_LIVES = false;
-
 	// //meet mentor with maximum confidence
 	// public bool COMPLETE_LEVEL_ONE_MAX_CONFIDENCE = false;
 
@@ -216,9 +173,6 @@ public class AchievementManager : MonoBehaviour {
 
 	// //talk to a npc
 	// public bool TALKED_TO_FIRST_NPC = false;
-
-	// //clear the arrow minigame ONCE
-	// public bool KEYBOARD_WARRIOR = false;
 
 	// //clear the arrow minigame with less than 1 second to spare
 	// public bool JUST_IN_TIME = false;
