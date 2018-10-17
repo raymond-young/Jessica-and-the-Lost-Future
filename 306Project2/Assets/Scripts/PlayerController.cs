@@ -82,8 +82,12 @@ public class PlayerController : MonoBehaviour {
             saveManager = GameObject.FindGameObjectWithTag("SaveManager").GetComponent<SaveManager>();
         }
 
-        playerName = GameObject.FindGameObjectWithTag("PlayerNameObjectTransfer").GetComponent<PlayerNameObjectTransfer>().GetPlayerName();
-   
+        if(GameObject.FindGameObjectWithTag("PlayerNameObjectTransfer") == null){
+            playerName = "TestName";
+        }else{
+            playerName = GameObject.FindGameObjectWithTag("PlayerNameObjectTransfer").GetComponent<PlayerNameObjectTransfer>().GetPlayerName();
+        }
+
         //Gets level dependent on scene
         if (SceneManager.GetActiveScene().name.Equals("Level-1")) {
             currentLevel = 1;
