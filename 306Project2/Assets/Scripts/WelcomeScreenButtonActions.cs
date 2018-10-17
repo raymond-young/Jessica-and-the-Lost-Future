@@ -84,13 +84,12 @@ public class WelcomeScreenButtonActions : MonoBehaviour {
         else
         {
             errorObject.GetComponent<Text>().text = "Please enter a valid username";
-            //TODO error, enter not null name here screen
         }
     }
     
     private IEnumerator LockRoutine()
     {
-        yield return new WaitForFixedUpdate();
+        yield return new WaitForSeconds(0.01f);
         lockEnter = false;
     }
 
