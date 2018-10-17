@@ -1,0 +1,119 @@
+title: Laptop
+---
+<<if $Allocating>>
+	<<if $NumberOfPeople >= 3>>
+		Allocate people?
+		[[Yes|Laptop.Yes]]
+		[[No|Laptop.No]]
+	<<else>>
+		I think I should talk to more people before allocating.
+	<<endif>>
+<<else>>
+	<<change_character DialogueManager Jessica>>
+	I shouldn't be touching that.
+<<endif>>
+===
+
+title: Laptop.Yes
+---
+Allocate Cathy to
+-> Xunil Project
+	<<set $points=-20>>
+	<<set $XunilAllocated to true>>
+-> hsotnicam Project
+	<<set $points=0>>
+	<<set $hsotnicamAllocated to true>>
+-> Swindows Project
+	<<set $points=20>>
+	<<set $SwindowsAllocated to true>>
+[[Laptop.OwenAllocation]]
+===
+
+title: Laptop.No
+---
+I'll do it later.
+===
+
+title: Laptop.OwenAllocation
+---
+Allocate Owen to
+-> Xunil Project
+	<<set $XunilAllocated to true>>
+	<<set $OwenXunil to true>>
+	<<set $points = $points + 20>>
+-> hsotnicam Project
+	<<set $hsotnicamAllocated to true>>
+	<<set $OwenInhsotnicam to true>>
+-> Swindows Project
+	<<set $SwindowsAllocated to true>>
+	<<set $OwenInSwindows to true>>
+[[Laptop.JamesAllocation]]
+===
+
+title: Laptop.JamesAllocation
+---
+Allocate James to
+-> Xunil Project
+	<<set $XunilAllocated to true>>
+	<<set $JamesXunil to true>>
+	<<if $OwenXunil is true>>
+		<<set $points = $points + 20>>
+	<<endif>>
+-> hsotnicam Project
+	<<set $hsotnicamAllocated to true>>
+	<<set $Jameshsotnicam to true>>
+	<<if $OwenInhsotnicam is true>>
+		<<set $points = $points + 20>>
+	<<endif>>
+-> Swindows Project
+	<<set $SwindowsAllocated to true>>
+	<<set $JamesSwindows to true>>
+	<<if $OwenInSwindows is true>>
+		<<set $points = $points + 20>>
+	<<endif>>
+[[Laptop.JuneAllocation]]
+===
+
+title: Laptop.JuneAllocation
+---
+Allocate June to
+-> Xunil Project
+	<<if $XunilAllocated is true>>
+		<<set $points = $points - 20>>
+	<<else>>
+		<<set $XunilAllocated to true>>
+		<<set $points = $points + 20>>
+	<<endif>>
+	<<if $JamesXunil is true>>
+		<<set $points = $points - 20>>
+	<<endif>>
+-> hsotnicam Project
+	<<if $hsotnicamAllocated is true>>
+		<<set $points = $points - 20>>
+	<<else>>
+		<<set $hsotnicamAllocated to true>>
+		<<set $points = $points + 20>>
+	<<endif>>
+	<<if $Jameshsotnicam is true>>
+		<<set $points = $points - 20>>
+	<<endif>>
+-> Swindows Project
+	<<if $SwindowsAllocated is true>>
+		<<set $points = $points - 20>>
+	<<else>>
+		<<set $SwindowsAllocated to true>>
+		<<set $points = $points + 20>>
+		<<if $OwenInSwindows is true>>
+			<<set $points = $points - 20>>
+		<<endif>>
+	<<endif>>
+[[Laptop.Exit]]
+===
+
+title: Laptop.Exit
+---
+<<set $completeAllocation to true>>
+<<set $Allocating to false>>
+<<change_confidence Player 30>>
+Done, now to talk to Sam
+===

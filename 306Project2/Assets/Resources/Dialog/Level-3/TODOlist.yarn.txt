@@ -9,7 +9,10 @@ Print out meeting minutes and give to Sam(Manager)
 	DONE
 <<endif>>
 Make coffee
-Document contract
+<<if $SamHasCoffee is true>>
+	<<change_character DialogueManager Jessica>>
+	DONE
+<<endif>>
 <<change_character DialogueManager Jessica>>
 haha work ...
 ===

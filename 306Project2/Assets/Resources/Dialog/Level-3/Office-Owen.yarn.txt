@@ -1,5 +1,19 @@
 title: Owen
 ---
 <<change_character DialogueManager Owen>>
-Morning
+<<if $Allocating is true>>
+	<<if $talkedToOwen is false>>
+		<<set $NumberOfPeople = $NumberOfPeople + 1>>
+		<<set $talkedToOwen to true>>
+		<<change_confidence Player 10>>
+		<<change_character DialogueManager Jessica>>
+		Hey Owen, I'm allocating the teams for the projects. Do you have a preference?
+		<<change_character DialogueManager Owen>>
+		I want to work on Xunil project. It seems to be the most interesting one, also if June is working on that one as well, would be even better.
+	<<else>>
+		we talked already. Xunil please.
+	<<endif>>
+<<else>>
+	Morning
+<<endif>>
 ===

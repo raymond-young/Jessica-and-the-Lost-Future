@@ -1,6 +1,0 @@
-title: Sophia
----
-<<change_character DialogueManager Sophia>>
-You should get back to work, theres a lot of things to do 
-<<repel Player>>
-===

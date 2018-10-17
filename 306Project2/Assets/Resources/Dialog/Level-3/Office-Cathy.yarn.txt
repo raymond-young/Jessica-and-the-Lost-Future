@@ -3,15 +3,14 @@ title: Cathy
 <<change_character DialogueManager Cathy>>
 <<if $Allocating is true>>
 	<<if $talkedToCathy is false>>
+		<<set $NumberOfPeople = $NumberOfPeople + 1>>
 		<<set $holo to true>>
 		<<set $talkedToCathy to true>>
 		<<change_character DialogueManager Jessica>>
-		Hey Cathy, I'm allocating the teams for the projects.
-		Do you have a preference?
+		<<change_confidence Player 30>>
+		Hey Cathy, I'm allocating the teams for the projects. Do you have a preference?
 		<<change_character DialogueManager Cathy>>
-		I don't want to do the X project. 
-		Can you put me on a team with Sophia.
-		I really want to work with her.
+		I don't want to do the Xunil project. Can you put me on a team with Sophia. I really want to work with her.
 		She's working on a holographic display system, if I work with her now then I might be able to work with her in the future.
 	<<else>>
 		we talked already. Make sure I'm on Sophia's team

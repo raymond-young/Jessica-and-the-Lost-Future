@@ -87,4 +87,13 @@ public class GoodNPC : Movement {
         
     }
 
+    [YarnCommand("moveSophia")]
+    public void MoveSophia(string destination)
+    {
+        Debug.Log("move sophia called");
+        Vector3 move = new Vector3(gameObject.transform.localPosition.x, -0f, 0);
+        gameObject.transform.localPosition = move;
+
+    }
+
 }
