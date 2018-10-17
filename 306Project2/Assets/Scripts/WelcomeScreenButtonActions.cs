@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 public class WelcomeScreenButtonActions : MonoBehaviour {
 
@@ -29,6 +32,15 @@ public class WelcomeScreenButtonActions : MonoBehaviour {
 
     public void PlayButtonClicked()
     {
+        playerName = 
+        if (File.Exists(Application.persistentDataPath + "/" + playerName + ".dat")){
+                //ToDo give some feedback that the name is taken
+            }else{
+                BinaryFormatter bf = new BinaryFormatter();
+                FileStream file = File.Create(Application.persistentDataPath + "/" + playerName + ".dat");
+                bf.Serialize(file, new SaveData(0, 0, playerName));
+                file.Close();
+            }
         SceneManager.LoadScene(level);
     }
 
