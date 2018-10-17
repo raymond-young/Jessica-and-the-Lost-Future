@@ -81,6 +81,7 @@ namespace Yarn.Unity.Example {
         public RectTransform gameControlsContainer;
 
         public void Start() {
+
         	// Load all resources.
         	spriteMap = new Dictionary<string, Sprite>();
         	spriteMap["Jessica"] = Resources.Load<Sprite>("Sprites/jessica");
@@ -200,21 +201,6 @@ namespace Yarn.Unity.Example {
                 yield return null;
             }
 
-        }
-
-        [YarnCommand("checkLevel")]
-        public void checkLevel() {
-
-            string playerName = player.GetComponent<PlayerController>().GetPlayerName();
-
-            //Ensure that the level variables are up to date as per the config file.
-                BinaryFormatter bf = new BinaryFormatter();
-                FileStream file = File.Open(Application.persistentDataPath + "/" + playerName + ".dat", FileMode.Open);
-                SaveData data = (SaveData) bf.Deserialize(file);
-                file.Close();
-                foreach(KeyValuePair<string, bool> entry in data.levels){
-                    variableStorage.SetValue("$" + entry.Key, entry.Value ? variableStorage.GetValue("$true_variable") : variableStorage.GetValue("$false_variable"));
-                }
         }
 
         [YarnCommand("change_character")]
