@@ -277,12 +277,7 @@ public class PlayerController : MonoBehaviour {
         // If the game is over.
         if (gameOver) {
             ChangeLevel("EndOfLevelScene");
-            // // Transfer the score and achievements
-            // TransferScore();
-            // TransferAchievements();
 
-            // // Display the end-game scene.
-            // SceneManager.LoadScene("EndOfLevelScene");
         }
     }
 
