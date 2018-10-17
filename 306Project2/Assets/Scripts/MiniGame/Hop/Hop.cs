@@ -52,7 +52,7 @@ public class Hop : MonoBehaviour
         x = stairPrefab.GetComponent<RectTransform>().rect.width;
         y = 0;
         speed = stairPrefab.GetComponent<RectTransform>().rect.height / 10;
-        speedThreshold = 3 * speed;
+        speedThreshold = 2.75f * speed;
 
         //Add colors
         rainbow.Add(new Color(0, 136f/255f, 1));

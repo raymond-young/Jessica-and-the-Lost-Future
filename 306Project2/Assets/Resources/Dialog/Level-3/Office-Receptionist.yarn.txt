@@ -27,5 +27,6 @@ title: Office-Receptionist
 	If I don't talk to Sophia, I can't start working on projects with her.
 	But I'm not in Sophia's team right now. She might not want to talk to me.
 	I need to get my work done and then talk to Sophia.
+	I should probably go and check my TODo l ist for today
 <<endif>>
 ===
