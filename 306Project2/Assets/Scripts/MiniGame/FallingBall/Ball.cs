@@ -6,7 +6,7 @@ public class Ball : MonoBehaviour {
     
 	// Use this for initialization
 	void Start () {
-        float f = Random.Range(9000, 10000);
+        float f = Random.Range(5000, 10000);
         gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.down * f);
 	}
 	
@@ -15,6 +15,7 @@ public class Ball : MonoBehaviour {
 		if (gameObject.GetComponent<RectTransform>().position.y < 0)
         {
             Destroy(gameObject);
+            FindObjectOfType<FallingBall>().MissBall();
         }
 
     }

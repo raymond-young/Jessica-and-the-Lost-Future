@@ -209,6 +209,28 @@ public class MiniGameGenerator : MonoBehaviour {
         currentTime += Time.deltaTime;
     }
 
+    private void InitDifficulty(int chapther)
+    {
+        switch (chapther)
+        {
+            case 3:
+                noOfArrows = 10;
+                timeLimit = 10f;
+                timePenalty = timeLimit / noOfArrows;
+                break;
+            case 2:
+                noOfArrows = 8;
+                timeLimit = 10f;
+                timePenalty = timeLimit / noOfArrows;
+                break;
+            case 1:
+            default:
+                noOfArrows = 6;
+                timeLimit = 10f;
+                timePenalty = timeLimit / noOfArrows;
+                break;
+        }
+    }
 
     private void Finish()
     {

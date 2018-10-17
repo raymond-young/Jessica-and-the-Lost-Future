@@ -16,39 +16,44 @@ public class Hop : MonoBehaviour
     public GameObject readyPrefab;
     public GameObject goPrefab;
 
-    private Queue<GameObject> stairQueue = new Queue<GameObject>();
-    private GameObject lastStair;
-    private GameObject stepOnStair;
-    private Queue<Arrow> stairRef = new Queue<Arrow>();
-
     private Slider bar;
     GameObject ready;
     GameObject go;
 
+    private List<GameObject> stairs = new List<GameObject>();
+    private List<Arrow> stairRef = new List<Arrow>();
+    
     private int numOfStairs;
+    private int pos;
 
     static System.Random random = new System.Random();
 
     private float timeLimit;
     private float currentTime;
+    private float timePenalty;
     private float readyTime = 0.9f;
     private float goTime = 0.5f;
     
     private bool gameStart;
 
-    private float timePenalty;
-    private float speedThreshold;
 
     private float x;
     private float y;
     private float speed;
+    private float speedThreshold;
 
     // Use this for initialization
     void Start () {
         //Initialise configurations
-        numOfStairs = 10;
+        numOfStairs = 25;
         timeLimit = 10f;
+        timePenalty = timeLimit * 0.5f / numOfStairs;
         
+        x = stairPrefab.GetComponent<RectTransform>().rect.width;
+        y = 0;
+        speed = stairPrefab.GetComponent<RectTransform>().rect.height / 10;
+        speedThreshold = 3 * speed;
+
         //Add colors
         rainbow.Add(new Color(0, 136f/255f, 1));
         rainbow.Add(new Color(1, 170f/255f, 0));
@@ -58,14 +63,9 @@ public class Hop : MonoBehaviour
         rainbow.Add(new Color(170f/255f, 221f/255f, 34f/255f));
         colorIndex = 0;
 
-        x = stairPrefab.GetComponent<RectTransform>().rect.width;
-        y = gameObject.GetComponentInParent<Canvas>().pixelRect.height / 2;
-        speed = stairPrefab.GetComponent<RectTransform>().rect.height / 10;
-        speedThreshold = 3 * speed;
-        lastStair = null;
-        
         //Initialise time bar
         RectTransform parentRectTransform = gameObject.GetComponent<RectTransform>();
+    
         bar = Instantiate(slider);
         RectTransform barRectTransform = bar.GetComponent<RectTransform>();
         barRectTransform.sizeDelta = new Vector2(gameObject.GetComponentInParent<Canvas>().pixelRect.width * 0.95f,
@@ -85,114 +85,103 @@ public class Hop : MonoBehaviour
         go.GetComponent<RectTransform>().SetParent(parentRectTransform);
         go.GetComponent<RectTransform>().localPosition = new Vector2(0, 0);
         go.SetActive(false);
-        
+
+        //Generate stairs
+        for (int i = 0; i < numOfStairs; i++)
+        {
+            GameObject stair = Instantiate(stairPrefab);
+            RectTransform stairRectTransform = stair.GetComponent<RectTransform>();
+            stairRectTransform.SetParent(parentRectTransform);
+            float thisY;
+
+            //Find the y position according to previous one's y position
+            if (i > 0)
+            {
+                GameObject lastStair = stairs[i - 1];
+                thisY = blobPrefab.GetComponent<RectTransform>().rect.height * 1.5f +
+                    lastStair.GetComponent<RectTransform>().rect.height +
+                    lastStair.GetComponent<RectTransform>().localPosition.y;
+
+            }
+            else
+            {
+                thisY = y;
+            }
+
+            //Randomly decide x position (on the left or on the right)
+            if (random.Next(0, 2) == 0)
+            {
+                stairRectTransform.localPosition = new Vector2(x, thisY);
+                stairRef.Add(Arrow.RightArrow);
+            }
+            else
+            {
+                stairRectTransform.localPosition = new Vector2(-x, thisY);
+                stairRef.Add(Arrow.LeftArrow);
+            }
+
+            //Assign color
+            if (colorIndex > rainbow.Count - 1)
+            {
+                colorIndex = 0;
+            }
+            stair.GetComponent<Image>().color = rainbow[colorIndex];
+            colorIndex++;
+
+            //Add to stair list
+            stairs.Add(stair);
+        }
+
+        //Get ready for the game
         currentTime = - readyTime - goTime;
         gameStart = false;
+        pos = 0;
     }
-
-
-    //One call of this function will generate one new stair and add it to the queue
-    void generateStair()
-    {
-        GameObject stair = Instantiate(stairPrefab);
-
-        RectTransform parentRectTransform = gameObject.GetComponent<RectTransform>();
-        RectTransform stairRectTransform = stair.GetComponent<RectTransform>();
-        stairRectTransform.SetParent(parentRectTransform);
-
-        //Decide the Y postion of the new stair according to the previous one's y position
-        float thisY;
-        if (lastStair != null)
-        {
-            thisY = blobPrefab.GetComponent<RectTransform>().rect.height * 1.5f +
-                lastStair.GetComponent<RectTransform>().rect.height +
-                lastStair.GetComponent<RectTransform>().localPosition.y;
-        } 
-        else
-        {
-            thisY = y;
-        }
-
-        //Randomly decide the next stair (on the left or on the right)
-        if (random.Next(0, 2) == 0)
-        {
-            stairRectTransform.localPosition = new Vector2(x, thisY);
-            stairRef.Enqueue(Arrow.RightArrow);
-        }
-        else
-        {
-            stairRectTransform.localPosition = new Vector2(-x, thisY);
-            stairRef.Enqueue(Arrow.LeftArrow);
-        }
-
-        //Assign color
-        if (colorIndex > rainbow.Count - 1)
-        {
-            colorIndex = 0;
-        }
-        stair.GetComponent<Image>().color = rainbow[colorIndex];
-        colorIndex++;
-        Debug.Log(colorIndex);
-
-        stairQueue.Enqueue(stair);
-        lastStair = stair;
-        if (speed < speedThreshold) {
-            speed += 0.1f;
-        }
-    }
-
+    
 
     void OnGUI()
     {
-        //Listen to key press
-        if (currentTime > timeLimit)
-        {
-            Finish();
-        }
-        if (stairRef.Count < numOfStairs)
-        {
-            generateStair();
-        }
-
-        if (!inSafeZone())
-        {
-            Debug.Log("not in safe zone");
-            Fail();
-        }   
         
         //Listen to key press event
         Event e = Event.current;
         if (gameStart && e.type == EventType.KeyDown)
         {
             //If the right key was pressed, change color of the game object and move to the next one
-            if (e.keyCode.ToString().Equals(stairRef.Peek().ToString()) && e.keyCode != KeyCode.None)
+            if (e.keyCode.ToString().Equals(stairRef[pos].ToString()) && e.keyCode != KeyCode.None)
             {
-                GameObject s = stairQueue.Dequeue();
-                stairRef.Dequeue();
+                GameObject s = stairs[pos];
 
-                if (stepOnStair != null)
+                if (pos > 0)
                 {
-                    Destroy(stepOnStair);
+                    stairs[pos - 1].GetComponent<Image>().color = Color.gray;
                 }
-                stepOnStair = s;
                 float blobX = s.GetComponent<RectTransform>().localPosition.x;
                 float blobY = s.GetComponent<RectTransform>().localPosition.y 
                     + s.GetComponent<RectTransform>().rect.height / 2 
                     + blobPrefab.GetComponent<RectTransform>().rect.height / 2;
                 blobPrefab.GetComponent<RectTransform>().localPosition = new Vector2(blobX, blobY);
+                pos++;
+                
+                //Slowly increase speed
+                if (speed < speedThreshold)
+                {
+                    speed += 0.4f;
+                }
             }
+            //Press wrong key, add time penalty
             else
             {
-                Fail();
+                currentTime += timePenalty;
+                bar.value = Mathf.Lerp(0f, 1f, currentTime / timeLimit);
             }
         }
     }
 
-    bool inSafeZone()
+    bool InSafeZone()
     {
         float y = blobPrefab.GetComponent<RectTransform>().localPosition.y;
         return Mathf.Abs(y) < gameObject.GetComponentInParent<Canvas>().pixelRect.height / 2
-            && y < stairQueue.Peek().GetComponent<RectTransform>().localPosition.y;
+            && y < stairs[0].GetComponent<RectTransform>().localPosition.y;
     }
 
     void Update () {
@@ -238,8 +227,19 @@ public class Hop : MonoBehaviour
         }
         else
         {
+            //Check whether finished/failed
+            if (pos == numOfStairs - 1)
+            {
+                Finish();
+            }
+            if (!InSafeZone() || currentTime > timeLimit)
+            {
+                Debug.Log("not in safe zone");
+                Fail();
+            }
+
             //Move all the stairs
-            foreach (GameObject stair in stairQueue)
+            foreach (GameObject stair in stairs)
             {
                 RectTransform stairRectTransform = stair.GetComponent<RectTransform>();
                 float newY = stairRectTransform.localPosition.y - speed;
@@ -248,14 +248,11 @@ public class Hop : MonoBehaviour
             }
 
             //Manually move blob and the stair it is on
-            if (stepOnStair != null)
+            if (pos > 0)
             {
                 float blobX = blobPrefab.GetComponent<RectTransform>().localPosition.x;
                 float blobY = blobPrefab.GetComponent<RectTransform>().localPosition.y - speed;
                 blobPrefab.GetComponent<RectTransform>().localPosition = new Vector2(blobX, blobY);
-                float stairX = stepOnStair.GetComponent<RectTransform>().localPosition.x;
-                float stairY = stepOnStair.GetComponent<RectTransform>().localPosition.y - speed;
-                stepOnStair.GetComponent<RectTransform>().localPosition = new Vector2(stairX, stairY);
             }
 
             //Update time bar
@@ -265,19 +262,14 @@ public class Hop : MonoBehaviour
         currentTime += Time.deltaTime;
     }
 
-
-
-
     private void Finish()
     {
-        Debug.Log("finished");
         //Notify the game manager that the player has successfully finished the game
         //GameObject.FindGameObjectWithTag("MiniGameManager").GetComponent<MiniGameManager>().FinishGame(true);
     }
 
     private void Fail()
     {
-        Debug.Log("failed");
         //Notify the game manager that the player has failed the game
         //GameObject.FindGameObjectWithTag("MiniGameManager").GetComponent<MiniGameManager>().FinishGame(false);
     }

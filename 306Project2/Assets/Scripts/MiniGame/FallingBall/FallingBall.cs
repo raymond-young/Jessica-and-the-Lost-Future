@@ -22,10 +22,12 @@ public class FallingBall : MonoBehaviour {
     GameObject go;
 
     // Variables controlling aspects of the game's difficulty.
-    public float timeLimit;
+    float timeLimit;
     int goal;
+    float generationGap;
+
     float currentTime;
-    float generateTime = 0f;
+    float generateTime;
     float readyTime = 0.9f;
     float goTime = 0.5f;
 
@@ -38,13 +40,13 @@ public class FallingBall : MonoBehaviour {
     float wall;
     bool gameStart;
 
-    
+    float timePenalty;
+
     // Use this for initialization
     void Start () {
-        goal = 15;
-        timeLimit = 10f;
-        count.text = goal.ToString();
-        
+        //InitDifficulty(2);
+        InitDifficulty(3);
+
         xRange = boundary.GetComponent<RectTransform>().rect.width / 2;
         y = gameObject.GetComponentInParent<Canvas>().pixelRect.height / 2;
 
@@ -72,7 +74,9 @@ public class FallingBall : MonoBehaviour {
         go.GetComponent<RectTransform>().localPosition = new Vector2(0, 0);
         go.SetActive(false);
 
+        //Get ready to start game
         currentTime = -readyTime - goTime;
+        generateTime = 0f;
         gameStart = false;
     }
     
@@ -130,21 +134,19 @@ public class FallingBall : MonoBehaviour {
             }
     
             //Generate new balls
-            if (generateTime > 0.6f)
+            if (generateTime > generationGap)
             {
-                for (int i = 0; i < Random.Range(1, 3); i++)
-                {
-                    // Create a new ball.
-                    GameObject ball = Instantiate(ballPrefab);
-                    // Set it to have a random appearance.
-                    int s = Random.Range(0, possibleSprites.Count);
-                    ball.GetComponent<Image>().sprite = possibleSprites[s];
+                // Create a new ball.
+                GameObject ball = Instantiate(ballPrefab);
+                // Set it to have a random appearance.
+                int s = Random.Range(0, possibleSprites.Count);
+                ball.GetComponent<Image>().sprite = possibleSprites[s];
 
-                    // Get the ball's parent and position.
-                    ball.GetComponent<RectTransform>().SetParent(gameObject.GetComponent<RectTransform>());
-                    // Set it to a random position.
-                    ball.GetComponent<RectTransform>().localPosition = new Vector2(Random.Range(0, xRange) * Random.Range(-1f, 1f), y);
-                }
+                // Get the ball's parent and position.
+                ball.GetComponent<RectTransform>().SetParent(gameObject.GetComponent<RectTransform>());
+                // Set it to a random position.
+                ball.GetComponent<RectTransform>().localPosition = new Vector2(Random.Range(0, xRange) * Random.Range(-1f, 1f), y);
+                    
                 generateTime = 0;
             }
             //Update time bar
@@ -161,23 +163,45 @@ public class FallingBall : MonoBehaviour {
         count.text = goal.ToString();
     }
 
+    public void MissBall()
+    {
+        currentTime += timePenalty;
+        bar.value = Mathf.Lerp(0f, 1f, currentTime / timeLimit);
+    }
+
+    private void InitDifficulty(int chapther)
+    {
+        switch (chapther)
+        {
+            case 3:
+                goal = 12;
+                timeLimit = 10f;
+                generationGap = 0.5f;
+                timePenalty = timeLimit / goal;
+                count.text = goal.ToString();
+                break;
+            case 2:
+            default:
+                goal = 6;
+                timeLimit = 10f;
+                generationGap = 0.9f;
+                timePenalty = timeLimit / goal;
+                count.text = goal.ToString();
+                break;
+        }
+    }
 
     private void Finish()
     {
         //Notify the game manager that the player has successfully finished the game
         //GameObject.FindGameObjectWithTag("MiniGameManager").GetComponent<MiniGameManager>().FinishGame(true);
-        Debug.Log("finished");
     }
 
     private void Fail()
     {
         //Notify the game manager that the player has failed the game
         //GameObject.FindGameObjectWithTag("MiniGameManager").GetComponent<MiniGameManager>().FinishGame(false);
-        Debug.Log("failed");
     }
-
-
-    //  Helper methods  //
 
     // Returns the boundary the backet can move to
     public float GetWall()
