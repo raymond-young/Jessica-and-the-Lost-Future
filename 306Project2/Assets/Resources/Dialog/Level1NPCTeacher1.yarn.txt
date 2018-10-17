@@ -1,14 +1,16 @@
 title: MrsBeryl
 ---
+<<change_character DialogueManager Mrs. Beryl>>
 <<if $talkedToMrsBeryl is false>>
 	<<set $talkedToMrsBeryl to true>>
-	Mrs Beryl: Hi Jessica, remember you've got to pick an elective today!
+	Hi Jessica, remember you've got to pick an elective today!
 	Don't forget to go to the library and do some research.
 	You need to read at least three books before you choose!
 <<else>>
 	<<if $hasDecided is false>>
 		<<if $readBook1 is true and $readBook2 is true and $readBook4 is true>>
 			Mrs Beryl: Have you decided yet?
+			<<change_character DialogueManager Jessica>>
 			[[Yes|MrsBeryl.Yes]]
 			[[No|MrsBeryl.No]]
 		<<else>>
@@ -22,7 +24,9 @@ title: MrsBeryl
 
 title: MrsBeryl.Yes
 ---
+<<change_character DialogueManager Mrs. Beryl>>
 Mrs Beryl: Great! What did you choose?
+<<change_character DialogueManager Jessica>>
 [[Electronics Technology|MrsBeryl.GoodChoice]]
 [[Programming|MrsBeryl.GoodChoice]]
 [[Cooking|MrsBeryl.BadChoice]]
@@ -30,16 +34,19 @@ Mrs Beryl: Great! What did you choose?
 
 title: MrsBeryl.No
 ---
+<<change_character DialogueManager Mrs. Beryl>>
 Mrs. Beryl: Come back when you've decided!
 ===
 
 title: MrsBeryl.BadChoice
 ---
+<<change_character DialogueManager Jessica>>
 Something tells you you shouldn't pick that...
 ===
 
 title: MrsBeryl.GoodChoice
 ---
+<<change_character DialogueManager Mrs. Beryl>>
 Mrs. Beryl: That’s wonderful Jessica, don’t forget to pop in to the workshop for your next class!
 <<set $hasDecided to true>>
 ===

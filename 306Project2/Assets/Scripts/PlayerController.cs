@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Yarn.Unity;
+using Yarn.Unity.Example;
 using System;
 
 /**
@@ -26,6 +27,9 @@ public class PlayerController : MonoBehaviour {
     private List<GameObject> power = new List<GameObject>();
     // Stores the score between scenes.
     public GameObject scoreTransfer;
+
+    // Shows popups.
+    public PopupManager popupManager;
 
     // Variables for camera movement.
     private bool isTransitioning = false;
@@ -153,6 +157,7 @@ public class PlayerController : MonoBehaviour {
     public void ChangeConfidence(double damagePercent) {
         confidenceBar.value = confidenceBar.value + (float)(damagePercent / 100.0);
         UpdateScoreText();
+
     }
 
     // This is used by yarn to change confidence after dialogue interactions.
@@ -160,6 +165,12 @@ public class PlayerController : MonoBehaviour {
     public void YarnChangeConfidence(string percent) {
         double doublePercent = Double.Parse(percent);
         ChangeConfidence(doublePercent);
+
+        if (doublePercent > 0) {
+             StartCoroutine(popupManager.changeConfidence(percent));
+         } else {
+            StartCoroutine(popupManager.showWarning("-" + percent + ". Try to confront ignorant people or support others to increase your confidence next time!"));
+         }
     }
 
     // Decreases the player's lives.

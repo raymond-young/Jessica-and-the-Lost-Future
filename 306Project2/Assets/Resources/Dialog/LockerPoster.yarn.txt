@@ -1,5 +1,6 @@
 title: LockerPoster
 ---
+<<change_character DialogueManager Poster>>
 This is a poster that reads:
 Become an engineer now!
 We care about what's in your head, not who you are.

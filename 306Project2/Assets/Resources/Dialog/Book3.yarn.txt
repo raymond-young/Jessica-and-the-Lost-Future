@@ -1,5 +1,6 @@
 title: Book3
 ---
+<<change_character DialogueManager Book>>
 Title: Home Cooking
 To Make your own Pizza Dough:
 2 1/2 cups strong flour (high grade)

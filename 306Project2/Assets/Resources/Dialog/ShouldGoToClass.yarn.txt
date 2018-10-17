@@ -1,6 +1,7 @@
 title: ShouldGoToClass
 ---
 <<if $talkedToMrsBeryl is false>>
+	<<change_character DialogueManager Jessica>>
 	Class is starting soon! Don't be late!
 	<<repel Player>>
 <<endif>>

@@ -2,13 +2,18 @@ title: Coach
 ---
 <<if $talkedToBarry is false>>
 	<<set $talkedToBarry to true>>
+	<<change_character DialogueManager Barry>>
 	Barry: What do you need the key for?
+	<<change_character DialogueManager Jessica>>
 	-> No reason.
+		<<change_character DialogueManager Barry>>
 		Barry: If you say so.
 	-> I want to go into the workshop.
+		<<change_character DialogueManager Barry>>
 		Barry: That's great, we need more young women like you in engineering.
 		<<change_confidence Player 5>>
 <<else>>
+	<<change_character DialogueManager Jessica>>
 	We've talked already.
 <<endif>>
 ===

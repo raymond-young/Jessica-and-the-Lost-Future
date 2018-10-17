@@ -1,10 +1,12 @@
 title: ComputerBlock
 ---
 <<if $talkedToMrsBeryl is false>>
+	<<change_character DialogueManager Jessica>>
 	Class is starting soon! Don't be late!
 	<<repel Player>>
 <<else>>
 	<<if $hasDecided is false>>
+		<<change_character DialogueManager Jessica>>
 		Don't you need to choose your elective?
 		<<repel Player>>
 	<<endif>>

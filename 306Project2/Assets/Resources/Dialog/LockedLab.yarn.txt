@@ -1,11 +1,13 @@
 title: LockedLab
 ---
 <<if $hasKey is false>>
+	<<change_character DialogueManager Jessica>>
 	You need a key to get through... maybe it was dropped outside?
 	<<repel Player>>
 <<endif>>
 <<if $hasKey is true>>
 	<<if $openedDoor is false>>
+		<<change_character DialogueManager Jessica>>
 		You use the key to unlock the door.
 		<<set $openedDoor to true>>
 	<<endif>>
