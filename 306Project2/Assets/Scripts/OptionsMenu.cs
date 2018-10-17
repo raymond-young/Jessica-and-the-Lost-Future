@@ -107,6 +107,7 @@ public class OptionsMenu : MonoBehaviour {
 
     public void Resume()
     {
+        mixer.SetFloat("master", 0);
         optionsMenu.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
@@ -120,6 +121,7 @@ public class OptionsMenu : MonoBehaviour {
 
     private void Pause()
     {
+        mixer.SetFloat("master", -20);
         optionsMenu.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
