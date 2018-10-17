@@ -47,10 +47,12 @@ title: Jerry
        Ahhh.. Such a shame, we just need a bit more time to figure out how to link those two components!
        <<change_character DialogueManager Jessica>>
        [Inner throught]: I wish I asked earlier. I know how to do that..
+       <<change_character DialogueManager Tom>>
+       Im frustrated we couldnt get it maybe Alice has some advice for us.
        <<set $completedCivilActivity to true>> 
 <<elseif $talkedToJerry is true>> 
     <<change_character DialogueManager Jerry>>
-    It was nice meeting you. 
+    It was nice meeting you. Have you been to Amy and asked about the other departments? I hear there is an important WEN meeting later today.
 <<else>> 
     <<change_character DialogueManager Jerry>>
     Hi! We are kind of busy right now. let's talk later. 
