@@ -16,7 +16,7 @@ title: Office-Receptionist
 		Ok thanks.
 	<<else>>
 		<<change_character DialogueManager Secretary Beryl>>
-		You should get back to work, theres a lot of things to do 
+		You should get back to work, theres a lot of things to do. If you're looking to allocate people my laptops just on the desk.
 	<<endif>>
 <<else>>
 	<<change_character DialogueManager Secretary Beryl>>
