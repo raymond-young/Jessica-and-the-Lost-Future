@@ -68,8 +68,11 @@ public class AchievementManager : MonoBehaviour {
 		}
 		if (startUp) {
 			Debug.Log ("achievementMenu is false");
-			achievementMenu = GameObject.FindGameObjectWithTag("AchievementMenu");
-			achievementMenu.transform.SetParent(GameObject.Find("Canvas").transform);
+            if (achievementMenu == null) {
+                achievementMenu = GameObject.FindGameObjectWithTag("AchievementMenu");
+                achievementMenu.transform.SetParent(GameObject.Find("Canvas").transform);                
+            }
+
 
 			Debug.Log("Adding achivements to menu after new level");
 			// Put the achievements in the menu object
