@@ -772,8 +772,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -422}
-  m_SizeDelta: {x: 959.72, y: 600}
+  m_AnchoredPosition: {x: 0, y: -500.31}
+  m_SizeDelta: {x: 1137.4, y: 711.34}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &400929094
 MonoBehaviour:
@@ -853,7 +853,7 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -1177,7 +1177,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00012207031, y: -237}
+  m_AnchoredPosition: {x: -0.000014603, y: -269}
   m_SizeDelta: {x: 170.1, y: 45.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &738195548
@@ -2073,8 +2073,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 600, y: 350}
+  m_AnchoredPosition: {x: -0.000015259, y: 0}
+  m_SizeDelta: {x: 730.3, y: 426}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1270566709
 MonoBehaviour:
@@ -2394,7 +2394,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9, y: 234}
+  m_AnchoredPosition: {x: 0.00000095367, y: 284}
   m_SizeDelta: {x: 959.7, y: 67.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1446917487
@@ -3700,8 +3700,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 829.9, y: -300}
-  m_SizeDelta: {x: 10, y: 336.8}
+  m_AnchoredPosition: {x: 994.7, y: -362.1}
+  m_SizeDelta: {x: 10, y: 413.15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2069441303
 MonoBehaviour:
