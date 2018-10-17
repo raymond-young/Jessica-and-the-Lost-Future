@@ -45,13 +45,14 @@ public class AchievementManager : MonoBehaviour {
 		CreateAchievement("GeneralAchievement", "Item Grabber","Pick up an item", 0);
 		CreateAchievement("GeneralAchievement", "First Timer","Play the minigame for the first time.", 0);
 		CreateAchievement("GeneralAchievement", "Keyboard Warrior","Play the minigame without losing a life.", 0);
-		CreateAchievement("GeneralAchievement", "Conversation Starter","Talk to 5 NPCs.", 0); // Incomplete
+		CreateAchievement("GeneralAchievement", "Conversation Starter","Talk to 5 NPCs.", 0); 
 		CreateAchievement("GeneralAchievement", "Maxed Out", "Fill up the confidence bar.", 0);
 
 		CreateAchievement("GeneralAchievement", "Back to the Past", "Finish the tutorial", 0);
 		CreateAchievement("GeneralAchievement", "Teacher's Pet", "Finish Level 1", 0);
 		CreateAchievement("GeneralAchievement", "School Ace", "Finish Level 1 without losing any lives.", 0);
 		CreateAchievement("GeneralAchievement", "Graduation Nation", "Finish Level 2", 0);
+		CreateAchievement("GeneralAchievement", "Completionist", "Finish the game!", 0);
 
 
 		// Test Achivevements

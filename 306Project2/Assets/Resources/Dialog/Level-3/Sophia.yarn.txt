@@ -27,5 +27,6 @@ You'll eventually get there don't let anything get to you, everything is a part 
 <<change_character DialogueManager Jessica>>
 thank you so much.
 <<change_confidence Player 20>>
+<<passLevel Player level3>>
 <<transition Player CongratulationsScene>>
 ===

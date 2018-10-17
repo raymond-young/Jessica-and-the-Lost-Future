@@ -1,6 +1,6 @@
 title: SoftwarePoster
 ---
-<<change_character DialogueManager Book>>
+<<change_character DialogueManager Poster>>
 Title: Grace Hopper: Influential Female Software Engineer 
 Her biggest contribution was creating the first computer language compiler, 
 a program that turns human-readable statements (code) into machine language that a computer can understand
