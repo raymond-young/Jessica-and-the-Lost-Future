@@ -2,8 +2,8 @@ title: Alice
 ---
 <<if $completedCivilActivity is true>>
     <<change_character DialogueManager Alice>>
-    Well done! You are so talented! We definitely need more girls like you in our department!
-    Let's all for ECE's display. Make sure you talk to volunteer Amy for more info about other departments we have. 
+    Well done! Hope you enjoyed our little activity! Hope to see you next year in Civil. 
+    Let's all for Civils display. Make sure you talk to volunteer Amy for more info about other departments we have. 
     <<set $finishCivil to true>>
 <<elseif $startCivilActivity is true>>
     <<change_character DialogueManager Alice>>

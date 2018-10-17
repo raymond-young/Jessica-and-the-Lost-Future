@@ -1,9 +1,22 @@
 title: Amy
 ---
-<<if $startECE is true && $finishECE is true>> 
+<<if $finishECE is true && $finishCivil is true && $finishMechanical is true>>
+    <<change_character DialogueManager Amy>>
+    Awesome! Let's all the departments that are on display today. But we also have a WEN event later.
+<<elseif $finishECE is true && $finishCivil is true>> 
+    <<set $talkedAboutECECivil to true>> 
+    Great! There is just the Mechanical department left. Their display is upstairs in the lecture room. 
+<<elseif $finishECE is true && $finishMechanical is true>> 
+    <<set $talkedAboutECEMechanical to true>> 
+    Great! There is just the Civil department left. Their display is in the study space down the hall. 
+<<elseif $finishCivil is true && $finishMechanical is true>> 
+    <<set $talkedAboutCivilMechanical to true>> 
+    Great! There is just the ECE department left. Their display is in the computer lab. 
+<<elseif $startECE is true && $finishECE is true && $talkedAboutECEEnding is false>> 
+   <<set $talkedAboutECEEnding to true>> 
    <<change_character DialogueManager Amy>>
    Cool! I can see that you have finished exploring the ECE display. 
-   We also have the Cicl and Mechanical department on display. Which one do you want to explore next?
+   We also have the Civil and Mechanical department on display. Which one do you want to explore next?
    -> Civil
       Cool! The Civil department is located at the study space.
       Come back after you finish and I will direct you to the Mechanical department.
@@ -12,9 +25,19 @@ title: Amy
       Cool! The Mechanical department is located upstairs.
       Come back after you finish and I will direct you to the Civil department.
       <<set $startMechanical to true>>  
-<<elseif $finishECE is true && $finishCivil is true && $finishMechanical is true>>
-    <<change_character DialogueManager Amy>>
-    Awesome! Let's all the departments that are on display today. But we also have a WEN event later. 
+<<elseif $startCivil is true && $finishCivil is true && $talkedAboutCivilEnding is false>> 
+   <<set $talkedAboutCivilEnding to true>>
+   <<change_character DialogueManager Amy>>
+   Cool! I can see that you have finished exploring the ECE display. 
+   We also have the Civil and Mechanical department on display. Which one do you want to explore next?
+   -> ECE
+      Cool! The Civil department is located at the computer lab.
+      Come back after you finish and I will direct you to the Mechanical department.
+      <<set $startECE to true>> 
+   -> Mechanical
+      Cool! The Mechanical department is located upstairs.
+      Come back after you finish and I will direct you to the ECE department.
+      <<set $startMechanical to true>>  
 <<elseif $startECE is true || $startCivil is true || $startMechanical is true>>
     <<change_character DialogueManager Amy>>
     Please finish the display first. 

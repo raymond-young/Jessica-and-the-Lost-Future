@@ -1,7 +1,7 @@
 title: Jerry
 ---
 <<if $startCivilActivity is true && $talkedToJerry is false>>
-    <<set $talkedToJerry is true>>
+    <<set $talkedToJerry to true>>
     <<change_character DialogueManager Jerry>>
     Hey! I am Jerry and this is Tom. 
     <<change_character DialogueManager Jessica>>
@@ -11,21 +11,48 @@ title: Jerry
     and there are some requirements that we have to meet: such as the bridge cannot use more than 70 pieces, 
     and cannot be taller than 40cm. 
     <<change_character DialogueManager Jerry>>
-    We have a fairly good idea of how to build the bridge already. Do you want to help us to draw our design and write
-    some documentations on this sheet of paper we have to fill in? 
+    We have a fairly good idea of how to build the bridge already. Do you want to help us to draw our design and 
+    write some documentations on this sheet of paper we have to fill in? 
     <<change_character DialogueManager Jessica>>
-    Okay..
+    Okay.. I try do that first. If you need any help, I will try help.
     <<change_character DialogueManager Tom>>
-    Oh. Are you sure you want to do programming then? You know, us boys are usually better at programming. 
-    You could probably check out the arts faculty. It’s right across the street. 
+    Cool! But pretty sure we will be fine. 
+    <<change_character DialogueManager Clock>>
+    20 minutes passes...
     <<change_character DialogueManager Jessica>>
-    -> This has nothing to do with gender.
-    -> Maybe I will reconsider my options a bit. 
-<<elseif $talkedToTom is true>> 
-    <<change_character DialogueManager Tom>>
-    We have already talked. 
+    [Inner thought]: Tom and Jerry look really stuck. I wonder if I should help, but they seemed rather confident before. 
+    -> Ask if they need help. 
+       Do you guys need any help? I have finished all the paper work. 
+       <<change_character DialogueManager Tom>>
+       That would be great. We are kind of stuck on how to link those two components here. 
+       <<change_character DialogueManager Jessica>>
+       I see. Can I try? I think I have played with these before. 
+       <<change_character DialogueManager Clock>>
+       5 minutes passes...
+       <<change_character DialogueManager Jessica>>
+       Yah! It's done! The bridge looks great!
+       <<change_character DialogueManager Jerry>>
+       Yah!! It looks so awesome! Sorry about our atitude before, 
+       we've just always thought that girls are generally not good at any engineering related things. 
+       Hope we could study civil together next year. 
+       <<change_character DialogueManager Jessica>>
+       That's okay. Great meeting you guys. :D
+       <<set $completedCivilActivity to true>> 
+    -> Too awkward to ask. Stay quiet and wait a bit longer.
+       <<change_character DialogueManager Clock>>
+       5 minutes passes...
+       <<change_character DialogueManager Alice>>
+       Sorry guys, I'll have to ask you guys to pack up, we have a few other groups waiting as well. 
+       <<change_character DialogueManager Tom>>
+       Ahhh.. Such a shame, we just need a bit more time to figure out how to link those two components!
+       <<change_character DialogueManager Jessica>>
+       [Inner throught]: I wish I asked earlier. I know how to do that..
+       <<set $completedCivilActivity to true>> 
+<<elseif $talkedToJerry is true>> 
+    <<change_character DialogueManager Jerry>>
+    It was nice meeting you. 
 <<else>> 
-    <<change_character DialogueManager Tom>>
-    Hi! Kind of busy right now. let's talk later. 
+    <<change_character DialogueManager Jerry>>
+    Hi! We are kind of busy right now. let's talk later. 
 <<endif>>
 ===
