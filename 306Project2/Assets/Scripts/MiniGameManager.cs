@@ -123,14 +123,15 @@ public class MiniGameManager : MonoBehaviour {
                 player.transform.Translate(direction * 5f);
             }
 
-                
-
+            // Show warning.
+            StartCoroutine(player.popupManager.showWarning("-1 Energy. Be more careful next time!"));
 
         }
-        else
-        { 
+        else { 
             //Successful minigame so destroy aura
             Destroy(currentNpc.transform.GetChild(0).gameObject);
+            // Show warning.
+            StartCoroutine(player.popupManager.showEnemyPassed());
         }
 
     }

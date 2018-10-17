@@ -106,8 +106,9 @@ namespace Yarn.Unity.Example {
         void Awake ()
         {
             // Start by hiding the container, line and option buttons
-            if (dialogueContainer != null)
+            if (dialogueContainer != null) {
                 dialogueContainer.SetActive(false);
+            }
 
             lineText.gameObject.SetActive (false);
 
