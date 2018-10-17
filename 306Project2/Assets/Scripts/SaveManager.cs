@@ -27,6 +27,8 @@ public class SaveManager : MonoBehaviour {
 
         file = File.OpenWrite(destination);
         SaveData data = new SaveData(startOfLevelScore, currentLevel, playerName);
+        data.SetLevel2(save.GetLevel2());
+        data.SetLevel3(save.GetLevel3());
 
         //Checks if current attempt score better than previous attempt, keep the best score, do this for all levels
         if (data.GetLevel1Score() > save.GetLevel1Score())
