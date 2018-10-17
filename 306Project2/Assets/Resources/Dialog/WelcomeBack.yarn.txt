@@ -1,7 +1,8 @@
 title: WelcomeBack
 ---
-Jessica: One past anomaly down...
-Jessica: I wonder how much they messed with my past.
-Jessica: I should see if another anomaly has appeared with the time machine!
+<<change_character DialogueManager Jessica>>
+One past anomaly down...
+I wonder how much they messed with my past.
+I should see if another anomaly has appeared with the time machine!
 <<hide EntryDialogue EntryDialogue>>
 ===
