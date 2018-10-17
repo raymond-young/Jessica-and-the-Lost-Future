@@ -6,7 +6,8 @@ title: Alex
         Well done for finding the last object! That was a tough one to find without any clue given. 
         Hope you enjoyed our little activity and is a bit more familiar with the Engineering building! 
         Excited to see you next year! 
-        Let's all for Mechanical display. Make sure you talk to Amy for more info about other departments we have. 
+        Let's all for Mechanical display. Make sure you talk to Amy for more info about other departments we have.
+        <<change_confidence Player 10>> 
         <<set $finishMechanical to true>>
     <<else>> 
         Find the white gear, there is no clue for this. 
@@ -15,6 +16,7 @@ title: Alex
     <<if $hasGreyGear is true>> 
         <<change_character DialogueManager Alex>>
         <<set $needGreyGear to false>> 
+        <<change_confidence Player 10>>
         Well done for finding the grey gear!
         One final object to find is a white gear, and there is no clue.
         <<set $needWhiteGear to true>>
@@ -26,6 +28,7 @@ title: Alex
     <<if $hasBlackGear is true>> 
         <<change_character DialogueManager Alex>>
         <<set $needBlackGear to false>> 
+        <<change_confidence Player 10>>
         Nice, you got the black gear! 
         The next item to find is a grey gear.
         Have fun! 

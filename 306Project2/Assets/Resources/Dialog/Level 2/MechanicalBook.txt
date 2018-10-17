@@ -1,0 +1,11 @@
+title: MechanicalBook
+---
+<<change_character DialogueManager Book>>
+Title: Mary Anderson: Inventor of the windshield wiper blade
+In November 1903 Anderson was granted her first patent 
+for an automatic car window cleaning device controlled from inside the car, called the windshield wiper.
+<<if $seenMBook is false>>
+	<<set $seenMBook to true>>
+    <<change_confidence Player 5>>
+<<endif>>
+===

@@ -1,7 +1,7 @@
 title: Amy
 ---
 <<if $finishECE is true && $finishCivil is true && $finishMechanical is true && $talkedDepartmentEnding is false>>
-    <<set $talkedDepartmentEnding is true>> 
+    <<set $talkedDepartmentEnding to true>> 
     <<change_character DialogueManager Amy>>
     Awesome! That's all the departments that are on display today. Which department are you most interested in?
     -> Civil 
@@ -49,7 +49,7 @@ title: Amy
       Cool! The Mechanical department is located upstairs.
       Come back after you finish and I will direct you to the ECE department.
       <<set $startMechanical to true>>  
- <<elseif $startMechanical is true && $finishMechanical is true && $talkedAboutMechanicalEnding is false>> 
+<<elseif $startMechanical is true && $finishMechanical is true && $talkedAboutMechanicalEnding is false>> 
    <<set $talkedAboutMechanicalEnding to true>>
    <<change_character DialogueManager Amy>>
    Cool! I see that you have finished exploring the Mechanical display. 

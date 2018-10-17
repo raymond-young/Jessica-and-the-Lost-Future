@@ -9,6 +9,7 @@ title: Rebecca
     <<change_character DialogueManager Rebecca>>
     Nice meeting you as well! Yeah, my friends and I were getting really nervous to see no other girls are here as well. 
     But I heard there is a women in engineering social event soon. I think it would be great for us to attend. 
+    <<change_confidence Player 20>>
     <<change_character DialogueManager Jessica>>
     <<if $talkedDepartmentEnding is false>>
         Oh! That sounds awesome! I will definitely go and have a look. 

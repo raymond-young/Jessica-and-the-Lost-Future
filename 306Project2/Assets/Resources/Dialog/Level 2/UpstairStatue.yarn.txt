@@ -1,0 +1,10 @@
+title: UpstairStatue
+---
+<<change_character DialogueManager Statue>>
+Title: Emily Warren: First woman field engineer in history
+After her husband's illness, Emily stepped into the role and took on each of the chief engineer's 
+responsibilities for the the Brooklyn Bridge priject. 
+<<if $seenStatue is false>>
+	<<set $seenStatue to true>>
+<<endif>>
+===

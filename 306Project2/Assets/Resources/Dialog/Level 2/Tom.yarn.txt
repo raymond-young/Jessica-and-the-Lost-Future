@@ -15,7 +15,9 @@ title: Tom
     You could probably check out the arts faculty. It’s right across the street. 
     <<change_character DialogueManager Jessica>>
     -> This has nothing to do with gender.
+       <<change_confidence Player 15>>
     -> Maybe I will reconsider my options a bit. 
+       <<change_confidence Player -5>>
 <<elseif $talkedToTom is true>> 
     <<change_character DialogueManager Tom>>
     We have already talked. 

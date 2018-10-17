@@ -17,6 +17,8 @@ title: Rose
     However, everyone has the right to choose to be what they want to be, not what they are assumed to be by other people. 
     For myself, studying Engineering has definitely been a great challenge in my life, but I've never regreted this decision.
     I wish that no matter what choice you make, it is what you truly believe in, and hope you all the best for the future!
+
+    <<change_confidence Player 30>>
     <<transition Player CongratulationsScene>>
 <<endif>>
 ===
