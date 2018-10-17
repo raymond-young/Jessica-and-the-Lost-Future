@@ -1,0 +1,8 @@
+title: GreyGear
+---
+<<if $hasGreyGear is false>>
+    <<set $hasGreyGear to true>>
+    <<change_character DialogueManager GreyGear>>
+    You picked up the grey gear!
+<<endif>>
+===

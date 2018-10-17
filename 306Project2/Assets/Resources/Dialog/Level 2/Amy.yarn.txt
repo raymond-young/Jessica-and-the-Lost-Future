@@ -6,12 +6,15 @@ title: Amy
 <<elseif $finishECE is true && $finishCivil is true>> 
     <<set $talkedAboutECECivil to true>> 
     Great! There is just the Mechanical department left. Their display is upstairs in the lecture room. 
+    <<set $startMechanical to true>> 
 <<elseif $finishECE is true && $finishMechanical is true>> 
     <<set $talkedAboutECEMechanical to true>> 
-    Great! There is just the Civil department left. Their display is in the study space down the hall. 
+    Great! There is just the Civil department left. Their display is in the study space down the hall.
+    <<set $startCivil to true>> 
 <<elseif $finishCivil is true && $finishMechanical is true>> 
     <<set $talkedAboutCivilMechanical to true>> 
     Great! There is just the ECE department left. Their display is in the computer lab. 
+    <<set $startECE to true>> 
 <<elseif $startECE is true && $finishECE is true && $talkedAboutECEEnding is false>> 
    <<set $talkedAboutECEEnding to true>> 
    <<change_character DialogueManager Amy>>

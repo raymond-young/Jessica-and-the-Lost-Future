@@ -110,7 +110,10 @@ namespace Yarn.Unity.Example {
             spriteMap["Alice"] = Resources.Load<Sprite>("Sprites/alice");
             spriteMap["Jerry"] = Resources.Load<Sprite>("Sprites/jerry");
             spriteMap["Clock"] = Resources.Load<Sprite>("Sprites/clock");
-
+            spriteMap["WhiteGear"] = Resources.Load<Sprite>("Sprites/whiteGear");
+            spriteMap["GreyGear"] = Resources.Load<Sprite>("Sprites/greyGear");
+            spriteMap["BlackGear"] = Resources.Load<Sprite>("Sprites/blackGear");
+            spriteMap["Alex"] = Resources.Load<Sprite>("Sprites/alex");
         }
 
         void Awake ()

@@ -1,0 +1,8 @@
+title: BlackGear
+---
+<<if $hasBlackGear is false>>
+	<<set $hasBlackGear to true>>
+	<<change_character DialogueManager BlackGear>>
+	You picked up the black gear!
+<<endif>>
+===
