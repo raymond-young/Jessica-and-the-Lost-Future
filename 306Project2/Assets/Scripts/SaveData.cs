@@ -43,6 +43,26 @@ public class SaveData {
         levels.Add("level3", false);
     }
 
+    public void SetLevel2(bool level)
+    {
+        levels["level2"] = level;
+    }
+
+    public void SetLevel3(bool level)
+    {
+        levels["level3"] = level;
+    }
+
+    public bool GetLevel2()
+    {
+        return levels["level2"];
+    }
+
+    public bool GetLevel3()
+    {
+        return levels["level3"];
+    }
+
     public float TotalScore()
     {
         return totalScore;
