@@ -15,24 +15,28 @@ public class Arrow : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Debug.Log(2);
 		TurnDefault();
 		state = State.Default;
-		errorTime = 0.5f;
+		errorTime = 0.3f;
 		timeCount = 0;
 	}
 	
 	void Update () {
 		// Gradually fade away the red colour if it's in the wrong state.
 		if (state == State.Wrong){
-			// Increase the time since it changed.
-			timeCount += Time.deltaTime;
 			if (timeCount > errorTime){
 				timeCount = 0;
 				state = State.Default;
 				gameObject.GetComponent<Image>().sprite = blueState;
 			}
+
+			float l = Mathf.Lerp(0f, 1f, timeCount/errorTime);
+            gameObject.GetComponent<Image>().color = new Color(158f * l/255f, 178f* l/255f, 230f* l/255f);
+
+            // Increase the time since it changed.
+			timeCount += Time.deltaTime;
 		} else {
+			gameObject.GetComponent<Image>().color = new Color(0.8f, 0.8f, 0.8f);
 			timeCount = 0;
 		}
 	}
