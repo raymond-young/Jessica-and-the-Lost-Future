@@ -71,10 +71,7 @@ public class ItemController : MonoBehaviour {
             //Loop through item slots to find one that is free
             foreach (GameObject item in items)
             {
-                if (item.GetComponent<Image>().sprite.name.Equals("Background"))
-                {
                     freeItemSlot = item;
-                }
             }
         }
 
