@@ -13,7 +13,6 @@ public class AuraController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         miniGameReset = GameObject.FindGameObjectWithTag("MiniGameManager").GetComponent<MiniGameManager>();
-        // (GameObject) achievementManager = GameObject.FindGameObjectWithTag("AchievementManager").GetComponent<MiniGameManager>();
         achievementManager = GameObject.FindObjectOfType<AchievementManager>();
 
     }

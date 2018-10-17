@@ -231,7 +231,7 @@ public class PlayerController : MonoBehaviour {
         if (gameOver) {
             // Transfer the score and achievements
             TransferScore();
-            transferAchievements();
+            TransferAchievements();
 
             // Display the end-game scene.
             SceneManager.LoadScene("EndOfLevelScene");
@@ -256,7 +256,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     // Transfers the achievements between scenes.
-    public void transferAchievements()
+    public void TransferAchievements()
     {
         Debug.Log("Transferring achievements");
 
@@ -426,7 +426,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         TransferScore();
-        transferAchievements();
+        TransferAchievements();
         SceneManager.LoadScene(destination);
     }
 

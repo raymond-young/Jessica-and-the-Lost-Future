@@ -56,7 +56,7 @@ public class Achievement
 
 			achievementRef.transform.GetChild(2).GetComponent<Image>().sprite = AchievementManager.Instance.sprites[1];
 
-
+			this.spriteIndex = 1; // Index 1 is the 'completed' sprite.
 			this.unlocked = true;
 			return true;
 		} 

@@ -25,6 +25,7 @@ public class MiniGameManager : MonoBehaviour {
 
         //Initialises reference to other NPC objects
         GameObject[] npcGameObject = GameObject.FindGameObjectsWithTag("BadNPC");
+        achievementManager = GameObject.FindObjectOfType<AchievementManager>();
 
         for (int i = 0; i < npcGameObject.Length; i++)
         {
