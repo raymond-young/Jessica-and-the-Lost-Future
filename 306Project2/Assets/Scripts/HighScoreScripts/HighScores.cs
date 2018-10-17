@@ -15,6 +15,8 @@ public class HighScores : MonoBehaviour {
 
     public GameObject playerListPrefab;
 
+    public GameObject noPlayersText;
+
     private Color levelColor = new Color(0.1135636f, 0.5811083f, 0.8301887f);
 
     private float startPosForFormat = 180f;
@@ -33,6 +35,8 @@ public class HighScores : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+        noPlayersText.SetActive(false);
 
         font = (Font) Resources.Load("Font/earthorbiter");
 
@@ -336,7 +340,12 @@ public class HighScores : MonoBehaviour {
         sortedData.AddRange(level3EasyData);
         sortedData.AddRange(totalEasyData);
 
-  
+        if (sortedData.Count == 0)
+        {
+            noPlayersText.SetActive(true);
+        }
+
+
         return sortedData;
     }
 }
