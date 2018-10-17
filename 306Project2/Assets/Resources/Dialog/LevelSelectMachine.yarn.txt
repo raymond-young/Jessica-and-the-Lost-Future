@@ -2,7 +2,7 @@ title: LevelSelectMachine
 ---
 <<set $true_variable to true>>
 <<set $false_variable to false>>
-<<checkLevel Dialogue>>
+<<checkLevel DialogueManager>>
 <<change_character DialogueManager Time Machine>>
 Where to Next?
 <<if $level3 is true and $level2 is true>>
