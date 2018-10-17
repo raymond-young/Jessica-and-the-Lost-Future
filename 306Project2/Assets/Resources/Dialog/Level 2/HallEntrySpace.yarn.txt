@@ -5,15 +5,23 @@ title: HallEntrySpace
     <<change_character DialogueManager Amy>>
     Hello! We have 3 department on display today at different locations; ECE, Mechanical, and Civil.
     Make sure you check out all of them. Which one do you want to start with? 
-    -> ECE
-       ECE exhibition is located at the computer lab.
-       <<set $startECE to true>>
-    -> Civil
-       Civil's display is located at the study space just down the hall.
-       <<set $startCivil to true>>
-    -> Mechanical
-       Mechanical's display is upstairs in the lecture room. 
-       <<set $startMechanical to true>>
+    (Cheat code) Skip all 3 departments activities
+    ->Skip (talk to girl in yellow next)
+       <<set $finishECE to true>>
+       <<set $finishCivil to true>>
+       <<set $finishMechanical to true>>
+    -> don't skip
+        Which one do you want to start with? 
+        -> ECE
+           ECE exhibition is located at the computer lab.
+           <<set $startECE to true>>
+        -> Civil
+           Civil's display is located at the study space just down the hall.
+           <<set $startCivil to true>>
+        -> Mechanical
+           Mechanical's display is upstairs in the lecture room. 
+           <<set $startMechanical to true>>
+
     Have fun! Please come back here after that, and I will give you direction to the next department's display.
 <<endif>>
 ===

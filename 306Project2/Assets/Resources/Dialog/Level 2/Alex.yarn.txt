@@ -32,6 +32,10 @@ title: Alex
         Good luck!
         <<needWhiteGear Player player>>
         <<set $needWhiteGear to true>>
+        Cheat code
+        -> Skipped games (just need to talk to this guy again)
+            <<set $hasWhiteGear to true>>
+        -> Don't skip
     <<else>>
         <<change_character DialogueManager Alex>>
         Hi! We have the Mechanical department's display right here. Please come visit us later.>>
