@@ -1,5 +1,6 @@
 title: LockerNote
 ---
+<<change_character DialogueManager Note>>
 This is a note that reads:
 People to ask for my programming group:
 - Jenny

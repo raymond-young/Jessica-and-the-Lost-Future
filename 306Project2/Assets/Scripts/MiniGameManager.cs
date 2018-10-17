@@ -9,8 +9,6 @@ public class MiniGameManager : MonoBehaviour {
     private List<GameObject> npcs = new List<GameObject>();
     private PlayerController player;
 
-    public AchievementManager achievementManager;
-
     private bool startGame = false;
     private bool hasStarted = false;
 
@@ -25,7 +23,6 @@ public class MiniGameManager : MonoBehaviour {
 
         //Initialises reference to other NPC objects
         GameObject[] npcGameObject = GameObject.FindGameObjectsWithTag("BadNPC");
-        achievementManager = GameObject.FindObjectOfType<AchievementManager>();
 
         for (int i = 0; i < npcGameObject.Length; i++)
         {
@@ -101,24 +98,40 @@ public class MiniGameManager : MonoBehaviour {
 
         //Set delay for aura
         AuraController controller = currentNpc.transform.GetChild(0).GetComponent<AuraController>();
-        controller.FinishedMiniGame(success);
+        controller.FinishedMiniGame();
 
         if (!success)
         {
             //Failed minigame so loose power
             player.LoseOnePower();
 
-            //If stuck, teleport player to their last prevoius recorded position 
-            player.transform.position = player.GetPreviousPos();
+            //Calculates the opposite direction to the npc from the players input
+            Vector2 direction = (player.transform.position - currentNpc.transform.position).normalized;
+
+            //Used to detect if player stuck between another object and the bad npc
+            RaycastHit2D hit = Physics2D.Raycast(player.transform.position, direction * 5f);
+
+         
+            if (hit.collider != null)
+            {
+                //If stuck, teleport player to their last prevoius recorded position 
+                player.transform.position = player.GetPreviousPos();
+            }
+            else
+            {
+                //If not stuck, teleport player in opposite direction to the bad npc
+                player.transform.Translate(direction * 5f);
+            }
+
+            // Show warning.
+            StartCoroutine(player.popupManager.showWarning("-1 Energy. Be more careful next time!"));
 
         }
-        else
-        { 
-            Debug.Log("Finished minigame");
+        else { 
             //Successful minigame so destroy aura
             Destroy(currentNpc.transform.GetChild(0).gameObject);
-            
-            achievementManager.EarnAchievement("Keyboard Warrior");
+            // Show warning.
+            StartCoroutine(player.popupManager.showEnemyPassed());
         }
 
     }

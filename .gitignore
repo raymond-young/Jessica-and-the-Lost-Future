@@ -372,3 +372,6 @@ sysinfo.txt
 *.unitypackage
 
 # End of https://www.gitignore.io/api/git,unity,csharp,visualstudio
+306Project2/Assets/YarnSpinner/Code/Editor.meta
+306Project2/Assets/YarnSpinner/Examples/DemoAssets/Space.meta
+306Project2/Assets/YarnSpinner/Examples/DemoScripts.meta

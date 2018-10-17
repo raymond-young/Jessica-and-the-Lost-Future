@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class MiniGameGenerator : MonoBehaviour {
 
     //Arrow enum must match the keycode
-	enum Arrow { UpArrow, DownArrow, LeftArrow, RightArrow };
+	enum ArrowKey { UpArrow, DownArrow, LeftArrow, RightArrow };
 
     //Prefabs
     public GameObject left;
@@ -20,7 +20,7 @@ public class MiniGameGenerator : MonoBehaviour {
 
     //Placeholders that hold game objects that will be random generated during the game
     List<GameObject> arrows = new List<GameObject>();
-    List<Arrow> arrowRef = new List<Arrow>();
+    List<ArrowKey> arrowRef = new List<ArrowKey>();
     Slider bar;
 	GameObject holder;
     GameObject ready;
@@ -50,18 +50,18 @@ public class MiniGameGenerator : MonoBehaviour {
         //Get measurements of the canvas
 		RectTransform parentRectTransform = gameObject.GetComponent<RectTransform>();
         //Calculate size assigned to one arrow
-	  	float arrowSpace = up.GetComponent<RectTransform>().rect.width * 1.5f;
+	  	float arrowSpace = up.GetComponent<RectTransform>().rect.width * 1.05f;
 		
         //Generate holder and bar. Set default properties according to the screen size and number of arrows
 		holder = Instantiate(box);
         RectTransform holderRectTransform = holder.GetComponent<RectTransform>();
-        holderRectTransform.sizeDelta = new Vector2(arrowSpace * noOfArrows, arrowSpace * 1.6f);
+        holderRectTransform.sizeDelta = new Vector2(arrowSpace * noOfArrows * 1.08f, arrowSpace * 2.8f);
         holderRectTransform.SetParent(parentRectTransform);
         holderRectTransform.localPosition = new Vector2(0, 0);
 
         bar = Instantiate(slider);
         RectTransform barRectTransform = bar.GetComponent<RectTransform>();
-        barRectTransform.sizeDelta = new Vector2((gameObject.GetComponentInParent<Canvas>().pixelRect.width - arrowSpace/2), arrowSpace * 0.25f);
+        barRectTransform.sizeDelta = new Vector2(gameObject.GetComponentInParent<Canvas>().pixelRect.width * 0.95f, arrowSpace * 0.25f);
 		float sliderYPosition = gameObject.GetComponentInParent<Canvas>().pixelRect.height/2 - barRectTransform.rect.height;
         barRectTransform.SetParent(parentRectTransform);
         barRectTransform.localPosition = new Vector2(0, -sliderYPosition);
@@ -73,22 +73,22 @@ public class MiniGameGenerator : MonoBehaviour {
 				case 0:
 					arrow = Instantiate(up);
                     arrows.Add(arrow);
-                    arrowRef.Add(Arrow.UpArrow);
+                    arrowRef.Add(ArrowKey.UpArrow);
 					break;
 				case 1:
 					arrow = Instantiate(down);
                     arrows.Add(arrow);
-                    arrowRef.Add(Arrow.DownArrow);
+                    arrowRef.Add(ArrowKey.DownArrow);
                     break;
 				case 2:
 					arrow = Instantiate(left);
                     arrows.Add(arrow);
-                    arrowRef.Add(Arrow.LeftArrow);
+                    arrowRef.Add(ArrowKey.LeftArrow);
                     break;
 				case 3:
 					arrow = Instantiate(right);
                     arrows.Add(arrow);
-                    arrowRef.Add(Arrow.RightArrow);
+                    arrowRef.Add(ArrowKey.RightArrow);
                     break;
 			}
             //Set default properties of an arrow
@@ -136,14 +136,19 @@ public class MiniGameGenerator : MonoBehaviour {
         {
             //If the right key was pressed, change color of the game object and move to the next one
             if(e.keyCode.ToString().Equals(arrowRef[currentIndex].ToString()) && e.keyCode != KeyCode.None){
-				arrows[currentIndex].GetComponent<Image>().color = Color.green;
+                arrows[currentIndex].GetComponent<Arrow>().TurnRight();
+
 			    currentIndex++;
-			}else{
+			 } else {
                 //If the wrong key was pressed, add time penalty, reset progress
 				currentTime += timePenalty;
-                for (int i = 0; i <= currentIndex; i++)
+
+                arrows[currentIndex].GetComponent<Arrow>().TurnWrong();
+
+                // Reset to default colours.
+                for (int i = 0; i < currentIndex; i++)
                 {
-                    arrows[i].GetComponent<Image>().color = Color.grey;
+                    arrows[i].GetComponent<Arrow>().TurnDefault();
                 }
                 currentIndex = 0;
 			}
@@ -170,8 +175,8 @@ public class MiniGameGenerator : MonoBehaviour {
             {
                 if (go.activeSelf)
                 {
-                    float time = Mathf.Sin(Mathf.Lerp(0f, 1f, Mathf.Abs(currentTime) / goTime));
-                    go.GetComponent<Text>().color = new Color(time, time, 0);
+                    float time = Mathf.Sin(Mathf.Lerp(0.25f, 1f, Mathf.Abs(currentTime) / goTime));
+                    go.GetComponent<Text>().color = new Color(time, time, time);
                 }
                 else
                 {
@@ -184,8 +189,8 @@ public class MiniGameGenerator : MonoBehaviour {
                 if (ready.activeSelf)
                 {
                     float percentage = Mathf.Abs(currentTime) - goTime;
-                    float time = Mathf.Sin(Mathf.Lerp(0f, 1f, percentage / readyTime));
-                    ready.GetComponent<Text>().color = new Color(0, time, 0);
+                    float time = Mathf.Sin(Mathf.Lerp(0.25f, 1f, percentage / readyTime));
+                    ready.GetComponent<Text>().color = new Color(time, time, time);
                 }
                 else
                 {
@@ -209,6 +214,28 @@ public class MiniGameGenerator : MonoBehaviour {
         currentTime += Time.deltaTime;
     }
 
+    private void InitDifficulty(int chapther)
+    {
+        switch (chapther)
+        {
+            case 3:
+                noOfArrows = 10;
+                timeLimit = 10f;
+                timePenalty = timeLimit / noOfArrows;
+                break;
+            case 2:
+                noOfArrows = 8;
+                timeLimit = 10f;
+                timePenalty = timeLimit / noOfArrows;
+                break;
+            case 1:
+            default:
+                noOfArrows = 6;
+                timeLimit = 10f;
+                timePenalty = timeLimit / noOfArrows;
+                break;
+        }
+    }
 
     private void Finish()
     {
