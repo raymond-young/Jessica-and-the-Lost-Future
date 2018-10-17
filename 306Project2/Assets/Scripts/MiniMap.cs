@@ -12,10 +12,16 @@ public class MiniMap : MonoBehaviour {
     public GameObject miniMapPlayer;
     public bool setStartActive = false;
 
+    private GameObject player;
+    private int level;
+
     private List<GameObject> fogOfWar = new List<GameObject>();
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("player");
+        level = player.GetComponent<PlayerController>().GetLevel();
+
         Camera camera = gameObject.GetComponent<Camera>();
 
         int resWidth = Screen.width;
@@ -40,9 +46,14 @@ public class MiniMap : MonoBehaviour {
         }
 
         //Set minimap not active at start of scene for cutscenes
-        if (!setStartActive)
-        {
+        if (level == 1) {
             minimapImage.transform.parent.gameObject.SetActive(false);
+        }
+        else if (level == 2) {
+            minimapImage.transform.parent.gameObject.SetActive(true);
+        }
+        else if (level == 3) {
+            minimapImage.transform.parent.gameObject.SetActive(true);
         }
         
     }
