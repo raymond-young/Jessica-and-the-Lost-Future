@@ -500,6 +500,18 @@ public class PlayerController : MonoBehaviour {
         transform.Translate(-direction);
     }
 
+    // Repels player from walls when they are not allowed to go there yet.
+    [YarnCommand("repelWen")]
+    public void RepelWenPlayer()
+    {
+        // Calculates the opposite direction to the NPC from the player's input.
+        Vector2 direction = new Vector2(2, 0);
+
+        transform.Translate(direction);
+    }
+
+
+
     [YarnCommand("passLevel")]
     public void passlevel(string level)
     {
