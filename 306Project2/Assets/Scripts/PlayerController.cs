@@ -100,7 +100,14 @@ public class PlayerController : MonoBehaviour {
         if (SceneManager.GetActiveScene().name.Equals("Level-1")) {
             currentLevel = 1;
         }
-       
+        else if (SceneManager.GetActiveScene().name.Equals("Level-2"))
+        {
+            currentLevel = 2;
+        }
+        else if (SceneManager.GetActiveScene().name.Equals("Level-3"))
+        {
+            currentLevel = 3;
+        }
 
         // Get the components.
         anim = GetComponent<Animator>();
@@ -109,6 +116,7 @@ public class PlayerController : MonoBehaviour {
 
         if (GameObject.FindGameObjectWithTag("MiniMapBorder") != null)
         {
+
             mapBorder = GameObject.FindGameObjectWithTag("MiniMapBorder");
         }
             
@@ -503,6 +511,10 @@ public class PlayerController : MonoBehaviour {
     public void SetPlayerName(string name)
     {
         playerName = name;
+    }
+
+    public int GetLevel() {
+        return currentLevel;
     }
 
 }
