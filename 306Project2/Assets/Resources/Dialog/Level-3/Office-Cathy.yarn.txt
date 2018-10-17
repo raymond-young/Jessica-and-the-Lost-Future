@@ -7,7 +7,7 @@ title: Cathy
 		<<set $holo to true>>
 		<<set $talkedToCathy to true>>
 		<<change_character DialogueManager Jessica>>
-		<<change_confidence Player 30>>
+		<<change_confidence Player 10>>
 		Hey Cathy, I'm allocating the teams for the projects. Do you have a preference?
 		<<change_character DialogueManager Cathy>>
 		I don't want to do the Xunil project. Can you put me on a team with Sophia. I really want to work with her.

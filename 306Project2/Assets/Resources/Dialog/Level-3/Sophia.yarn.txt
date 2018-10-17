@@ -8,17 +8,15 @@ Hi, Jessica, how's your day been
 fine, here is the team allocation's for the next projects
 <<change_character DialogueManager Sophia>>
 Ok thanks, they look good
+<<change_character DialogueManager Jessica>>
 I want to ask you something
 <<change_character DialogueManager Sophia>>
 ok sure
 <<change_character DialogueManager Jessica>>
 Do you think i should continue working here?
 <<change_character DialogueManager Sophia>>
-Do you think i should continue working here?
-<<change_character DialogueManager Sophia>>
 why do you ask?
 <<change_character DialogueManager Sophia>>
-Do you think i should continue working here?
 I don't know you that well, but i can tell Sam hasn't been treating you nicely.
 Let me tell you, all the things you go through now, let them be experiences in making you better.
 Printing documents and coffee may sound tedious now but it'll help you with your management and also make good coffee - those late nights wont go well without them.
@@ -28,5 +26,6 @@ I was also once Sams errand girl, but I just preserved and kept working hard, an
 You'll eventually get there don't let anything get to you, everything is a part of the big picture.
 <<change_character DialogueManager Jessica>>
 thank you so much.
+<<change_confidence Player 20>>
 <<transition Player CongratulationsScene>>
 ===

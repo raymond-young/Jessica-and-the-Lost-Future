@@ -1,6 +1,52 @@
 title: June
 ---
 <<change_character DialogueManager June>>
+<<if $talkedToJamesAboutInternship is false>>
+	<<set $talkedToJamesAboutInternship to true>>
+	Hey Jessica, I heard you had an internship from Elgoog.
+	<<change_character DialogueManager Jessica>>
+	Yes, I had an internship there when I was still in uni.
+	<<change_character DialogueManager June>>
+	Was this internship through the Women's program
+	<<change_character DialogueManager Jessica>>
+	I got it through the diversity program
+	<<change_character DialogueManager June>>
+	Oh
+	<<change_character DialogueManager Jessica>>
+	Is something wrong?
+	<<change_character DialogueManager June>>
+	I was just thinking how lucky you were for being a women and getting an internship for being a female.
+	<<change_character DialogueManager Jessica>>
+	The point of diversity programs is to fight historical oppression of females in tech. 
+	We all ended up with the same job. I got into Elgoog because of my skills and abilities not my gender.
+	<<change_character DialogueManager June>>
+	I'm very sorry if I offended you
+	<<change_character DialogueManager Jessica>>
+	It's fine, I'm glad that you asked me that.
+	I've always thought I was priviliged as I have received a lot of comments in the past like that.
+	Discouraging classmates and Discouraging lecturers. I thank you all for making those comments, 
+	but those comments will only make me stronger.
+	I have been receiving support from my teachers, lecturers, friends and colleagues 
+	but that is because I've been working hard all this time to get to here now.
+	I work harder than anyone around me, not just because I am competitive, 
+	but also because I don't want my efforts to be unacknowledged because I am a female.
+	<<change_character DialogueManager June>>
+	I'm very sorry, I never knew you were so hardworking, no wonder you got employee of the month and the internship
+	<<change_character DialogueManager Jessica>>
+	It's ok, It was great talking to you.
+	<<change_character DialogueManager June>>
+	Do you really think that?...
+	<<change_character DialogueManager Jessica>>
+	Yes, it was great, I really like to tell people more about my story and how hardworking the people around us are.
+	It allows for me to change one person at a time and it will eventually readh more people,
+	and more people will be able to understand us(systematic change).
+	<<change_character DialogueManager June>>
+	<<change_confidence Player 10>>
+	It's really great that you are doing that. I respect you for that and also for standing up to me like that, brave and strong.
+	<<change_character DialogueManager Jessica>>
+	Thank you.
+<<endif>>
+<<change_character DialogueManager June>>
 <<if $Allocating is true>>
 	<<if $talkedToJune is false>>
 		<<set $talkedToJune to true>>
