@@ -8,6 +8,7 @@ title: Kevin
     Well done! You are so talented! We definitely need more girls like you in our department!
     Let's all for ECE's display. Make sure you talk to volunteer Amy for more info about other departments we have. 
     <<set $finishECE to true>>
+    <<set $startECE to false>> 
 <<elseif $startECEActivity is true>>
     <<change_character DialogueManager Kevin>>
     Please check out the acitivities we have on the computers on the left.
