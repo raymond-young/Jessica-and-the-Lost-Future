@@ -8,9 +8,10 @@
 ### Requirements:
 Unity version 2018.1.2f1
 ### Execution instructions:
-#### Download contents of Prototype folder and:
+#### Download contents of Jessica folder from master branch and:
 
-1) Run Prototype.exe
+1) Run Jessica.exe  
+Always keep the files in Jessica folder, do not move or remove files.
 
 #### OR build from unity:
 
@@ -23,9 +24,15 @@ Unity version 2018.1.2f1
 
 #### OR run release from
 
-1) https://github.com/rayyoung122/306-Project-2/releases/tag/v1.1
-2) download and unzip the Prototype.zip
-3) run Prototype.exe
+1) https://github.com/rayyoung122/306-Project-2/releases/tag/v1.2
+2) download and unzip the Jessica.zip
+3) run Jessica.exe
+
+## keys ##  
+* use arrows to move character around
+* press i to show achievement 
+* cursor over minimap, scroll and zoom.
+* esc to pause and show pause menu
 
 ## Game Walkthrough ##
 
