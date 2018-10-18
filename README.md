@@ -27,7 +27,7 @@ Unity version 2018.1.2f1
 2) download and unzip the Prototype.zip
 3) run Prototype.exe
 
-## WalkThrough ##
+## Game Walkthrough ##
 
 _Note: This is the most efficient to complete each level. It does not guarantee receiving the highest score or full completion of the achievements. Any deviation from these instructions may result in gameplay being completed before being able to finish the game._  
 
