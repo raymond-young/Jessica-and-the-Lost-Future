@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class CongratulationsUI : MonoBehaviour {
     private string score;
     public UnityEngine.UI.Text scoreText;
+
     // Use this for initialization
     void Start () {
         Debug.Log("start has been called");
@@ -13,11 +14,6 @@ public class CongratulationsUI : MonoBehaviour {
         score = object1.GetComponent<ScoreTransferScript>().getScore();
         scoreText.text = score;
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     public void MainMenuButtonClicked()
     {

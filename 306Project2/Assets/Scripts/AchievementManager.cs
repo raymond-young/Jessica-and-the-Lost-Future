@@ -68,14 +68,11 @@ public class AchievementManager : MonoBehaviour {
 			player = GameObject.FindGameObjectWithTag("player");
 		}
 		if (startUp) {
-			Debug.Log ("achievementMenu is false");
             if (achievementMenu == null) {
                 achievementMenu = GameObject.FindGameObjectWithTag("AchievementMenu");
                 achievementMenu.transform.SetParent(GameObject.Find("Canvas").transform);                
             }
 
-
-			Debug.Log("Adding achivements to menu after new level");
 			// Put the achievements in the menu object
 			foreach(KeyValuePair<string,Achievement> entry in achievements) {
 				SetAchievementInfo("GeneralAchievement", entry.Value.getAchieveObject(), entry.Key);
@@ -143,7 +140,6 @@ public class AchievementManager : MonoBehaviour {
 	{
 		
 		// Make the achievement the child of the "GeneralAchievement" object (used to categorise achievements.)
-		Debug.Log("Parent is: " + parent);
 		achievement.transform.SetParent(GameObject.FindGameObjectWithTag(parent).transform);
 		achievement.transform.localScale = new Vector3(1,1,1);
 		
@@ -166,23 +162,6 @@ public class AchievementManager : MonoBehaviour {
  	public void BackToMenu()
     {
         SceneManager.LoadScene("WelcomeScene");
-    }
-
-
-	// //meet mentor with maximum confidence
-	// public bool COMPLETE_LEVEL_ONE_MAX_CONFIDENCE = false;
-
-	// //All rooms in level one discovered
-	// public bool EXPLORE_LEVEL_ONE = false;
-
-	// //pick up an item
-	// public bool PICKED_UP_FIRST_ITEM = false;
-
-	// //talk to a npc
-	// public bool TALKED_TO_FIRST_NPC = false;
-
-	// //clear the arrow minigame with less than 1 second to spare
-	// public bool JUST_IN_TIME = false;
-	
+    }	
 	
 }

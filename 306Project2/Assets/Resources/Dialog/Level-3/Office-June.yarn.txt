@@ -38,7 +38,7 @@ title: June
 	Do you really think that?...
 	<<change_character DialogueManager Jessica>>
 	Yes, it was great, I really like to tell people more about my story and how hardworking the people around us are.
-	It allows for me to change one person at a time and it will eventually readh more people,
+	It allows for me to change one person at a time and it will eventually reach more people,
 	and more people will be able to understand us(systematic change).
 	<<change_character DialogueManager June>>
 	<<change_confidence Player 10>>

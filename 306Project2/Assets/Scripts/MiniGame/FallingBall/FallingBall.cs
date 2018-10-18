@@ -218,7 +218,6 @@ public class FallingBall : MonoBehaviour {
 
     public void PlayCorrectSound()
     {
-        Debug.Log("Play Sound");
         GameObject sound = GameObject.Find("Arrow Correct");
         sound.GetComponent<AudioSource>().Play(0);
 
@@ -226,14 +225,12 @@ public class FallingBall : MonoBehaviour {
 
     public void PlayWrongSound()
     {
-        Debug.Log("Play Sound");
         GameObject sound = GameObject.Find("Arrow Wrong");
         sound.GetComponent<AudioSource>().Play(0);
     }
 
     public void PlaySucceedSound()
     {
-        Debug.Log("Play Sound");
         GameObject sound = GameObject.Find("Succeed");
         sound.GetComponent<AudioSource>().Play(0);
 
@@ -241,7 +238,6 @@ public class FallingBall : MonoBehaviour {
 
     public void PlayFailSound()
     {
-        Debug.Log("Play Sound");
         GameObject sound = GameObject.Find("Fail");
         sound.GetComponent<AudioSource>().Play(0);
 
@@ -249,14 +245,12 @@ public class FallingBall : MonoBehaviour {
 
     public void PlayReadySound()
     {
-        Debug.Log("Play Sound");
         GameObject sound = GameObject.Find("Ready Set");
         sound.GetComponent<AudioSource>().Play(0);
     }
 
     public void PlayGoSound()
     {
-        Debug.Log("Play Sound");
         GameObject sound = GameObject.Find("Go");
         sound.GetComponent<AudioSource>().Play(0);
     }

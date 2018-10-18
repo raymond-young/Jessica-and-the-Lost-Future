@@ -190,75 +190,117 @@ Use cheat code to skip part 2 for marking purposes:
 
 ## Images of Game ##
 
+Figure 1: Welcome Screen
 <p align="center">
   <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/1.PNG"/>
 </p>
+
+Figure 2: Tutorial 1
 <p align="center">
   <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/2.PNG"/>
 </p>
+
+Figure 3: Tutorial 2 and the Time Machine
 <p align="center">
   <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/3.PNG"/>
 </p>
+
+Figure 4: Level 1 and Bad NPCs
 <p align="center">
   <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/4.PNG"/>
 </p>
+
+Figure 5: Minigame 1
 <p align="center">
   <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/5.PNG"/>
 </p>
+
+Figure 6: interacting with good NPCs
 <p align="center">
   <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/6.PNG"/>
 </p>
+
+Figure 7: Gaining Confidence
 <p align="center">
   <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/7.PNG"/>
 </p>
+
+Figure 8: Mentor, Role Model and Systematic Change
 <p align="center">
   <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/8.PNG"/>
 </p>
+
+Figure 9: Options menu
 <p align="center">
   <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/8.1.PNG"/>
 </p>
+
+Figure 10: Level Selection from main menu
 <p align="center">
   <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/8.2.PNG"/>
 </p>
+
+Figure 11: Level 2 Intro
 <p align="center">
   <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/9.PNG"/>
 </p>
+
+Figure 11: Minigame 2
 <p align="center">
   <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/10.PNG"/>
 </p>
+
+Figure 12: Mentor, Role Model and Systematic Change
 <p align="center">
   <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/11.PNG"/>
 </p>
+
+Figure 13: Achievements
 <p align="center">
   <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/12.1.PNG"/>
 </p>
+
+Figure 13: HighScores
 <p align="center">
   <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/12.2.PNG"/>
 </p>
+
+Figure 14: Continue to Time Machine
 <p align="center">
   <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/13.PNG"/>
 </p>
+
+Figure 15: Level Selection with Options
 <p align="center">
   <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/14.PNG"/>
 </p>
+
+Figure 16: Level 3
 <p align="center">
   <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/15.PNG"/>
 </p>
+
+Figure 17: Systematic Change
 <p align="center">
   <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/15.1.PNG"/>
 </p>
+
+Figure 18: Options Menu
 <p align="center">
   <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/15.2.PNG"/>
 </p>
-<p align="center">
-  <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/15.2.PNG"/>
-</p>
+
+Figure 19: Mini game 3 part 1
 <p align="center">
   <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/16.PNG"/>
 </p>
+
+Figure 20: Mini game 3 part 2
 <p align="center">
   <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/17.PNG"/>
 </p>
+
+Figure 21: Workplace - Mentor and Role Model
 <p align="center">
   <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Pics/18.PNG"/>
 </p>

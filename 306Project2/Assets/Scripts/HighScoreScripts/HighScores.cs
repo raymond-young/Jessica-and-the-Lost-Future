@@ -58,20 +58,6 @@ public class HighScores : MonoBehaviour {
 
         SaveManager saveManager = new SaveManager();
 
-        //Test ONLY
-        //saveManager.SaveLevel(200, 2, "default");
-        //saveManager.SaveLevel(200, 1, "default");
-        //saveManager.SaveLevel(190, 2, "steve");
-        //saveManager.SaveLevel(180, 1, "steve");
-        //saveManager.SaveLevel(180, 2, "james");
-        //saveManager.SaveLevel(110, 3, "james");
-        //saveManager.SaveLevel(140, 3, "efwef");
-        //saveManager.SaveLevel(100, 3, "jameffffffs");
-        //saveManager.SaveLevel(100, 3, "Stetw");
-        //saveManager.SaveLevel(90, 3, "ewfewwfewf");
-        //saveManager.SaveLevel(40, 3, "fwefwefew");
-        //saveManager.SaveLevel(10, 3, "no");
-
         List<SaveData> saves = saveManager.LoadSave();
 
         List<SaveData> sortedSaves = SortLevels(saves);

@@ -313,10 +313,6 @@ public class PlayerController : MonoBehaviour {
         GameObject achievementMenuTransfer = GameObject.FindGameObjectWithTag("AchievementMenu");
         achievementMenuTransfer.transform.SetParent(null);
         DontDestroyOnLoad(achievementMenuTransfer);
-
-        // // Transfer the EarnAchievementCanvas
-        // GameObject earnAchievementCanvasTransfer = GameObject.FindGameObjectWithTag("EarnAchievementCanvas");
-        // DontDestroyOnLoad(earnAchievementCanvasTransfer);
         
     }
 

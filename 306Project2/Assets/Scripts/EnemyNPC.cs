@@ -124,10 +124,7 @@ public class EnemyNPC : Movement
      */
     private void SetAnimationFacingDirection(Vector2 position) {
         //character moving up
-        //Debug.Log("X: " + position.x + " ,Y: " + position.y);
-        //Debug.Log("currentX: " + transform.position.x + " ,currentY: " + transform.position.y);
         if ((Mathf.Abs(position.x - transform.position.x) < 0.5) && (position.y-transform.position.y > 0)) {
-            Debug.Log("UP");
             anim.SetFloat("MoveX", 0);
             anim.SetFloat("MoveY", 1);
         }
