@@ -1,4 +1,4 @@
-<h1 align="center">Softeng 306 Project 2: Game Design</h1>
+<h1 align="center">Team Nozama: Jessica</h1>
 
 <p align="center">
   <img src ="https://github.com/rayyoung122/306-Project-2/blob/master/images/Team%20Logo%20small.png"/>
